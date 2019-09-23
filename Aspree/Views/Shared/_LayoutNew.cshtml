@@ -1,0 +1,324 @@
+﻿@{
+    var LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser;
+    var role = LoggedInUser.Roles.Count > 0 ? LoggedInUser.Roles[0] : "";
+    List<string> allowedroles = new List<string>();
+    allowedroles.Add("Definition Admin");
+    allowedroles.Add("System Admin");
+    allowedroles.Add("Project Admin");
+
+    string projectColor = string.Empty;
+    string projectLogo = string.Empty;
+    string projectDisplayNameTextColour = string.Empty;
+    string projectDisplayName = LoggedInUser.ProjectDisplayName;
+    projectColor = ViewBag.ProjectColor != null ? "style=background:" + ViewBag.ProjectColor : string.Empty;
+    projectLogo = ViewBag.ProjectLogo != null ? ViewBag.ProjectLogo : string.Empty;
+
+    projectDisplayNameTextColour = !string.IsNullOrEmpty(LoggedInUser.ProjectDisplayNameTextColour) ? "style=color:" + LoggedInUser.ProjectDisplayNameTextColour : string.Empty;
+
+    bool isHomePage = Request.Url.AbsoluteUri.ToLower().Contains("listofproject");
+    projectColor = isHomePage ? string.Empty : projectColor;
+    projectLogo = isHomePage ? string.Empty : projectLogo;
+    projectDisplayName = isHomePage ? string.Empty : projectDisplayName;
+    projectDisplayNameTextColour = isHomePage ? string.Empty : projectDisplayNameTextColour;
+
+    string projId = Request.Url.Segments.GetValue(Request.Url.Segments.Length - 1).ToString();
+    if (Session["ProjectId"] != null)
+    {
+        if (projId != Session["ProjectId"].ToString())
+        {
+            projId = Session["ProjectId"].ToString();
+        }
+    }
+}
+<!DOCTYPE html>
+<html lang="en" style="overflow-y:scroll">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/content/assets/images/favicon.png">
+    <title>@ViewBag.Title | Aspree</title>
+    <!-- Roboto fonts css; ( font-family: 'Roboto', sans-serif; ) -->
+    @*<link href="~/Content/assets/fonts/css.css" rel="stylesheet" />*@
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="@Url.Content("/content/vendor/css/bootstrap.min.css")" rel="stylesheet">
+    <!-- fontawesome icon CSS -->
+    <link href="@Url.Content("/content/vendor/css/fontawesome-all.min.css")" rel="stylesheet">
+    <link href="@Url.Content("/content/vendor/css/font-awesome.css")" rel="stylesheet">
+    <link href="@Url.Content("/content/vendor/css/themify-icons.css")" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="@Url.Content("/content/assets/css/animate.css")" rel="stylesheet">
+
+    <!-- Custom CSS -->
+
+    <link href="@Url.Content("/content/assets/css/style.css")" rel="stylesheet">
+    <link href="@Url.Content("/content/assets/css/colors/blue.css")" rel="stylesheet">
+
+    <!-- Custom Style CSS -->
+   
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    <link href="@Url.Content("/content/assets/css/custom-style.css")" rel="stylesheet">
+    @Styles.Render("~/Content/site")
+
+    @RenderSection("Styles", false)
+    <link href="@Url.Content("/content/assets/css/responsive.css")" rel="stylesheet">
+</head>
+<body class="light-gray-bg">
+    <!-- ==========================================================
+    Main Content
+    =========================================================== -->
+
+
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="MainHeader topbar theme-bgcolor fixed-top @(isHomePage ? "home-page-header" : "")" @projectColor>
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+
+                    <!-- Logo icon -->
+
+                    <div class="header-top-left">
+                        <a class="navbar-brand header-heading" href="/Home/ListOfProject">
+                            <h1 class="pjt-name" @projectDisplayNameTextColour >@(!string.IsNullOrEmpty(projectDisplayName) ? projectDisplayName : "Universal Data System")</h1>
+                        </a>
+                        @if (!string.IsNullOrEmpty(projectLogo))
+                        {
+                            <div class="headerLogo">
+                                <a class="navbar-brand" href="/Home/ListOfProject">
+                                    <img src="@projectLogo" style="height:65px;" />
+                                </a>
+                            </div>
+                        }
+
+
+                    </div>
+
+
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                       
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted white-color waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img data-src="/content/assets/images/user.jpg" src="@(Aspree.Utility.ConfigSettings.WebApiUrl + "user/profile/" + @ViewBag.LoggedInUser.Guid)" onerror="this.src = '/content/assets/images/user.jpg'" alt="user" class="profile-pic"></a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img data-src="/content/assets/images/user.jpg" src="@(Aspree.Utility.ConfigSettings.WebApiUrl + "user/profile/" + @ViewBag.LoggedInUser.Guid)" onerror="this.src = '/content/assets/images/user.jpg'" alt="user"></div>
+                                            <div class="u-text">
+                                                <h4>@ViewBag.LoggedInUser.Name</h4>
+                                                <p class="text-muted text-break-word">@ViewBag.LoggedInUser.Email</p>
+                                                @*<a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a>*@
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    @if (allowedroles.Contains(role))
+                                    {
+                                        <li><a href="/account/manageprofile"><i class="ti-user"></i> My Profile</a></li>
+                                    }
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/account/logout"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Language -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+            <div class="clear"></div>
+        </header>
+
+        @if (ViewBag.ActionName != null)
+        {
+            <div class="user-header">
+                <div class="container-fluid">
+                    <div class="clearfix">
+                        <div class="uh-profile-wrap pull-left">
+                            <div class="uh-profile-name secondary-color">Hi <span>[@LoggedInUser.Name]</span>!</div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.user-header -->
+        }
+        else
+        {
+            <aside class="left-sidebar">
+                <!-- Sidebar scroll-->
+                <div class="scroll-sidebar">
+                    <!-- Sidebar navigation-->
+                    <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+                            <li class="nav-small-cap">PERSONAL</li>
+                            <!--<li>
+                                    <a class="has-arrow" href="/home/dashboard" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                                </li>-->
+                           
+                            <li class="three-column">
+                                <a class="has-arrow" href="/Home/ListOfProject" aria-expanded="false"><i class="fa fa-tasks"></i><span class="hide-menu">Projects</span></a>
+                            </li>
+                            <li class="three-column">
+                                <a class="has-arrow" href="/Search" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Search</span></a>
+                            </li>
+                            <li class="three-column">
+                                <a class="has-arrow" href="/Summary" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Summary</span></a>
+                            </li>
+                            
+                             @if (LoggedInUser.Roles.Contains("Definition Admin"))
+                            {
+                                <li>
+                                    <a class="has-arrow " href="/Roles" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Roles</span></a>
+                                </li>
+                                <li class="three-column">
+                                    <a class="has-arrow" href="/EmailTemplate" aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Email Templates</span></a>
+                                </li>
+                            }
+                            @if (LoggedInUser.Roles.Contains("Project Admin") || LoggedInUser.Roles.Contains("System Admin"))
+                            {
+                                <li class="three-column">
+                                    <a class="has-arrow" href="/projectbuilder" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Project Builder</span></a>
+                                </li>
+                            }
+                            @if (LoggedInUser.Roles.Contains("System Admin"))
+                            {
+                                <li class="three-column">
+                                    <a class="has-arrow" href="/SystemAdminTools/ManageCategories" aria-expanded="false"><i class="mdi mdi-application"></i><span class="hide-menu">SystemAdminTools</span></a>
+                                    @*<a class="has-arrow" href="/SystemAdminTools/ManagesProjects" aria-expanded="false"><i class="mdi mdi-application"></i><span class="hide-menu">SystemAdminTools</span></a>*@
+                                </li>
+                            }
+                            <li class="three-column">
+                                <a class="has-arrow" href="/ActionList" aria-expanded="false">
+                                    <i class="mdi mdi-format-list-bulleted"></i>
+
+                                    <span class="hide-menu">Action List</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- End Sidebar navigation -->
+                </div>
+                <!-- End Sidebar scroll-->
+            </aside>
+        }
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div id="alerts" class="row alerts"></div>
+                <div class="row page-titles">
+                    <div class="col-md-5 col-8 align-self-center">
+                        @RenderSection("NavBarLeft", false)
+                    </div>
+                    <div class="col-md-7 col-4 align-self-center">
+                        @RenderSection("NavBarRight", false)
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row waterMark">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer"> © 2018 Aspree</footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <div id="processLoader">
+        <div class="loader"></div>
+    </div>
+    <div id="blocker"></div>
+
+    <!-- ==========================================================
+    All Jquery Import
+    =========================================================== -->
+    <script src="@Url.Content("/content/assets/js/jquery.min.js")"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="@Url.Content("/content/vendor/js/popper.min.js")"></script>
+    <script src="@Url.Content("/content/vendor/js/bootstrap.min.js")"></script>
+    <!--Wave Effects -->
+    <script src="@Url.Content("/content/assets/js/jquery.slimscroll.js")"></script>
+    <script src="@Url.Content("/content/assets/js/waves.js")"></script>
+    <!--Custom JavaScript -->
+    <script src="@Url.Content("/content/assets/js/custom.js")"></script>
+    <!--Menu sidebar -->
+    <script src="@Url.Content("/content/vendor/js/sidebarmenu.js")"></script>
+    <!--stickey kit -->
+    <script src="@Url.Content("/content/vendor/js/sticky-kit.min.js")"></script>
+    <script src="@Url.Content("/content/vendor/js/jquery.sparkline.min.js")"></script>
+    <!--custom-script JS -->
+    @Scripts.Render("~/apps/common")
+    <script>
+        App.AccessToken = '@ViewBag.AccessToken';
+        App.ApiUrl = "@Aspree.Utility.ConfigSettings.WebApiUrl";
+    </script>
+    @RenderSection("Scripts", false)
+
+
+    @if (TempData["Success"] != null)
+    {
+        <script>
+            App.showSuccess("@TempData["Success"]");
+        </script>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            App.showError("@TempData["Error"]");
+        </script>
+    }
+    <script>
+        $(function () {
+            App.applyRemoteValidation();
+        });
+    </script>
+</body>
+</html>

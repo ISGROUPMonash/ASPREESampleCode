@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Aspree_StaggingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EntitySubType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EntityTypeId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsSystemRole" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+  </EntityType>
+  <EntityType Name="Tenant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ValidationRule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RuleType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MinRange" Type="float" />
+    <Property Name="MaxRange" Type="float" />
+    <Property Name="RegExId" Type="int" />
+    <Property Name="ErrorMessage" Type="nvarchar" MaxLength="250" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Variable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VariableName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VariableLabel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Values" Type="nvarchar(max)" />
+    <Property Name="ValueDescription" Type="nvarchar" MaxLength="250" />
+    <Property Name="HelpText" Type="nvarchar" MaxLength="250" />
+    <Property Name="VariableTypeId" Type="int" Nullable="false" />
+    <Property Name="ValidationMessage" Type="nvarchar" MaxLength="250" />
+    <Property Name="RequiredMessage" Type="nvarchar" MaxLength="250" />
+    <Property Name="MinRange" Type="float" />
+    <Property Name="MaxRange" Type="float" />
+    <Property Name="RegEx" Type="varchar" MaxLength="250" />
+    <Property Name="IsSoftRange" Type="bit" />
+    <Property Name="ValidationRuleId" Type="int" />
+    <Property Name="DependentVariableId" Type="int" />
+    <Property Name="IsRequired" Type="bit" Nullable="false" />
+    <Property Name="CanCollectMultiple" Type="bit" Nullable="false" />
+    <Property Name="VariableCategoryId" Type="int" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+    <Property Name="VariableValueDescription" Type="nvarchar(max)" />
+    <Property Name="IsDefaultVariable" Type="int" Nullable="false" />
+    <Property Name="CanFutureDate" Type="bit" />
+    <Property Name="VariableDetails" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="VariableCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+    <Property Name="IsDefaultVariableCategory" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VariableRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VariableType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EntitySubType_EntityType">
+    <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
+    <End Role="EntitySubType" Type="Self.EntitySubType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntitySubType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntityType_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="EntityType" Type="Self.EntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityType">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableRole_MasterVariable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="VariableRole" Type="Self.VariableRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableRole">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="VariableRole" Type="Self.VariableRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Variable_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Variable">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Variable_VariableCategory">
+    <End Role="VariableCategory" Type="Self.VariableCategory" Multiplicity="0..1" />
+    <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VariableCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Variable">
+        <PropertyRef Name="VariableCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Variable_VariableType">
+    <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+    <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VariableType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Variable">
+        <PropertyRef Name="VariableTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VariableCategory_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="VariableCategory" Type="Self.VariableCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableCategory">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Aspree_StaggingModelStoreContainer">
+    <EntitySet Name="EntitySubType" EntityType="Self.EntitySubType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntityType" EntityType="Self.EntityType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ValidationRule" EntityType="Self.ValidationRule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Variable" EntityType="Self.Variable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VariableCategory" EntityType="Self.VariableCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VariableRole" EntityType="Self.VariableRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VariableType" EntityType="Self.VariableType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EntitySubType_EntityType" Association="Self.FK_EntitySubType_EntityType">
+      <End Role="EntityType" EntitySet="EntityType" />
+      <End Role="EntitySubType" EntitySet="EntitySubType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityType_Tenant" Association="Self.FK_EntityType_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="EntityType" EntitySet="EntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableRole_MasterVariable" Association="Self.FK_MasterVariableRole_MasterVariable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="VariableRole" EntitySet="VariableRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableRole_Role" Association="Self.FK_MasterVariableRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="VariableRole" EntitySet="VariableRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_Tenant" Association="Self.FK_Role_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variable_Tenant" Association="Self.FK_Variable_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="Variable" EntitySet="Variable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variable_VariableCategory" Association="Self.FK_Variable_VariableCategory">
+      <End Role="VariableCategory" EntitySet="VariableCategory" />
+      <End Role="Variable" EntitySet="Variable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variable_VariableType" Association="Self.FK_Variable_VariableType">
+      <End Role="VariableType" EntitySet="VariableType" />
+      <End Role="Variable" EntitySet="Variable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableCategory_Tenant" Association="Self.FK_VariableCategory_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="VariableCategory" EntitySet="VariableCategory" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

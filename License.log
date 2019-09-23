@@ -1,0 +1,67 @@
+    ======  ======
+    Time:23-09-2019 16:57:48
+    Title: Initiate log
+    Message: 
+    Time:23-09-2019 16:57:48
+    Title: Initiate InternalManager
+    Message: Trying to Validate License
+    Time:23-09-2019 16:57:48
+    Title: Requesting EVT
+    Message: EVTP
+    Time:23-09-2019 16:57:48
+    Title: Requesting Validation
+    Message: ILMValidate
+    Time:23-09-2019 16:57:48
+    Title: LICENSER
+    Message: TRL MODE
+    Time:23-09-2019 16:57:48
+    Title: LICENSER
+    Message: DS LEFT-187
+    Time:23-09-2019 16:57:48
+    Title: LICENSER
+    Message: DT MARK PASSED-187.00:00:00
+    Time:23-09-2019 16:57:48
+    Title: ILMValidate action
+    Message: LIC
+    Time:23-09-2019 16:57:49
+    Title: LICENSER - TGO
+    Message: Start
+    Entering constructor for: DevExpress.VSMenuIntegration.Package.VSPackage
+    Entering constructor for: Telerik.VSX.UserSettingsPackage.UserSettingsPackage
+    Entering constructor for: Telerik.Windows.Silverlight.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.Windows.Silverlight.VSPackage.VsPackage
+    Entering constructor for: Telerik.WinControls.Converter.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.WinControls.Converter.VSPackage.VSPackage
+    Entering constructor for: Telerik.WinControls.VSPackage.VSPackage
+    Entering constructor for: Telerik.KendoUI.Mvc.VSPackage.VsPackage
+    Entering constructor for: Telerik.KendoUI.Mvc.VSPackage.VsPackage
+    Entering constructor for: Telerik.Web.UI.VSPackage.VSPackage
+    Entering constructor for: Telerik.Windows.WPF.VSPackage.VSPackage
+    Entering constructor for: Telerik.CommonPackage.VSPackage
+    TR: Assembly resolution failed: Telerik.JustMock.AddIn.XmlSerializers, Version=2019.1.207.1, Culture=neutral, PublicKeyToken=602a9bfd8c8c4ad7
+    TR: Assembly resolution failed: Telerik.UserSettings.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Entering constructor for: DevExpress.XtraReports.VSPackage.XtraReportsPackage
+    TR: Assembly resolution failed: Telerik.VSX.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Entering Initialize() of: Telerik.VSX.UserSettingsPackage.UserSettingsPackage
+    Entering Initialize() of: Telerik.CommonPackage.VSPackage
+    Entering Initialize() for: Telerik.KendoUI.Mvc.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.Web.UI.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.WinControls.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.Windows.WPF.VSPackage.VSPackage
+    Product creation from registry failed for:HKEY_LOCAL_MACHINE\Software\Telerik\Reporting\Net4.0
+    Install dir: 
+    Version: 
+    Product creation from registry failed for:HKEY_LOCAL_MACHINE\Software\Telerik\Reporting\R1 2019
+    Install dir: 
+    Version: 
+    No Telerik Reporting products found in registry
+    TR: Assembly resolution failed: Telerik.UserSettings.2019.3.910.1.XmlSerializers, Version=2019.3.910.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    TR: Assembly resolution failed: Telerik.UserSettings.2019.3.911.8.XmlSerializers, Version=2019.3.911.8, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    TR: Assembly resolution failed: Telerik.VSX.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    TR: Assembly resolution failed: Telerik.VSX.Notifications.1.2.0.0.XmlSerializers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    TR: Assembly resolution failed: Telerik.VSX.Notifications.1.2.0.0.XmlSerializers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    devenv.exe Information: 0 : 23-09-2019 11:28:13:  - TokenCache: Deserialized 6 items to token cache.
+    TR: Assembly resolution failed: Telerik.VSX.2019.3.910.1.XmlSerializers, Version=2019.3.910.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+  - TokenCache: Deserialized 6 items to token cache.
+    TR: Assembly resolution failed: Telerik.VSX.2019.3.910.1.XmlSerializers, Version=2019.3.910.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    TR: Assembly resolution failed: Telerik.UserSettings.2019.3.911.8.XmlSerializers, Version=2019.3.911.8, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4

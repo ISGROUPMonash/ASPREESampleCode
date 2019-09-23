@@ -1,0 +1,9 @@
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Core\bin\Debug\Aspree.Core.dll
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Core\bin\Debug\Aspree.Core.pdb
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Core\obj\Debug\Aspree.Core.dll
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Core\obj\Debug\Aspree.Core.pdb
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Core\obj\Debug\Aspree.Core.csprojResolveAssemblyReference.cache
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Core\bin\Debug\Aspree.Core.dll
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Core\bin\Debug\Aspree.Core.pdb
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Core\obj\Debug\Aspree.Core.dll
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Core\obj\Debug\Aspree.Core.pdb

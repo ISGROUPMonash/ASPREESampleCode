@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a0cefc33b6dd4ee7b77d4ae421c86c21" Name="Diagram1">
+        <EntityTypeShape EntityType="Aspree_StaggingModel.EntitySubType" Width="1.5" PointX="8" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aspree_StaggingModel.EntityType" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aspree_StaggingModel.Role" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aspree_StaggingModel.Variable" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aspree_StaggingModel.VariableCategory" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aspree_StaggingModel.VariableRole" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aspree_StaggingModel.VariableType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_EntitySubType_EntityType" ManuallyRouted="false" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_MasterVariableRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_MasterVariableRole_MasterVariable" ManuallyRouted="false" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_Variable_VariableCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_Variable_VariableType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Aspree_StaggingModel.ValidationRule" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Aspree_StaggingModel.Tenant" Width="1.5" PointX="0.75" PointY="6" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_EntityType_Tenant" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_Role_Tenant" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_Variable_Tenant" />
+        <AssociationConnector Association="Aspree_StaggingModel.FK_VariableCategory_Tenant" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

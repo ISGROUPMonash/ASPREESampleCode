@@ -1,0 +1,789 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Aspree_StaggingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EntitySubType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EntityTypeId" Type="int" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TenantId" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsSystemRole" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeactivatedBy" Type="int" />
+          <Property Name="DateDeactivated" Type="datetime" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="TenantId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeactivatedBy" Type="int" />
+          <Property Name="DateDeactivated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ValidationRule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RuleType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MinRange" Type="float" />
+          <Property Name="MaxRange" Type="float" />
+          <Property Name="RegExId" Type="int" />
+          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="250" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Variable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VariableLabel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Values" Type="nvarchar(max)" />
+          <Property Name="ValueDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="HelpText" Type="nvarchar" MaxLength="250" />
+          <Property Name="VariableTypeId" Type="int" Nullable="false" />
+          <Property Name="ValidationMessage" Type="nvarchar" MaxLength="250" />
+          <Property Name="RequiredMessage" Type="nvarchar" MaxLength="250" />
+          <Property Name="MinRange" Type="float" />
+          <Property Name="MaxRange" Type="float" />
+          <Property Name="RegEx" Type="varchar" MaxLength="250" />
+          <Property Name="IsSoftRange" Type="bit" />
+          <Property Name="ValidationRuleId" Type="int" />
+          <Property Name="DependentVariableId" Type="int" />
+          <Property Name="IsRequired" Type="bit" Nullable="false" />
+          <Property Name="CanCollectMultiple" Type="bit" Nullable="false" />
+          <Property Name="VariableCategoryId" Type="int" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeactivatedBy" Type="int" />
+          <Property Name="DateDeactivated" Type="datetime" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TenantId" Type="int" />
+          <Property Name="VariableValueDescription" Type="nvarchar(max)" />
+          <Property Name="IsDefaultVariable" Type="int" Nullable="false" />
+          <Property Name="CanFutureDate" Type="bit" />
+          <Property Name="VariableDetails" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="VariableCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeactivatedBy" Type="int" />
+          <Property Name="DateDeactivated" Type="datetime" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TenantId" Type="int" />
+          <Property Name="IsDefaultVariableCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VariableRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VariableType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EntitySubType_EntityType">
+          <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
+          <End Role="EntitySubType" Type="Self.EntitySubType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntitySubType">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityType_Tenant">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+          <End Role="EntityType" Type="Self.EntityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntityType">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterVariableRole_MasterVariable">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="VariableRole" Type="Self.VariableRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VariableRole">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterVariableRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="VariableRole" Type="Self.VariableRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VariableRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_Tenant">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_Tenant">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_VariableCategory">
+          <End Role="VariableCategory" Type="Self.VariableCategory" Multiplicity="0..1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="VariableCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_VariableType">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariableCategory_Tenant">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+          <End Role="VariableCategory" Type="Self.VariableCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VariableCategory">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Aspree_StaggingModelStoreContainer">
+          <EntitySet Name="EntitySubType" EntityType="Self.EntitySubType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntityType" EntityType="Self.EntityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValidationRule" EntityType="Self.ValidationRule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Variable" EntityType="Self.Variable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariableCategory" EntityType="Self.VariableCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariableRole" EntityType="Self.VariableRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariableType" EntityType="Self.VariableType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EntitySubType_EntityType" Association="Self.FK_EntitySubType_EntityType">
+            <End Role="EntityType" EntitySet="EntityType" />
+            <End Role="EntitySubType" EntitySet="EntitySubType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityType_Tenant" Association="Self.FK_EntityType_Tenant">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="EntityType" EntitySet="EntityType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterVariableRole_MasterVariable" Association="Self.FK_MasterVariableRole_MasterVariable">
+            <End Role="Variable" EntitySet="Variable" />
+            <End Role="VariableRole" EntitySet="VariableRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterVariableRole_Role" Association="Self.FK_MasterVariableRole_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="VariableRole" EntitySet="VariableRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_Tenant" Association="Self.FK_Role_Tenant">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_Tenant" Association="Self.FK_Variable_Tenant">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="Variable" EntitySet="Variable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_VariableCategory" Association="Self.FK_Variable_VariableCategory">
+            <End Role="VariableCategory" EntitySet="VariableCategory" />
+            <End Role="Variable" EntitySet="Variable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_VariableType" Association="Self.FK_Variable_VariableType">
+            <End Role="VariableType" EntitySet="VariableType" />
+            <End Role="Variable" EntitySet="Variable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariableCategory_Tenant" Association="Self.FK_VariableCategory_Tenant">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="VariableCategory" EntitySet="VariableCategory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Aspree_StaggingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EntitySubType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="EntityType" Relationship="Self.FK_EntitySubType_EntityType" FromRole="EntitySubType" ToRole="EntityType" />
+        </EntityType>
+        <EntityType Name="EntityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="TenantId" Type="Int32" />
+          <NavigationProperty Name="EntitySubTypes" Relationship="Self.FK_EntitySubType_EntityType" FromRole="EntityType" ToRole="EntitySubType" />
+          <NavigationProperty Name="Tenant" Relationship="Aspree_StaggingModel.FK_EntityType_Tenant" FromRole="EntityType" ToRole="Tenant" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsSystemRole" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeactivatedBy" Type="Int32" />
+          <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="TenantId" Type="Int32" />
+          <NavigationProperty Name="VariableRoles" Relationship="Self.FK_MasterVariableRole_Role" FromRole="Role" ToRole="VariableRole" />
+          <NavigationProperty Name="Tenant" Relationship="Aspree_StaggingModel.FK_Role_Tenant" FromRole="Role" ToRole="Tenant" />
+        </EntityType>
+        <EntityType Name="Variable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VariableLabel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Values" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValueDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HelpText" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="VariableTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ValidationMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RequiredMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MinRange" Type="Double" />
+          <Property Name="MaxRange" Type="Double" />
+          <Property Name="RegEx" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsSoftRange" Type="Boolean" />
+          <Property Name="ValidationRuleId" Type="Int32" />
+          <Property Name="DependentVariableId" Type="Int32" />
+          <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+          <Property Name="CanCollectMultiple" Type="Boolean" Nullable="false" />
+          <Property Name="VariableCategoryId" Type="Int32" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeactivatedBy" Type="Int32" />
+          <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="TenantId" Type="Int32" />
+          <Property Name="VariableValueDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefaultVariable" Type="Int32" Nullable="false" />
+          <Property Name="CanFutureDate" Type="Boolean" />
+          <Property Name="VariableDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="VariableRoles" Relationship="Self.FK_MasterVariableRole_MasterVariable" FromRole="Variable" ToRole="VariableRole" />
+          <NavigationProperty Name="VariableCategory" Relationship="Self.FK_Variable_VariableCategory" FromRole="Variable" ToRole="VariableCategory" />
+          <NavigationProperty Name="VariableType" Relationship="Self.FK_Variable_VariableType" FromRole="Variable" ToRole="VariableType" />
+          <NavigationProperty Name="Tenant" Relationship="Aspree_StaggingModel.FK_Variable_Tenant" FromRole="Variable" ToRole="Tenant" />
+        </EntityType>
+        <EntityType Name="VariableCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeactivatedBy" Type="Int32" />
+          <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="TenantId" Type="Int32" />
+          <Property Name="IsDefaultVariableCategory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Variables" Relationship="Self.FK_Variable_VariableCategory" FromRole="VariableCategory" ToRole="Variable" />
+          <NavigationProperty Name="Tenant" Relationship="Aspree_StaggingModel.FK_VariableCategory_Tenant" FromRole="VariableCategory" ToRole="Tenant" />
+        </EntityType>
+        <EntityType Name="VariableRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_MasterVariableRole_Role" FromRole="VariableRole" ToRole="Role" />
+          <NavigationProperty Name="Variable" Relationship="Self.FK_MasterVariableRole_MasterVariable" FromRole="VariableRole" ToRole="Variable" />
+        </EntityType>
+        <EntityType Name="VariableType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Variables" Relationship="Self.FK_Variable_VariableType" FromRole="VariableType" ToRole="Variable" />
+        </EntityType>
+        <Association Name="FK_EntitySubType_EntityType">
+          <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
+          <End Role="EntitySubType" Type="Self.EntitySubType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntitySubType">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterVariableRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="VariableRole" Type="Self.VariableRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VariableRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterVariableRole_MasterVariable">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="VariableRole" Type="Self.VariableRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VariableRole">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_VariableCategory">
+          <End Role="VariableCategory" Type="Self.VariableCategory" Multiplicity="0..1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="VariableCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_VariableType">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EntitySubTypes" EntityType="Self.EntitySubType" />
+          <EntitySet Name="EntityTypes" EntityType="Self.EntityType" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Variables" EntityType="Self.Variable" />
+          <EntitySet Name="VariableCategories" EntityType="Self.VariableCategory" />
+          <EntitySet Name="VariableRoles" EntityType="Self.VariableRole" />
+          <EntitySet Name="VariableTypes" EntityType="Self.VariableType" />
+          <AssociationSet Name="FK_EntitySubType_EntityType" Association="Self.FK_EntitySubType_EntityType">
+            <End Role="EntityType" EntitySet="EntityTypes" />
+            <End Role="EntitySubType" EntitySet="EntitySubTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterVariableRole_Role" Association="Self.FK_MasterVariableRole_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="VariableRole" EntitySet="VariableRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterVariableRole_MasterVariable" Association="Self.FK_MasterVariableRole_MasterVariable">
+            <End Role="Variable" EntitySet="Variables" />
+            <End Role="VariableRole" EntitySet="VariableRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_VariableCategory" Association="Self.FK_Variable_VariableCategory">
+            <End Role="VariableCategory" EntitySet="VariableCategories" />
+            <End Role="Variable" EntitySet="Variables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_VariableType" Association="Self.FK_Variable_VariableType">
+            <End Role="VariableType" EntitySet="VariableTypes" />
+            <End Role="Variable" EntitySet="Variables" />
+          </AssociationSet>
+          <EntitySet Name="ValidationRules" EntityType="Aspree_StaggingModel.ValidationRule" />
+          <EntitySet Name="Tenants" EntityType="Aspree_StaggingModel.Tenant" />
+          <AssociationSet Name="FK_EntityType_Tenant" Association="Aspree_StaggingModel.FK_EntityType_Tenant">
+            <End Role="Tenant" EntitySet="Tenants" />
+            <End Role="EntityType" EntitySet="EntityTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_Tenant" Association="Aspree_StaggingModel.FK_Role_Tenant">
+            <End Role="Tenant" EntitySet="Tenants" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_Tenant" Association="Aspree_StaggingModel.FK_Variable_Tenant">
+            <End Role="Tenant" EntitySet="Tenants" />
+            <End Role="Variable" EntitySet="Variables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariableCategory_Tenant" Association="Aspree_StaggingModel.FK_VariableCategory_Tenant">
+            <End Role="Tenant" EntitySet="Tenants" />
+            <End Role="VariableCategory" EntitySet="VariableCategories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ValidationRule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RuleType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MinRange" Type="Double" />
+          <Property Name="MaxRange" Type="Double" />
+          <Property Name="RegExId" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeactivatedBy" Type="Int32" />
+          <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EntityTypes" Relationship="Aspree_StaggingModel.FK_EntityType_Tenant" FromRole="Tenant" ToRole="EntityType" />
+          <NavigationProperty Name="Roles" Relationship="Aspree_StaggingModel.FK_Role_Tenant" FromRole="Tenant" ToRole="Role" />
+          <NavigationProperty Name="Variables" Relationship="Aspree_StaggingModel.FK_Variable_Tenant" FromRole="Tenant" ToRole="Variable" />
+          <NavigationProperty Name="VariableCategories" Relationship="Aspree_StaggingModel.FK_VariableCategory_Tenant" FromRole="Tenant" ToRole="VariableCategory" />
+        </EntityType>
+        <Association Name="FK_EntityType_Tenant">
+          <End Type="Aspree_StaggingModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+          <End Type="Aspree_StaggingModel.EntityType" Role="EntityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntityType">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_Tenant">
+          <End Type="Aspree_StaggingModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+          <End Type="Aspree_StaggingModel.Role" Role="Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_Tenant">
+          <End Type="Aspree_StaggingModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+          <End Type="Aspree_StaggingModel.Variable" Role="Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariableCategory_Tenant">
+          <End Type="Aspree_StaggingModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+          <End Type="Aspree_StaggingModel.VariableCategory" Role="VariableCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VariableCategory">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Aspree_StaggingModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="EntitySubTypes">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.EntitySubType">
+              <MappingFragment StoreEntitySet="EntitySubType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntityTypes">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.EntityType">
+              <MappingFragment StoreEntitySet="EntityType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsSystemRole" ColumnName="IsSystemRole" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+                <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Variables">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.Variable">
+              <MappingFragment StoreEntitySet="Variable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="VariableLabel" ColumnName="VariableLabel" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Values" ColumnName="Values" />
+                <ScalarProperty Name="ValueDescription" ColumnName="ValueDescription" />
+                <ScalarProperty Name="HelpText" ColumnName="HelpText" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="ValidationMessage" ColumnName="ValidationMessage" />
+                <ScalarProperty Name="RequiredMessage" ColumnName="RequiredMessage" />
+                <ScalarProperty Name="MinRange" ColumnName="MinRange" />
+                <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
+                <ScalarProperty Name="RegEx" ColumnName="RegEx" />
+                <ScalarProperty Name="IsSoftRange" ColumnName="IsSoftRange" />
+                <ScalarProperty Name="ValidationRuleId" ColumnName="ValidationRuleId" />
+                <ScalarProperty Name="DependentVariableId" ColumnName="DependentVariableId" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="CanCollectMultiple" ColumnName="CanCollectMultiple" />
+                <ScalarProperty Name="VariableCategoryId" ColumnName="VariableCategoryId" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+                <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="VariableValueDescription" ColumnName="VariableValueDescription" />
+                <ScalarProperty Name="IsDefaultVariable" ColumnName="IsDefaultVariable" />
+                <ScalarProperty Name="CanFutureDate" ColumnName="CanFutureDate" />
+                <ScalarProperty Name="VariableDetails" ColumnName="VariableDetails" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariableCategories">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.VariableCategory">
+              <MappingFragment StoreEntitySet="VariableCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+                <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="IsDefaultVariableCategory" ColumnName="IsDefaultVariableCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariableRoles">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.VariableRole">
+              <MappingFragment StoreEntitySet="VariableRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariableTypes">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.VariableType">
+              <MappingFragment StoreEntitySet="VariableType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValidationRules">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.ValidationRule">
+              <MappingFragment StoreEntitySet="ValidationRule">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="RegExId" ColumnName="RegExId" />
+                <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
+                <ScalarProperty Name="MinRange" ColumnName="MinRange" />
+                <ScalarProperty Name="RuleType" ColumnName="RuleType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenants">
+            <EntityTypeMapping TypeName="Aspree_StaggingModel.Tenant">
+              <MappingFragment StoreEntitySet="Tenant">
+                <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+                <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

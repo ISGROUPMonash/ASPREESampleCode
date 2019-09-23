@@ -1,0 +1,16 @@
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Data\bin\Debug\Aspree.Data.dll.config
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Data\bin\Debug\Aspree.Data.dll
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Data\bin\Debug\Aspree.Data.pdb
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Data\bin\Debug\EntityFramework.dll
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Data\bin\Debug\EntityFramework.xml
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Data\obj\Debug\Aspree.Data.dll
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Data\obj\Debug\Aspree.Data.pdb
+D:\ArunPatidar\AspreeForClient\Aspree\Aspree.Data\obj\Debug\Aspree.Data.csprojResolveAssemblyReference.cache
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Data\bin\Debug\Aspree.Data.dll.config
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Data\bin\Debug\Aspree.Data.dll
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Data\bin\Debug\Aspree.Data.pdb
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Data\bin\Debug\EntityFramework.dll
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Data\bin\Debug\EntityFramework.xml
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Data\obj\Debug\Aspree.Data.csprojResolveAssemblyReference.cache
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Data\obj\Debug\Aspree.Data.dll
+E:\Projects\ASPREE\Dockets\ProjectPlan\Code-ReviewDocket\Aspree\Aspree.Data\obj\Debug\Aspree.Data.pdb
