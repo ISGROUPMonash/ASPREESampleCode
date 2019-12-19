@@ -1,0 +1,599 @@
+﻿@model  List<Aspree.Core.ViewModels.FormCategoryViewModel>
+@{
+    ViewBag.Title = "Forms";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+    var Roles = ViewBag.Roles as List<Aspree.Core.ViewModels.RoleModel>;
+    var VariableCategories = ViewBag.VariableCategories as List<Aspree.Core.ViewModels.VariableCategoryViewModel>;
+    var EntityTypes = ViewBag.EntityTypes as List<Aspree.Core.ViewModels.EntityTypeViewModel>;
+    var IsProjectAdmin = ViewBag.LoggedInUser.Roles.Contains("Project Admin");
+    var IsSystemAdmin = ViewBag.LoggedInUser.Roles.Contains("System Admin");
+    var CreatedBy = ViewBag.CreatedBy;
+}
+
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">Project Builder</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+        <li class="breadcrumb-item">Project Builder</li>
+        <li class="breadcrumb-item active">Forms</li>
+    </ol>
+}
+<div class="col-sm-4 col-md-4 col-lg-3">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Library</h3>
+            <h4 class="card-subtitle">Existing Forms</h4>
+            <form class="form-horizontal" autocomplete="off">
+                <div class="input-group form-group">
+                    <input onkeyup="Form.search(false)" class="form-control" id="search-var-text" style="border-radius: .25rem 0 0 .25rem;" />
+                    <div class="input-group-append">
+                        <button onclick="Form.search(true)" class="btn btn-info" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-10" for="NewVariable" style="color:black">New Form</label>
+                    <button type="button" id="btnResetVariable" onclick="Form.resetForm()" class="btn btn-sm waves-effect waves-light btn-info m-b-5">
+                        <i class="fas fa-plus-circle"></i>
+                    </button>
+                </div>
+            </form>
+
+
+        </div><!-- /.card-header -->
+        <div class="card-body">
+            <div class="pb-library-list-wrap">
+                <div class="list-menu-wrap">
+                    <ul class="list-menu form-categories">
+                        @foreach (var menu in Model)
+                        {
+                            <li class="list-dropdown ">
+                                @if (ViewBag.LoggedInUser.Roles.Contains("System Admin"))
+                                {
+                                    if (menu.IsDefaultFormCategory != (int)Aspree.Core.Enum.DefaultFormType.Default)
+                                    {
+                                        <button title="Edit" onclick="Category.editFormBuilderCategories('@menu.Guid')" type="button" class="btn-sm waves-effect waves-light btn-info"><i class="far fa-edit"></i></button>
+                                    }
+                                }
+                                <a href="javascript:void(0);" id="@menu.Guid">@menu.CategoryName</a>
+                                <div class="list-submenu" style="display:none">
+                                    <ul class="variable-categories">
+                                        @foreach (var subMenu in menu.Forms)
+                                        {
+                                            if (subMenu.ProjectId.ToString() == ViewBag.ProjectId.ToString())
+                                            {
+                                                if (IsProjectAdmin || IsSystemAdmin)
+                                                {
+                                                    <li data-variable="@subMenu.Guid">
+                                                        <a class="sub-category-txt" data-text="@subMenu.Name.ToLower()" href="javascript:void(0);" onclick="Form.edit('@subMenu.Guid')">
+                                                            @subMenu.Name
+                                                            <i>@(subMenu.IsDefaultVariable == (int)Aspree.Core.Enum.DefaultVariableType.Default ? "(Default)" : "")</i>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-8 col-md-8 col-lg-9">
+    <div class="card">
+        <div class="card-body">
+            @Html.Partial("~/Views/Shared/ProjectBuilder.cshtml")
+        </div>
+        <div class="row p-10">
+            <div class="col-sm-3 col-md-3 col-lg-4">
+                <div class="card">
+                    <div class="card-header">Select a Variable</div>
+                    <div class="card-body" style="padding:10px 7px;">
+                        <div>
+                            <form id="variableEdit" class="form" autocomplete="off">
+                                <div class="form-group row m-0 hide">
+                                    <label for="VariableId" class="col-6 col-form-label font-14 p-l-0 p-r-0">Variable Id</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <input class="form-control form-control-sm" type="text" id="VariableId" disabled />
+                                    </div>
+                                </div>
+                                <div class="form-group row m-0 hide">
+                                    <label for="VariableCategoryId" class="col-6 col-form-label font-14 p-l-0 p-r-0">Variable Category</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <select class="form-control form-control-sm" id="VariableCategoryId" disabled>
+                                            @foreach (var menu in VariableCategories)
+                                            {
+                                                <option value="@menu.Guid">@menu.CategoryName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-0">
+                                    <label for="VariableName" class="col-6 col-form-label font-14 p-l-0 p-r-0">Variable Name</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <input class="form-control form-control-sm" type="text" id="VariableName" disabled />
+                                    </div>
+                                </div>
+                                <div class="form-group row m-0 hidden-md-up">
+                                    <label for="VariableLabel" class="col-6 col-form-label font-14 p-l-0 p-r-0">Variable Label</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <input class="form-control form-control-sm" type="text" id="VariableLabel" disabled />
+                                    </div>
+                                </div>
+                                <div class="form-group row m-0">
+                                    <label for="DependentVariableId" class="col-7 col-form-label font-14 p-l-0 p-r-0">Parent Variable</label>
+                                    <div class="col-5 p-l-0 p-r-0">
+                                        <select class="form-control form-control-sm" id="DependentVariableId" onchange="Form.onParentVariableChange(this);">
+                                            <option value=""></option>
+                                            @foreach (var menu in VariableCategories)
+                                            {
+                                                foreach (var subMenu in menu.Variables.Where(v =>
+                                                                                //v.Type != "Free Text"
+                                                                                //&& v.Type != "Text Box"
+                                                                                 v.Type != "Formula"
+                                                                                //&& v.Type != "Numeric (Integer)"
+                                                                                //&& v.Type != "Numeric (Decimal)"
+                                                                                //&& v.Type != "LKUP"
+                                                                                //&& v.Type != "Checkbox"
+                                                                                && v.Type != "Heading"
+                                                                                && v.Type != "Other Text"
+
+                                                                                && v.Type != "ColorPicker"
+                                                                                && v.Type != "FileType"
+                                                                                ))
+                                                {
+                                                    <option style="display:none;" value="@subMenu.Guid">@subMenu.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-0">
+                                    <label for="Value" id="CutpointLabel" class="col-6 col-form-label font-14 p-l-0 p-r-0">Value</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <select class="form-control form-control-sm" id="Value" name="Value"></select>
+                                        <input type="number" class="form-control form-control-sm hide" id="ValueNumberInt" name="ValueNumberInt" />
+                                        <input type="number" class="form-control form-control-sm hide" id="ValueNumberDecimal" name="ValueNumberDecimal" />
+                                        <input type="text" class="form-control form-control-sm hide" id="ValueTextBox" name="ValueTextBox" />
+                                        <div id="divDatepicker">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-0 hide" id="cutpointDirection_div">
+                                    <label for="cutpointDirection" class="col-6 col-form-label font-14 p-l-0 p-r-0">Direction</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <select class="form-control form-control-sm" id="cutpointDirection" name="cutpointDirection">
+                                            <option value=">">Above</option>
+                                            <option value="<">Below</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-0 hide">
+                                    <label for="Range" class="col-7 col-form-label font-14 p-l-0 p-r-0">Validation Message</label>
+                                    <div class="col-5 p-l-0 p-r-0">
+                                        <input class="form-control form-control-sm" type="text" id="ValidationMessage" />
+                                    </div>
+                                </div>
+                                <div class="form-group row m-0 hide">
+                                    <label for="HelpText" class="col-6 col-form-label font-14 p-l-0 p-r-0">Help Text</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <input class="form-control form-control-sm" id="HelpText" name="HelpText" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-0">
+                                    <label for="HelpText" class="col-6 col-form-label font-14 p-l-0 p-r-0">Question Text</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <input class="form-control form-control-sm" disabled id="QuestionText" name="QuestionText" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-0">
+                                    <label for="IsBlank" class="col-6 col-form-label font-14 p-l-0 p-r-0"></label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" name="IsBlank" id="IsBlank" class="custom-control-input">
+                                            <span class="custom-control-label">Is Blank</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row m-0 hide headingTextType" id="HTMLheadingType">
+                                    <label for="HeadingType" class="col-6 col-form-label font-14 p-l-0 p-r-0">Heading Type</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <select class="form-control form-control-sm" id="HeadingType" name="HeadingType">
+                                            @*<option value="h1">H1</option>*@
+                                            <option value="h2">H2</option>
+                                            <option value="h3">H3</option>
+                                            <option value="h4">H4</option>
+                                            <option value="h5">H5</option>
+                                            <option value="h6">H6</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-0 hide headingTextType">
+                                    <label for="HelpText" class="col-6 col-form-label font-14 p-l-0 p-r-0">Heading Text</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <input class="form-control form-control-sm" id="HeadingText" name="HeadingText" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-0 hide otherTextType">
+                                    <label for="OtherText" class="col-6 col-form-label font-14 p-l-0 p-r-0">Other Text</label>
+                                    <div class="col-6 p-l-0 p-r-0">
+                                        <input class="form-control form-control-sm" id="OtherText" name="OtherText" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Variable Library</div>
+                    <div class="card-body" style="height:500px; overflow:auto;">
+                        <div>
+                            <div class="pb-library-list-wrap">
+                                <div class="list-menu-wrap">
+                                    <ul class="list-menu">
+                                        @foreach (var menu in VariableCategories)
+                                        {
+                                            <li class="list-dropdown">
+                                                <a href="javascript:void(0);" onmousedown="Form.setCurrentVariable('@menu.Guid', '@menu.CategoryName',true)" data-id="@menu.Guid" ondblclick="Form.addVariableCategory('@menu.Guid')">@menu.CategoryName</a>
+                                                <div class="list-submenu">
+                                                    <ul>
+                                                        @foreach (var subMenu in menu.Variables)
+                                                        {
+                                                            <li>
+                                                                <a onmousedown="Form.setCurrentVariable('@subMenu.Guid', '@subMenu.Name',false, @subMenu.IsDefaultVariable)" href="javascript:void(0);" data-id="@subMenu.Guid" ondblclick="Form.addVariable('@subMenu.Guid','@subMenu.Name', 0  , 1 , @subMenu.IsDefaultVariable)" data-default-variable-type="@subMenu.IsDefaultVariable">
+                                                                    @subMenu.Name
+                                                                    @if (subMenu.IsDefaultVariable == (int)Aspree.Core.Enum.DefaultVariableType.Default)
+                                                                    {
+                                                                        @*<i> (Default)</i>*@
+                                                                        <i>(@menu.CategoryName)</i>
+                                                                    }
+                                                                    else if (!subMenu.IsApproved)
+                                                                    {
+                                                                        <i> (draft)</i>
+                                                                    }
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7 col-md-7 col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <form class="form-horizontal" autocomplete="off">
+                            <div class="form-group m-b-0">
+                                <div class="row">
+                                    <div class="col-lg-5  p-l-0">
+                                        <input type="hidden" id="ProjectId" name="ProjectId" value="@ViewBag.ProjectId" />
+                                        <input type="hidden" id="Guid" name="Guid" />
+                                        <label for="FormTitle">Form Name<span class="text-danger">*</span></label>
+                                        <input class="form-control form-control-sm" type="text" id="FormTitle" />
+                                        <span class="field-validation-valid form-control-feedback" data-valmsg-for="FormTitle" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <div class="col-lg-3  p-l-0 ">
+                                        <label for="FormCategoryId">Form Category<span class="text-danger">*</span></label>
+                                        <select class="form-control form-control-sm" id="FormCategoryId">
+                                            <option value="">Select Category</option>
+                                            @foreach (var menu in Model)
+                                            {
+                                                if (menu.IsDefaultFormCategory != (int)Aspree.Core.Enum.DefaultFormType.Default)
+                                                {
+                                                    <option id="@menu.Guid" value="@menu.Guid">@menu.CategoryName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option class="dropdown-disabled-options-background" disabled id="@menu.Guid" value="@menu.Guid">@menu.CategoryName</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span class="field-validation-valid form-control-feedback" data-valmsg-for="FormCategoryId" data-valmsg-replace="true"></span>
+                                    </div>
+
+                                    @if (ViewBag.LoggedInUser.Roles.Contains("System Admin"))
+                                    {
+                                        <div class="col-lg-1 p-l-0 p-t-20">
+                                            <button type="button" title="Add New Category" onclick="Category.addFormBuilderCategory()" class="btn btn-sm waves-effect waves-light btn-info m-b-5 m-t-5">
+                                                <i class="fas fa-plus-circle"></i>
+                                            </button>
+                                        </div>
+                                    }
+                                    <div class="col-lg-3 p-l-0 p-r-0">
+                                        <label class="m-t-30" style="margin-top: 25px;">Field Permissions</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card-header p-b-0">
+                        <div class="row">
+                            <div class="col-sm-8"></div>
+                            <div class="col-sm-2 p-l-0 p-r-0"><b>Can View</b></div>
+                            <div class="col-sm-2 p-l-0 p-r-0"><b>Can Edit</b></div>
+                        </div>
+                    </div>
+
+                    <div class="card-body pb-0" id="variableContainerHeader">
+                        <div class="row" onclick="Form.editVariable(this);">
+                            <div class="col-lg-1  p-l-0"></div>
+                            <div class="col-lg-7  p-l-0">
+                                Set all fields to:
+                            </div>
+                            <div class="col-lg-2 p-l-0 p-r-0 access-roles">
+                                <select id="ddlSetAllViewPermission" class="form-control form-control-sm field-permision field-permision-view multiple-select-custom    btn-formedit" multiple data-style="form-control1 btn-secondary btn-sm" data-actions-box="true" onchange="Form.setViewPermissionToAll()">
+                                    @foreach (var item in Roles)
+                                    {
+                                        if (item.Name == "Project Admin" || item.Name == "System Admin")
+                                        {
+                                            <option selected disabled data-label="@item.Guid" value="@item.Guid">@item.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option data-label="@item.Guid" value="@item.Guid">@item.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-lg-2 p-l-0 p-r-0 access-roles ">
+                                <div class="selectpicker-dropdown-right">
+                                    <select id="ddlSetAllEditPermission" class="form-control form-control-sm field-permision field-permision-enter multiple-select-custom    btn-formedit" multiple data-style="form-control1 btn-secondary btn-sm" data-actions-box="true" onchange="Form.setEditPermissionToAll()">
+                                        @foreach (var item in Roles)
+                                        {
+                                            if (item.Name == "Project Admin" || item.Name == "System Admin")
+                                            {
+                                                <option selected disabled data-label="@item.Guid" value="@item.Guid">@item.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option data-label="@item.Guid" value="@item.Guid">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" id="variableContainer" style="min-height: 400px;max-height: 1200px;overflow-y: auto;">
+                        <h2 id="drag-message" class="text-center">Drag and Drop your variables here</h2>
+                    </div>
+                    <div class="card-footer">
+                        <form class="form-horizontal m-b-10">
+                            <div class="form-group">
+                                <label for="EntityTypes">Entity Types<span class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" id="EntityTypes" name="EntityTypes" multiple data-style="form-control btn-secondary btn-sm">
+                                    @foreach (var entityType in EntityTypes)
+                                    {
+                                        <option value="@entityType.Guid">@entityType.Name</option>
+                                    }
+                                </select>
+                                <span class="field-validation-valid form-control-feedback" data-valmsg-for="EntityTypes" data-valmsg-replace="true"></span>
+                            </div>
+
+                            <input type="hidden" name="isPublishedForm" id="isPublishedForm" />
+                        </form>
+                        @if (IsSystemAdmin || IsProjectAdmin)
+                        {
+                            <button id="DeleteForms" type="button" class="btn btn-danger waves-effect waves-light btn-info pull-right m-l-10 hide" data-toggle="modal" data-target="#manage-confirm">Delete</button>
+                        }
+
+                        <a href="/projectbuilder" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                        <button id="resetForm" type="button" onclick="Form.resetForm()" class="btn btn-inverse waves-effect waves-light btn-info pull-right m-r-10">Clear</button>
+                        <a href="/projectbuilder/Variables/@ViewBag.ProjectId" class="btn btn-inverse waves-effect waves-light pull-right  m-r-10">Back</a>
+                        <button id="SaveForms" type="button" onclick="Form.save()" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+                        @if (IsSystemAdmin || IsProjectAdmin)
+                        {
+                            <button type="button" id="btnPublishForm" onclick="Form.publish()" disabled class="hide btn waves-effect waves-light btn-info pull-right m-r-10 disabled-button-cursor">Publish</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hide">
+    <div id="variableTemplate">
+        <div class="row" onclick="Form.editVariable(this);">
+            <div class="col-lg-1  p-l-0">
+                <i class="mdi mdi-menu" style="font-size:22px;cursor: ns-resize" title="Move Up/Down"></i>
+            </div>
+            <div class="col-lg-1  p-l-0">
+                <button type="button" title="Edit" onclick="Form.editVariable(this);" class="btn btn-sm waves-effect waves-light btn-info btn-formedit">
+                    <i class="far fa-edit"></i>
+                </button>
+            </div>
+            <div class="col-lg-1  p-l-0">
+                <button type="button" title="Remove" onclick="Form.removeVariable(event,this)" class="btn btn-sm waves-effect waves-light btn-danger btn-formedit">
+                    <i class="far fa-times-circle"></i>
+                </button>
+            </div>
+            <div class="col-lg-5  p-l-0 var-label">
+
+            </div>
+            <div class="col-lg-2  p-l-0 hide">
+                <select class="is-required form-control form-control-sm" title="Mandatory">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="col-lg-2 p-l-0 p-r-0 access-roles">
+                <select id="drpRoleSelectView" class="form-control form-control-sm field-permision field-permision-view multiple-select-custom    btn-formedit" multiple data-style="form-control1 btn-secondary btn-sm" data-actions-box="true">
+                    @foreach (var item in Roles)
+                    {
+                        if (item.Name == "Project Admin" || item.Name == "System Admin")
+                        {
+                            <option selected disabled data-label="@item.Guid" value="@item.Guid">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option data-label="@item.Guid" value="@item.Guid">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-lg-2 p-l-0 p-r-0 access-roles">
+                <select id="drpRoleSelect" class="form-control form-control-sm field-permision field-permision-enter multiple-select-custom    btn-formedit" multiple data-style="form-control1 btn-secondary btn-sm" data-actions-box="true">
+                    @foreach (var item in Roles)
+                    {
+                        if (item.Name == "Project Admin" || item.Name == "System Admin")
+                        {
+                            <option selected disabled data-label="@item.Guid" value="@item.Guid">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option data-label="@item.Guid" value="@item.Guid">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="hide">
+    <div id="datepickerTemplate">
+        <input type="text" class="form-control form-control-sm singledate" id="ValueDate" name="ValueDate" />
+    </div>
+</div>
+
+<!--add new form category model-->
+<div class="modal fade user-search-poppus" id="save-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Category</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    <form id="frm-add-category" class="form-horizontal" autocomplete="off">
+                        <div class="form-group">
+                            <label for="AddCategory"> Category Name<span class="text-danger">*</span>:</label>
+                            <input class="form-control form-control-sm" type="text" name="addnewCategory" id="addnewCategory" value="" data-val="true" data-val-required="Category name is reqired." />
+                            <span class="field-validation-valid form-control-feedback" data-valmsg-for="addnewCategory" data-valmsg-replace="true"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="Category.saveFormBuilderCategory()" class="btn-sm waves-effect waves-light btn-info">Save</button>
+                    <button type="button" class="btn-sm btn btn-inverse waves-effect waves-light btn-cancel" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--edit form category model-->
+<div class="modal fade user-search-poppus" id="change-categoryname-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit New Category</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    <form id="frm-edit-category" class="form-horizontal" autocomplete="off">
+                        <div class="form-group">
+                            <label for="EditCategory"> Category Name<span class="text-danger">*</span>:</label>
+                            <input class="form-control form-control-sm" type="text" name="editnewCategory" id="editnewCategory" data-val="true" data-val-required="Category name is reqired." />
+                            <span class="field-validation-valid form-control-feedback" data-valmsg-for="editnewCategory" data-valmsg-replace="true"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="Category.updateFormBuilderCategoryName()" class="btn-sm waves-effect waves-light btn-info">Save</button>
+                    <button type="button" class="btn-sm btn btn-inverse waves-effect waves-light btn-cancel" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--Delete form category model-->
+<div class="modal fade user-search-poppus" id="manage-confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    Are you sure want to active/deactivate selected user?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Form.delete()" class="btn-sm waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts{
+    @*<script src="http://wenzhixin.net.cn/p/multiple-select/multiple-select.js" type="text/javascript"></script>*@
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $(function () {
+             
+            $('.wizard-content ul li:eq(1)').removeClass('disabled').addClass('current');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(5)').addClass('active');
+        })
+
+        $(".list-dropdown > a").click(function () {
+            if ($(this).parent().hasClass("active")) {
+                $(".list-dropdown", $(this).parent()).removeClass("active");
+                $(".list-submenu", $(this).parent()).slideUp(200);
+                $(this).parent().removeClass("active");
+            } else {
+                $(".list-dropdown", $(this).parent()).removeClass("active");
+                $(this).next(".list-submenu").slideDown(200);
+                $(this).parent().addClass("active");
+            }
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/apps/forms")
+    @Scripts.Render("~/apps/categories")
+
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+}

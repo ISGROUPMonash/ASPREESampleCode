@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aspree.Core.ViewModels.MongoViewModels;
+using Swashbuckle.Examples;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace Aspree.Core.ViewModels
 {
     public class VariableViewModel
     {
+        //[IgnoreDataMember]
         public int Id { get; set; }
         /// <summary>
         /// Name of Variable
@@ -213,6 +216,13 @@ namespace Aspree.Core.ViewModels
         /// List of VariableUsedInFormsList
         /// </summary>
         public List<Guid> VariableUsedInFormsList { get; set; }
+
+        /// <summary>
+        /// status id of activity in which variable is used
+        /// </summary>
+        public int ActivityStatusId { get; set; }
+        public List<LinkedProjectGroupViewModel> LinkedProjectListWithGroupList { get; set; }
+
     }
 
     public class NewVariableViewModel
@@ -324,4 +334,187 @@ namespace Aspree.Core.ViewModels
         public bool? CanFutureDate { get; set; }
     }
 
+    public class GetAllVariableViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new List<VariableViewModel>()
+            {
+                new VariableViewModel()
+                {
+                    CanCollectMultiple = false,
+                    CanFutureDate = false,
+                    Comment = "Example comment",
+                    CreatedBy = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    CustomRegEx = "Example CustomRegEx",
+                    DateDeactivated = DateTime.Now,
+                    DateFormat = "Example DateFormat",
+                    DeactivatedBy = Guid.NewGuid(),
+                    DependentVariableId = Guid.NewGuid(),
+                    FormDataEntryGuid = Guid.NewGuid(),
+                    Guid = Guid.NewGuid(),
+                    HelpText = "Example HelpText",
+                    Id = 1,
+                    IsApproved = false,
+                    IsDefaultVariable = 1,
+                    IsRequired = false,
+                    IsSoftRange = false,
+                    IsVariableLogTable = false,
+                    LookupEntitySubtype = Guid.NewGuid(),
+                    LookupEntitySubtypeName = "Example Lookup Entity Subtype Name",
+                    LookupEntityType = Guid.NewGuid(),
+                    LookupEntityTypeName = "Example Lookup Entity Type Name",
+                    MaxRange = 100,
+                    MinRange = 0,
+                    MissingValidation = "Example Missing Validation",
+                    ModifiedBy = Guid.NewGuid(),
+                    ModifiedDate = DateTime.Now,
+                    OutsideRangeValidation = "Example Outside Range Validation",
+                    Question = "Example Question",
+                    RegEx = "Example RegEx",
+                    RequiredMessage = "Example Required Message",
+                    TenantId = Guid.NewGuid(),
+                    UserNameVariableGuid = Guid.NewGuid(),
+                    ValidationMessage = "Example Validation Message",
+                    ValidationRuleId = Guid.NewGuid(),
+                    ValueDescription = "Example Value Description",
+                    VariableCategoryId = Guid.NewGuid(),
+                    VariableLabel = "Example Variable Label",
+                    VariableName = "Example Variable Name",
+                    VariableSelectedValues = "Example Variable Selected Values",
+                    VariableTypeId = Guid.NewGuid(),
+                    VariableTypeName = "Example Variable Type Name",
+                }
+                
+            };
+        }
+    }
+
+    public class VariableViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new VariableViewModel
+            {
+                CanCollectMultiple = false,
+                CanFutureDate = false,
+                Comment = "Example comment",
+                CreatedBy = Guid.NewGuid(),
+                CreatedDate = DateTime.Now,
+                CustomRegEx = "Example CustomRegEx",
+                DateDeactivated = DateTime.Now,
+                DateFormat = "Example DateFormat",
+                DeactivatedBy = Guid.NewGuid(),
+                DependentVariableId = Guid.NewGuid(),
+                FormDataEntryGuid = Guid.NewGuid(),
+                Guid = Guid.NewGuid(),
+                HelpText = "Example HelpText",
+                Id = 1,
+                IsApproved = false,
+                IsDefaultVariable = 1,
+                IsRequired = false,
+                IsSoftRange = false,
+                IsVariableLogTable = false,
+                LookupEntitySubtype = Guid.NewGuid(),
+                LookupEntitySubtypeName = "Example Lookup Entity Subtype Name",
+                LookupEntityType = Guid.NewGuid(),
+                LookupEntityTypeName = "Example Lookup Entity Type Name",
+                MaxRange = 100,
+                MinRange = 0,
+                MissingValidation = "Example Missing Validation",
+                ModifiedBy = Guid.NewGuid(),
+                ModifiedDate = DateTime.Now,
+                OutsideRangeValidation = "Example Outside Range Validation",
+                Question = "Example Question",
+                RegEx = "Example RegEx",
+                RequiredMessage = "Example Required Message",
+                TenantId = Guid.NewGuid(),
+                UserNameVariableGuid = Guid.NewGuid(),
+                ValidationMessage = "Example Validation Message",
+                ValidationRuleId = Guid.NewGuid(),
+                ValueDescription = "Example Value Description",
+                VariableCategoryId = Guid.NewGuid(),
+                VariableLabel = "Example Variable Label",
+                VariableName = "Example Variable Name",
+                VariableSelectedValues = "Example Variable Selected Values",
+                VariableTypeId = Guid.NewGuid(),
+                VariableTypeName = "Example Variable Type Name",                
+            };
+        }
+    }
+
+    public class NewVariableViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new NewVariableViewModel
+            {
+                CanCollectMultiple = false,
+                CanFutureDate = false,
+                Comment = "Example Comment",
+                CustomRegEx = "Example CustomRegEx",
+                DateFormat = "Example DateFormat",
+                DependentVariableId = Guid.NewGuid(),
+                HelpText = "Example Help Text",
+                IsApproved = false,
+                IsRequired = false,
+                IsSoftRange = false,
+                LookupEntitySubtype = Guid.NewGuid(),
+                LookupEntityType = Guid.NewGuid(),
+                MaxRange = 100,
+                MinRange = 0,
+                MissingValidation = "Example Missing Validation",
+                OutsideRangeValidation = "Example Outside Range Validation",
+                Question = "Example Question",
+                RegEx = "Example RegEx",
+                RequiredMessage = "Example Required Message",
+                ValidationMessage = "Example Validation Message",
+                ValidationRuleId = Guid.NewGuid(),
+                ValueDescription = "Example Value Description",
+                VariableCategoryId = Guid.NewGuid(),
+                VariableLabel = "Example Variable Label",
+                VariableName = "Example Variable Name",
+                VariableTypeId = Guid.NewGuid(),                
+            };
+        }
+    }
+
+    public class EditVariableViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new EditVariableViewModel
+            {
+                CanCollectMultiple = false,
+                CanFutureDate = false,
+                Comment = "Example comment",
+                CustomRegEx = "Example Custom RegEx",
+                DateFormat = "Example Date Formate",
+                DependentVariableId = Guid.NewGuid(),
+                Guid = Guid.NewGuid(),
+                HelpText = "Example Help Text",
+                IsApproved = false,
+                IsRequired = false,
+                IsSoftRange = false,
+                IsVariableLogTable = false,
+                LookupEntitySubtype = Guid.NewGuid(),
+                LookupEntityType = Guid.NewGuid(),
+                MaxRange = 100,
+                MinRange = 0,
+                MissingValidation = "Example Missing Validation",
+                OutsideRangeValidation = "Example OutsideRange Validation",
+                Question = "Example Question",
+                RegEx = "Example RegEx",
+                RequiredMessage = "Example Required Message",
+                ValidationMessage = "Example Validation Message",
+                ValidationRuleId = Guid.NewGuid(),
+                ValueDescription = "Example Value Description",
+                VariableCategoryId = Guid.NewGuid(),
+                VariableLabel = "Example Variable Label",
+                VariableName = "Example Variable Name",
+                VariableTypeId = Guid.NewGuid(),                
+            };
+        }
+    }
 }

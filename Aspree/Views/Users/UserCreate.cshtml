@@ -1,0 +1,79 @@
+﻿@model Aspree.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">Users</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Users">Users</a></li>
+        <li class="breadcrumb-item active">Create/Edit Users</li>
+    </ol>
+}
+<div class="col-sm-12">
+    <div class="card card-body">
+        <h4 class="card-title">Create/Edit Users</h4>
+        <form class="form-horizontal m-t-40">
+            <input id="Guid" name="Guid" type="hidden" />
+            <input id="TenantId" name="TenantId" value="@Model.TenantId" type="hidden" />
+            <div class="form-group">
+                <label for="FirstName" class="">First Name<span class="text-danger">*</span></label>
+               
+                    <input type="text" class="form-control" id="FirstName" required name="FirstName" maxlength="30" placeholder="First Name">
+                    <div class="form-control-feedback"></div>
+               
+            </div>
+            <div class="form-group">
+                <label for="LastName" class="">Last Name<span class="text-danger">*</span></label>
+                
+                    <input type="text" class="form-control" id="LastName" required name="LastName" maxlength="30" placeholder="Last Name">
+                    <div class="form-control-feedback"></div>
+                
+            </div>
+            <div class="form-group">
+                <label for="Email" class="">Email<span class="text-danger">*</span></label>
+                
+                    <input type="email" class="form-control" id="Email" required name="Email" maxlength="30" placeholder="Email">
+                    <div class="form-control-feedback"></div>
+                
+            </div>
+            <div class="form-group">
+                <label for="Mobile" class="">Mobile<span class="text-danger">*</span></label>
+                
+                    <input type="text" class="form-control" id="Mobile" required name="Mobile" maxlength="15" placeholder="Mobile">
+                    <div class="form-control-feedback"></div>
+                
+            </div>
+            <div class="form-group">
+                <label for="Address" class="">Address</label>
+               
+                    <input type="text" class="form-control" id="Address" required name="Address" maxlength="50" placeholder="Address">
+                    <div class="form-control-feedback"></div>
+                
+            </div>
+            <div class="form-group">
+                <label for="Name" class="">System Role<span class="text-danger">*</span></label>
+                
+                    @Html.DropDownListFor(x => x.RoleId, Model.Role, new { @class = "form-control", @placeholder = "Role", @required = true })
+                    <div class="form-control-feedback"></div>
+                
+            </div>
+             <div class="">
+                 <a href="/Users" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+             <button type="button" onclick="User.saveUser();" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+        
+    </div>
+        </form>
+        </div>
+   
+</div>
+
+        
+
+
+        @section Scripts {
+            <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+            @Scripts.Render("~/apps/users")
+        }

@@ -10,6 +10,7 @@ namespace Aspree.Core.ViewModels
 {
     public class ValidationRuleViewModel
     {
+        [IgnoreDataMember]
 
         public int Id { get; set; }
         /// <summary>
@@ -27,7 +28,7 @@ namespace Aspree.Core.ViewModels
         /// <summary>
         /// Id of RegEx
         /// </summary>
-        public Nullable<int> RegExId { get; set; }
+        public Nullable<Guid> RegExId { get; set; }
         /// <summary>
         /// ErrorMessage
         /// </summary>

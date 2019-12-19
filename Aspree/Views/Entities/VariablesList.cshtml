@@ -1,0 +1,78 @@
+﻿@{
+    var variableList = new Aspree.Core.ViewModels.EntityViewModel();
+    if (ViewBag.EntityVariableList != null)
+    {
+        variableList = ViewBag.EntityVariableList;
+    }
+}
+
+@if (ViewBag.EntityVariableList != null)
+{
+    var i = 0;
+    foreach (var variable in variableList.EntityVariableList)
+    {
+        i++;
+        <input type="hidden" value="@variable.Guid" id="variableid-@i" />
+        <div class="form-group" id="variables">
+            <label id="question-@i" style="display:none;">@variable.Question</label>
+            <label for="Question" class="question-key">
+                @variable.Question
+                @if (variable.IsRequired)
+                {
+                    <span class="text-danger">*</span>
+                }
+            </label>
+
+            @if (variable.VariableType == "Free Text")
+            {
+                <input type="hidden" value="Free Text" id="answerType-@i" />
+                <input class='form-control form-control-sm answer-value' name='txtFreeText' id='answerVal-@i' value='' />
+                @Html.ValidationMessage("Name", new { @class = "form-control-feedback" })
+            }
+            else if (variable.VariableType == "Dropdown")
+            {
+                <input type="hidden" value="select" id="answerType-@i" />
+                <select class='form-control answer-value' id='answerVal-@i' name='QuestionType'>
+                    <option value='0'>Select</option>
+                    @foreach (var ddl in variable.Values)
+                    {
+                        <option value='@ddl'>@ddl</option>
+                    }
+                </select>
+            }
+            else if (variable.VariableType == "Checkbox")
+            {
+                <input type="hidden" value="checkbox" id="answerType-@i" />
+                foreach (var chk in variable.Values)
+                {
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" name='answerVal-@i' id='answerVal-@i' value="@chk" class="custom-control-input answer-value" />
+                        <span class="custom-control-label">@chk </span>
+                    </label>
+                }
+            }
+            else if (variable.VariableType == "Radio")
+            {
+                <input type="hidden" value="radio" id="answerType-@i" />
+                foreach (var radio in variable.Values)
+                {
+                    <label class="custom-control custom-radio">
+                        <input type="radio" name="answerVal-@i" id='answerVal-@i' value="@radio" class="custom-control-input answer-value" />
+                        <span class="custom-control-label">@radio </span>
+                    </label>
+                }
+            }
+            else if (variable.VariableType == "Numeric")
+            {
+                <input type="hidden" value="Numeric" id="answerType-@i" />
+                <input class='form-control form-control-sm answer-value' name='numericvalue' id='answerVal-@i' value='' />
+            }
+            else if (variable.VariableType == "Formula")
+            {
+                <input type="hidden" value="Formula" id="answerType-@i" />
+                <input class='form-control form-control-sm ' name='formulavalue' id='answerVal-@i' value='' />
+            }
+        </div>
+    }
+    <input type="hidden" value="@i" id="variableCount" />
+}

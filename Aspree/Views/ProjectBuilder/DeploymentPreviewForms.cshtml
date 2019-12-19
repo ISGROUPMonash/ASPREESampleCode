@@ -1,0 +1,110 @@
+﻿@model  List<Aspree.Core.ViewModels.ActivityCategoryViewModel>
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml";
+
+    var IsProjectAdmin = ViewBag.LoggedInUser.Roles.Contains("Project Admin");
+    var AllActivityForms = ViewBag.AllActivityForms;
+    var listData = new List<Guid>();
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+
+@section NavBarLeft{
+<h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+}
+
+<div class="col-sm-12 col-md-12">
+    <div class="card">
+        <div class="card-body hide">
+            @Html.Partial("~/Views/Shared/ProjectBuilder.cshtml")
+        </div>
+        <div class="row p-10">
+            <div class="col-sm-10 col-md-10 col-lg-12">
+                <div class="card draft-watermark">
+                    <div class="card-header">
+                        <h4 id="formTitle"></h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="sf-submit-info1" style="min-height:250px">                            
+                            <input type="hidden" id="ProjectId" name="ProjectId" value="@ViewBag.ProjectId" />
+                            <form class="form-horizontal" style="min-height:400px">
+                                <div class="role-model-error"></div>
+                                <div class="card-body row" id="activityformVariableContainer">
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        @if (ViewBag.AllActivityForms.Count > 1)
+                        {
+                            <button type="button" onclick="Deployment.GetActivityform()" class="btn waves-effect waves-light btn-info pull-right m-r-10" id="btnNext">Next</button>
+                        }
+                        else
+                        {
+                            <button type="button" onclick="Deployment.GetActivityform()" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="variableTemplate">
+    <div class="row">
+        <div class="col-lg-6  p-l-0 var-label">
+
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    @foreach (var frmGuid in ViewBag.AllActivityForms)
+    {
+        <script>
+            $(function () {
+                Deployment.FormList.push('@frmGuid.Id');
+            });
+        </script>
+    }
+
+    <script>
+        $(function () {
+
+            Deployment.GetAllCountries();
+            Deployment.GetAllStates();
+            Deployment.GetAllPostcodes();
+
+            $('.wizard-content ul li:eq(4)').removeClass('disabled').addClass('current');
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(5)').addClass('active');
+
+            Deployment.GetActivityform();
+            Deployment.DateFormat = '@Aspree.Utility.ConfigSettings.DateFormat.ToUpper()'; // 'DD-MM-YYYY'
+
+
+
+        });
+    </script>
+    @Scripts.Render("~/apps/deployments")
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+}

@@ -1,0 +1,724 @@
+﻿@model Aspree.Core.ViewModels.MongoViewModels.SQLSearchPageReturnViewModel
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+    var absolutePath = string.Empty;
+    string testingEnvironmentClass = "";
+    bool isTesturipath = false;
+    try
+    {
+        isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains(Aspree.Utility.ConfigSettings.TestSiteKeyword);
+        absolutePath = isTesturipath ? "test/" : "";
+    }
+    catch (Exception exc) { }
+
+
+    try
+    {
+        if (absolutePath == "test/")
+        {
+            Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml";
+        }
+    }
+    catch (Exception exc) { }
+
+
+    List<Aspree.Core.ViewModels.FormViewModel> searchForms = Model._ViewSQLFormsList;
+
+    var participantForm = searchForms.FirstOrDefault(x => x.FormTitle.Replace(" ", "_") == Aspree.Core.Enum.SearchForms.Participant_Registration.ToString());
+    var personForm = searchForms.FirstOrDefault(x => x.FormTitle.Replace(" ", "_") == Aspree.Core.Enum.SearchForms.Person_Registration.ToString());
+    var placeGroupForm = searchForms.FirstOrDefault(x => x.FormTitle == Aspree.Core.Enum.SearchForms.Place__Group_Registration.ToString().Replace("__", "/").Replace("_", " "));
+    var projectRegForm = searchForms.FirstOrDefault(x => x.FormTitle == Aspree.Core.Enum.SearchForms.Project_Registration.ToString().Replace("_", " "));
+    var IsSystemAdmin = ViewBag.LoggedInUser.Roles.Contains("System Admin");
+
+
+}
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0" id="displayProjName">@LoggedInUser.ProjectDisplayName</h3>
+}
+
+<input type="hidden" id="ProjectEthicsApproval" name="ProjectEthicsApproval" value="@(Convert.ToString(ViewBag.ProjectEthicsApproval)!=null?Convert.ToString(ViewBag.ProjectEthicsApproval).ToLower():null)" />
+<input type="hidden" id="RecruitmentStartDate" name="RecruitmentStartDate" value="@ViewBag.RecruitmentStartDate" />
+<input type="hidden" id="RecruitmentEndDate" name="RecruitmentEndDate" value="@ViewBag.RecruitmentEndDate" />
+
+
+<div class="col-sm-12  @testingEnvironmentClass">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-12 col-md-12 @(IsSystemAdmin?"col-lg-8":"col-lg-7")">
+
+            <div class="card pb-redioTb-wrap01 user-ctm-card">
+                @if (absolutePath == "test/")
+                {
+                    <h2 class="text-align-center field-validation-error">TEST SITE- DO NOT ENTER REAL DATA HERE</h2>
+                }
+                <div class="card-header">
+                    <div class="row justify-content-lg-center">
+                        <div class="col-md-12 col-lg-10">
+                            <h3 class="card-title small-title">I want to search for a...</h3>
+                            <div class="sp-tabnav-redio">
+                                <ul class="list-unstyled list-inline">
+                                    <li>
+                                        <input type="radio" class="check sp-active" id="sp-participant" data-form-type="Participant" data-participant="cus-rediotab-01" name="sp-participant-radio" checked>
+                                        <label for="sp-participant">Participant</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" class="check" id="sp-staff_person" data-form-type="Person" data-participant="cus-rediotab-02" name="sp-participant-radio">
+                                        <label for="sp-staff_person">Staff/Physician/Contact Person</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" class="check" id="sp-place" data-form-type="Place" data-participant="cus-rediotab-03" name="sp-participant-radio">
+                                        <label for="sp-place">Place</label>
+                                    </li>
+                                    @if (IsSystemAdmin && absolutePath != "test/")
+                                    {
+                                        <li>
+                                            <input type="radio" class="check" id="sp-project" data-form-type="Project" data-participant="cus-rediotab-04" name="sp-participant-radio">
+                                            <label for="sp-project">Project</label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div><!-- /.sp-tabnav-redio -->
+                        </div>
+                    </div>
+                </div><!-- /.card-header -->
+                <div class="sp-tabcontent-wrap">
+                    <input type="hidden" id="ProjectId" value="@Model._ViewProjectGuid" />
+                    <div class="sp-tabcontent-redio sp-active" id="cus-rediotab-01">
+                        <form class="form-material" autocomplete="off">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9">
+                                        <div class="sp-tabcontent">
+                                            @foreach (var person in participantForm.Variables.Where(x => x.IsSearchVisible == true).OrderBy(x => x.SearchPageOrder))
+                                            {
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-3 pr-md-0">
+                                                        @if (person.variableViewModel.VariableName == "EntID")
+                                                        {
+                                                            <label>
+                                                                Participant ID:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.variableViewModel.VariableName == "Name")
+                                                        {
+                                                            <label>
+                                                                Surname:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else
+                                                        {
+                                                            if (person.variableViewModel.VariableName == "DOB")
+                                                            {
+                                                                <label>
+                                                                    Date of Birth:@if (person.IsRequired == true)
+                                                                    {<span class="warning" style="color:red">*</span> }
+                                                                    @if (person.variableViewModel.VariableName == "DOB")
+                                                                    {
+                                                                        <br />
+                                                                        <span><i>(DD-MM-YYYY)</i></span>
+                                                                    }
+                                                                </label>
+                                                            }
+                                                            else
+                                                            {
+
+
+                                                                <label>
+                                                                    @person.variableViewModel.ValueDescription:@if (person.IsRequired == true)
+                                                                    {<span class="warning" style="color:red">*</span> }
+                                                                    @if (person.variableViewModel.VariableName == "DOB")
+                                                                    {
+                                                                        <br />
+                                                                        <span><i>(DD-MM-YYYY)</i></span>
+                                                                    }
+                                                                </label>
+                                                            }
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-8 @(person.VariableType == "Date" ? "date-input":"")">
+                                                        @if (person.VariableType == "Text Box" || person.VariableType == "Free Text" || person.VariableType == "Numeric (Integer)")
+                                                        {
+                                                            <input type="text" id="Participant-@person.VariableName" data-variable-key="@person.variableViewModel.Id" data-variable-name="@person.variableViewModel.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line participant-search-form" placeholder="@(person.VariableName == "Name" ? "Surname" : person.variableViewModel.ValueDescription)">
+                                                        }
+                                                        else if (person.VariableType == "Dropdown")
+                                                        {
+                                                            <select id="Participant-@person.VariableName" data-variable-key="@person.variableViewModel.Id" data-variable-name="@person.variableViewModel.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line participant-search-form">
+                                                                <option value="">Select</option>
+                                                                @for (var i = 0; i < person.variableViewModel.Values.Count; i++)
+                                                                {
+                                                                    <option value="@person.variableViewModel.Values[i]">@person.variableViewModel.VariableValueDescription[i]</option>
+                                                                }
+                                                            </select>
+                                                        }
+                                                        else if (person.VariableType == "Date")
+                                                        {
+                                                            <a href="#"
+                                                               id="Participant-@person.VariableName"
+                                                               data-variable-key="@person.variableViewModel.Id"
+                                                               data-variable-name="@person.variableViewModel.VariableName"
+                                                               data-variable-required="@person.IsRequired"
+                                                               class="d-block form-control form-control-line singledate participant-search-form"
+                                                               placeholder="@person.variableViewModel.ValueDescription (DD-MM-YYYY)"
+                                                               data-type="combodate"
+                                                               data-format="DD-MM-YYYY"
+                                                               data-viewformat="DD-MM-YYYY"
+                                                               data-template="D / MMM / YYYY"
+                                                               data-pk="1"
+                                                               name="Participant-@person.VariableName"
+                                                               data-title="@person.variableViewModel.ValueDescription">Date of Birth</a>
+                                                            <span id="spndob" class="hide text-danger">Future dates are not allowed.</span>
+                                                        }
+                                                    </div>
+                                                </div><!-- /.form-group -->
+                                                if (person.variableViewModel.VariableName == "EntID")
+                                                {
+                                                    <div class="form-group row align-items-center mb-3">
+                                                        <div class="col-md-3 pr-md-0">
+                                                            <label>OR</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                        </div>
+                                                    </div><!-- /.form-group -->
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearch('@participantForm.Guid', 1)" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            <button type="button" onclick="Search.ClearParticipant(1)" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div><!-- /.col-lg-10 -->
+                                </div>
+                            </div><!-- /.card-footer -->
+                        </form>
+                    </div><!-- /.sp-tabcontent-redio -->
+                    <div class="sp-tabcontent-redio" id="cus-rediotab-02">
+                        <form class="form-material" autocomplete="off">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9">
+                                        <div class="sp-tabcontent">
+                                            <input type="hidden" id="personFormGuid" name="personFormGuid" value="@personForm.Guid" />
+                                            @foreach (var person in personForm.Variables.Where(x => x.IsSearchVisible == true).OrderBy(x => x.SearchPageOrder))
+                                            {
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-3 pr-md-0">
+                                                        @if (person.variableViewModel.VariableName == "EntID")
+                                                        {
+                                                            <label>
+                                                                ID:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.variableViewModel.VariableName == "Name")
+                                                        {
+                                                            <label>
+                                                                Surname:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.variableViewModel.VariableName == "PerSType")
+                                                        {
+                                                            <label>
+                                                                Sub-type:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else
+                                                        {
+                                                            <label>
+                                                                @person.variableViewModel.ValueDescription:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        @if (person.VariableType == "Text Box" || person.VariableType == "Free Text" || person.VariableType == "Numeric (Integer)")
+                                                        {
+                                                            <input type="text" id="Person-@person.VariableName" data-variable-key="@person.variableViewModel.Id" data-variable-name="@person.variableViewModel.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line person-search-form" placeholder="@(person.VariableName == "Name" ? "Surname" : person.variableViewModel.ValueDescription)">
+                                                        }
+                                                        else if (person.VariableType == "Dropdown")
+                                                        {
+                                                            <select id="Person-@person.VariableName" data-variable-key="@person.variableViewModel.Id" data-variable-name="@person.variableViewModel.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line person-search-form">
+                                                                <option value="">Select</option>
+                                                                @for (var i = 0; i < person.variableViewModel.Values.Count; i++)
+                                                                {
+                                                                    <option value="@person.variableViewModel.Values[i]">@person.variableViewModel.VariableValueDescription[i]</option>
+                                                                }
+                                                            </select>
+                                                        }
+                                                    </div>
+                                                </div><!-- /.form-group -->
+
+                                                if (person.variableViewModel.VariableName == "EntID")
+                                                {
+                                                    <div class="form-group row align-items-center mb-3">
+                                                        <div class="col-md-3 pr-md-0">
+                                                            <label>OR</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearch('@personForm.Guid', 2)" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            <button type="button" onclick="Search.ClearParticipant(2)" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="sp-tabcontent-redio" id="cus-rediotab-03">
+                        <form class="form-material" autocomplete="off">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9">
+                                        <div class="sp-tabcontent">
+                                            <input type="hidden" id="placeGroupFormGuid" name="placeGroupFormGuid" value="@placeGroupForm.Guid" />
+                                            @foreach (var person in placeGroupForm.Variables.Where(x => x.IsSearchVisible == true).OrderBy(x => x.SearchPageOrder))
+                                            {
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-3 pr-md-0">
+                                                        @if (person.variableViewModel.VariableName == "EntID")
+                                                        {
+                                                            <label>
+                                                                ID:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.variableViewModel.VariableName == "Name")
+                                                        {
+                                                            <label>
+                                                                Name:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.variableViewModel.VariableName == "EntType")
+                                                        {
+                                                            <label>
+                                                                Type:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else
+                                                        {
+                                                            <label>@person.variableViewModel.ValueDescription:</label>
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-8  @(person.VariableType == "Date" ? "date-input":"")">
+                                                        @if (person.VariableType == "Text Box" || person.VariableType == "Free Text" || person.VariableType == "Numeric (Integer)")
+                                                        {
+                                                            <input type="text" id="PlaceGroup-@person.VariableName" data-variable-key="@person.variableViewModel.Id" data-variable-name="@person.variableViewModel.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line place-group-search-form" placeholder="@(person.VariableName == "Name" ? "Name" : person.variableViewModel.ValueDescription)">
+                                                        }
+                                                        else if (person.VariableType == "Dropdown")
+                                                        {
+                                                            <select id="PlaceGroup-@person.VariableName" data-variable-key="@person.variableViewModel.Id" data-variable-name="@person.variableViewModel.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line place-group-search-form">
+                                                                <option value="">Select</option>
+                                                                @for (var i = 0; i < person.variableViewModel.Values.Count; i++)
+                                                                {
+                                                                    if (person.VariableName == "EntType" && person.variableViewModel.Values[i] == "1" && person.variableViewModel.VariableValueDescription[i] == "Person")
+                                                                    {
+                                                                        continue;
+                                                                    }
+                                                                    <option value="@person.variableViewModel.Values[i]">@person.variableViewModel.VariableValueDescription[i]</option>
+                                                                }
+                                                            </select>
+                                                        }
+                                                        else if (person.VariableType == "Date")
+                                                        {
+                                                            <a href="#"
+                                                               id="PlaceGroup-@person.VariableName"
+                                                               data-variable-key="@person.variableViewModel.Id"
+                                                               data-variable-name="@person.variableViewModel.VariableName"
+                                                               data-variable-required="@person.IsRequired"
+                                                               class="form-control form-control-line singledate place-group-search-form"
+                                                               placeholder="@person.variableViewModel.ValueDescription"
+                                                               data-type="combodate"
+                                                               data-value="@DateTime.UtcNow.ToString("dd-MM-yyyy")"
+                                                               value="@DateTime.UtcNow.ToString("dd-MM-yyyy")"
+                                                               data-format="DD-MM-YYYY"
+                                                               data-viewformat="DD-MM-YYYY"
+                                                               data-template="D / MMM / YYYY"
+                                                               data-pk="1"
+                                                               name="PlaceGroup-@person.VariableName"
+                                                               data-title="@person.variableViewModel.ValueDescription"></a>
+                                                        }
+                                                        else if (person.VariableType == "LKUP")
+                                                        {
+                                                            var attr = "";
+                                                            if (person.VariableName == "State")
+                                                            {
+                                                                attr = "onchange = Search.PostCodeListByState(this) onblur=Search.PostCodeListByState(this)";
+                                                            }
+                                                            else if (person.VariableName == "Country")
+                                                            {
+                                                                attr = "onchange = Search.StateListByCountry(this) onblur=Search.StateListByCountry(this)";
+                                                            }
+                                                            <input type="text" id="PlaceGroup-@person.VariableName" data-variable-key="@person.variableViewModel.Id" data-variable-name="@person.variableViewModel.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line autocomplete-custom place-group-search-form" placeholder="@person.variableViewModel.ValueDescription" @attr>
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                if (person.variableViewModel.VariableName == "EntID")
+                                                {
+                                                    <div class="form-group row align-items-center mb-3">
+                                                        <div class="col-md-3 pr-md-0">
+                                                            <label>OR</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearch('@placeGroupForm.Guid', 3)" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            <button type="button" onclick="Search.ClearParticipant(3)" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sp-tabcontent-redio" id="cus-rediotab-04">
+                        <form class="form-material" autocomplete="off">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9">
+                                        <div class="sp-tabcontent">
+                                            <input type="hidden" id="projectRegFormGuid" name="projectRegFormGuid" value="@projectRegForm.Guid" />
+                                            @foreach (var project in projectRegForm.Variables.Where(x => x.IsSearchVisible == true).OrderBy(x => x.SearchPageOrder))
+                                            {
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-7">
+                                                        @if (project.variableViewModel.VariableName == "EntID")
+                                                        {
+                                                            <label>
+                                                                Project ID:@if (project.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (project.variableViewModel.VariableName == "Name")
+                                                        {
+                                                            <label>
+                                                                Name:@if (project.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "ProSType")
+                                                        {
+                                                            <label>
+                                                                @project.variableViewModel.ValueDescription:@if (project.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "ConfData")
+                                                        {
+                                                            <label>
+                                                                @project.variableViewModel.ValueDescription<span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "CnstModel")
+                                                        {
+                                                            <label>
+                                                                @project.variableViewModel.ValueDescription<span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "Ethics")
+                                                        {
+                                                            <label>
+                                                                @project.variableViewModel.ValueDescription<span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "DataStore")
+                                                        {
+                                                            <label>
+                                                                @project.variableViewModel.ValueDescription<span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "ProDt")
+                                                        {
+                                                            <label>
+                                                                @project.variableViewModel.ValueDescription:<i>(DD-MM-YYYY)</i><span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+
+                                                        else
+                                                        {
+                                                            if (project.VariableType == "Date")
+                                                            {
+                                                                if (project.VariableName == Aspree.Core.Enum.DefaultsVariables.RecruitStart.ToString() || project.VariableName == Aspree.Core.Enum.DefaultsVariables.RecruitEnd.ToString())
+                                                                {
+                                                                    <label>
+                                                                        @project.variableViewModel.ValueDescription:<i>(DD-MM-YYYY)</i><span class="warning" style="color:red"></span>
+                                                                    </label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label>
+                                                                        @project.variableViewModel.ValueDescription:<i>(DD-MM-YYYY)</i><span class="warning" style="color:red">*</span>
+                                                                    </label>
+                                                                }
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <label>
+                                                                    @project.variableViewModel.ValueDescription:<span class="warning" style="color:red">*</span>
+                                                                </label>
+                                                            }
+
+
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        @if (project.VariableType == "Text Box" || project.VariableType == "Free Text" || project.VariableType == "Numeric (Integer)")
+                                                        {
+                                                            <input type="text" id="ProjectRegestration-@project.VariableName" data-variable-key="@project.variableViewModel.Id" data-variable-name="@project.variableViewModel.VariableName" data-variable-required="@project.IsRequired" class="form-control form-control-line project-search-form" placeholder="@(project.VariableName == "Name" ? "Name" : project.variableViewModel.ValueDescription)">
+                                                        }
+                                                        else if (project.VariableType == "Dropdown")
+                                                        {
+                                                            <select id="ProjectRegestration-@project.VariableName" data-variable-key="@project.variableViewModel.Id" data-variable-name="@project.variableViewModel.VariableName" data-variable-required="@project.IsRequired" class="form-control form-control-line project-search-form">
+                                                                <option value="">Select</option>
+                                                                @for (var i = 0; i < project.variableViewModel.Values.Count; i++)
+                                                                {
+                                                                    if (project.VariableName == "EntType" && project.variableViewModel.Values[i] == "1" && project.variableViewModel.VariableValueDescription[i] == "Person")
+                                                                    {
+                                                                        continue;
+                                                                    }
+                                                                    <option value="@project.variableViewModel.Values[i]">@project.variableViewModel.VariableValueDescription[i]</option>
+                                                                }
+                                                            </select>
+                                                        }
+                                                        else if (project.VariableType == "Date")
+                                                        {
+                                                            <a href="#"
+                                                               id="ProjectRegestration-@project.VariableName"
+                                                               data-variable-key="@project.variableViewModel.Id"
+                                                               data-variable-name="@project.variableViewModel.VariableName"
+                                                               data-variable-required="@project.IsRequired"
+                                                               class="d-block form-control form-control-line singledate project-search-form"
+                                                               placeholder="@project.variableViewModel.ValueDescription"
+                                                               data-type="combodate"
+                                                               data-format="DD-MM-YYYY"
+                                                               data-viewformat="DD-MM-YYYY"
+                                                               data-template="D / MMM / YYYY"
+                                                               data-pk="1"
+                                                               name="PlaceGroup-@project.VariableName"
+                                                               data-title="@project.variableViewModel.ValueDescription">@project.variableViewModel.ValueDescription</a>
+
+                                                        }
+                                                        else if (project.VariableType == "LKUP")
+                                                        {
+                                                            var attr = "";
+                                                            if (project.VariableName == "State")
+                                                            {
+                                                                attr = "onchange = Search.PostCodeListByState(this) onblur=Search.PostCodeListByState(this)";
+                                                            }
+                                                            else if (project.VariableName == "Country")
+                                                            {
+                                                                attr = "onchange = Search.StateListByCountry(this) onblur=Search.StateListByCountry(this)";
+                                                            }
+                                                            <input type="text" id="ProjectRegestration-@project.VariableName" data-variable-key="@project.variableViewModel.Id" data-variable-name="@project.variableViewModel.VariableName" data-variable-required="@project.IsRequired" class="form-control form-control-line autocomplete-custom project-search-form" placeholder="@project.variableViewModel.ValueDescription" @attr>
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                if (project.variableViewModel.VariableName == "EntID")
+                                                {
+                                                    <div class="form-group row align-items-center mb-3">
+                                                        <div class="col-md-3 pr-md-0">
+                                                            <label>OR</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearch('@projectRegForm.Guid', 4)" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            <button type="button" onclick="Search.ClearParticipant(4)" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search not found popu -->
+            <div class="modal fade user-search-poppus" id="sf-not-found-search-popus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">New Participant?</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="sf-submit-info">
+                                <p>This participant could not be found in your project. Please confirm if this is a new participant.</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer" id="footerAllDetails">
+                            <button type="button" onclick="Search.save()" class="btn btn waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">No</button>
+                        </div>
+                        <div class="hide modal-footer" id="footerEntiId">
+                            <button type="button" class="btn btn waves-effect waves-light btn-info" data-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- search responce in table -->
+            <div class="modal fade DefaultModal HospitalsList" id="search-variable-result-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="search-variable-result-model-title"></h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0" id="search-variable-result-model-table"></table>
+                            </div>
+                        </div>
+                        <div class="modal-footer" id="search-variable-result-model-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="search-validation-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                        </div>
+                        <div class="modal-body">
+                            <div id="popup-body">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info waves-effect waves-light" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="/content/assets/plugins/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
+    @*<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+    <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.js"></script>
+
+
+    <script>
+        $(function () {
+            App.IsTestSite = @(isTesturipath == true ? "true" : "false");
+            $('#sp-participant').prop('checked', true);
+
+            Search.GetCountryList();
+            Search.GetStateList();
+            Search.GetPostCodeList();
+
+            $('.wizard-content ul li:eq(3)').removeClass('disabled').addClass('current');
+
+            $('.singledate').editable({
+                //mode: 'popup'
+                mode: 'inline',
+                maxDate: 0,// new Date(),
+            });
+
+            $('.singledate').val('');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(3)').addClass('active');
+        })
+
+        $(".list-dropdown > a").click(function () {
+            if ($(this).parent().hasClass("active")) {
+                $(".list-dropdown", $(this).parent()).removeClass("active");
+                $(".list-submenu", $(this).parent()).slideUp(200);
+                $(this).parent().removeClass("active");
+            } else {
+                $(".list-dropdown", $(this).parent()).removeClass("active");
+                $(this).next(".list-submenu").slideDown(200);
+                $(this).parent().addClass("active");
+            }
+        });
+
+        $("#Participant-DOB").on("click", function () {
+            setTimeout(function () {
+                $("form .editableform").on("submit", function () {
+                    
+                    var currentDate = new Date();
+                    var tempnewDate = $("#Participant-DOB").text();
+                    var from = tempnewDate.split("-")
+                    var newDate = new Date(from[2], from[1] - 1, from[0])
+                    console.log(newDate);
+                    if (new Date(newDate) > currentDate) {
+                        $("#Participant-DOB").text("");
+                        $("#spndob").removeClass('hide');
+                    }
+                    else {
+                        $("#spndob").addClass('hide');
+                    }
+                });
+            }, 300);
+        });
+
+    </script>
+    @Scripts.Render("~/apps/searches")
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+}

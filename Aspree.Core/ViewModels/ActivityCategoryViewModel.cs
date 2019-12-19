@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swashbuckle.Examples;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,6 +16,7 @@ namespace Aspree.Core.ViewModels
         /// <summary>
         /// Id of ActivityCategory
         /// </summary>
+        [IgnoreDataMember]
         public int Id { get; set; }
         /// <summary>
         /// Name of ActivityCategory
@@ -58,4 +60,46 @@ namespace Aspree.Core.ViewModels
         public Guid? TenantId { get; set; }
     }
 
+    public class GetAllActivityCategoryViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+          return new  List<ActivityCategoryViewModel>()
+            {
+              new ActivityCategoryViewModel
+             {
+                Id = 1,
+                Guid = Guid.NewGuid(),
+                TenantId = Guid.NewGuid(),
+                CategoryName = "Category name example",
+                ModifiedDate = DateTime.Now,
+                CreatedDate = DateTime.Now,
+                DateDeactivated = DateTime.Now,
+                CreatedBy = Guid.NewGuid(),
+                DeactivatedBy = Guid.NewGuid(),
+                ModifiedBy = Guid.NewGuid(),
+              }
+            };
+        }
+    }
+
+    public class ActivityCategoryViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new ActivityCategoryViewModel
+            {
+                Id = 1,
+                Guid = Guid.NewGuid(),
+                TenantId = Guid.NewGuid(),
+                CategoryName = "Category name example",
+                ModifiedDate = DateTime.Now,
+                CreatedDate = DateTime.Now,
+                DateDeactivated = DateTime.Now,
+                CreatedBy = Guid.NewGuid(),
+                DeactivatedBy = Guid.NewGuid(),
+                ModifiedBy = Guid.NewGuid(),                                
+            };
+        }
+    }
 }

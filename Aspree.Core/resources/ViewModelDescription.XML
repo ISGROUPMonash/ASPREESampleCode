@@ -1,0 +1,4562 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aspree.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Aspree.Core.Enum.ActivityStatusTypes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityStatusTypes.Active">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityStatusTypes.InActive">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityStatusTypes.Draft">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.Enum.ActivityCategories">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityCategories.Default">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityCategories.Custom">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.Enum.DefaultActivityType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.DefaultActivityType.Custom">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.DefaultActivityType.Default">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.Enum.ActivityDeploymentStatus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityDeploymentStatus.Created">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityDeploymentStatus.Scheduled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityDeploymentStatus.Pushed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.ActivityDeploymentStatus.Deployed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.Enum.AuthenticationTypes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.AuthenticationTypes.Local_Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.AuthenticationTypes.OpenID_Connect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.Enum.LoginAuthenticationTypes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.LoginAuthenticationTypes.Local_Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.LoginAuthenticationTypes.OpenID_Connect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.LoginAuthenticationTypes.Google">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.Enum.EmailTemplateTypes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EmailTemplateTypes.Welcome">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EmailTemplateTypes.Change_Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EmailTemplateTypes.Forgot_Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Person">
+            <summary>
+            Person
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Hospital">
+            <summary>
+            Hospital
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Practice__Clinic">
+            <summary>
+            Practice/Clinic
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Laboratory">
+            <summary>
+            Laboratory
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Medical_Imaging">
+            <summary>
+            Medical Imaging
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Research_facility__University">
+            <summary>
+            Research facility/University
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Project">
+            <summary>
+            Project
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Healthcare_Group">
+            <summary>
+            Healthcare Group
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Government_Organisation">
+            <summary>
+            Government Organisation
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Industry_Group">
+            <summary>
+            Industry Group
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Consumer_Group">
+            <summary>
+            Consumer Group
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Activity_Venue">
+            <summary>
+            Activity Venue
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Vehicle">
+            <summary>
+            Vehicle
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.MAC">
+            <summary>
+            MAC
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Ethics_Committee">
+            <summary>
+            Ethics Committee
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Participant">
+            <summary>
+            Participant
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDB.Place__Group">
+            <summary>
+            Place/Group
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Person">
+            <summary>
+            Person
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Hospital">
+            <summary>
+            Hospital
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Practice__Clinic">
+            <summary>
+            Practice/Clinic
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Laboratory">
+            <summary>
+            Laboratory
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Medical_Imaging">
+            <summary>
+            Medical Imaging
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Research_facility__University">
+            <summary>
+            Research facility/University
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Healthcare_Group">
+            <summary>
+            Healthcare Group
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Government_Organisation">
+            <summary>
+            Government Organisation
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Industry_Group">
+            <summary>
+            Industry Group
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Consumer_Group">
+            <summary>
+            Consumer Group
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Activity_Venue">
+            <summary>
+            Activity Venue
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Vehicle">
+            <summary>
+            Vehicle
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.MAC">
+            <summary>
+            MAC
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Ethics_Committee">
+            <summary>
+            Ethics Committee
+            </summary>
+        </member>
+        <member name="F:Aspree.Core.Enum.EntityTypesListInDBSummary.Participant">
+            <summary>
+            Participant
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.Exceptions.ExceptionResource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.ExceptionResource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.ExceptionResource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.ExceptionResource.Duplicate">
+            <summary>
+              Looks up a localized string similar to {0} is already exists..
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.ExceptionResource.NotFound">
+            <summary>
+              Looks up a localized string similar to {0} was not found..
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.ExceptionResource.UnExpectedError">
+            <summary>
+              Looks up a localized string similar to An unexpected error has occurred..
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.Exceptions.MessageResource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.MessageResource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.MessageResource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.MessageResource.Added">
+            <summary>
+              Looks up a localized string similar to {0}  was added successfully..
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.MessageResource.Deleted">
+            <summary>
+              Looks up a localized string similar to {0}  was deleted successfully..
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.MessageResource.UpdateComplete">
+            <summary>
+              Looks up a localized string similar to Update Complete.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.Exceptions.MessageResource.Updated">
+            <summary>
+              Looks up a localized string similar to {0}  was updated successfully..
+            </summary>
+        </member>
+        <member name="M:Aspree.Core.Validators.FileUploadValidator.#ctor(System.String[])">
+            <param name="validFileTypes">Valid file extentions(without the dot)</param>
+        </member>
+        <member name="M:Aspree.Core.Validators.FileUploadValidator.#ctor(System.Double,System.String[])">
+            <param name="maximumFileSize">Maximum file size in MB</param>
+            <param name="validFileTypes">Valid file extentions(without the dot)</param>
+        </member>
+        <member name="M:Aspree.Core.Validators.FileUploadValidator.#ctor(System.Double,System.Double,System.String[])">
+            <param name="minimumFileSize">MinimumFileSize file size in MB</param>
+            <param name="maximumFileSize">Maximum file size in MB</param>
+            <param name="validFileTypes">Valid file extentions(without the dot)</param>
+        </member>
+        <member name="P:Aspree.Core.Validators.ImageDimensionValidator.MaximumHeight">
+            <summary>
+            Maximum file size in MB
+            </summary>
+        </member>
+        <member name="M:Aspree.Core.Validators.ImageDimensionValidator.#ctor(System.Int32,System.Int32)">
+            <param name="maximumFileSize">Maximum file size in MB</param>
+        </member>
+        <member name="P:Aspree.Core.Validators.MaximumFileSizeValidator.MaximumFileSize">
+            <summary>
+            Maximum file size in MB
+            </summary>
+        </member>
+        <member name="M:Aspree.Core.Validators.MaximumFileSizeValidator.#ctor(System.Double)">
+            <param name="maximumFileSize">Maximum file size in MB</param>
+        </member>
+        <member name="P:Aspree.Core.Validators.MinimumFileSizeValidator.MinimumFileSize">
+            <summary>
+            Minimum file size in MB
+            </summary>
+        </member>
+        <member name="M:Aspree.Core.Validators.MinimumFileSizeValidator.#ctor(System.Double)">
+            <param name="minimumFileSize">MinimumFileSize file size in MB</param>
+        </member>
+        <member name="P:Aspree.Core.Validators.ValidFileTypeValidator.ValidFileTypes">
+            <summary>
+            Valid file extentions
+            </summary>
+        </member>
+        <member name="M:Aspree.Core.Validators.ValidFileTypeValidator.#ctor(System.String[])">
+            <param name="validFileTypes">Valid file extentions(without the dot)</param>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.ActionListViewModel">
+            <summary>
+            ActionList Model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.EntityNumber">
+            <summary>
+            Entity Number
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.EntityTypeId">
+            <summary>
+            Id of an Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.EntityTypeGuid">
+            <summary>
+            Guid of an Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.EntityTypeName">
+            <summary>
+            Name of an Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.ActivityId">
+            <summary>
+            Id of an Activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.ActivityGuid">
+            <summary>
+            Guid of an Activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.ActivityName">
+            <summary>
+            Name of an Activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.FormId">
+            <summary>
+            Id of a form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.FormGuid">
+            <summary>
+            Guid of a form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.FormName">
+            <summary>
+            Name of a form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.FormStatusId">
+            <summary>
+            Status id of a form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.FormStatusName">
+            <summary>
+            Status Name of a form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListViewModel.CreatedDate">
+            <summary>
+            Created Data
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.ActionListSearchParameters">
+            <summary>
+            Action list search filter model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.Draw">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.Length">
+            <summary>
+            number of records that the table can display in the current draw.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.Start">
+            <summary>
+            start position from where to count
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.projectId">
+            <summary>
+            Guid of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.EntityType">
+            <summary>
+            Entity type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.EntityNumber">
+            <summary>
+            Entity number
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.Activity">
+            <summary>
+            Activity name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.Form">
+            <summary>
+            Form name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.FormStatus">
+            <summary>
+            Status of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActionListSearchParameters.LoggedInUserGuid">
+            <summary>
+            Guid of loggedin user
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.ActivityCategoryViewModel">
+            <summary>
+            ActivityCategory Model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.Id">
+            <summary>
+            Id of ActivityCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.CategoryName">
+            <summary>
+            Name of ActivityCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.CreatedBy">
+            <summary>
+            CreatedBy Guid of ActivityCategory 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.CreatedDate">
+            <summary>
+            Created Date of ActivityCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.ModifiedBy">
+            <summary>
+            ModifiedBy Guid of ActivityCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.ModifiedDate">
+            <summary>
+            Modification Date of ActivityCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.DeactivatedBy">
+            <summary>
+            DeactivatedBy Guid of ActivityCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.DateDeactivated">
+            <summary>
+            Deactivation Date of ActivityCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.Guid">
+            <summary>
+            Guid of ActivityCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.Activities">
+            <summary>
+            Activity List
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityCategoryViewModel.TenantId">
+            <summary>
+            Guid of Tenant
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.Id">
+            <summary>
+            Id of Page Activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.ActivityId">
+            <summary>
+            Activity Id of PageActivity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.ActivityCompletedByUser">
+            <summary>
+            Activity completed by user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.ActivityCompletedByUserName">
+            <summary>
+            Activity completed by 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.ActivityDate">
+            <summary>
+            Date of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.IsActivityAdded">
+            <summary>
+            Is activity added
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.ProjectId">
+            <summary>
+            Project Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.CreatedBy">
+            <summary>
+            Created By
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.CreatedDate">
+            <summary>
+            Created Date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.ModifiedBy">
+            <summary>
+            Modified By
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.ModifiedDate">
+            <summary>
+             Modified Date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.DeactivatedBy">
+            <summary>
+            Deactivated By
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.DateDeactivated">
+            <summary>
+            Date of deactivation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.Forms">
+            <summary>
+            List of forms
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.ActivityName">
+            <summary>
+            Name of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.PersonEntityId">
+            <summary>
+            Person Entity Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.LinkedProjectGuid">
+            <summary>
+            Guid of Linked Project from Project Linkage 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AddSummaryPageActivityViewModel.LinkedProjectName">
+            <summary>
+            Name of Linked Project from Project Linkage 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.ActivityId">
+            <summary>
+            ActivityId of Page Activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.ActivityCompletedByUser">
+            <summary>
+            Activity completed by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.ActivityDate">
+            <summary>
+            Activity date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.IsActivityAdded">
+            <summary>
+            Is activity added
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.ProjectId">
+            <summary>
+            Project Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.CreatedBy">
+            <summary>
+            Created By
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.CreatedDate">
+            <summary>
+            Created date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.ModifiedBy">
+            <summary>
+            Modified By
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.ModifiedDate">
+            <summary>
+            Modified date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.DeactivatedBy">
+            <summary>
+            Deactivited by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.DateDeactivated">
+            <summary>
+            Deactivation date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel.PersonEntityId">
+            <summary>
+            Person Entity Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.UserName">
+            <summary>
+            Name of User
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.AuthTypeName">
+            <summary>
+            Authentication type Name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.AuthType">
+            <summary>
+            Authentication type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.Domain">
+            <summary>
+            Domain
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.ClientId">
+            <summary>
+            Client Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.ClientSecret">
+            <summary>
+            Client Secret
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.Scope">
+            <summary>
+            Scope of Authentication Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.State">
+            <summary>
+            State of Authentication Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.CreatedBy">
+            <summary>
+            Authentication Type Created By 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.CreatedDate">
+            <summary>
+            CreatedDate of Authentication Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.ModifiedBy">
+            <summary>
+             Authentication Type Modified By
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.ModifiedDate">
+            <summary>
+            ModifiedDate of Authentication Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.DeactivatedBy">
+            <summary>
+            Authentication Type DeactivatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.DateDeactivated">
+            <summary>
+            Deactivated Date of Authentication Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.AuthenticationProviderClaim">
+            <summary>
+            AuthenticationProviderClaim
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.AuthorizeEndpoint">
+            <summary>
+            AuthorizeEndpoint
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.TokenEndpoint">
+            <summary>
+            TokenEndpoint
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.IntrospectEndpoint">
+            <summary>
+            IntrospectEndpoint
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.RevokeEndpoint">
+            <summary>
+            RevokeEndpoint
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.LogoutEndpoint">
+            <summary>
+            LogoutEndpoint
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.KeysEndpoint">
+            <summary>
+            KeysEndpoint
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.UserinfoEndpoint">
+            <summary>
+            UserinfoEndpoint
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.AuthenticationTypeViewModel.Status">
+            <summary>
+            Status of Authentication Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CheckSecurityQuestionAnswerViewModels.UserId">
+            <summary>
+            Guid of User
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CheckSecurityQuestionAnswerViewModels.QuestionGuid">
+            <summary>
+            Guid of Security Question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CheckSecurityQuestionAnswerViewModels.Answer">
+            <summary>
+            Answer of security question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.Id">
+            <summary>
+            Id of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.ProjectName">
+            <summary>
+            Name of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.ProjectSubtype">
+            <summary>
+            Subtype of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.ConfData">
+            <summary>
+            CondData of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.CnstModel">
+            <summary>
+            CnstModel
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.Ethics">
+            <summary>
+            Ethics 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.DataStore">
+            <summary>
+            DataStore
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.ProDt">
+            <summary>
+            ProDt
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.Guid">
+            <summary>
+            Guid of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.CreatedBy">
+            <summary>
+            Project created By
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.CreatedDate">
+            <summary>
+            Project Created date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.ProjectLogo">
+            <summary>
+            Logo of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.ProjectColor">
+            <summary>
+            Color of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.ProjectDisplayName">
+            <summary>
+            Display name of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.ProjectDisplayNameTextColour">
+            <summary>
+            Text color of project display name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.RecruitmentStartDate">
+            <summary>
+            Recruitment Start Date of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryProjectsViewModel.RecruitmentEndDate">
+            <summary>
+            Recruitment End Date of Project
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ProjectVersion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ProjectId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ProjectGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ProjectName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.FormId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.FormGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.FormTitle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ActivityId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ActivityGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ActivityName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.EntityTypeName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.EntityTypeId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.EntityTypeGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.CreatedById">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.CreatedByGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.CreatedByName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.CreatedDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ModifiedDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ModifiedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.Guid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ThisUserId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ThisUserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ThisUserGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.EntityNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ParentEntityNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.formDataEntryVariableMongoList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.SummaryPageActivityObjId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.DeactivatedBy">
+            <summary>
+            GUID of form data entry deactivator
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.DateDeactivated">
+            <summary>
+            Date of form data entry deactivation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ProjectLinkage_LinkedProjectId">
+            <summary>
+            Guid of project used for project linkage
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ProjectLinkage_IsActiveProjectUser">
+            <summary>
+            is active user of project for project linkage
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryMongo.ProjectLinkage_ProjectLeftDate">
+            <summary>
+            Date of project left for project linkage
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryVariableMongo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryVariableMongo.VariableId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryVariableMongo.VariableGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryVariableMongo.VariableName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryVariableMongo.SelectedValues">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryVariableMongo.CreatedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryVariableMongo.CreatedDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormDataEntryVariableMongo.ParentId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel._ViewMongoActivityList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel._ViewMongoFormsList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel._ViewProjectName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel._ViewProjectGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel._ViewProjectUserRole">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel.RecruitmentStartDate">
+            <summary>
+            Recruitment Start Date of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel.RecruitmentEndDate">
+            <summary>
+            Recruitment End Date of Project
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectGuid">
+            <summary>
+            ProjectGuid of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectId">
+            <summary>
+            ProjectId of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectName">
+            <summary>
+            ProjectName of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectVersion">
+            <summary>
+            ProjectVersion of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectInternalVersion">
+            <summary>
+            ProjectInternalVersion of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectState">
+            <summary>
+            ProjectState of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectCreatedDate">
+            <summary>
+            ProjectCreatedDate of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectCreatedBy">
+            <summary>
+            ProjectCreatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectDeployDate">
+            <summary>
+            ProjectDeployDate of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectActivitiesList">
+            <summary>
+            ProjectActivitiesList of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectStaffListMongo">
+            <summary>
+            ProjectStaffListMongo of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.RecruitmentStartDate">
+            <summary>
+            Recruitment Start Date of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.RecruitmentEndDate">
+            <summary>
+            Recruitment End Date of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectDeployViewModel.ProjectEthicsApproval">
+            <summary>
+            Does this project have ethics approval
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.MongoViewModels.ProjectStaffMongo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectStaffMongo.StaffGuid">
+            <summary>
+            Guid of Staff
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectStaffMongo.StaffName">
+            <summary>
+            Name of Staff
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectStaffMongo.Role">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectStaffMongo.IsActiveProjectUser">
+            <summary>
+            is active project user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectStaffMongo.ProjectJoinedDate">
+            <summary>
+            Project Joined Date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ProjectStaffMongo.ProjectLeftDate">
+            <summary>
+            Project Left Date
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.ActivityId">
+            <summary>
+            ActivityId
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.ActivityGuid">
+            <summary>
+            Guid of Ativity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.ActivityName">
+            <summary>
+            Name of Activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.ActivityCategoryName">
+            <summary>
+            Category Name of Activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.ActivityEntityTypeName">
+            <summary>
+             Name of ActivityEntityType
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.ScheduledToBeCompleted">
+            <summary>
+            ScheduledToBeCompleted
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.OtherActivityName">
+            <summary>
+            Name of OtherActivity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.OffsetCount">
+            <summary>
+            OffsetCount
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.OffsetTypeName">
+            <summary>
+            OffsetTypeName
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.ActivityAvailableForCreation">
+            <summary>
+            ActivityAvailableForCreation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.SpecifiedActivityName">
+            <summary>
+            SpecifiedActivityName
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.CreationWindowOpens">
+            <summary>
+            CreationWindowOpens
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.CreationWindowClose">
+            <summary>
+            CreationWindowClose
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.RolesToCreateActivity">
+            <summary>
+            List of RolesToCreateActivity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.RoleToCreateActivityRegardlessScheduled">
+            <summary>
+            List of RoleToCreateActivityRegardlessScheduled
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.ScheduleDate">
+            <summary>
+            ScheduleDate
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.FormsListMongo">
+            <summary>
+            List of FormsListMongo
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.IsDefaultActivity">
+            <summary>
+            IsDefaultActivity true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.CanCreatedMultipleTime">
+            <summary>
+            CanCreatedMultipleTime true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.DeactivatedBy">
+            <summary>
+            GUID of activity deactivator
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.ActivitiesMongo.DateDeactivated">
+            <summary>
+            Date of activity deactivation
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.MongoViewModels.FormsMongo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.FormId">
+            <summary>
+            Id of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.FormTitle">
+            <summary>
+            Name of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.FormCategoryName">
+            <summary>
+            Category name of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.FormVersion">
+            <summary>
+            version of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.FormEntityTypes">
+            <summary>
+            List of entity type name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.VariablesListMongo">
+            <summary>
+            List of variable model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.FormGuid">
+            <summary>
+            Guid of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.IsDefaultForm">
+            <summary>
+            form type (default/custom)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.FormDataEntryId">
+            <summary>
+            dataentry id of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.TotalFormVariableCount">
+            <summary>
+            Count of form variables
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.ModifiedBy">
+            <summary>
+            name of entity form Modifier
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormsMongo.ModifiedDate">
+            <summary>
+            Date of entity form Modified
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.VariableId">
+            <summary>
+            id of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.VariableGuid">
+            <summary>
+            guid of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.VariableName">
+            <summary>
+            name of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.VariableTypeName">
+            <summary>
+            name of variable type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.Question">
+            <summary>
+            question text of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.HelpText">
+            <summary>
+            help text for variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.VariableRequiredMessage">
+            <summary>
+            required message for variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.Values">
+            <summary>
+            variable options value list
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.ValueDescription">
+            <summary>
+            variable options description list
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.MinRange">
+            <summary>
+            minimum input range for variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.MaxRange">
+            <summary>
+            maximum input range for variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.DependentVariableId">
+            <summary>
+            dependent variable id of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.DependentVariableName">
+            <summary>
+            dependent variable name of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.ResponseOption">
+            <summary>
+            response option for dependent variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.LookupEntityTypeName">
+            <summary>
+            name of lookup entity type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.LookupEntitySubtypeName">
+            <summary>
+            name of lookup entity sub type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.IsDefaultVariable">
+            <summary>
+            variable type id (default/custom)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.IsRequired">
+            <summary>
+            is this variable is required or not
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.VariableRoleListMongo">
+            <summary>
+            list of variable roles
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.VariableValidationRuleListMongo">
+            <summary>
+            list of validation rule for variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.IsSearchVisible">
+            <summary>
+            is this variable visible on "search" page (true/false)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.SearchPageOrder">
+            <summary>
+            variable order number at search page
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.SelectedValues">
+            <summary>
+            values entered while data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.UserLoginGuid">
+            <summary>
+            guid of userlogin
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariablesMongo.CanFutureDate">
+            <summary>
+            can future date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormVariableRoleMongo.RoleName">
+            <summary>
+            name of role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormVariableRoleMongo.CanCreate">
+            <summary>
+            permission to create variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormVariableRoleMongo.CanView">
+            <summary>
+            permission to view variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormVariableRoleMongo.CanEdit">
+            <summary>
+            permission to edit variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.FormVariableRoleMongo.CanDelete">
+            <summary>
+            permission to delete variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariableValidationRuleMongo.ValidationMessage">
+            <summary>
+            validation message for variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariableValidationRuleMongo.RegEx">
+            <summary>
+            reguler expression for variable validation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariableValidationRuleMongo.Min">
+            <summary>
+            minimum range/value for variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariableValidationRuleMongo.Max">
+            <summary>
+            maximum range/value for variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariableValidationRuleMongo.LimitType">
+            <summary>
+            limit type of variable validation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.VariableValidationRuleMongo.ValidationName">
+            <summary>
+            name of validation type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SQLSearchPageReturnViewModel.RecruitmentStartDate">
+            <summary>
+            Recruitment Start Date of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SQLSearchPageReturnViewModel.RecruitmentEndDate">
+            <summary>
+            Recruitment End Date of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.SummaryPageActivityTypeList">
+            <summary>
+            List of activity type to add in summary page
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.SummaryPageActivitiesList">
+            <summary>
+            List of activities added on summary page
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.SummaryPageProjectUsersList">
+            <summary>
+            List of project users
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.ProjectGuid">
+            <summary>
+            Guid of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.ProjectName">
+            <summary>
+            Name of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.EntityNumber">
+            <summary>
+            Entity number of an entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.EntityUserName">
+            <summary>
+            Name of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.EntityUserSurname">
+            <summary>
+            Surname of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.DOB">
+            <summary>
+            Date of birth of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.Gender">
+            <summary>
+            Gender of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.Address">
+            <summary>
+            Address of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.Suburb">
+            <summary>
+            Suburb of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.State">
+            <summary>
+            State of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.Phone">
+            <summary>
+            Phone no of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.Email">
+            <summary>
+            Email of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.EntityType">
+            <summary>
+            Entity Type of Entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.CreatedDate">
+            <summary>
+            Creation date of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.Profession">
+            <summary>
+            Profession of person entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel.EntityProfileImage">
+            <summary>
+            Profile image of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.Id">
+            <summary>
+            Id of summary page activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ProjectVersion">
+            <summary>
+            version of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ActivityDate">
+            <summary>
+            Date of activity on summary page
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ActivityId">
+            <summary>
+            Id of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ActivityName">
+            <summary>
+            Name of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ActivityGuid">
+            <summary>
+            Guid of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ActivityCompletedById">
+            <summary>
+            id of activity completed by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ActivityCompletedByGuid">
+            <summary>
+            Guid of activity completed by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ActivityCompletedByName">
+            <summary>
+            Name of activity completed by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.PersonEntityId">
+            <summary>
+            Entity number  of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ProjectGuid">
+            <summary>
+            Guid of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ProjectName">
+            <summary>
+            Name of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.CreatedByName">
+            <summary>
+            activity added by name of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.CreatedDate">
+            <summary>
+            activity added date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ModifiedBy">
+            <summary>
+            summary page activity modified by guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ModifiedDate">
+            <summary>
+            summary page activity modification date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.ModifiedByName">
+            <summary>
+            Summary page activity modified by name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.DeactivatedBy">
+            <summary>
+            summary page activity deleted by name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.DateDeactivated">
+            <summary>
+            summary page activity deletion date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.DeactivatedByName">
+            <summary>
+            summary page activity deleted by name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.SummaryPageActivityFormsList">
+            <summary>
+            list of summary page activity forms
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.LinkedProjectName">
+            <summary>
+            name of linked project name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel.LinkedProjectGuid">
+            <summary>
+            guid of linked project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityForms.FormId">
+            <summary>
+            id of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityForms.FormGuid">
+            <summary>
+            Guid of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityForms.FormTitle">
+            <summary>
+            Name of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityForms.FormStatusId">
+            <summary>
+            Status id of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityForms.FormStatusName">
+            <summary>
+            Status name of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityTypes.ActivityId">
+            <summary>
+            id of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityTypes.ActivityName">
+            <summary>
+            name of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityTypes.ActivityGuid">
+            <summary>
+            Guid of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityTypes.IsDefaultActivity">
+            <summary>
+            activity type id i.e.(default/custom)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageProjectUser.UserId">
+            <summary>
+            id of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageProjectUser.UserGuid">
+            <summary>
+            guid of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.MongoViewModels.SummaryPageProjectUser.UserName">
+            <summary>
+            name of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ReportViewModel.metadata">
+            <summary>
+            Pagination links
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ReportViewModel.results">
+            <summary>
+            Results of query
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_ActivityReportViewModel.id">
+            <summary>
+            The GUID of the created activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_ActivityReportViewModel.name">
+            <summary>
+            Name of the activity
+            </summary>
+            <example>Test Activity</example>
+            <value>AAAAAAAAAA</value>
+            <remarks>REMARKSSSS</remarks>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_ActivityReportViewModel.timestamp">
+            <summary>
+            Timestamp of creation in ISO-8601 format
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_ActivityReportViewModel.createdById">
+            <summary>
+            GUID of entity that created the activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_ActivityReportViewModel.forms">
+            <summary>
+            A list of forms entered for the activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_FormReportViewModel.id">
+            <summary>
+            The GUID of the entered form data
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_FormReportViewModel.name">
+            <summary>
+            Name of the form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_FormReportViewModel.version">
+            <summary>
+            Version number of the form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_FormReportViewModel.timestamp">
+            <summary>
+            Timestamp of submission in ISO-8601 format
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_FormReportViewModel.submittedById">
+            <summary>
+            GUID of the entity submitting the form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_FormReportViewModel.variables">
+            <summary>
+            List of variables entered on the form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_VariableReportViewModel.name">
+            <summary>
+            Name of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_VariableReportViewModel.value">
+            <summary>
+            Value entered (use null for blank)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.Report_VariableReportViewModel.type">
+            <summary>
+            Data type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.metadata.next">
+            <summary>
+            Link to next page of results
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.metadata.previous">
+            <summary>
+            Link to previous page of results
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.results.id">
+            <summary>
+            Entity id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.results.activities">
+            <summary>
+            A list of activities for an entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ReportPagingParameterModel.pageNumber">
+            <summary>
+            Page Number(optional)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ReportPagingParameterModel._pageSize">
+            <summary>
+            not usable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ReportPagingParameterModel.pageSize">
+            <summary>
+            The number of form responses per page; default is 20 (optional)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.ActivityId">
+            <summary>
+            ActivityId of scheduled activity 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.ScheduledToBeCompleted">
+            <summary>
+            No. of activity scheduling to be completed
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.ActivityAvailableForCreation">
+            <summary>
+            Available activity for creation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.RolesToCreateActivity">
+            <summary>
+            RolesToCreateActivity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.RolesToCreateActivity_Name">
+            <summary>
+            RolesToCreateActivity_Name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.RoleToCreateActivityRegardlessScheduled">
+            <summary>
+            RoleToCreateActivityRegardlessScheduled
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.RoleToCreateActivityRegardlessScheduled_Name">
+            <summary>
+            RoleToCreateActivityRegardlessScheduled_Name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.OtherActivity">
+            <summary>
+            OtherActivity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.OffsetCount">
+            <summary>
+            OffsetCount
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.OffsetType">
+            <summary>
+            OffsetType
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.SpecifiedActivity">
+            <summary>
+            SpecifiedActivity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.CreationWindowOpens">
+            <summary>
+            CreationWindowOpens
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.CreationWindowClose">
+            <summary>
+            CreationWindowClose
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.IsScheduled">
+            <summary>
+            Activity Is Scheduled true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.ScheduleDate">
+            <summary>
+            Schedule date of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.EntityTypes">
+            <summary>
+            List of Entity type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.ActivityName">
+            <summary>
+            Name of Activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.Status">
+            <summary>
+            Status of Scheduled activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.ProjectId">
+            <summary>
+            ProjectId
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.IsDefaultActivity">
+            <summary>
+            IsDefaultActivity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.CanCreatedMultipleTime">
+            <summary>
+            Activity can be created multiple times true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.UsedAsOtherActivitiesList">
+            <summary>
+            Guid of activities that used other activities
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.UsedAsSpecifiedActivitiesList">
+            <summary>
+            Guid of activities that used other activities
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SchedulingViewModel.ActivityStatusId">
+            <summary>
+            status id of activity  i.e. published
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.Id">
+            <summary>
+            Id of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ActivityName">
+            <summary>
+            Name of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.DependentActivityId">
+            <summary>
+            DependentActivityId of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ActivityCategoryId">
+            <summary>
+            Category id of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.StartDate">
+            <summary>
+            Start date of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.EndDate">
+            <summary>
+            End date of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ScheduleType">
+            <summary>
+            Schedult type of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ActivityStatusId">
+            <summary>
+            Status id of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ActivityStatusName">
+            <summary>
+            status name of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.UserTypeRole">
+            <summary>
+            UserTypeRole of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.IsFormContaindData">
+            <summary>
+            IsFormContaindData of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.CreatedBy">
+            <summary>
+            GUID of activity creator
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.CreatedDate">
+            <summary>
+            Date of activity created
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ModifiedBy">
+            <summary>
+            GUID of activity modifier
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ModifiedDate">
+            <summary>
+            Date of activity Modified
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.DeactivatedBy">
+            <summary>
+            GUID of activity deactivator
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.DateDeactivated">
+            <summary>
+            Date of activity deactivation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.Guid">
+            <summary>
+            GUID of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ProjectId">
+            <summary>
+            GUID of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.TenantId">
+            <summary>
+            GUID of tenant
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.Forms">
+            <summary>
+            List of activity forms
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.EntityTypes">
+            <summary>
+            List of Entity type GUID
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ActivityRoles">
+            <summary>
+            List of roles GUID
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ActivityRoleNames">
+            <summary>
+            List of roles names
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.IsDefaultActivity">
+            <summary>
+            Type of activity (system generated or custom)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.FormViewModelList">
+            <summary>
+            List of forms view model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.IsActivityRequireAnEntity">
+            <summary>
+            is activity depends on another activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.RepeatationType">
+            <summary>
+            Repeatation Type of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.RepeatationCount">
+            <summary>
+            Repeatation Count of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.RepeatationOffset">
+            <summary>
+            Repeatation Offset activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ActivityViewModel.ActivityStatusIdInt">
+            <summary>
+            status id of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormActivityViewModel.Id">
+            <summary>
+            Id of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormActivityViewModel.FormTitle">
+            <summary>
+            Title of the form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormActivityViewModel.Status">
+            <summary>
+            Status of the form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormActivityViewModel.Roles">
+            <summary>
+            GUID list of roles 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ChangePassword.OldPassword">
+            <summary>
+            Old password string for verification
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ChangePassword.Password">
+            <summary>
+            New password string for change
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ChangePassword.ConfirmPassword">
+            <summary>
+            String for confirm new password
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ResetPassword.Guid">
+            <summary>
+            Guid for user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ResetPassword.QuestionGuid">
+            <summary>
+            Guid for Question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ResetPassword.Answer">
+            <summary>
+            Answer for security question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ResetPassword.Password">
+            <summary>
+            New password string for change
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ResetPassword.ConfirmPassword">
+            <summary>
+            String for confirm new password
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CityViewModel.Name">
+            <summary>
+            Name of city
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CityViewModel.StatedId">
+            <summary>
+            Guid of state
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CityViewModel.Abbr">
+            <summary>
+            Abbreviation string
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CityViewModel.Guid">
+            <summary>
+            Guid of city
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewCityViewModel.Name">
+            <summary>
+            Name of city
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewCityViewModel.StateId">
+            <summary>
+            Guid of state
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewCityViewModel.Abbr">
+            <summary>
+            Abbreviation string
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EditCityViewModel.Name">
+            <summary>
+            Name of city
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EditCityViewModel.StateId">
+            <summary>
+            Guid of state
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EditCityViewModel.Abbr">
+            <summary>
+            Abbreviation string
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.CountryViewModel">
+            <summary>
+            Country Model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CountryViewModel.Id">
+            <summary>
+            Id of a country
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CountryViewModel.Name">
+            <summary>
+            Name of the country
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CountryViewModel.Abbr">
+            <summary>
+            Abbreviation of the country name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.CountryViewModel.Guid">
+            <summary>
+            Guid of a country
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.NewCountryViewModel">
+            <summary>
+            New Country Model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewCountryViewModel.Name">
+            <summary>
+            Name of the Country
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewCountryViewModel.Abbr">
+            <summary>
+            Abbreviation of the country name
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.EditCountryViewModel">
+            <summary>
+            Edit Country Model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EditCountryViewModel.Name">
+            <summary>
+            Name of the country
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EditCountryViewModel.Abbr">
+            <summary>
+            Abbreviation of the country name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EditCategory.Category">
+            <summary>
+            Category string
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntitySubTypeViewModel.Name">
+            <summary>
+            Name of Entity Subtype
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntitySubTypeViewModel.EntityTypeId">
+            <summary>
+            Guid of Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntitySubTypeViewModel.Guid">
+            <summary>
+            Guid of Entity Subtype
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntitySubTypeViewModel.EntityTypeName">
+            <summary>
+            Name of Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityTypeViewModel.Id">
+            <summary>
+            Id of entity type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityTypeViewModel.Name">
+            <summary>
+            Name of Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityTypeViewModel.Guid">
+            <summary>
+            Guid of Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityTypeViewModel.TenantId">
+            <summary>
+            Guid of tenant
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewEntityTypeViewModel.Name">
+            <summary>
+            Name of Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EditEntityTypeViewModel.Name">
+            <summary>
+            Name of Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.Id">
+            <summary>
+            Id of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.EntityTypeId">
+            <summary>
+            Guid of entity type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.EntitySubTypeId">
+            <summary>
+            Guid of entitysub type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.Name">
+            <summary>
+            Name of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.ParentEntityId">
+            <summary>
+            Entity id of parent entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.Status">
+            <summary>
+            Status id of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.CreatedBy">
+            <summary>
+            Guid of enbtity creator
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.CreatedDate">
+            <summary>
+            Date of entity creation.
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.ModifiedBy">
+            <summary>
+            Guid of entity modifire
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.ModifiedDate">
+            <summary>
+            Date of Modification
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.DeactivatedBy">
+            <summary>
+            Guid of DeactivatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.DateDeactivated">
+            <summary>
+            Date of Deactivated
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.Guid">
+            <summary>
+            Guid of model
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.DroppedVariablesList">
+            <summary>
+            List of DroppedVariablesList
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.TenantId">
+            <summary>
+            Guid of tenant
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.EntityVariableList">
+            <summary>
+            List of entity variables
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.EntityTypeName">
+            <summary>
+            Name of entity type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.EntitySubtypeName">
+            <summary>
+            Name of entity subtype
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.EntID">
+            <summary>
+            Id of an Entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EntityViewModel.FormGuid">
+            <summary>
+            Form Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.CategoryName">
+            <summary>
+            Name of Form Category
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.CreatedBy">
+            <summary>
+            Form Category created by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.CreatedDate">
+            <summary>
+            Form Category created date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.ModifiedBy">
+            <summary>
+            Form category modified by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.ModifiedDate">
+            <summary>
+             Form category Modified Date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.DateDeactivated">
+            <summary>
+            Form category deactivated date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.Forms">
+            <summary>
+            list of subcategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.TenantId">
+            <summary>
+            Tenat Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormCategoryViewModel.IsDefaultFormCategory">
+            <summary>
+            IsDefaultFormCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.VariableId">
+            <summary>
+            Id of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.SelectedValues">
+            <summary>
+            SelectedValues(string)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.SelectedValues_int">
+            <summary>
+            SelectedValues(Int)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.SelectedValues_float">
+            <summary>
+            SelectedValues(float)
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.FormDataEntryId">
+            <summary>
+            Id of FormDataEntry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.CreatedBy">
+            <summary>
+            FormDataEntry createdBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.CreatedDate">
+            <summary>
+            FormDataEntry created date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.ModifiedBy">
+            <summary>
+            FormDataEntry ModifiedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.ModifiedDate">
+            <summary>
+            ModifiedBy ModifiedDate
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.DeactivatedBy">
+            <summary>
+            Form data entry DeactivatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.DateDeactivated">
+            <summary>
+             Deactivation date of Form data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.VariableName">
+            <summary>
+            Name of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.FormId">
+            <summary>
+            FormId
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.ParentId">
+            <summary>
+            ParentId
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.ActivityId">
+            <summary>
+            ActivityId
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.FormGuid">
+            <summary>
+            Guid of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.ActivityGuid">
+            <summary>
+            ActivityGuid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.FormDataEntryStatus">
+            <summary>
+            Status of FormDataEntry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.FormTitle">
+            <summary>
+            Form Title
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryVariableViewModel.VariableTypeName">
+            <summary>
+            Variable Type Name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.Id">
+            <summary>
+            Id of form data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ProjectId">
+            <summary>
+            Guid of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.EntityId">
+            <summary>
+            Guid of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.SubjectId">
+            <summary>
+            Id of subject
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.Status">
+            <summary>
+            status of form data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.CreatedBy">
+            <summary>
+            Guid of entity that created the form data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.CreatedDate">
+            <summary>
+            Date of form data entry creation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ModifiedBy">
+            <summary>
+            id of entity that edit the form data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ModifiedDate">
+            <summary>
+            Date of form data entry modification
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.DeactivatedBy">
+            <summary>
+            id of entity that deleted the form data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.DateDeactivated">
+            <summary>
+            Date of deletion  of form data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.Guid">
+            <summary>
+            Guid of form data entry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ActivityId">
+            <summary>
+            Guid of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.TenantId">
+            <summary>
+            Guid of tenant
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.Activity">
+            <summary>
+            model of activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.FormDataEntryVariable">
+            <summary>
+            list of FormDataEntryVariableViewModel
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.FormId">
+            <summary>
+            Guid of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ParticipantId">
+            <summary>
+            Id of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.FormTitle">
+            <summary>
+            Name of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ThisUserId">
+            <summary>
+            userlogin table id of form dataentry entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ParentEntityNumber">
+            <summary>
+            entity id of parent entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ProjectDeployStatus">
+            <summary>
+            status id of deployed project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ProjectDeployedId">
+            <summary>
+            deployment id of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.ProjectDeployedVersion">
+            <summary>
+            version of deployed project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormDataEntryViewModel.SummaryPageActivityObjId">
+            <summary>
+            id of summary page activity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableRoleViewModel.FormVariableId">
+            <summary>
+            Id of FormVariable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableRoleViewModel.RoleGuidId">
+            <summary>
+            Guid of Role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableRoleViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableRoleViewModel.CanCreate">
+            <summary>
+            CanCreate
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableRoleViewModel.CanView">
+            <summary>
+            CanView
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableRoleViewModel.CanEdit">
+            <summary>
+            CanEdit
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableRoleViewModel.CanDelete">
+            <summary>
+            CanDelete
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.FormTitle">
+            <summary>
+             Title of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.IsPublished">
+            <summary>
+            IsPublished true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.ApprovedBy">
+            <summary>
+            Form ApprovedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.ApprovedDate">
+            <summary>
+            ApprovedDate of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.IsTemplate">
+            <summary>
+            IsTemplate true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.FormCategoryId">
+            <summary>
+            Category Id of form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.ProjectId">
+            <summary>
+            Guid of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.FormState">
+            <summary>
+            state of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.FormStatusId">
+            <summary>
+            Guid of Form status
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.Version">
+            <summary>
+             Version of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.PreviousVersion">
+            <summary>
+            PreviousVersion of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.CreatedBy">
+            <summary>
+            Form CreatedBy 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.CreatedDate">
+            <summary>
+            CreatedDate of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.ModifiedBy">
+            <summary>
+            Form ModifiedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.ModifiedDate">
+            <summary>
+            ModifiedDate of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.DeactivatedBy">
+            <summary>
+             Form DeactivatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.DateDeactivated">
+            <summary>
+            Deactivated Date of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.TenantId">
+            <summary>
+            Guid of Tenat
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.Variables">
+            <summary>
+            List of variables
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.EntityTypes">
+            <summary>
+            List of Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.IsDefaultForm">
+            <summary>
+            IsDefaultForm
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.FormDataEntryGuid">
+            <summary>
+            Guid of FormDataEntry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.FormUsedInActivityList">
+            <summary>
+            FormUsedInActivityList
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.UsedVariablesNameList">
+            <summary>
+             UsedVariablesNameList
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.FormIsInDeployeActiviti">
+            <summary>
+             FormIsInDeployeActiviti
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.IsFormContaindData">
+            <summary>
+             IsFormContaindData
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.UserTypeRole">
+            <summary>
+             UserTypeRole
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.IsNewForm">
+            <summary>
+             IsNewForm
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.ModifiedByString">
+            <summary>
+            Form ModifiedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormViewModel.ModifiedDateString">
+            <summary>
+            ModifiedDate of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.FormTitle">
+            <summary>
+            Title of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.IsPublished">
+            <summary>
+            Is Published
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.ApprovedBy">
+            <summary>
+            Form ApprovedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.ApprovedDate">
+            <summary>
+            Form Approval date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.IsTemplate">
+            <summary>
+            IsTemplate
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.FormCategoryId">
+            <summary>
+            Category Id of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.ProjectId">
+            <summary>
+            Guid of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.FormState">
+            <summary>
+            State of Form
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.FormStatusId">
+            <summary>
+            Guid of Form status
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.Variables">
+            <summary>
+            List of variables
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewFormViewModel.EntityTypes">
+            <summary>
+            List of Entity Type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.VariableId">
+            <summary>
+            VariableId of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.VariableName">
+            <summary>
+            Name of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.IsRequired">
+            <summary>
+            IsRequired true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.HelpText">
+            <summary>
+            Help Text
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.MinRange">
+            <summary>
+            MinRange
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.MaxRange">
+            <summary>
+            MaxRange
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.RegEx">
+            <summary>
+            RegEx
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.ValidationRuleType">
+            <summary>
+            ValidationRuleType
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.DependentVariableId">
+            <summary>
+            guid of DependentVariable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.ResponseOption">
+            <summary>
+            ResponseOption
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.ValidationMessage">
+            <summary>
+            ValidationMessage
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.FormVariableRoles">
+            <summary>
+            List of FormVariableRoles
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.FormVariableIsApprovedStatus">
+            <summary>
+             Approval status of FormVariable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.VariableType">
+            <summary>
+            Type of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.variableViewModel">
+            <summary>
+            variableViewModel
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.formVariableRoleViewModel">
+            <summary>
+            formVariableRoleViewModel
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.IsSearchVisible">
+            <summary>
+            IsSearchVisible true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.SearchPageOrder">
+            <summary>
+            SearchPageOrder
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.IsDefaultVariableType">
+            <summary>
+            IsDefaultVariableType
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.FormVariableViewModel.QuestionText">
+            <summary>
+            Text of Question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewCategory.Category">
+            <summary>
+            Category string
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PostCodeViewModel.PostalCode">
+            <summary>
+            Postal Code
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PostCodeViewModel.SuburbId">
+            <summary>
+            Guid of Suburb
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PostCodeViewModel.CityId">
+            <summary>
+            Guid of City
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PostCodeViewModel.StateId">
+            <summary>
+            Guid of state
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PostCodeViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.PrivilegeViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.Name">
+            <summary>
+            Name of Privilege
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.IsProjectAdmin">
+            <summary>
+            IsProjectAdmin
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.CreatedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.CreatedDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.ModifiedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.ModifiedDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.DeactivatedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.DateDeactivated">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeViewModel.Guid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.Core.ViewModels.PrivilegeSmallViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeSmallViewModel.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeSmallViewModel.Name">
+            <summary>
+            Name of Privilege
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.PrivilegeSmallViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderVariablesViewModel.VariableCategory">
+            <summary>
+            List of variable category
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderVariablesViewModel.Role">
+            <summary>
+            List of roles
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderVariablesViewModel.VariableType">
+            <summary>
+            List of variable type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderVariablesViewModel.ValidationRule">
+            <summary>
+            List of ValidationRule
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderFormsViewModel.FormCategory">
+            <summary>
+            List of Form Category
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderFormsViewModel.VariableCategories">
+            <summary>
+            List of Variable Categories
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderFormsViewModel.Roles">
+            <summary>
+            List of roles
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderFormsViewModel.EntityTypes">
+            <summary>
+            List of Entity type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderActivityViewModel.FormCategory">
+            <summary>
+            List of Form Category
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderActivityViewModel.ActivityCategory">
+            <summary>
+            List of Form Activity Category
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderActivityViewModel.Roles">
+            <summary>
+            List of Form Activity Roles
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBuilderActivityViewModel.EntityTypes">
+            <summary>
+             List of Entity Types
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectStaffMemberRoleViewModel.Id">
+            <summary>
+            Id of Project staff member 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectStaffMemberRoleViewModel.ProjectId">
+            <summary>
+            ProjectId of project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectStaffMemberRoleViewModel.UserId">
+            <summary>
+            UserId of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectStaffMemberRoleViewModel.RoleId">
+            <summary>
+            RoleId of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectStaffMemberRoleViewModel.CreatedBy">
+            <summary>
+            Project CreatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectStaffMemberRoleViewModel.Guid">
+            <summary>
+            Project Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.ProjectGuid">
+            <summary>
+            Guid of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.UserGuid">
+            <summary>
+            UserGuid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.RoleGuid">
+            <summary>
+            RoleGuid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.ProjectUserName">
+            <summary>
+            UserName of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.ProjectUserRoleName">
+            <summary>
+            Role Name of ProjectUser
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.StaffCreatedDate">
+            <summary>
+            StaffCreatedDate
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel.StaffCreatedDateString">
+            <summary>
+            StaffCreatedDateString
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.ProjectName">
+            <summary>
+            ProjectName of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.ProjectStatusId">
+            <summary>
+            ProjectStatusId of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.State">
+            <summary>
+            State of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.Version">
+            <summary>
+            Version of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.PreviousProjectId">
+            <summary>
+            PreviousProjectId of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.ProjectUrl">
+            <summary>
+            ProjectUrl of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.CheckListID">
+            <summary>
+            CheckListID of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.StartDate">
+            <summary>
+            StartDate of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.EndDate">
+            <summary>
+            EndDate of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.CreatedBy">
+            <summary>
+            Project CreatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.CreatedDate">
+            <summary>
+            CreatedDate of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.ModifiedBy">
+            <summary>
+            Project ModifiedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.ModifiedDate">
+            <summary>
+            Project ModifiedDate
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.DeactivatedBy">
+            <summary>
+            Project DeactivatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.DateDeactivated">
+            <summary>
+            DateDeactivated of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.Guid">
+            <summary>
+            Guid of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.ProjectUsers">
+            <summary>
+            ProjectUsers of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.Status">
+            <summary>
+            Status of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.ProjectUserId">
+            <summary>
+            ProjectUserId of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.Role">
+            <summary>
+            Role list of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.TenantId">
+            <summary>
+            TenantId of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.RoleId">
+            <summary>
+            RoleId of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.UserList">
+            <summary>
+            UserList of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.RoleGuid">
+            <summary>
+            RoleGuid of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.ProjectStaffMembersRoles">
+            <summary>
+            ProjectStaffMembersRoles of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.RecruitmentStartDate">
+            <summary>
+            Recruitment Start Date of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectViewModel.RecruitmentEndDate">
+            <summary>
+            Recruitment End Date of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBasicDetailsViewModel.Id">
+            <summary>
+            Id of Project Basic details
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBasicDetailsViewModel.Guid">
+            <summary>
+            Guid of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBasicDetailsViewModel.Name">
+            <summary>
+            Name of Project
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBasicDetailsViewModel.ProjectLogo">
+            <summary>
+            Logo of Project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBasicDetailsViewModel.ProjectColor">
+            <summary>
+            Color of project 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBasicDetailsViewModel.ProjectDisplayName">
+            <summary>
+            Project Display Name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ProjectBasicDetailsViewModel.ProjectDisplayNameTextColour">
+            <summary>
+            Text color of  Project Display Name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleViewModel.Id">
+            <summary>
+            Id of Role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleViewModel.Guid">
+            <summary>
+            Guid of Role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleViewModel.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleViewModel.Roles">
+            <summary>
+            List of Roles
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleViewModel.Name">
+            <summary>
+            Name of Role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleViewModel.IsSystemRole">
+            <summary>
+            Is system role true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleViewModel.TenantId">
+            <summary>
+            Guid of Tenat
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.Name">
+            <summary>
+            Name of Role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.IsSystemRole">
+            <summary>
+            Is system role true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.TenantId">
+            <summary>
+            guid of Tenat
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.CreatedBy">
+            <summary>
+            Role created by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.CreatedDate">
+            <summary>
+            Role creation date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.ModifiedBy">
+            <summary>
+            Role Modified by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.ModifiedDate">
+            <summary>
+            Modified date of Role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.DeactivatedBy">
+            <summary>
+            Role deactivated by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.DateDeactivated">
+            <summary>
+            Deactivated date of role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.Guid">
+            <summary>
+            Guid of role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.RoleModel.Privileges">
+            <summary>
+            Privileges of role
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewRoleModel.Name">
+            <summary>
+            Role Name
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SearchPageVariableViewModel.SearchVariables">
+            <summary>
+            List of search variables
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SearchPageVariableViewModel.ProjectId">
+            <summary>
+            ProjectId
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SearchPageVariableViewModel.FormId">
+            <summary>
+            FormId
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SearchPageVariableViewModel.FormTitle">
+            <summary>
+            Form Title
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SecurityQuestionViewModel.Question">
+            <summary>
+            Security question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SecurityQuestionViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.NewSecurityQuestionViewModel.Question">
+            <summary>
+            Security question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.EditSecurityQuestionViewModel.Question">
+            <summary>
+            Security question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UpdateUserSecurityQuestion.Guid">
+            <summary>
+            Guid for Security Question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UpdateUserSecurityQuestion.UserGuid">
+            <summary>
+            Guid for user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UpdateUserSecurityQuestion.Answer">
+            <summary>
+            Answer of Security Question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.Name">
+            <summary>
+            Name of SubCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.Type">
+            <summary>
+            Type of subcategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.Status">
+            <summary>
+            Status of subcategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.ProjectId">
+            <summary>
+            Guid of ProjectId
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.IsApproved">
+            <summary>
+            IsApproved true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.IsPublished">
+            <summary>
+            IsPublished true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.CreatedBy">
+            <summary>
+            Subcategory CreatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.DateDeactivated">
+            <summary>
+            Deactivated date of Subcategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.RepeatationCount">
+            <summary>
+            RepeatationCount
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.ScheduleType">
+            <summary>
+            Schedule type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.StartDate">
+            <summary>
+            Start date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.EndDate">
+            <summary>
+            End date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.RepeatationOffset">
+            <summary>
+            RepeatationOffset
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.IsDefaultVariable">
+            <summary>
+            IsDefaultVariable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.EntityType">
+            <summary>
+            List of EntityType
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.DeploymentStatus">
+            <summary>
+            Status of deployment
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SubCategoryViewModel.IsAllVariableApprovedOfActivity">
+            <summary>
+            IsAllVariableApprovedOfActivity true/false
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SummaryPageLeftPanelViewModel.Address">
+            <summary>
+            Address of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SummaryPageLeftPanelViewModel.Suburb">
+            <summary>
+            Suburb of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SummaryPageLeftPanelViewModel.State">
+            <summary>
+            State of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SummaryPageLeftPanelViewModel.Phone">
+            <summary>
+            Phone no of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.SummaryPageLeftPanelViewModel.Email">
+            <summary>
+            Email of entity
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.FirstName">
+            <summary>
+            First name of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.LastName">
+            <summary>
+            Last name of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.Email">
+            <summary>
+            Email of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.Mobile">
+            <summary>
+            Mobile no. of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.Address">
+            <summary>
+            Address of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.SecurityQuestionId">
+            <summary>
+            Guid of security question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.Answer">
+            <summary>
+            Answer of security question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.TenantId">
+            <summary>
+            Guid of Tenat
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.AuthTypeId">
+            <summary>
+            AuthTypeId of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.CreatedBy">
+            <summary>
+            Created by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.CreatedDate">
+            <summary>
+            Created date
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.ModifiedBy">
+            <summary>
+            Modified by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.ModifiedDate">
+            <summary>
+            ModifiedDate
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.DeactivatedBy">
+            <summary>
+            DeactivatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.DateDeactivated">
+            <summary>
+            Date of deactivation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.RoleId">
+            <summary>
+            RoleId of User
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.RoleName">
+            <summary>
+            Role name of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.Status">
+            <summary>
+            Status
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.Profile">
+            <summary>
+            Profileof user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.TempGuid">
+            <summary>
+            TemoGuid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.UserTypeId">
+            <summary>
+            UserTypeId of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.UserName">
+            <summary>
+            Username of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.IsApiAccessEnabled">
+            <summary>
+            IsApiAccessEnabled
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.UserLoginViewModel.IsUserApprovedBySystemAdmin">
+            <summary>
+            IsUserApprovedBySystemAdmin
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ResetPasswordViewModel.ToEMail">
+            <summary>
+            Email of user
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ResetPasswordViewModel.QuestionGuid">
+            <summary>
+            Guid of Security Question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ResetPasswordViewModel.Answer">
+            <summary>
+            Answer of Security question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ValidationRuleViewModel.RuleType">
+            <summary>
+            Type of Validation Rule
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ValidationRuleViewModel.MinRange">
+            <summary>
+            MinRange
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ValidationRuleViewModel.MaxRange">
+            <summary>
+            MaxRange
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ValidationRuleViewModel.RegExId">
+            <summary>
+            Id of RegEx
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ValidationRuleViewModel.ErrorMessage">
+            <summary>
+            ErrorMessage
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ValidationRuleViewModel.RegEx">
+            <summary>
+            RegEx
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.ValidationRuleViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.CategoryName">
+            <summary>
+            Name of Category
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.CreatedBy">
+            <summary>
+            Variable Category Created By
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.CreatedDate">
+            <summary>
+            CreatedDate of Variable category 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.ModifiedBy">
+            <summary>
+            Variable category modified by
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.ModifiedDate">
+            <summary>
+            ModifiedDate of Variable category
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.DeactivatedBy">
+            <summary>
+            Variable category DeactivatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.DeactivatedDate">
+            <summary>
+            DeactivatedDate of Variable category
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.TenantId">
+            <summary>
+            GUID of Tenat
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.Variables">
+            <summary>
+            List of Variables
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableCategoryViewModel.IsDefaultVariableCategory">
+            <summary>
+            IsDefaultVariableCategory
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableTypeViewModel.Id">
+            <summary>
+            Id of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableTypeViewModel.Type">
+            <summary>
+            Type of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableTypeViewModel.Status">
+            <summary>
+            Status of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableTypeViewModel.Guid">
+            <summary>
+            Guid of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.VariableId">
+            <summary>
+            Id of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.ValidationId">
+            <summary>
+            Validation Id
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.ValidationMessage">
+            <summary>
+            ValidationMessage
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.RegEx">
+            <summary>
+            RegEx
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.Min">
+            <summary>
+            Min
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.Max">
+            <summary>
+            Max
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.LimitType">
+            <summary>
+            LimitType
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableValidationRuleViewModel.ValidationName">
+            <summary>
+            Name of Validation
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableName">
+            <summary>
+            Name of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableLabel">
+            <summary>
+            Label of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.Question">
+            <summary>
+            Question
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.Values">
+            <summary>
+            Values
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.ValueDescription">
+            <summary>
+            Description of Values
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.HelpText">
+            <summary>
+            HelpText
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableTypeId">
+            <summary>
+            VariableTypeId of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.ValidationMessage">
+            <summary>
+            Validation Message
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.RequiredMessage">
+            <summary>
+            Required Message
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.MinRange">
+            <summary>
+            MinRange of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.MaxRange">
+            <summary>
+            Max range of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.RegEx">
+            <summary>
+            RegEx of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.IsSoftRange">
+            <summary>
+            IsSoftRange
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.ValidationRuleId">
+            <summary>
+            Guid of ValidationRule
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.DependentVariableId">
+            <summary>
+            Guid of  DependentVariable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.IsRequired">
+            <summary>
+            IsRequired
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.CanCollectMultiple">
+            <summary>
+            CanCollectMultiple
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableCategoryId">
+            <summary>
+            Category Id of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.IsApproved">
+            <summary>
+            IsApproved
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.UserTypeRole">
+            <summary>
+             UserTypeRole
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.Comment">
+            <summary>
+            Comment
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.CreatedBy">
+            <summary>
+            Variable CreatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.CreatedDate">
+            <summary>
+            Created date of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.ModifiedBy">
+            <summary>
+            variable ModifiedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.ModifiedDate">
+            <summary>
+            ModifiedDate of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.DeactivatedBy">
+            <summary>
+            Variable DeactivatedBy
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.DateDeactivated">
+            <summary>
+            Deactivated date of  variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.Guid">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableRoles">
+            <summary>
+            Roles of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.TenantId">
+            <summary>
+            Guid of Tenat
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableTypeName">
+            <summary>
+            Name of Variable type
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.ValidationRuleIds">
+            <summary>
+            List of Guid of ValidationRule
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.validationRuleViewModel">
+            <summary>
+            List of Validation Rule
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.CustomRegEx">
+            <summary>
+            CustomRegEx of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableValueDescription">
+            <summary>
+            List of VariableValueDescription
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.IsVariableLogTable">
+            <summary>
+            IsVariableLogTable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.IsDefaultVariable">
+            <summary>
+            IsDefaultVariable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableSelectedValues">
+            <summary>
+            Selected value of Variables
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.FormDataEntryGuid">
+            <summary>
+            Guid of FormDataEntry
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.OutsideRangeValidation">
+            <summary>
+            OutsideRangeValidation of Variable 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.MissingValidation">
+            <summary>
+            MissingValidation of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.LookupEntityType">
+            <summary>
+            LookupEntityType of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.LookupEntitySubtype">
+            <summary>
+            LookupEntitySubtype of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.LookupEntityTypeName">
+            <summary>
+            LookupEntityType of Variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.LookupEntitySubtypeName">
+            <summary>
+            LookupEntitySubtype of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.DateFormat">
+            <summary>
+            DateFormatm of variable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.CanFutureDate">
+            <summary>
+            true/false for FutureDate 
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.UserNameVariableGuid">
+            <summary>
+            Guid of UserNameVariable
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.VariableUsedInFormsList">
+            <summary>
+            List of VariableUsedInFormsList
+            </summary>
+        </member>
+        <member name="P:Aspree.Core.ViewModels.VariableViewModel.ActivityStatusId">
+            <summary>
+            status id of activity in which variable is used
+            </summary>
+        </member>
+    </members>
+</doc>

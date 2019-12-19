@@ -9,6 +9,7 @@ namespace Aspree.Core.ViewModels
 {
     public class SubCategoryViewModel
     {
+        [IgnoreDataMember]
         public int Id { get; set; }
         /// <summary>
         /// Name of SubCategory

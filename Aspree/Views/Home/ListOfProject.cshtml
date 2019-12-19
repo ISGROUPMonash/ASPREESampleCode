@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Aspree.Core.ViewModels.FormDataEntryProjectsViewModel>
+@{
+    ViewBag.Title = "List of project";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+    var LoggedInUserGuid = ViewBag.LoggedInUserGuid;
+    var LoggedInUserRoles = ViewBag.LoggedInUserRoles;
+    bool isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains(Aspree.Utility.ConfigSettings.TestSiteKeyword);
+    if (isTesturipath)
+    { Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml"; }
+}
+
+<div class="main-content">
+    <section class="section user-selectpro-section">
+        <div class="container-fluid">
+            <div class="row justify-content-lg-center">
+                <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8">
+                    <div class="row justify-content-lg-center">
+
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="card project-card">
+                                <div class="card-header text-left">
+                                    <h3 class="card-title primary-title">Welcome!</h3>
+                                    <span>Please select your project</span>
+                                </div><!-- /.card-header -->
+                                <div class="card-body" style="max-height: 668px; overflow-y: auto;padding-bottom:0;">
+                                    <div class="user-selectpro-wrap user-selectpro-wrapID pl-3 pr-3">
+                                        <div class="row user-selectpro list-unstyled">
+                                            @{ int p = 0;}
+                                            @foreach (var project in Model)
+                                            {
+                                                if (LoggedInUserRoles == Aspree.Core.Enum.RoleTypes.System_Admin.ToString().Replace("_", " "))
+                                                {
+                                                    p++;
+                                                    <div class="col-md-4 col-sm-4 col-12">
+                                                        <a id="@project.Guid" onclick="Dashboard.RedirectToSearchPage('@project.Guid')" class="mb-3 content-flex d-flex align-items-center justify-content-center" style="background-color:@project.ProjectColor">
+                                                            <span class="">
+                                                                @{project.ProjectDisplayNameTextColour = !string.IsNullOrEmpty(project.ProjectDisplayNameTextColour) ? "style=color:" + project.ProjectDisplayNameTextColour : string.Empty; }
+                                                                <span class="content-flex-item" @project.ProjectDisplayNameTextColour>
+                                                                    @(!string.IsNullOrEmpty(project.ProjectDisplayName) ? project.ProjectDisplayName : project.ProjectName)
+                                                                    @foreach (var userrole in project.ProjectStaffMembersRoles)
+                                                                    {
+                                                                        if (userrole.UserGuid == LoggedInUserGuid)
+                                                                        {
+                                                                            <span>(@userrole.ProjectUserRoleName)</span>
+                                                                        }
+                                                                    }
+                                                                </span>
+                                                                @if (!string.IsNullOrEmpty(project.ProjectLogo))
+                                                                {
+                                                                    <img src="@project.ProjectLogo" />
+                                                                }
+                                                            </span>
+                                                        </a>
+                                                    </div>
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        var projStfRole = project.ProjectStaffMembersRoles as List<Aspree.Core.ViewModels.NewProjectStaffMemberRoleViewModel>;
+                                                                        var IsSystemAdmin = projStfRole.FirstOrDefault(rl => rl.UserGuid == LoggedInUserGuid);
+                                                                        if (IsSystemAdmin != null)
+                                                                        {
+                                                                            if (LoggedInUserGuid == IsSystemAdmin.UserGuid)
+                                                                            {
+                                                                                p++;
+                                                                                <div class="col-md-4 col-sm-4 col-12">
+                                                                                    <a id="@project.Guid" onclick="Dashboard.RedirectToSearchPage('@project.Guid')" class="mb-3 content-flex d-flex align-items-center justify-content-center" style="background-color:@project.ProjectColor">
+                                                                                        <span class="">
+                                                                                            @{project.ProjectDisplayNameTextColour = !string.IsNullOrEmpty(project.ProjectDisplayNameTextColour) ? "style=color:" + project.ProjectDisplayNameTextColour : string.Empty; }
+                                                                                            <span class="content-flex-item" @project.ProjectDisplayNameTextColour>
+                                                                                                @(!string.IsNullOrEmpty(project.ProjectDisplayName) ? project.ProjectDisplayName : project.ProjectName)
+                                                                                                @foreach (var userrole in project.ProjectStaffMembersRoles)
+                                                                                                {
+                                                                                                    if (userrole.UserGuid == LoggedInUserGuid)
+                                                                                                    {
+                                                                                                        <span>(@userrole.ProjectUserRoleName)</span>
+                                                                                                    }
+                                                                                                }
+                                                                                            </span>
+                                                                                            @if (!string.IsNullOrEmpty(project.ProjectLogo))
+                                                                                            {
+                                                                                                <img src="@project.ProjectLogo" />
+                                                                                            }
+                                                                                        </span>
+                                                                                    </a>
+                                                                                </div>
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+
+
+                                            @if (p == 0)
+                                            {
+                                                <div class="col-md-12 col-sm-6 col-xs-12 p-20">
+                                                    <h3 class="alert_mss">You do not have any projects assigned.</h3>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div><!-- /.card-body -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div>
+    </section><!-- /.user-selectpro-section -->
+</div>
+
+<!-- /.main-content -->
+@section Scripts{
+    @Scripts.Render("~/apps/dashboard")
+
+@if (isTesturipath)
+{
+    <script>
+        App.IsTestSite = true;
+    </script>
+}
+else
+{
+    <script>
+        App.IsTestSite = false;
+    </script>
+}
+}
+
+
+
+@if (TempData["Success"] != null)
+{
+    <script>
+        App.showSuccess("@TempData["Success"]");
+    </script>
+}
+@if (TempData["Error"] != null)
+{
+    <script>
+        App.showError("@TempData["Error"]");
+    </script>
+}

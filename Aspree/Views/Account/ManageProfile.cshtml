@@ -1,0 +1,121 @@
+﻿@model Aspree.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Manage Profile";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+    var absolutePath = string.Empty;
+    bool isTesturipath = false;
+    try
+    {
+        isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains(Aspree.Utility.ConfigSettings.TestSiteKeyword);
+        absolutePath = isTesturipath ? "test/" : "";
+        if (absolutePath == "test/")
+        {
+            Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml";
+        }
+    }
+    catch (Exception exc)
+    { Console.WriteLine(exc.Message); }
+
+}
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">Manage Account</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Home/ListOfProject">Home</a></li>
+        <li class="breadcrumb-item"> Manage Account</li>
+    </ol>
+}
+<div class="col-sm-12">
+    <div class="card card-body">
+        <h4 class="card-title">@ViewBag.LoggedInUser.Name's Profile</h4>
+        <form id="frmUser" class="form-horizontal m-t-40" method="post" action="/users/edit/@Model.UserGuid" autocomplete="off">
+            <input id="Guid" name="Guid" value="@Model.UserGuid" type="hidden" />
+            <input id="TenantId" name="TenantId" value="@Model.TenantId" type="hidden" />
+            <input id="UserName" name="UserName" value="@Model.UserName" type="hidden" />
+            <input id="Status" name="Status" value="@Model.Status" type="hidden" />
+            <div class="form-group hide">
+                <label for="FirstName" class="">First Name<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @required = "required", @maxlength = "30", @placeholder = "First Name" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "form-control-feedback" })
+            </div>
+            <div class="form-group hide">
+                <label for="LastName" class="">Last Name<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @required = "required", @maxlength = "30", @placeholder = "Last Name" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "form-control-feedback" })
+            </div>
+            <div class="form-group hide">
+                <label for="Email" class="">Email<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(m => m.Email, new { @type = "email", @readonly = "readonly", @class = "form-control", @required = "required", @maxlength = "80", @placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "form-control-feedback" })
+            </div>
+            <div class="form-group hide">
+                <label for="Mobile" class="">Phone<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @required = "required", @maxlength = "15", @placeholder = "Mobile" })
+                @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "form-control-feedback" })
+            </div>
+            <div class="form-group hide">
+                <label for="Address" class="">Address</label>
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @maxlength = "100", @placeholder = "Address" })
+                @Html.HiddenFor(m => m.IsUserApprovedBySystemAdmin)
+            </div>
+            <div class="form-group hide">
+                <label for="Name" class="">System Role<span class="text-danger">*</span></label>
+                @Html.HiddenFor(x => x.RoleId, new { @class = "form-control", @placeholder = "Role", @required = true })
+                @Html.ValidationMessageFor(m => m.RoleId, "", new { @class = "form-control-feedback" })
+
+            </div>
+            <div class="form-group">
+                <label for="Profile" class="">Profile Picture <span class="text-success">[Max Image size 1MB, Max height and width 200 pixel.]</span></label>
+                @Html.HiddenFor(m => m.Profile)
+                <input type="file" id="fileProfile" name="fileProfile" onchange="User.setImage(this,'#Profile')" accept=".png,.jpg" class="form-control" />
+                <span class="form-control-feedback field-validation-valid"></span>
+            </div>
+            <div class="">
+                <a href="/Search" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                <button type="submit" onclick="User.updatePassword(event);" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+
+            </div>
+        </form>
+    </div>
+    <div class="card card-body">
+        <h4 class="card-title">Change Password</h4>
+        <form id="frmChangePassword" class="form-horizontal m-t-40" method="post" action="/Account/ChangePassword" autocomplete="off">
+            <div class="form-group">
+                <label for="OldPassword" class="">Old Password<span class="text-danger">*</span></label>
+                <input class="form-control valid" data-val="true" data-val-required="The Old Password field is required." id="OldPassword" maxlength="30" name="OldPassword" placeholder="Old Password" required="required" type="password">
+                <span class="form-control-feedback field-validation-valid" data-valmsg-for="OldPassword" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="">New Password<span class="text-danger">*</span></label>
+                <input class="form-control valid" data-val="true" data-val-required="The New Password field is required." id="Password" data-val-length="The Password must be at least 10 characters long." data-val-length-min="8" data-val-length-max="100" maxlength="30" name="Password" placeholder="New Password" required="required" type="password">
+                <span class="form-control-feedback field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <label for="ConfirmPassword" class="">Confirm Password<span class="text-danger">*</span></label>
+                <input class="form-control valid" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" placeholder="Confirm Password" id="ConfirmPassword" name="ConfirmPassword" required="required" type="password">
+                <span class="form-control-feedback field-validation-valid" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+            </div>
+            <div>
+                <button type="submit" onclick="User.changePassword(event);" class="btn waves-effect waves-light btn-info pull-right">Change Password</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/apps/users")
+    @Scripts.Render("~/bundles/jqueryval")
+
+@if (isTesturipath)
+{
+    <script>
+        App.IsTestSite = true;
+    </script>
+}
+else
+{
+    <script>
+        App.IsTestSite = false;
+    </script>
+}
+}

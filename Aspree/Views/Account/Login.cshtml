@@ -1,0 +1,419 @@
+﻿@using Aspree.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+
+
+   
+    //============================test site============================
+    string testSiteBackgroundClass = "";
+    string postPath = string.Empty;
+    bool isTesturipath = false;
+    try
+    {
+        string absolutePath = string.Empty;
+
+        /////--------local host test url.
+        //absolutePath = (Request.Url.Segments.Count() > 1 ? Request.Url.Segments[1].ToLower() : string.Empty);
+
+        ////---------live domain test url.
+        //isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains("uds-test");
+        isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains(Aspree.Utility.ConfigSettings.TestSiteKeyword);
+        absolutePath = isTesturipath ? "test/" : "";
+
+
+
+
+        if (absolutePath == "test/")
+        {
+            testSiteBackgroundClass = "draft-watermark";
+            postPath = "/account/login?returnurl=" + ViewBag.ReturnUrl;
+        }
+        else
+        {
+            postPath = "/account/login?returnurl=" + ViewBag.ReturnUrl;
+        }
+    }
+    catch (Exception exc)
+    { }
+    //============================test site============================
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/content/assets/images/favicon.png">
+    <title>Aspree | Login Page</title>
+    <link href="/content/assets/css/custom-style.css" rel="stylesheet">
+    <!-- Roboto fonts css; ( font-family: 'Roboto', sans-serif; ) -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="/content/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <!-- fontawesome icon CSS -->
+    <link href="/content/vendor/css/fontawesome-all.min.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/content/assets/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/content/assets/css/style.css" rel="stylesheet">
+    <!-- Custom Style CSS -->
+    <link href="/content/assets/css/responsive.css" rel="stylesheet">
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+
+<body class="body-background">
+    <!-- ==========================================================
+    Main Content
+    =========================================================== -->
+
+    <div id="page-wrapper">
+        <section class="login-page  @testSiteBackgroundClass">
+            <div class="login-page-wrap">
+                <div class="row no-gutters">
+                    <div id="processLoader">
+                        <div class="loader"></div>
+                    </div>
+                    <div id="blocker"></div>
+                    <div class="col-md-5">
+                        <div class="login-page-logo full-height1 height-fill d-flex align-items-center justify-content-center blue-back dark-gray">
+                            <div class="lp-logo"><a href="">Universal Data System</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="login-form-wrap login-form-blue d-flex align-items-center pall-6 p-4-custom full-height1 gray-back">
+                            <div class="login-form-height">
+                                <div class="login-form-inner " id="divLoginForm">
+                                    <div class="lp-heading text-left">
+                                        <h2 class="lp-title">Universal Data System</h2>
+                                        <h6 class="lp-subtitle">Welcome back! Please login to your account.</h6>
+                                    </div>
+                                    <div id="alerts" class="row alerts"></div>
+                                    <form method="post" id="loginFormPage" name="loginFormPage" autocomplete="off" class="login-form form-horizontal form-mat-small lp-pholder lp-form m-t-40">
+                                        <div class="form-group">
+
+                                        </div>
+                                        <div class="login-form-field" id="login">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Username<span class="text-danger">*</span></label>
+                                                @Html.AntiForgeryToken()
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.Email, "", new { @id = "errorEmail", @class = "form -control-feedback error-red" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">Password<span class="text-danger">*</span></label>
+                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "form-control-feedback error-red", @id = "errorpassword" })
+                                            </div>
+                                            <div class="form-group lp-bt-link mt-51 checkbox-small">
+                                                <div class="checkbox checkbox-primary pull-left p-t-0">
+                                                    @Html.HiddenFor(x => x.RememberMe)
+                                                    <input id="checkbox-signup" type="checkbox">
+                                                    <label for="checkbox-signup"> Remember me </label>
+                                                </div>
+                                                <a href="javascript:void(0)" class="pull-right font-italic" id="aForgotPassword">Forgot Password</a>
+                                            </div>
+                                        </div><!-- /.login-form-field -->
+                                        <div class="clearfix"></div>
+                                        <div class="form-group mt-3 btn-small">
+
+                                            <div class="row"><div class="col-3"><button class="btn waves-effect waves-light btn-info pull-left" type="submit">Login</button></div></div>
+
+                                            <div class="se or-devider text-center"> <span>OR</span> </div>
+
+
+
+
+                                            <div class="row row-less-margn">
+                                                @if (ViewBag.AuthenticationTypes != null)
+                                                {
+                                                    int cnt = 0;
+                                                    string btnId = string.Empty;
+                                                    foreach (var authType in ViewBag.AuthenticationTypes)
+                                                    {
+                                                        if (authType.AuthTypeName != "Local password")
+                                                        {
+                                                            cnt++;
+                                                            btnId = !string.IsNullOrEmpty(authType.AuthTypeName) ? authType.AuthTypeName.Replace(" ", String.Empty) : authType.AuthTypeName;
+                                                            <div class="col-sm-6">
+                                                                <button type="button" onclick="Login.ExternalLogin(this)" class="btn waves-effect waves-light btn-info pull-right mt-0 px-1" id="@btnId-@cnt" data-provider="@authType.Guid" name="provider" value="Okta" title="Login with @authType.AuthTypeName">Login With @authType.AuthTypeName</button>
+                                                            </div>
+                                                        }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form method="post" autocomplete="off" action="/" id="fmforget" class="login-form hide form-horizontal form-mat-small lp-pholder lp-form m-t-40">
+                                        <div class="form-group">
+
+                                        </div>
+                                        <div class="login-form-field ">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Username<span class="text-danger">*</span></label>
+                                                @Html.AntiForgeryToken()
+                                                <input class="form-control" data-val="true" data-val-required="The Username field is required." id="ToEmail" name="ToEmail" type="text" value="">
+                                                <span class="form-control-feedback error-red field-validation-valid" data-valmsg-for="ToEmail" data-valmsg-replace="true" id="errorEmail"></span>
+                                            </div>
+                                            <div class="form-group hide">
+                                                <label for="QuestionGuid" class="">Security Question<span class="text-danger">*</span></label>
+                                                <select disabled class="form-control" id="QuestionGuid" name="QuestionGuid">
+                                                    <option value="8081AF00-CB9D-4B9F-86B8-590DC5F52A8E">Select</option>
+                                                </select>
+                                                <span class="form-control-feedback field-validation-valid" data-valmsg-for="QuestionGuid" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="form-group hide">
+                                                <label for="Answer" class="">Security Answer<span class="text-danger">*</span></label>
+                                                <input class="form-control" id="Answer" maxlength="50" name="Answer" type="text">
+                                                <span class="form-control-feedback field-validation-valid" data-valmsg-for="Answer" data-valmsg-replace="true"></span>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+
+                                        </div><!-- /.login-form-field -->
+                                        <div class="clearfix"></div>
+                                        <div class="form-group mt-3 btn-small">
+                                            <button class="btn waves-effect waves-light btn-info pull-left" onclick="Login.ForgotPassword();" id="btnForgot" type="button">Submit</button>
+                                            <button class="btn waves-effect waves-light btn-info pull-right mt-0" id="BackTologin" type="button">Back to Login</button>
+                                        </div>
+                                    </form>
+
+                                    <form method="post" autocomplete="off" action="/" id="fmResetPasswordSuccess" class="login-form hide form-horizontal form-mat-small lp-pholder lp-form m-t-40">
+                                        <div class="form-group">
+
+                                        </div>
+                                        <div class="login-form-field ">
+
+                                            <div class="form-group">
+                                            </div>
+
+
+                                            <div class="clearfix"></div>
+
+                                        </div><!-- /.login-form-field -->
+                                        <div class="clearfix"></div>
+                                        <div class="form-group mt-3 btn-small text-center">
+                                            <button class="btn waves-effect waves-light btn-info mt-0" id="BackTologin1" type="button">Back to Login</button>
+                                        </div>
+                                    </form>
+
+
+                                    <form method="post" autocomplete="off" action="/account/ExternalLogin?provider=Okta&returnurl=@ViewBag.ReturnUrl" id="googleLogin"></form>
+                                </div><!-- /.login-form-inner -->
+                            </div>
+                        </div><!-- /.login-form-wra -->
+                        <div class="lp-footer">
+                            <p class="text-center"><a href="https://www.monash.edu/disclaimer-copyright">Terms of use.</a><a href="https://www.monash.edu/privacy-monash" class="ml-2">Privacy policy</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.login-page -->
+    </div>
+    <!-- ==========================================================
+    End Main Content
+    =========================================================== -->
+    <!-- ==========================================================
+    All Jquery Import
+    =========================================================== -->
+    <!-- ==========================================================
+    All Jquery Import
+    =========================================================== -->
+    <script src="/content/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/content/vendor/js/bootstrap.min.js"></script>
+    <!--Wave Effects -->
+    <script src="/content/assets/js/jquery.slimscroll.js"></script>
+    <script src="/content/assets/js/waves.js"></script>
+
+    <!--Custom JavaScript -->
+    
+
+    @Scripts.Render("~/apps/common")
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <!--custom-script JS -->
+    <script>
+        App.ApiUrl = "@Aspree.Utility.ConfigSettings.WebApiUrl";
+
+
+
+        App.IsTestSite = @(isTesturipath == true ? "true" : "false") ;
+
+        $("#aForgotPassword").on('click', function () {
+            $(".login-form").addClass('hide');
+            $("#fmforget").removeClass('hide');
+            $("#fmResetPasswordSuccess").addClass('hide');
+        });
+        $("#BackTologin").on('click', function () {
+            $(".login-form").removeClass('hide');
+            $("#fmforget").addClass('hide');
+            $("#fmResetPasswordSuccess").addClass('hide');
+        });
+        $("#BackTologin1").on('click', function () {
+            $(".login-form").removeClass('hide');
+            $("#fmforget").addClass('hide');
+            $("#fmResetPasswordSuccess").addClass('hide');
+        });
+
+
+        $('#ToEmail').keypress(function (e) {
+            var key = e.which;
+            if (key == 13)  // the enter key code
+            {
+                Login.ForgotPassword();
+                return false;
+            }
+        });
+        $('#Answer').keypress(function (e) {
+            var key = e.which;
+            if (key == 13)  // the enter key code
+            {
+                Login.ForgotPassword();
+                return false;
+            }
+        });
+
+
+
+
+
+
+        var Login = {};
+        Login.ForgotPassword = function () {
+            
+            if (!$('#fmforget').valid()) return;
+            var ToEmail = $("#ToEmail").val();
+
+            App.clearError();
+
+            let userData = {
+                ToEMail: $("#ToEmail").val(),
+                QuestionGuid: $("#QuestionGuid").val(),
+                Answer: $("#Answer").val()
+            };
+
+
+            let url = "/ForgotPassword/Post";
+            if(App.IsTestSite===true){
+                
+                url = "/Review/ForgotPasswordPost";
+            }
+            //try {
+            //    let isTestUrl = window.location.href.toLowerCase().indexOf("uds-test");
+            //    if (isTestUrl > 0)
+            //        url = "/Review/ForgotPasswordPost";
+            //} catch (ex) { console.log(ex); }
+
+
+
+            App.postData(App.ApiUrl + url, userData, function (result) {
+                $('#ToEmail').val("");
+                $("#Answer").val("");
+                $("#btnForgot").removeAttr('disabled', 'disabled');
+                if (result) {
+                    //$(".login-form").removeClass('hide');
+                    $("#fmforget").addClass('hide');
+
+                    $("#fmResetPasswordSuccess").removeClass('hide');
+
+                    App.showSuccess("If this is a valid username, you will receive an email with password reset link.");
+                    //App.showSuccess("An email with password reset link has been sent to your registered email address.");
+                } else if (result === false) {
+                    
+                    App.showError("User has not been approved.");
+                } else {
+
+                }
+            }, "POST");
+        }
+
+
+        ////TODO :ASPMONASH-190 :: Delete the code base here after testing
+        //Login.GetSecurityQuestion = function (emailid) {
+        //    try {
+        //        let sendData = {
+        //            Username: emailid
+        //        }
+        //        $('#QuestionGuid').val('0');
+        //        App.postData(App.ApiUrl + "ForgotPassword/GetUserByUsername", sendData, function (result) {
+        //            $('#QuestionGuid').val(result.guid);
+        //            $('#QuestionGuid').attr('disabled', 'disabled');
+        //        }, "Post");
+        //    } catch (e) {
+        //    }
+        //}
+
+
+        Login.ExternalLogin = function (e) {
+            var provider = $(e).attr("data-provider");
+            $("#googleLogin").attr('action', '/account/ExternalLogin?provider=' + provider + '&returnurl=@ViewBag.ReturnUrl');
+            $('#googleLogin').submit();
+        }
+
+        $(function () {
+            //$('#QuestionGuid').val('0');
+            //$('#ToEmail').on('blur', function () {
+            //    let email = $('#ToEmail').val().trim();
+            //    //if (App.checkEmailValidation(email))
+            //    if (email.length > 0)
+            //        Login.GetSecurityQuestion(email);
+            //});
+            $('#checkbox-signup').change(function () {
+                if ($("#checkbox-signup").prop("checked"))
+                    $("#RememberMe").val("True");
+                else
+                    $("#RememberMe").val("False");
+            });
+
+
+
+            $('#loginFormPage').submit(function () {
+
+                if (!$('#loginFormPage').valid()) return;
+
+
+
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+
+        });
+    </script>
+
+    @if (Model != null && Model.RememberMe)
+    {
+        <script>
+            $("#checkbox-signup").prop("checked", true);
+        </script>
+    }
+    else
+    {
+        <script>
+            $("#RememberMe").val("False");
+        </script>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <script>
+            App.showSuccess("@TempData["Success"]");
+        </script>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            App.showError1("@TempData["Error"]");
+        </script>
+    }
+</body>
+</html>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swashbuckle.Examples;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -46,6 +47,7 @@ namespace Aspree.Core.ViewModels
 
     public class RoleModel
     {
+        [IgnoreDataMember]
         public int Id { get; set; }
         /// <summary>
         /// Name of Role
@@ -100,7 +102,7 @@ namespace Aspree.Core.ViewModels
         /// </summary>
         [Required]
         public string Name { get; set; }
-        [Required]
+        //[Required]
         public List<Guid> Privileges { get; set; }
 
 
@@ -127,9 +129,76 @@ namespace Aspree.Core.ViewModels
         public string Name { get; set; }
     }
 
-    public class RoleViewResponseModel 
+    public class RoleViewResponseModel  : ApiResponseViewModel
     {
         public string Name { get; set; }    
     }
 
+    public class GetAllRoleModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+             return new List<RoleModel>()
+            {
+                 new RoleModel
+                 {
+                    CreatedBy = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    DateDeactivated = DateTime.Now,
+                    DeactivatedBy = Guid.NewGuid(),
+                    Guid = Guid.NewGuid(),
+                    Id = 1,
+                    IsSystemRole = false,
+                    ModifiedBy = Guid.NewGuid(),
+                    ModifiedDate = DateTime.Now,
+                    Name = "Example Name",
+                    TenantId = Guid.NewGuid(),
+                 }
+               
+            };
+        }
+    }
+    public class RoleModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new RoleModel
+            {
+                CreatedBy = Guid.NewGuid(),
+                CreatedDate = DateTime.Now,
+                DateDeactivated = DateTime.Now,
+                DeactivatedBy = Guid.NewGuid(),
+                Guid = Guid.NewGuid(),
+                Id = 1,
+                IsSystemRole = false,
+                ModifiedBy = Guid.NewGuid(),
+                ModifiedDate = DateTime.Now,
+                Name = "Example Name",
+                TenantId = Guid.NewGuid(),
+            };
+        }
+    }
+
+    public class NewRoleModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new NewRoleModel
+            {
+                Name = "Example Name",
+                TenantId = Guid.NewGuid(),
+            };
+        }
+    }
+
+    public class EditRoleModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new EditRoleModel
+            {
+                Name = "Example name",                
+            };
+        }
+    }
 }

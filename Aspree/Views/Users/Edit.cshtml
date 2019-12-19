@@ -1,0 +1,95 @@
+﻿@model Aspree.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Edit User";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+@section NavBarLeft{
+    
+    
+        <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+    
+}
+ 
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="main-content TabCard">
+        <div class="justify-content-lg-center">
+            <div class="col-md-11">
+                <div class="card card-body">
+                    @Html.Partial("~/Views/Shared/ManageSystemAdminTools.cshtml")
+                    <div class="tab-content tabcontent-border">
+                        <div class="tab-pane active" id="manageproject" role="tabpanel">
+                            <div class="p-20">
+                                <h4 class="card-title">Edit User</h4>
+                                <form id="frmUser" class="form-horizontal m-t-40" method="post" action="/users/edit/@Model.UserGuid" autocomplete="off">
+                                    <input id="Guid" name="Guid" value="@Model.UserGuid" type="hidden" />
+                                    <input id="TenantId" name="TenantId" value="@Model.TenantId" type="hidden" />
+                                    <div class="form-group">
+                                        <label for="FirstName" class="">First Name<span class="text-danger">*</span></label>
+                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @required = "required", @maxlength = "30", @placeholder = "First Name" })
+                                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "form-control-feedback" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="LastName" class="">Last Name<span class="text-danger">*</span></label>
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @required = "required", @maxlength = "30", @placeholder = "Last Name" })
+                                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "form-control-feedback" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Email" class="">Email<span class="text-danger">*</span></label>
+                                        @Html.TextBoxFor(m => m.Email, new { @type = "email", @readonly = "readonly", @class = "form-control", @required = "required", @maxlength = "80", @placeholder = "Email" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "form-control-feedback" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Mobile" class="">Mobile<span class="text-danger">*</span></label>
+                                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @required = "required", @maxlength = "15", @placeholder = "Mobile" })
+                                        @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "form-control-feedback" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Address" class="">Address</label>
+                                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @maxlength = "100", @placeholder = "Address" })
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name" class="">System Role<span class="text-danger">*</span></label>
+                                        @Html.DropDownListFor(x => x.RoleId, Model.Role, new { @class = "form-control", @placeholder = "Role", @required = true })
+                                        @Html.ValidationMessageFor(m => m.RoleId, "", new { @class = "form-control-feedback" })
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Profile" class="">Profile<span class="text-success">[Max Image size 1MB, Max height and width 200 pixel.]</span></label>
+                                        @Html.HiddenFor(m => m.Profile)
+                                        <input type="file" id="fileProfile" name="fileProfile" onchange="User.setImage(this,'#Profile')" accept=".png,.jpg" class="form-control" />
+                                        <span class="form-control-feedback field-validation-valid"></span>
+                                    </div>
+                                    <div class="">
+                                        <a href="/Users" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                                        <button type="button" onclick="User.saveUser();" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/apps/users")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $('.system-admin-tools li a').removeClass('active show');
+            $('.system-admin-tools li a:eq(4)').addClass('active show');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(6)').addClass('active');
+        })
+    </script>
+}

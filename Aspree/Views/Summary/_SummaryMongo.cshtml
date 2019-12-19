@@ -1,0 +1,988 @@
+﻿@model  Aspree.Core.ViewModels.MongoViewModels.SummaryViewModel
+@{
+    ViewBag.Title = "Summary";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+    List<string> deleteSummaryPageActivityRole = new List<string>
+    {
+        Aspree.Core.Enum.RoleTypes.System_Admin.ToString().Replace("_", " ")
+        , Aspree.Core.Enum.RoleTypes.Project_Admin.ToString().Replace("_", " ")
+        , Aspree.Core.Enum.RoleTypes.Data_Entry_Supervisor.ToString().Replace("_", " ")
+    };
+
+    List<Guid> linkedProject = new List<Guid>();
+
+    string userProjectRole = ViewBag.ProjectStaffMembersRoles as string;
+
+    string absolutePath = string.Empty;
+    string testingEnvironmentClass = "";
+    bool isTesturipath = false;
+    try
+    {
+        /////--------local host test url.
+        //absolutePath = (Request.Url.Segments.Count() > 1 ? Request.Url.Segments[1].ToLower() : string.Empty);
+
+        ////---------live domain test url.
+        //isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains("uds-test");
+        isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains(Aspree.Utility.ConfigSettings.TestSiteKeyword);
+        absolutePath = isTesturipath ? "test/" : "";
+        if (absolutePath == "test/")
+        {
+            Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml";
+        }
+    }
+    catch (Exception exc)
+    { }
+
+
+    List<string> deleteRegistrationActivities = new List<string>
+    {
+        Aspree.Core.Enum.EnumHelpers.GetEnumDescription(Aspree.Core.Enum.DefaultFormName.Person_Registration)
+        ,Aspree.Core.Enum.EnumHelpers.GetEnumDescription(Aspree.Core.Enum.DefaultFormName.Participant_Registration)
+        ,Aspree.Core.Enum.EnumHelpers.GetEnumDescription(Aspree.Core.Enum.DefaultFormName.Place__Group_Registration)
+        ,Aspree.Core.Enum.EnumHelpers.GetEnumDescription(Aspree.Core.Enum.DefaultFormName.Project_Registration)
+    };
+
+    //List<Aspree.Core.ViewModels.AddSummaryPageActivityViewModel> SummaryPageActivityList = ViewBag.SummaryPageActivityList as List<Aspree.Core.ViewModels.AddSummaryPageActivityViewModel>;
+}
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+}
+<input type="hidden" id="CurrentProjectId" name="CurrentProjectId" value="@ViewBag.CurrentProjectId" />
+<input type="hidden" id="ProjectId" name="ProjectId" value="@Model.ProjectGuid" />
+<input type="hidden" id="ActivityId" name="ActivityId" value="" data-activity-guid="" />
+<input type="hidden" id="UserProjectRole" name="UserProjectRole" value="@userProjectRole" />
+<input type="hidden" id="PersonEntityId" name="PersonEntityId" value="@Model.EntityNumber" />
+<input type="hidden" id="EntityCreatedDate" name="EntityCreatedDate" value="@Model.CreatedDate.ToString("MM-dd-yyyy")" />
+<div class="row justify-content-lg-center w-100">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row justify-content-lg-center">
+            <div class="col-sm-4 col-md-4 col-lg-3">
+                <div class="card @testingEnvironmentClass">
+                    <div class="card-body text-center p-2 pb-3">
+                        @{
+                            string style = "";
+                            var heightWidthCSS = "";
+                            if (Model.EntityType == "Person")
+                            {
+                                style = !string.IsNullOrEmpty(Model.EntityProfileImage) ? "style=background:#ffffff;color:#333;" : "style=background:#950056;color:#ffffff;";
+                            }
+                            else if (Model.EntityType == "Participant")
+                            {
+                                style = !string.IsNullOrEmpty(Model.EntityProfileImage) ? "style=background:#ffffff;color:#333;" : "style=background:#282b2b;color:#ffffff;";
+                            }
+                            else if (Model.EntityType == "Project")
+                            {
+                                style = !string.IsNullOrEmpty(Model.EntityProfileImage) ? "style=background:#ffffff;color:#333;" : "style=background:#218fcfab;color:#ffffff;";
+                            }
+                            else if(Model.EntityType == "Place/Group")
+                            {
+                                style = !string.IsNullOrEmpty(Model.EntityProfileImage) ? "style=background:#ffffff;color:#333;" : "style=background:#fdc429;color:#43425d;";
+                            }
+                             
+                        }
+                        <div class="m-t-20 border border-dark content-circle" @style>
+                            @if (Model.EntityType == Aspree.Core.Enum.EntityTypes.Person.ToString() || Model.EntityType == Aspree.Core.Enum.EntityTypes.Project.ToString() || Model.EntityType == Aspree.Core.Enum.EntityTypes.Place__Group.ToString().Replace("__", "/"))
+                            {
+
+                                if (Model.EntityProfileImage != null)
+                                {
+                                    try
+                                    {
+                                        byte[] image = Convert.FromBase64String(Model.EntityProfileImage.Split(',')[1]);
+                                        using (var ms = new MemoryStream(image))
+                                        {
+                                            System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+                                            // or some other data container
+                                            if (img.Width > img.Height)
+                                            {
+                                                heightWidthCSS = "height: 170px!important; width:auto";
+                                            }
+                                            else if (img.Width < img.Height)
+                                            {
+                                                heightWidthCSS = "width:170px!important;height:auto;";
+                                            }
+                                            else {
+                                                heightWidthCSS = "height: 170px!important; width:auto";
+                                            }
+                                        }
+                                    }
+                                    catch (Exception)
+                                    {
+                                        throw;
+                                    }
+                            <img src="@Model.EntityProfileImage" style="@heightWidthCSS" />
+                                }
+                                else
+                                {
+                            <span class="span_name_noimg" id="lftCrdspnEntityUserName">@Model.EntityUserName @Model.EntityUserSurname</span>
+                                }
+                            }
+                            else
+                            {
+                            <span class="span_name_noimg" id="lftCrdspnEntityUserName">@Model.EntityUserName @Model.EntityUserSurname</span>
+                            }
+                        </div>
+                        @if (Model.EntityType == Aspree.Core.Enum.EntityTypes.Person.ToString() || Model.EntityType == Aspree.Core.Enum.EntityTypes.Project.ToString() || Model.EntityType == Aspree.Core.Enum.EntityTypes.Place__Group.ToString().Replace("__", "/"))
+{
+    if (Model.EntityProfileImage != null)
+    {
+                        <span class="span_name_full" id="lftCrdspnEntityUserName">@Model.EntityUserName @Model.EntityUserSurname</span>
+    }
+}
+
+                    </div>
+                    <div class="card-body d-block-cardd">
+                        <div class="card-Text pb-1">
+                            <h6>ID: </h6>
+                            <span>@Model.EntityNumber</span>
+                        </div>
+
+                        @{
+                            switch (Model.EntityType)
+                            {
+                                case "Participant":
+                                    <div class="card-Text pb-1">
+                                        <h6 class="text-capitalize">DOB:</h6>
+                                        <span id="lftCrdspnDOB">@Model.DOB</span>
+                                    </div>
+                                    <div class="card-Text pb-1">
+                                        <h6 class="text-capitalize">Gender:</h6>
+                                        <span id="lftCrdspnGender">@Model.Gender</span>
+                                    </div>
+
+
+
+                                    <!--Added leter-->
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Email)? "hide" : "")" id="displayEmailList">
+                                        <h6 class="text-capitalize">Email:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Email))
+                                        {
+                                            foreach (var em in Model.Email.Split(':'))
+                                            {
+                                                <span class="lftCrdspnEmailCls row ml-0 pt-05" id="lftCrdspnEmail" style="width: 80%;">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Phone)? "hide" : "")" id="displayPhoneList">
+                                        <h6 class="text-capitalize phoneListClass">Phone:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Phone))
+                                        {
+                                            foreach (var ph in Model.Phone.Split(':'))
+                                            {
+                                                <span class="lftCrdspnPhoneCls row ml-0 pt-05" id="lftCrdspnPhone">@ph</span>
+                                            }
+                                        }
+
+                                    </div>
+                                    <div class="card-Text pb-1  @(string.IsNullOrEmpty(Model.Fax) ? "hide" : "")"id="displayFaxList">
+                                        <h6 class="text-capitalize">Fax:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Fax))
+                                        {
+                                            foreach (var em in Model.Fax.Split(':'))
+                                            {
+                                                <span class="lftCrdspnFaxCls row ml-0 pt-05" id="lftCrdspnEmail">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.StrtNum) ? "hide" : "")" id="displayStreetNumberList">
+                                        <h6 class="text-capitalize">Street Number:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.StrtNum))
+                                        {
+                                            foreach (var em in Model.StrtNum.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStreetNumberCls row ml-0 pt-05" id="lftCrdspnEmail" style="width: 80%;">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.StrtNme) ? "hide" : "")" id="displayStreetNameList">
+                                        <h6 class="text-capitalize">Street Name:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.StrtNme))
+                                        {
+                                            foreach (var em in Model.StrtNme.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStreetNameCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Suburb) ? "hide" : "")" id="displaySuburbList">
+                                        <h6 class="text-capitalize">Suburb:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Suburb))
+                                        {
+                                            foreach (var em in Model.Suburb.Split(':'))
+                                            {
+                                                <span class="lftCrdspnSuburbCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.State) ? "hide" : "")" id="displayStateList">
+                                        <h6 class="text-capitalize">State:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.State))
+                                        {
+                                            foreach (var em in Model.State.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStateCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Postcode) ? "hide" : "")" id="displayPostcodeList">
+                                        <h6 class="text-capitalize">Postcode:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Postcode))
+                                        {
+                                            foreach (var em in Model.Postcode.Split(':'))
+                                            {
+                                                <span class="lftCrdspnPostcodeCls row ml-0 pt-05" id="lftCrdspnEmail">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+
+                                    break;
+                                case "Person":
+                                    <div class="card-Text pb-1">
+                                        <h6 class="text-capitalize">Profession:</h6>
+                                        <span id="lftCrdspnProfession">@Model.Profession</span>
+                                    </div>
+
+                                    <div class="card-Text pb-1" id="displayEmailList">
+                                        <h6 class="text-capitalize emailListClass">Email:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Email))
+                                        {
+                                            foreach (var em in Model.Email.Split(':'))
+                                            {
+                                                <span class="lftCrdspnEmailCls row ml-0 pt-05" id="lftCrdspnEmail" style="width: 80%;">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1" id="displayPhoneList">
+                                        <h6 class="text-capitalize phoneListClass">Phone:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Phone))
+                                        {
+                                            foreach (var ph in Model.Phone.Split(':'))
+                                            {
+                                                <span class="lftCrdspnPhoneCls row ml-0 pt-05" id="lftCrdspnPhone">@ph</span>
+                                            }
+                                        }
+
+                                    </div>
+                                    
+
+                                    <div class="card-Text pb-1  @(string.IsNullOrEmpty(Model.Fax) ? "hide" : "")" id="displayFaxList">
+                                        <h6 class="text-capitalize faxListClass">Fax:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Fax))
+                                        {
+                                            foreach (var em in Model.Fax.Split(':'))
+                                            {
+                                                <span class="lftCrdspnFaxCls row ml-0 pt-05" id="lftCrdspnFax">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.StrtNum) ? "hide" : "")" id="displayStreetNumberList">
+                                        <h6 class="text-capitalize streetNumberListClass">Street Number:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.StrtNum))
+                                        {
+                                            foreach (var em in Model.StrtNum.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStreetNumberCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.StrtNme) ? "hide" : "")" id="displayStreetNameList">
+                                        <h6 class="text-capitalize streetNameListClass">Street Name:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.StrtNme))
+                                        {
+                                            foreach (var em in Model.StrtNme.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStreetNameCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Suburb) ? "hide" : "")" id="displaySuburbList">
+                                        <h6 class="text-capitalize">Suburb:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Suburb))
+                                        {
+                                            foreach (var em in Model.Suburb.Split(':'))
+                                            {
+                                                <span class="lftCrdspnSuburbCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.State) ? "hide" : "")" id="displayStateList">
+                                        <h6 class="text-capitalize">State:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.State))
+                                        {
+                                            foreach (var em in Model.State.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStateCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Postcode) ? "hide" : "")" id="displayPostcodeList">
+                                        <h6 class="text-capitalize">Postcode:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Postcode))
+                                        {
+                                            foreach (var em in Model.Postcode.Split(':'))
+                                            {
+                                                <span class="lftCrdspnPostcodeCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+
+                                    break;
+                                case "Place/Group":
+                                    
+
+                                    <div class="card-Text pb-1" id="displayEmailList">
+                                        <h6 class="text-capitalize emailListClass">Email:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Email))
+                                        {
+                                            foreach (var em in Model.Email.Split(':'))
+                                            {
+                                                <span class="lftCrdspnEmailCls row ml-0 pt-05" style="width: 80%;">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Phone)? "hide" : "")" id="displayPhoneList">
+                                        <h6 class="text-capitalize phoneListClass">Phone:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Phone))
+                                        {
+                                            foreach (var ph in Model.Phone.Split(':'))
+                                            {
+                                                <span class="lftCrdspnPhoneCls row ml-0 pt-05" id="lftCrdspnPhone">@ph</span>
+                                            }
+                                        }
+
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Fax) ? "hide" : "")" id="displayFaxList">
+                                        <h6 class="text-capitalize">Fax:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Fax))
+                                        {
+                                            foreach (var em in Model.Fax.Split(':'))
+                                            {
+                                                <span class="lftCrdspnFaxCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.StrtNum) ? "hide" : "")" id="displayStreetNumberList">
+                                        <h6 class="text-capitalize">Street Number:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.StrtNum))
+                                        {
+                                            foreach (var em in Model.StrtNum.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStreetNumberCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.StrtNme) ? "hide" : "")"  id="displayStreetNameList">
+                                        <h6 class="text-capitalize">Street Name:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.StrtNme))
+                                        {
+                                            foreach (var em in Model.StrtNme.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStreetNameCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Suburb) ? "hide" : "")" id="displaySuburbList">
+                                        <h6 class="text-capitalize">Suburb:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Suburb))
+                                        {
+                                            foreach (var em in Model.Suburb.Split(':'))
+                                            {
+                                                <span class="lftCrdspnSuburbCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1" id="displayStateList">
+                                        <h6 class="text-capitalize">State:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.State))
+                                        {
+                                            foreach (var em in Model.State.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStateCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Postcode) ? "hide" : "")" id="displayPostcodeList">
+                                        <h6 class="text-capitalize">Postcode:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Postcode))
+                                        {
+                                            foreach (var em in Model.Postcode.Split(':'))
+                                            {
+                                                <span class="lftCrdspnPostcodeCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+
+                                    break;
+                                case "Project":
+
+                                    <div class="card-Text pt-5 pb-1 @(string.IsNullOrEmpty(Model.Address) ? "hide" : "")">
+                                        <h6 class="text-capitalize">Address:</h6>
+                                        <span>@Model.Address</span>
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Suburb) ? "hide" : "")" id="displaySuburbList">
+                                        <h6 class="text-capitalize">Suburb:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Suburb))
+                                        {
+                                            foreach (var em in Model.Suburb.Split(':'))
+                                            {
+                                                <span class="lftCrdspnSuburbCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.State) ? "hide" : "")" id="displayStateList">
+                                        <h6 class="text-capitalize">State:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.State))
+                                        {
+                                            foreach (var em in Model.State.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStateCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Phone) ? "hide" : "")" id="displayPhoneList" >
+                                        <h6 class="text-capitalize phoneListClass">Phone:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Phone))
+                                        {
+                                            foreach (var ph in Model.Phone.Split(':'))
+                                            {
+                                                <span class="lftCrdspnPhoneCls row ml-0 pt-05" id="lftCrdspnPhone">@ph</span>
+                                            }
+                                        }
+
+                                    </div>
+
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Email)? "hide" : "")" id="displayEmailList">
+                                        <h6 class="text-capitalize">Email:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Email))
+                                        {
+                                            foreach (var em in Model.Email.Split(':'))
+                                            {
+                                                <span class="lftCrdspnEmailCls row ml-0 pt-05" id="lftCrdspnEmail" style="width: 80%;">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    
+                                    <div class="card-Text pb-1  @(string.IsNullOrEmpty(Model.Fax) ? "hide" : "")" id="displayFaxList">
+                                        <h6 class="text-capitalize">Fax:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Fax))
+                                        {
+                                            foreach (var em in Model.Fax.Split(':'))
+                                            {
+                                                <span class="lftCrdspnFaxCls row ml-0 pt-05" id="lftCrdspnEmail">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.StrtNum) ? "hide" : "")" id="displayStreetNumberList">
+                                        <h6 class="text-capitalize">StrtNum:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.StrtNum))
+                                        {
+                                            foreach (var em in Model.StrtNum.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStreetNumberCls row ml-0 pt-05" id="lftCrdspnEmail" style="width: 80%;">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.StrtNme) ? "hide" : "")" id="displayStreetNameList">
+                                        <h6 class="text-capitalize">Strt:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.StrtNme))
+                                        {
+                                            foreach (var em in Model.StrtNme.Split(':'))
+                                            {
+                                                <span class="lftCrdspnStreetNameCls row ml-0 pt-05">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                   
+                                    <div class="card-Text pb-1 @(string.IsNullOrEmpty(Model.Postcode) ? "hide" : "")" id="displayPostcodeList">
+                                        <h6 class="text-capitalize">Postcode:</h6>
+                                        @if (!string.IsNullOrEmpty(Model.Postcode))
+                                        {
+                                            foreach (var em in Model.Postcode.Split(':'))
+                                            {
+                                                <span class="lftCrdspnPostcodeCls row ml-0 pt-05" id="lftCrdspnEmail" style="width: 80%;">@em</span>
+                                            }
+                                        }
+                                    </div>
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-9">
+                <div class="card pb-redioTb-wrap02 @testingEnvironmentClass">
+                    <div class="card-header">
+                        <h3 class="card-title">Summary Page </h3>
+                        <h4 class="card-subtitle">What would you like to do?</h4>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="clearfix pt-05 theme-bgcolor theme-gray-bgcolor"></div>
+                    <div class="card-body custome-timeline">
+                        <form action="javascript:void(0)" autocomplete="off" id="frmAddSummaryPageActivity">
+                            <div class="form-body timeline-form-body w-100">
+                                <div class="form-badge" id="formType"><span class="round text-uppercase">new</span></div>
+                                <div class="form-panel">
+                                    <div class="row less-m-row">
+                                        <div class="col-md-5 col-sm-5">
+
+                                            <div class="datePickerCard d-flex">
+
+                                                <div class="form-group date-input mb-0">
+                                                    <label class="control-label">Activity Date</label>
+                                                    <a href="#"
+                                                       id="ActivityDate"
+                                                       class="form-control inline-datepicker"
+                                                       placeholder="Activity date"
+                                                       data-type="combodate"
+                                                       data-value="@DateTime.UtcNow.ToLocalTime().ToString("yyyy-MM-dd")"
+                                                       data-format="YYYY-MM-DD"
+                                                       data-viewformat="DD/MM/YYYY"
+                                                       data-template="D / MMM / YYYY"
+                                                       data-pk="1"
+                                                       name="ActivityDate"
+                                                       data-title="Activity date"></a>
+                                                    <span class="form-control-plaintext field-validation-valid form-control-feedback" data-valmsg-for="ActivityDate" data-valmsg-replace="true"></span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Activity Type</label>
+                                                <select id="ActivityType" name="ActivityType" class="form-control" required data-val="true" data-val-required="This field is required.">
+                                                    <option value="">Select Activity</option>
+                                                    @foreach (var activity in Model.SummaryPageActivityTypeList)
+                                                    {
+                                                        if (activity.IsDefaultActivity == (int)Aspree.Core.Enum.DefaultActivityType.Default && activity.ActivityName != "Project Linkage") { continue; }
+                                                        <option value="@activity.ActivityGuid">@activity.ActivityName</option>
+                                                    }
+                                                </select>
+                                                <input type="text" id="ActivityTypeNameDisplayOnly" name="ActivityTypeNameDisplayOnly" class="form-control hide" />
+                                                <input type="hidden" value="" id="EditedActivityType" name="EditedActivityType" />
+                                                <span class="field-validation-valid form-control-feedback" data-valmsg-for="ActivityType" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="d-flex">
+                                                <div class="form-group">
+                                                    <label class="control-label">Activity Completed By</label>
+                                                    <select id="CompletedByUser" name="CompletedByUser" class="form-control" required data-val="true" data-val-required="This field is required.">
+                                                        <option value="">Select User</option>
+                                                        @foreach (var projUser in Model.SummaryPageProjectUsersList)
+                                                        {
+                                                            <option value="@projUser.UserGuid">@projUser.UserName</option>
+                                                        }
+                                                    </select>
+                                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="CompletedByUser" data-valmsg-replace="true"></span>
+
+                                                </div>
+                                                <div class="input-group-btn">
+                                                    <label class="control-label"></label>
+                                                    <button id="btnAddEditSummaryPageActivity" class="btn btn-info btn-outline bootstrap-touchspin-up ml-2 white-text mt-2" type="button" onclick="Summary.AddSummaryPageActivity()"><i class="fas fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--/span-->
+                                        <!--/span-->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="timeline p-b-0" id="scheduledActivitiesContainer">
+                            @{int index = 0;}
+                            @foreach (var activity in Model.SummaryPageActivitiesList)
+                            {
+                                if (activity.LinkedProjectGuid!=null)
+                                {
+                                    linkedProject.Add((Guid)activity.LinkedProjectGuid);
+                                }
+                                index++;
+                                DateTime activityDate = activity.ActivityDate;
+                                int day = activityDate.Day;
+                                string month = activityDate.ToString("MMM");
+
+                                <li id="activityContainer-@activity.Id" class="pb-4" data-activities-order="@index" data-activity-date="@activityDate.ToString("yyyy-MM-dd")">
+                                    <div class="timeline-badge success" id="datemonth-@activity.Id">
+                                        @day
+                                        <br>
+                                        @month
+                                    </div>
+                                    <div class="timeline-panel jkl pl-3">
+                                        <div class="timeline-heading">
+                                            <div class="row align-items-end mbb15">
+                                                <div class="col-md-7 col-sm-4 col-xs-12">
+                                                    <h4 class="timeline-title" data-activity-display-name="@activity.ActivityName">
+                                                        @activity.ActivityName
+                                                        <small>@(activity.ActivityName == Aspree.Core.Enum.DefaultFormName.Project_Linkage.ToString().Replace("_", " ") ? !string.IsNullOrEmpty(activity.LinkedProjectName) ? "(" + activity.LinkedProjectName + ")" : "" : "")</small>
+                                                    </h4>
+                                                </div>
+                                                <div class="col-md-3 col-sm-4 col-xs-12"> <small class="font-16" id="completedbyname-@activity.Id"> Staff: @activity.ActivityCompletedByName</small> </div>
+                                                <div class="col-md-2 col-sm-4 col-xs-12">
+                                                    <small class="float-right">
+                                                        <button type="button" class="btn btn-warning w-btn" id="btnEditSummaryPageActivity-@activity.Id"
+                                                                data-editactivity-date="@activity.ActivityDate.ToString("yyyy-MM-dd")"
+                                                                data-editactivity-activityid="@activity.ActivityGuid"
+                                                                data-editactivity-summarypage-activityid="@activity.Id"
+                                                                data-editactivity-completedby="@activity.ActivityCompletedByGuid"
+                                                                data-editactivity-entity-number="@activity.PersonEntityId"
+                                                                onclick="Summary.EditSummaryPageActivity(this)">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+
+                                                        @if (deleteSummaryPageActivityRole.Contains(LoggedInUser.Roles.FirstOrDefault()))
+                                                        {
+
+                                                            if (activity.ActivityName == Aspree.Core.Enum.DefaultFormName.Project_Linkage.ToString().Replace("_", " "))
+                                                            {
+                                                                int frmStatus = 0;
+                                                                frmStatus = activity.SummaryPageActivityFormsList.Select(x => x.FormStatusId).FirstOrDefault();
+                                                                if (frmStatus == (int)Aspree.Core.Enum.FormStatusTypes.Not_entered)
+                                                                {
+                                                                    <button type="button" class="btn btn-danger w-btn " onclick="Summary.DeleteSummaryPageActivity('@activity.Id', '@activity.ActivityName')">
+                                                                        <i class="fa fa-trash-alt"></i>
+                                                                    </button>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                if (!deleteRegistrationActivities.Contains(activity.ActivityName))
+                                                                {
+                                                                <button type="button" class="btn btn-danger w-btn" onclick="Summary.DeleteSummaryPageActivity('@activity.Id', '@activity.ActivityName')">
+                                                                    <i class="fa fa-trash-alt"></i>
+                                                                </button>
+                                                                }
+                                                            }
+                                                        }
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </div>
+
+                                        @foreach (var forms in activity.SummaryPageActivityFormsList)
+                                        {
+                                            string statusName = (forms.FormStatusId == (int)Aspree.Core.Enum.FormStatusTypes.Published ? "Submitted" : Enum.GetName(typeof(Aspree.Core.Enum.FormStatusTypes), forms.FormStatusId).Replace("_", " "));
+                                            if (forms.FormStatusId == (int)Aspree.Core.Enum.FormStatusTypes.Submitted_for_review)
+                                            {
+                                                statusName = "Submitted for Review";
+                                            }
+
+                                            <div class="timeline-body">
+                                                <div class="row mt-10">
+                                                    <div class="col-sm-4">
+                                                        <small class="font-16"> @forms.FormTitle</small>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        
+                                                        <small class="@(forms.FormStatusId == (int)Aspree.Core.Enum.FormStatusTypes.Published ? "text-success" : forms.FormStatusId == (int)Aspree.Core.Enum.FormStatusTypes.Submitted_for_review ? "text-submit-for-review" : "text-warning") ml-5 link font-16" data-is-form-submitted="true" data-summarypage-userentity="@activity.Id" id="@forms.FormGuid-@activity.Id" onclick="Summary.OpenSummaryPageFormPopup('@Model.EntityNumber', '@forms.FormGuid', '@activity.ActivityGuid', this, @activity.ProjectVersion)">
+                                                            @statusName
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.pb-card-redio -->
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+
+<div class="modal fade DefaultModal HospitalsList" id="activity-form-variables-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+        <div class="modal-content @testingEnvironmentClass">
+            <div class="modal-header mhl">
+                <h1 id="search-variable-result-model-title"></h1>
+                <input type="hidden" id="hdnFormDataEntryGuid" />
+                <input type="hidden" id="hdnFormDataEntryTypeIsNew" />
+            </div>
+            <div class="modal-body">
+                <form class="p-20 pt-0 pb-0 activity-form" id="frm-1" autocomplete="off">
+                    <div id="activityformVariableContainer">
+
+                    </div>
+                    <div class="role-model-error"></div>
+                    <div class="modal-footer" id="search-variable-result-model-footer">
+
+                    </div>
+                    <div class="d_fll" id="result-model-footer-for-modifiedby">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--confirm-submit-form-data-entry-->
+<div class="modal fade user-search-poppus" id="confirm-submit-form-data-entry" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    You are about to submit a form with blank fields. No follow-up will be triggered if you submit this form with missing values. Are you sure you want to submit this form?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="butConfirmSubmitFormDataEntry" class="sf-submit-button btn-sm waves-effect waves-light btn-info" data-dismiss="modal">Submit</button>
+                <button type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--search popup-->
+<div class="modal fade DefaultModal HospitalsList" id="search-popup-template-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="searchHeader"></h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="sp-tabcontent-redio sp-active" id="search-popup-template">
+                    <form class="form-material" autocomplete="off">
+                        <div class="card-body">
+                            <div class="row justify-content-lg-center">
+                                <div class="col-md-12 col-lg-11">
+                                    <div class="sp-tabcontent" id="search-popup-body">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row justify-content-lg-center">
+                                <div class="col-md-12 col-lg-10">
+                                    <div id="search-popup-template-footer" class="card-btn-group pull-right">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--search result popup-->
+<div class="modal fade DefaultModal HospitalsList" id="search-variable-result-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="search-variable-result-model-title"></h5>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table mb-0" id="search-variable-result-model-table"></table>
+                </div>
+            </div>
+            <div class="modal-footer" id="search-variable-result-model-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Summary page activity delete confirmation-->
+<div class="modal fade user-search-poppus" id="summaryactivity-delete-confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info activity-delete-confirm-message">
+                    Are you sure want to remove activity  from summary page?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--onclick="Deployment.deployActivities()" -->
+                <button type="button" id="butDeleteConfirmed" class="sf-submit-button btn-sm waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--clear all form-->
+<!--Summary page activity delete confirmation-->
+<div class="modal fade user-search-poppus" id="reset-summarypage-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    All data entered into the form will be cleared. Are you sure you want to clear all data from this form?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="butResetConfirmed" class="sf-submit-button btn-sm waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hide">
+    <ul id="scheduledActivitiesTemplate">
+        <li id="activityContainer-new" class="pb-4" data-activities-order="0" data-activity-date="">
+            <div class="timeline-badge success" id="datemonth-new">
+                scheduled_activities_day
+                <br>
+                scheduled_activities_month
+            </div>
+            <div class="timeline-panel jkl pl-3">
+                <div class="timeline-heading">
+                    <div class="row align-items-end mbb15">
+                        <div class="col-md-7 col-sm-4 col-xs-12">
+                            <h4 class="timeline-title">
+                                <small></small>
+                            </h4>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12"> <small class="font-16" id="completedbyname-new"> Staff: scheduled_activities_completedby</small> </div>
+
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <small class="float-right">
+                                <button type="button" class="btn btn-warning  w-btn" id="btnEditSummaryPageActivity-new"
+                                        data-editactivity-date=""
+                                        data-editactivity-activityid=""
+                                        data-editactivity-summarypage-activityid=""
+                                        data-editactivity-completedby=""
+                                        data-editactivity-entity-number=""
+                                        onclick="Summary.EditSummaryPageActivity(this)">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+
+                                @if (deleteSummaryPageActivityRole.Contains(LoggedInUser.Roles.FirstOrDefault()))
+                                {
+                                    <button type="button" class="btn btn-danger  w-btn" onclick="Summary.DeleteSummaryPageActivity('Id', 'ActivityName')">
+                                        <i class="fa fa-trash-alt"></i>
+                                    </button>
+                                }
+                              
+                            </small>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>
+
+@section Scripts{
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="/content/assets/plugins/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    @Scripts.Render("~/apps/mongo/summary")
+
+
+
+    <script>
+        $(function () {
+            App.IsTestSite = @(isTesturipath == true ? "true" : "false");
+
+                        $('.inline-datepicker').editable({
+                            //mode: 'popup'
+                            mode: 'inline',
+                            maxDate: 0,// new Date(),
+                        });
+
+
+                        $('#sidebarnav > li').removeClass('active');
+                        $('#sidebarnav > li:nth-child(4)').addClass('active');
+
+                        Summary.GetAllCountries();
+                        Summary.GetAllStates();
+                        Summary.GetAllPostcodes();
+                        Summary.GetAllProjectByUserId();
+
+                        Summary.CallEntityFormDataEntryModel();
+
+
+                    });
+
+                    App.UploadsPathAPI = "@Aspree.Utility.ConfigSettings.WebApiUploadsPath";
+    </script>
+
+
+@{
+    foreach (var item in linkedProject)
+    {
+        <script>
+            Summary.AllLinkedActivity.push('@item');
+        </script>
+        
+    }
+}
+
+
+   
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <style>
+        .editable-disabled-singledate-customdatepicker {
+            pointer-events: none;
+        }
+    </style>
+}

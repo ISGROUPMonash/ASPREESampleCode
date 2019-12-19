@@ -8,11 +8,7 @@ using System.Threading.Tasks;
 
 namespace Aspree.Provider.Interface
 {
-    /// <summary>
-    /// Handles validations related operations
-    /// </summary>
-    public interface IValidationRuleProvider 
+    public interface IValidationRuleProvider : IProviderCommon<ValidationRuleViewModel, ValidationRule>
     {
-        IEnumerable<ValidationRuleViewModel> GetAll();
     }
 }

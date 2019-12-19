@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    var urlParam = ViewBag.UrlData;
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+}
+
+ @section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+}
+
+@section NavBarRight{
+}
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <input type="hidden" id="routPath" value="@urlParam" />
+    <div class="main-content TabCard">
+        <div class="justify-content-lg-center">
+            <div class="col-md-11">
+                <div class="card">
+                    <div class="card-body">
+                        @Html.Partial("~/Views/Shared/ManageSystemAdminTools.cshtml")
+                        <div class="tab-content tabcontent-border">
+                            <div class="tab-pane active" id="manageentities" role="tabpanel">
+                                <div class="p-20">
+                                <div class="col-md-12 col-sm-12 col-xs-12 SelectCategorie">
+                                    <div class="form-group row">
+                                        <label for="ToolsCategoryType">Select category type:</label>
+                                        <div class="col-md-4 col-md-4 col-xs-12">
+                                            <select class="form-control" id="ToolsCategoryType" name="ToolsCategoryType">
+                                                    <option value="0">Variables Category</option>
+                                                    <option value="1">Forms Category</option>
+                                                    <option value="2" selected>Activities Category</option>
+                                                </select> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pull-left">
+                                    <h4 class="card-title">Activity Category</h4>
+                                    <input type="hidden" id="TenantId" value="TenantId" />
+                                </div>
+                                <div class="pull-right">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="table-responsive">
+                                    <table id="example23" class="table table-striped text-center table-sm FullWidthTable" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Modified</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Activity Category Popus -->
+<div class="modal fade user-search-poppus" id="change-categoryname-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit Activity Category</h5>
+            </div>
+            <div class="modal-body">
+                <div class="role-model-error"></div>
+                <div class="sf-submit-info1">
+                    <form class="form-horizontal" id="frmEditData" autocomplete="off">
+                        <input id="Guid" name="Guid" type="hidden" />
+                        <div class="form-group">
+                            <label for="editActivityCategory">Category Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="editActivityCategory" required name="editActivityCategory" maxlength="30" data-val="true" data-val-required="This field is required.">
+                            <span class="field-validation-valid form-control-feedback" data-valmsg-for="editActivityCategory" data-valmsg-replace="true"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Category.editActivityCategorySubmit(true);" class="btn-sm waves-effect waves-light btn-info">Save</button>
+                <button id="btn-cancel" type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add New Activity Category Popus -->
+<div class="modal fade user-search-poppus" id="add-categoryname-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Activity Category</h5>
+            </div>
+            <div class="modal-body">
+                <div class="role-model-error"></div>
+                <div class="sf-submit-info1">
+                    <form class="form-horizontal" id="frmSaveData" autocomplete="off">
+                        <input id="Guid" name="Guid" type="hidden" />
+                        <div class="form-group">
+                            <label for="addActivityCategory">Category Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="addActivityCategory" required name="addActivityCategory" maxlength="30" data-val="true" data-val-required="This field is required.">
+                            <span class="field-validation-valid form-control-feedback" data-valmsg-for="addActivityCategory" data-valmsg-replace="true"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Category.editActivityCategorySubmit(false);" class="btn-sm waves-effect waves-light btn-info">Save</button>
+                <button id="btn-cancel" type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Activity category -->
+<div class="modal fade user-search-poppus" id="manage-confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    Are you sure want to active/deactivate selected user?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Category.delete()" class="btn-sm waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/apps/categories")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $('.system-admin-tools li a').removeClass('active show');
+            $('.system-admin-tools li a:eq(0)').addClass('active show');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(6)').addClass('active');
+        })
+        $('#ToolsCategoryType').change(function () {
+            let d =$('#ToolsCategoryType').val();
+            App.goto('/SystemAdminTools/ManageCategories?path=' + d);
+        });
+    </script>
+}

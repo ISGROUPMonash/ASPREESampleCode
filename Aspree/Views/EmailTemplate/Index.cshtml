@@ -1,0 +1,46 @@
+﻿@model List<Aspree.Core.ViewModels.PrivilegeSmallViewModel>
+@{
+    ViewBag.Title = "Email Templates";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">Email Templates</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+        <li class="breadcrumb-item active">Email Templates</li>
+    </ol>
+}
+
+@section NavBarRight{
+
+
+}
+
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="clearfix"></div>
+            <div class="table-responsive">
+                <table id="example23" class="table table-bordered table-striped text-center table-sm" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Subject</th>
+                            
+                            <th>Modified</th>
+                            <th class="no-sort">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/apps/emailtemplates")
+}

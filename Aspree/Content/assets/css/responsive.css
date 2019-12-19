@@ -1,0 +1,64 @@
+/* responsive design */
+@media (min-width: 1920px) {
+}
+ @media (min-width: 1366px) {
+}
+ @media only screen and (max-width: 1280px) {
+/*Header Start*/
+     .MainHeader .header-top-left{left:15px;}
+     .MainHeader .headerLogo{ margin-right:90px;}      
+/*Header End*/
+.mini-sidebar .footer { left: 0;}
+
+}
+
+
+@media only screen and (max-width: 991px) {
+     .MainHeader .header-top-left .pjt-name{font-size:1.7rem;}
+    .MainHeader .headerLogo { height: 73px;  display: flex; align-items: center;}
+    .MainHeader .headerLogo img {max-width: 180px; height: auto !important;  width: auto;  max-height: 50px;}
+}
+@media only screen and (max-width: 767px) {
+   .MainHeader.topbar .nav-toggler{ position: absolute; right: 0; top: 0; line-height:54px;}
+   .MainHeader.topbar .nav-toggler i{ position:relative; top:5px;}
+   .MainHeader.topbar .top-navbar .navbar-collapse{ padding-right:15px;}
+   .MainHeader .headerLogo { margin-right:95px;}
+   .MainHeader .header-top-left .pjt-name {font-size: 1.3rem; letter-spacing: 0.1rem;}
+   .MainHeader .headerLogo img {max-height: 42px; max-width: 120px; width: auto; height: auto !important;}
+   .MainHeader .headerLogo{display: flex; align-items: center;  height: 73px;}
+   .MainHeader .headerLogo .navbar-brand{ display:inline-block;}
+   .MainHeader .header-heading{ margin-top:16px;}
+   .TestingLayoutHeader .headerLogo{margin-top:11px;}
+   .TestingLayoutHeader .navbar-brand{ margin-right:0px;}
+   .TestingLayoutHeader .header-heading{margin-top:10px;} 
+}
+
+@media only screen and (max-width: 567px) {
+ .MainHeader .header-top-left .pjt-name { font-size: 1.1rem;}
+    .MainHeader .headerLogo img {
+        max-width: 100px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .MainHeader .header-top-left .pjt-name { font-size: 1rem; letter-spacing: 0.2rem;}
+    .MainHeader .headerLogo{ height:58px;}
+}
+
+@media only screen and (max-width: 479px) {
+.MainHeader .header-top-left .pjt-name {  font-size: 0.8rem;    letter-spacing: 0.8px;  }
+.MainHeader .headerLogo img { max-width: 50px; max-height: 29px; width: auto; height: auto;}
+.MainHeader.topbar .top-navbar {min-height: 58px;}
+.MainHeader.topbar .top-navbar .navbar-header { line-height: 58px;}
+.MainHeader.topbar .top-navbar .navbar-nav > .nav-item > .nav-link{line-height:38px;}
+.MainHeader .header-heading{ margin-top:11px;}
+.MainHeader.topbar .top-navbar .navbar-collapse { padding-right: 11px;}
+.MainHeader .headerLogo img { max-width: 65px; max-height: 25px; }
+.MainHeader .headerLogo {margin-right: 88px;}
+.TestingLayoutHeader.MainHeader .header-heading { margin-top: 5px;}
+.TestingLayoutHeader .headerLogo { margin-top: 9px;}
+}
+
+@media only screen and (max-width: 359px) {
+    .headerLogo{ display:none !important;}
+}

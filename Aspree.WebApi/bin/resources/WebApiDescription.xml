@@ -1,0 +1,4248 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aspree.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Aspree.WebApi.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Startup.Configuration(Owin.IAppBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.AccountController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AccountController.#ctor(Aspree.Provider.Interface.IUserLoginProvider)">
+            <summary>
+            
+            </summary>
+            <param name="userLoginProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AccountController.ChangePassword(Aspree.Core.ViewModels.ChangePassword)">
+            <summary>
+            Change user password
+            </summary>
+            <remarks>
+            Change user password<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to change password.
+            - Changed password will be saved in SQL database.
+            <br></br> 
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="changePassword">ChangePassword Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AccountController.ResetForgetPassword(System.Guid,Aspree.Core.ViewModels.ResetPassword)">
+            <summary>
+            Reset user password
+            </summary>
+            <remarks>
+            Reset user password<br></br>   
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create/reset password.
+            - User can create/reset password from password creation link sent via email.
+            - Reset password will be saved in SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="resetPassword">ResetPassword Model</param>
+            <param name="guid">guid of the user whose password to be change</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AccountController.SecurityQuestion(Aspree.Core.ViewModels.UpdateUserSecurityQuestion)">
+            <summary>
+            Update security question for user.
+            </summary>
+            <remarks>
+            Update security question for user.<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to update security question of an user for password recovery.
+            - Security question can be changed from manage profile page.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="securityQuestion">UpdateUserSecurityQuestion Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AccountController.CheckUsernameAvailability(System.String,System.Nullable{System.Guid},System.Nullable{System.Guid})">
+            <summary>
+            Check username availability
+            </summary>
+            <remarks>
+            Check username availability<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to check availability of username based on username and its authType.
+            - This api takes userName, authType, userId as input request.
+            - Returns true if username and authentication type already exists into database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>        
+            <param name="userName">UserName that to be check</param>
+            <param name="authType">Auth type of user for login</param>
+            <param name="userid">User id(optional)</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AccountController.CheckUserpassword(System.String)">
+            <summary>
+            Check username availability
+            </summary>
+            <remarks>
+            Check username availability<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to check availability of username based on username and its authType.
+            - This api takes userName, authType, userId as input request.
+            - Returns true if username and authentication type already exists into database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>        
+            <param name="password">UserName that to be check</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ActionListController">
+            <summary>
+            action list
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActionListController.#ctor(Aspree.Provider.Interface.IActionListProvider)">
+            <summary>
+            constructor
+            </summary>
+            <param name="actionListProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActionListController.AllActionListData(Aspree.Core.ViewModels.ActionListSearchParameters)">
+            <summary>
+            Get all action lists
+            </summary>
+            <remarks>
+            Action list<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get all action list data.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="searchfiltermodel">search filter model</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActionListController.CountAllActionList(System.Nullable{System.Guid})">
+            <summary>
+            Count all action lists
+            </summary>
+            <remarks>
+            Count all action list records<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to count all action list.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Project id that action list to be count</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActionListController.GetAllActionListActivities(System.Nullable{System.Guid})">
+            <summary>
+            Get all activity/forms of action list
+            </summary>
+            <remarks>
+            Get all activity/forms of action list<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get activity/forms of action list.
+            - Activities of action list will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Project Id</param>
+            <returns></returns>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ActivityController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.#ctor(Aspree.Provider.Interface.IActivityProvider)">
+            <summary>
+            
+            </summary>
+            <param name="activityProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.GetAll">
+            <summary>
+            Get all activities
+            </summary>
+            <remarks>
+            Get all activities<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get all activities along with its associated forms.
+            - This api fetches activities from SQL database.<br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.Get(System.Guid)">
+            <summary>
+            Get activity by guid
+            </summary>
+            <remarks>
+            Get activity<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get an activity based on its guid from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an Activities that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.Post(Aspree.Core.ViewModels.NewActivityViewModel)">
+            <summary>
+            Add new activity
+            </summary>
+            <remarks>
+            Add new activity<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new activity into the system.
+            - Activity will be saved with its associated project id.
+            - The created activity will be saved in SQL database.<br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newActivity">New Activities Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.Put(System.Guid,Aspree.Core.ViewModels.EditActivityViewModel)">
+            <summary>
+            Edit existing activities
+            </summary>
+            <remarks>
+            Edit existing activities<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit an existing activity by its guid.<br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editActivity">Edit Activities Model</param>
+            <param name="guid">guid of Activities that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.Delete(System.Guid)">
+            <summary>
+            Delete existing activity
+            </summary>
+            <remarks>
+            Delete existing activity<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete an existing activity by its guid.
+            - The api data will be soft deleted form SQL table(Activities).
+            - When activity is soft deleted, the column "DateDeactivated" is updated in SQL database.
+            - Link for forms and variables for the associated activity is deleted from the SQL database table(ActivityForm)
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of Activities that is to be deleted</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.ProjectBuilderActivities(System.Guid)">
+             <summary>
+             Get project builder activities
+             </summary>
+             <remarks>
+             
+            Get project builder activities<br></br>
+             <strong>Purpose.</strong>
+             - This api provides the functionality to get all existing activities, forms, roles and entity types.
+             - Details of activity page will be fetched from SQL database.
+             <br></br>
+             <strong>Authentication.</strong>
+             - HTTP Basic Authentication.
+             </remarks>
+             <param name="projectId">Guid of a project that activities to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.ScheduleActivityList(Aspree.Core.ViewModels.NewScheduleActivityViewModel)">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+            <param name="scheduleActivity">Schedule Activities Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.RemoveScheduledActivity(System.Guid)">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+            <param name="guid">Guid of Activities that is to be Remove Scheduled Activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.SavePreviewScheduledActivity(System.String)">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+            <param name="guid">Guid of Activities that is to be Save Preview Scheduled Activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.ScheduleActivityList_New(Aspree.Core.ViewModels.NewScheduleActivityViewModel)">
+            <summary>
+            Schedule an New Activities
+            </summary>
+            <remarks>
+            Schedule an New Activities
+            </remarks>
+            <param name="scheduleActivity">Schedule Activities Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.GetAllActivityScheduling(System.Guid)">
+            <summary>
+            Get all activity scheduling details
+            </summary>
+            <remarks>
+            Get all activity scheduling details
+            </remarks>
+            <param name="activityId">Guid of an Activity that scheduling details to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.AddSummaryPageActivity(Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel)">
+             <summary>
+             Add activities on summary page
+             </summary>
+              <remarks>
+            Add activities on summary page<br></br>
+             <strong>Purpose.</strong>
+             - This api provides the functionality to add an activity on summary page.
+             - New activity will be saved in SQL database.
+             <br></br>
+             <strong>Authentication.</strong>
+             - HTTP Basic Authentication.
+             </remarks>
+             <param name="newActivity">AddActivities Model</param>
+             
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.GetAllSummaryPageActivity(System.String,System.Guid)">
+            <summary>
+            Get all summary page activities of an entity
+            </summary>
+            <remarks>
+            Get all summary page activities of an entity<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get the list of  all activities on summary page.
+            - This api fetches all activities from SQL database on summary page based on entityId and projectId.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="entId">Entity id</param>
+            <param name="projectId">Project id</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.EditSummaryPageActivity(Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel)">
+            <summary>
+            Edit activity on summary page
+            </summary>
+            <remarks>
+            Edit activity on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update the existing activity on summary page.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editSummarypageActivity">edit summarypageActivity Model</param>
+            
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.DeleteSummaryPageActivity(System.Int32)">
+            <summary>
+            Delete activities on summary page
+            </summary>
+            <remarks>
+            Delete activities on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete activity added on summary page.
+            - This api will delete data from SQL table.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="id">id of summary page activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityController.Getactivity(System.Guid,System.Guid)">
+            <summary>
+            Get activity by guid and projct id and userloginid
+            </summary>
+            <remarks>
+            Get activity<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get an activity based on its guid from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an Activities that to be fetched</param>
+            <param name="projectid">project id of an Activities that to be fetched</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.AuthenticationTypeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AuthenticationTypeController.#ctor(Aspree.Provider.Interface.IAuthenticationTypeProvider)">
+            <summary>
+            
+            </summary>
+            <param name="authenticationTypeProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AuthenticationTypeController.GetAll">
+            <summary>
+            Get all authentication types
+            </summary>
+            <remarks>
+            Get all authentication types<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get the list of all authentication types.
+            - The api fetches all authentication types from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AuthenticationTypeController.Get(System.Nullable{System.Guid})">
+            <summary>
+            Get authentication type by guid
+            </summary>
+            <remarks>
+             Get authentication type by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get authentication type based on its guid.
+            - Authentication type will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an authentication type that is to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AuthenticationTypeController.Post(Aspree.Core.ViewModels.NewAuthenticationTypeViewModel)">
+            <summary>
+            Add new authentication type
+            </summary>
+            <remarks>
+            Add new authentication type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new authentication type into the system.
+            - The new authentication type will be saved into SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newAuthenticationTypeViewModel">new authentication type model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AuthenticationTypeController.Put(System.Guid,Aspree.Core.ViewModels.EditAuthenticationTypeViewModel)">
+            <summary>
+            Edit authentication type
+            </summary>
+            <remarks>
+            Edit authentication type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update an existing authentication type using its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editAuthenticationTypeViewModel">Edit Authentication Type Model</param>
+            <param name="guid">guid of Authentication Type that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AuthenticationTypeController.Delete(System.Guid)">
+            <summary>
+            Delete existing authentication type
+            </summary>
+            <remarks>
+            Delete existing authentication type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete an existing authentication type.
+            - The data will be soft deleted from SQL table.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of Authentication Type that is to be deleted</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AuthenticationTypeController.GetAuthenticationTypeByState(System.String)">
+            <summary>
+            Get authentication type by guid
+            </summary>
+            <remarks>
+            Get authentication type by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get an authentication type by state.
+            - Authentication type will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="state">State of an Authentication Type that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.AuthenticationTypeController.InActiveByGuid(System.Guid)">
+            <summary>
+            Get authentication type by guid
+            </summary>
+            <remarks>
+            Get authentication type by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get an authentication type by state.
+            - Authentication type will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">State of an Authentication Type that needs to be fetched</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.DashboardController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.DashboardController.#ctor(Aspree.Provider.Interface.IDashboardProvider)">
+            <summary>
+            
+            </summary>
+            <param name="dashboardProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.DashboardController.Get">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.DashboardController.Get(System.Guid)">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.DashboardController.Post(Aspree.Core.ViewModels.DashboardFilter)">
+            <summary>
+            Return Dashboard User and Role data
+            </summary>
+            <remarks>
+            Return Dashboard User and Role data
+            </remarks>
+            <param name="filter">DashboardFilter Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.DashboardController.Put(System.Guid,System.String)">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.DashboardController.Delete(System.Guid)">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EmailTemplateController.#ctor(Aspree.Provider.Interface.IEmailTemplateProvider)">
+            <summary>
+            
+            </summary>
+            <param name="emailTemplateProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EmailTemplateController.GetAll">
+            <summary>
+            Get All Email Templates
+            </summary>
+            <remarks>
+            Get All Email Templates
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EmailTemplateController.Get(System.Guid)">
+            <summary>
+            Get Email Template By Guid
+            </summary>
+            <remarks>
+            Get Email Template By Guid
+            </remarks>
+            <param name="guid">Guid of Email Templated</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EmailTemplateController.Put(System.Guid,Aspree.Core.ViewModels.EmailTemplateViewModel)">
+            <summary>
+            Edit e-mail template By guid
+            </summary>
+            <remarks>
+            Edit e-mail template By guid
+            </remarks>
+            <param name="editEmailModel">EmailTemplate Model</param>
+            <param name="guid">guid of role to be edited</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.EntityController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.#ctor(Aspree.Provider.Interface.IEntityProvider)">
+            <summary>
+            
+            </summary>
+            <param name="entityProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.GetAll">
+            <summary>
+            Get All Entities
+            </summary>
+            <remarks>
+            Get All Entities
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.Get(System.Guid)">
+            <summary>
+            Get Entity By Guid
+            </summary>
+            <remarks>
+            Get Entity By Guid
+            </remarks>
+            <param name="guid">Guid of an Entity that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.Post(Aspree.Core.ViewModels.NewEntityViewModel)">
+            <summary>
+            Add New Entity
+            </summary>
+            <remarks>
+            Add New Entity
+            </remarks>
+            <param name="newEntity">New Entity Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.Put(System.Guid,Aspree.Core.ViewModels.EditEntityViewModel)">
+            <summary>
+            Edit Existing Entity
+            </summary>
+            <remarks>
+            Edit Existing Entity
+            </remarks>
+            <param name="editEntity">Edit Entity Model</param>
+            <param name="guid">guid of Entity that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Entity
+            </summary>
+            <remarks>
+            Delete Existing Entity
+            </remarks>
+            <param name="guid">Guid of Entity that is to be deleted</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.GetByTenantId(System.Guid)">
+            <summary>
+            Get Entity By Tenant Guid
+            </summary>
+            <remarks>
+            Get Entity By Tenant Guid
+            </remarks>
+            <param name="guid">Guid of an Entity that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.GetByEntityTypeAndSubTypeId(System.Guid,System.Guid,System.Nullable{System.Guid})">
+            <summary>
+            Get Entity variable By Entity Type and Sub Type Guid
+            </summary>
+            <remarks>
+            Get Entity variable By Entity Type and Sub Type Guid
+            </remarks>
+            <param name="tenantGuid">Guid of Tenant that to be fetched</param>
+            <param name="typeGuid">Guid of an EntityType that to be fetched</param>
+            <param name="subTypeGuid">Guid of an EntitySubtype that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityController.GetAllEntitiesCreatedBySearch">
+            <summary>
+            Get all entities created by search page.
+            </summary>
+            <remarks>
+            Get all entities created by search page.<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to display enities into system admin tools.
+            - This api will get all person entity, participant entity, place/group entity, project entity created into the system from the search page.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityFormDataVariableController.#ctor(Aspree.Provider.Interface.IEntityFormDataVariableProvider)">
+            <summary>
+            
+            </summary>
+            <param name="entityProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityFormDataVariableController.GetAll">
+            <summary>
+            Get All Entities
+            </summary>
+            <remarks>
+            Get All Entities
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityFormDataVariableController.Get(System.Guid)">
+            <summary>
+            Get Entity By Guid
+            </summary>
+            <remarks>
+            Get Entity By Guid
+            </remarks>
+            <param name="guid">Guid of an Entity that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityFormDataVariableController.Post(Aspree.Core.ViewModels.EntityFormDataVariableViewModel)">
+            <summary>
+            Add New Entity
+            </summary>
+            <remarks>
+            Add New Entity
+            </remarks>
+            <param name="newEntity">New Entity Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityFormDataVariableController.Put(System.Guid,Aspree.Core.ViewModels.EntityFormDataVariableViewModel)">
+            <summary>
+            Edit Existing Entity
+            </summary>
+            <remarks>
+            Edit Existing Entity
+            </remarks>
+            <param name="editEntity">Edit Entity Model</param>
+            <param name="guid">guid of Entity that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityFormDataVariableController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Entity
+            </summary>
+            <remarks>
+            Delete Existing Entity
+            </remarks>
+            <param name="guid">Guid of Entity that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ForgotPasswordController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ForgotPasswordController.#ctor(Aspree.Provider.Interface.IForgotPasswordProvider,Aspree.Provider.Interface.IUserLoginProvider)">
+            <summary>
+            
+            </summary>
+            <param name="_forgotPassword"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ForgotPasswordController.Post(Aspree.Core.ViewModels.ResetPasswordViewModel)">
+            <summary>
+            Forgot password
+            </summary>
+            <remarks>
+            Forgot password<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to reset forgotten password.
+            - This api sends a password reset link on e-mail id of the user.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="resetPass">ResetPassword Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ForgotPasswordController.ResetForgetPassword(System.Guid,Aspree.Core.ViewModels.ResetPassword)">
+            <summary>
+            Reset user password
+            </summary>
+            <remarks>
+            Reset user password<br></br>   
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create/reset password.
+            - User can create/reset password from password creation link sent via email.
+            - Reset password will be saved in SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="resetPassword">ResetPassword Model</param>
+            <param name="guid">guid of the user whose password to be change</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.FormController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.#ctor(Aspree.Provider.Interface.IFormProvider)">
+            <summary>
+            
+            </summary>
+            <param name="formProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.GetAll">
+            <summary>
+            Get all forms
+            </summary>
+            <remarks>
+            Get all forms<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all forms.
+            - This api returns list of FormViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.Get(System.Guid)">
+            <summary>
+            Get forms by guid
+            </summary>
+            <remarks>
+            Get forms by guid<br></br>  
+            <strong>Purpose.</strong>
+            - This api is used to get form by its guid.
+            - This api returns FormViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a forms that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.Post(Aspree.Core.ViewModels.NewFormViewModel)">
+            <summary>
+            Add new form
+            </summary>
+            <remarks>
+            Add new form<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to create new form.
+            - This api takes NewFormViewModel of a form as input request.
+            - This api returns FormViewModel of created form in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newForm">New Forms Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.Put(System.Guid,Aspree.Core.ViewModels.EditFormViewModel)">
+            <summary>
+            Edit existing forms
+            </summary>
+            <remarks>
+            Edit existing formss<br></br>
+            <strong>Purpose.</strong>        
+            - This api is used to update an existing form.
+            - This api takes EditFormViewModel and guid of form as input request.
+            - This api returns FormViewModel of updated form in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editForm">Edit Forms Model</param>
+            <param name="guid">guid of Forms that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.Delete(System.Guid)">
+            <summary>
+            Delete existing forms
+            </summary>
+            <remarks>
+            Delete existing formss<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing form.
+            - This api takes guid of a form that needs to be deleted as input request.
+            - This api returns FormViewModel of deleted form in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of Forms that needs to be deleted</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.ProjectBuilderForms(System.Guid)">
+            <summary>
+            Get project builder forms
+            </summary>
+            <remarks>
+            Get project builder forms<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to return all details of form page in project builder.
+            - This api returns all existing forms, variables, entity types and roles in response.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Guid of a project that forms to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.GetAllDefaultForms">
+            <summary>
+            Get All default Forms
+            </summary>
+            <remarks>
+            Get All default Forms
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.GetProjectDefaultForms(System.Guid)">
+            <summary>
+            Get all project default forms
+            </summary>
+            <remarks>
+            Get all project default forms<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to get all default forms of a project.
+            - This api takes project guid as input request.
+            - This api returns list of FormViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Project Id to get Project default Forms</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.GetFormsByGuidList(System.Collections.Generic.List{System.Guid})">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+            <param name="formActivityViewModel">Activity Form View Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.GetActivityFormBySearchedEntity(System.Int32,System.Guid,System.Guid,System.Int32)">
+            <summary>
+            Get activity form by searched entity
+            </summary>
+            <remarks>
+            Get activity form by searched entityy<br></br>
+            <strong>Purpose.</strong>
+            - This api returns a dataentry form.
+            - This api takes entityId, formId, activityId, summarypage activityId as input parameters.
+            - This api returns dataentry form, FormViewModel in response.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="entId">EntId</param>
+            <param name="formId">Form Id</param>
+            <param name="activityId">Activity Id</param>
+            <param name="summaryPageActivityId">summary page activity id</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.GetAllForms(System.Guid)">
+            <summary>
+            Get all forms of a project
+            </summary>
+            <remarks>
+            Get all forms of a project<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all forms of a project.
+            - This api takes guid of a project as input request.
+            - This api returns list of FormViewModel in response model .
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">project id</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormController.GetformbyGuid(System.Guid,System.Guid)">
+            <summary>
+            Get forms by guid
+            </summary>
+            <remarks>
+            Get forms by guid<br></br>  
+            <strong>Purpose.</strong>
+            - This api is used to get form by its guid.
+            - This api returns FormViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a forms that needs to be fetched</param>
+            <param name="projectid">project id of a forms that needs to be fetched</param>
+            
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.FormDataEntryController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.#ctor(Aspree.Provider.Interface.IFormDataEntryProvider,Aspree.Provider.Interface.IUserLoginProvider)">
+            <summary>
+            
+            </summary>
+            <param name="formDataEntryProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.GetAll">
+            <summary>
+            Get all form data entry
+            </summary>
+            <remarks>
+            Get all form data entryy<br></br>
+            <strong>Purpose.</strong>
+            -The purpose of this api is to get all form data entry.
+            -The api fetches list of form data entry from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.Get(System.Guid)">
+            <summary>
+            Get form for data entry by guid
+            </summary>
+            <remarks>
+            Get form for data entry by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get a form for data entry based on its guid.
+            - Form for data entry will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a Form Data Entry that have to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.Post(Aspree.Core.ViewModels.FormDataEntryViewModel)">
+            <summary>
+            Add new form for data entry
+            </summary>
+            <remarks>
+            Add new form for data entry<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new form for data entry.
+            - The new form for data entry will be saved in SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newFormDataEntry">New FormDataEntry Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.Edit(System.Guid,Aspree.Core.ViewModels.FormDataEntryViewModel)">
+            <summary>
+            Edit existing forms for data entry
+            </summary>
+            <remarks>
+            Edit existing forms for data entry<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update an existing form for data entry by its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editFormDataEntry">Edit FormDataEntry Model</param>
+            <param name="guid">Guid of forms for Data Entry that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.Delete(System.Guid)">
+            <summary>
+            Delete existing form data entry
+            </summary>
+            <remarks>
+            Delete existing form data entry<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete an existing form data entry by its guid.
+            - The api will delete data from SQL table(FormDataEntry).
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of Forms that is to be deleted</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.SearchParticipant(Aspree.Core.ViewModels.SearchPageVariableViewModel)">
+            <summary>
+            Search entities
+            </summary>
+            <remarks>
+            Search entities<br></br>
+            <strong>Purpose.</strong>
+            This api provides the functionality to fetch records of participants entity.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="searchPageVariables">SearchPageVariableViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.GetFormDataEntryByEntId(System.Guid,System.Guid,System.String)">
+            <summary>
+            Get form data entry by entId
+            </summary>
+            <remarks>
+            Get forms data entry by entId<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get form data entry.
+            - This api fetches records by projectId, formId, entityId
+            - This api returns list of form data entry.
+            </remarks>        
+            <param name="projectId">project id of form variable to be search</param>
+            <param name="formId">form id to search for variables</param>
+            <param name="entId">entId of a forms that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.GetAllFormDataEntryProjects(System.Guid,System.Guid)">
+            <summary>
+            Get all projects
+            </summary>
+            <remarks>
+            Get all projects<br></br>
+            <strong>Purpose.</strong>
+            </remarks>        
+            <param name="projectId">project id of form variable to be search</param>
+            <param name="formId">form id to search for variables</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormDataEntryController.GetAllDataEntryProjectList">
+            <summary>
+            Get all projects for List of projects page
+            </summary>
+            <remarks>
+            Get all projects for List of projects page
+            </remarks>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.MongoDB_SummaryController">
+            <summary>
+            Summary of an entity
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.MongoDB_SummaryController.#ctor(Aspree.Provider.Interface.MongoProvider.ISummaryProvider,Aspree.Provider.Interface.IUserLoginProvider)">
+            <summary>
+            controller
+            </summary>
+            <param name="summaryProvider"></param>
+            <param name="userLoginProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.MongoDB_SummaryController.GetSummaryDetails(System.Nullable{System.Guid},System.Int64)">
+             <summary>
+             Get summary details by entityid and projectid
+             </summary>
+             <remarks>
+             Get summary details by entityid and projectid<br></br>
+             <strong>Purpose.</strong>
+             - This api provides the functionality to get summary page details based on entity id and project id.
+             - This api fetches entity basic details and list of activities to display on summary page.
+             <br></br>
+             <strong>Authentication.</strong>
+             - HTTP Basic Authentication.
+             </remarks>        
+             <param name="projectId">Guid of project</param>
+            <param name="entityId">Entity Number</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.MongoDB_SummaryController.GetSummaryPageForm(System.Int32,System.Nullable{System.Guid},System.Nullable{System.Guid},System.Nullable{System.Guid},System.Int32,System.String,System.Nullable{System.Guid})">
+            <summary>
+            Open dataentry form on summary page
+            </summary>
+            <remarks>
+            Open dataentry form on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get form for data entry along with its variables and their respective values.
+            - This api is used on summary page to open form for data entry.
+            - The details will be fetched from the database for the form on the basis of entity number, guid of form, guid of activity, guid of project etc.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="entId">Entity id</param>
+            <param name="formId">Guid of form</param>
+            <param name="activityId">Guid of activity</param>
+            <param name="projectId">Guid of project</param>
+            <param name="p_Version">version</param>
+            <param name="currentProjectId">Guid of loggedin project</param>
+            <param name="summaryPageActivityId">Activity id added on summary page</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.MongoDB_SummaryController.AddSummaryPageActivity(Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel)">
+            <summary>
+            Add activities on summary page
+            </summary>
+            <remarks>
+            Add activities on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to add activities on summary page associated to an entity.
+            - Activities added on summary page will be saved in Mongo db with its respective entity id.
+            - These activities consists of forms for data entry with their respective entities.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newActivity">AddActivities Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.MongoDB_SummaryController.EditSummaryPageActivity(System.String,Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel)">
+            <summary>
+            Edit activity on summary page
+            </summary>
+            <remarks>
+            Edit activity on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit an existing activity on summary page.
+            - Using this api, we can change "activity date" and "activity completed by" field.
+            - The updated "summary page activity" will get stored in MongoDB for respective entity.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="id">id of summary page activity</param>
+            <param name="editActivity">editActivities Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.MongoDB_SummaryController.DeleteSummaryPageActivity(System.String)">
+            <summary>
+            Delete activities of summary page
+            </summary>
+            <remarks>
+            Delete activities of summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete summary page activity by its id.
+            - The api data will be soft deleted form Mongo database and then we will update the "DateDeactivated", "DeactivatedBy" value.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="id">id of summary page activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.MongoDB_SummaryController.UpdateLeftPanelSummaryPage(System.Nullable{System.Guid},System.Int64)">
+             <summary>
+             Get summary details by entityid and projectid
+             </summary>
+             <remarks>
+             Get summary details by entityid and projectid<br></br>
+             <strong>Purpose.</strong>
+             - This api provides the functionality to get summary page details based on entity id and project id.
+             - This api fetches entity basic details and list of activities to display on summary page.
+             <br></br>
+             <strong>Authentication.</strong>
+             - HTTP Basic Authentication.
+             </remarks>        
+             <param name="projectId">Guid of project</param>
+            <param name="entityId">Entity Number</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.Mongo.ProjectDeployController">
+            <summary>
+            deployment of project
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.ProjectDeployController.#ctor(Aspree.Provider.Interface.MongoProvider.IProjectDeployProvider)">
+            <summary>
+            
+            </summary>
+            <param name="projectDeployProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.ProjectDeployController.DeployProject(System.Nullable{System.Guid},System.Collections.Generic.List{System.Guid})">
+            <summary>
+            Deploy active project by project id
+            </summary>
+            <remarks>
+            Deploy active project by project id<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to deploy project activities by project id.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Project id</param>
+            <param name="activitiesList">List of Activities to deploy</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.ProjectDeployController.GetProjectMongo(System.Nullable{System.Guid})">
+            <summary>
+            Get project from mongo db by project guid
+            </summary>
+            <remarks>
+            Get project from mongo db by project guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get project by project id from Mongo database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Guid of a project that need to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.ProjectDeployController.GetAllDeployedProject">
+            <summary>
+            Get all deployed projects
+            </summary>
+            <remarks>
+            Get all deployed projects<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get all deployed projects from Mongo Database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.ProjectDeployController.PushTestProject(System.Nullable{System.Guid},System.Collections.Generic.List{System.Guid})">
+            <summary>
+            Push activities to test environment
+            </summary>
+            <remarks>
+            Push activities to test environment<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to Push activities to test environment.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Project id</param>
+            <param name="activitiesList">Activities to push</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.ProjectDeployController.CheckEntityLinkedProject(System.Nullable{System.Guid},System.Int32)">
+            <summary>
+            Check project linked by entityId
+            </summary>
+            <remarks>
+            Check project linked by entityId<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to check project linked with entity.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Guid of a project</param>
+            <param name="entityId">Entity id</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.Mongo.SearchController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.SearchController.#ctor(Aspree.Provider.Interface.MongoProvider.ISearchProvider,Aspree.Provider.Interface.IFormDataEntryProvider,Aspree.Provider.Interface.IUserLoginProvider)">
+            <summary>
+            
+            </summary>
+            <param name="searchProvider"></param>
+            <param name="formDataEntryProvider"></param>
+            <param name="userLoginProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.SearchController.SearchEntities(Aspree.Core.ViewModels.SearchPageVariableViewModel)">
+            <summary>
+            Search entities
+            </summary>
+            <remarks>
+            Search entities<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to search an entity which will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="searchPageVariables">SearchPageVariableViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.SearchController.Post(Aspree.Core.ViewModels.FormDataEntryViewModel)">
+            <summary>
+            Save new entities into Mongo database
+            </summary>
+            <remarks>
+            Save new entities into Mongo database<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new entity into the system which will be saved in Mongo database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newFormDataEntry">FormDataEntryViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.SearchController.Put(System.String,Aspree.Core.ViewModels.FormDataEntryViewModel)">
+            <summary>
+            Update entities into Mongo database
+            </summary>
+            <remarks>
+            Update entities into Mongo database<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update an existing entity by its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editForm">FormDataEntryViewModel</param>
+            <param name="guid">Guid of forms that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.SearchController.DeleteSummaryPageFormData(System.String)">
+            <summary>
+            Delete activities on summary page
+            </summary>
+            <remarks>
+            Delete activities on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete activity added on summary page.
+            - This api will delete data from SQL table.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="id">id of summary page activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.Mongo.SearchController.CheckEntityExistenceLocation(System.String)">
+            <summary>
+            Check entity existence location
+            </summary>
+            <remarks>
+            Check entity existence location
+            <br></br>
+            <strong>Purpose.</strong>
+            - Check entity existence location
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="entityId">id of entity</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.PostCodeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PostCodeController.#ctor(Aspree.Provider.Interface.IPostCodeProvider)">
+            <summary>
+            
+            </summary>
+            <param name="postCodeProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PostCodeController.GetAll">
+            <summary>
+            Get all postcode.
+            </summary>
+            <remarks>
+            Get all postcode<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all postcodes.
+            - This api returns list of PostCodeViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PostCodeController.Get(System.Guid)">
+            <summary>
+            Get postcode by guid
+            </summary>
+            <remarks>
+            Get postcode by guid<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to get postcode by its guid.
+            - This api returns PostCodeViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a postcode that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PostCodeController.Post(Aspree.Core.ViewModels.NewPostCodeViewModel)">
+            <summary>
+            Add new postcode
+            </summary>
+            <remarks>
+            Add new postcode<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to create new postcode.
+            - This api takes NewPostCodeViewModel as input request.
+            - This api returns PostCodeViewModel of new created postcode in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="PostCodeViewModel">New PostCodeViewModel Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PostCodeController.Put(System.Guid,Aspree.Core.ViewModels.EditPostCodeViewModel)">
+            <summary>
+            Edit existing postcode
+            </summary>
+            <remarks>
+            Edit existing postcode<br></br> 
+            <strong>Purpose.</strong>        
+            - This api is used to update an existing postcode.
+            - This api takes EditPostCodeViewModel and guid of postcode as input request.
+            - This api returns PostCodeViewModel of updated postcode in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="PostCodeViewModel">Edit PostCodeViewModel Model</param>
+            <param name="guid">guid of city that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PostCodeController.Delete(System.Guid)">
+            <summary>
+            Delete existing postcode
+            </summary>
+            <remarks>
+            Delete existing postcode<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing postcode.
+            - This api takes guid of a postcode that needs to be deleted as input request.
+            - This api returns PostCodeViewModel of deleted postcode in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of city that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.PrivilegeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PrivilegeController.#ctor(Aspree.Provider.Interface.IPrivilegeProvider)">
+            <summary>
+            
+            </summary>
+            <param name="privilegeProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PrivilegeController.GetAll">
+            <summary>
+            Get all privileges
+            </summary>
+            <remarks>
+            Get all privileges<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get all privileges from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ProjectController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.#ctor(Aspree.Provider.Interface.IProjectProvider,Aspree.Provider.Interface.MongoProvider.IProjectDeployProvider)">
+            <summary>
+            
+            </summary>
+            <param name="projectProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.GetAll">
+            <summary>
+            Get All Projects
+            </summary>
+            <remarks>
+            Get All Projects
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.Get(System.Guid)">
+            <summary>
+            Get project by guid
+            </summary>
+            <remarks>
+            Get all projects by guid<br></br>
+            <strong>Purpose.</strong>
+            - The api provides the functionality to get project based on guid from SQL database.
+            - This api returns FormDataEntryProjectsViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a project that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.Post(Aspree.Core.ViewModels.NewProjectViewModel)">
+            <summary>
+            Add New Project
+            </summary>
+            <remarks>
+            Add New Project
+            </remarks>
+            <param name="newProject">New Project Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.Put(System.Guid,Aspree.Core.ViewModels.EditProjectViewModel)">
+            <summary>
+            Edit Existing Project
+            </summary>
+            <remarks>
+            Edit Existing Project
+            </remarks>
+            <param name="editProject">Edit Project Model</param>
+            <param name="guid">guid of Project that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Project
+            </summary>
+            <remarks>
+            Delete Existing Project
+            </remarks>
+            <param name="guid">Guid of Project that is to be deleted</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.PublishProject(System.Guid,Aspree.Core.ViewModels.EditProjectViewModel)">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use 
+            </remarks>
+            <param name="projectViewModel">Project Model</param>
+            <param name="guid">guid of Project that has to be publish</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.GetAllProjectByUserId">
+            <summary>
+            Get all projects by userid
+            </summary>
+            <remarks>
+            Get all projects by userid<br></br>
+            <strong>Purpose.</strong>
+            - The api provides the functionality to get list of all projects by userid from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.GetProjectBasicDetails(System.Guid)">
+            <summary>
+            Get project by guid
+            </summary>
+            <remarks>
+            Get project by guid<br></br>
+            <strong>Purpose.</strong>
+            - The api provides the functionality to get project's basic details based on its guid from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a project that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectController.CheckEntityLinkedProject(System.Nullable{System.Guid},System.Int32)">
+            <summary>
+            To check project linked by entityId
+            </summary>
+            <remarks>
+            To check project linked by entityId<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to check whether project is already linked by entityId or not.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Guid of a project</param>
+            <param name="entityId">entity id</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.PushEmailEventController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PushEmailEventController.#ctor(Aspree.Provider.Provider.PushEmailEventProvider)">
+            <summary>
+            
+            </summary>
+            <param name="pushEmailEventProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.PushEmailEventController.GetAll">
+            <summary>
+            currently not in use
+            </summary>
+            <remarks>
+            currently not in use
+            </remarks>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ReportController">
+            <summary>
+            Report Controller
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReportController.#ctor(Aspree.Provider.Interface.IReportProvider,Aspree.Provider.Interface.IUserLoginProvider)">
+            <summary>
+            Reportcontroller constructor
+            </summary>
+            <param name="reportProvider"></param>
+            <param name="userLoginProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReportController.DataExport(System.String,System.String,System.String,System.Int32,System.Int32)">
+            <param name="projectName">Project Name(required)</param>
+            <param name="activityName">Activity Name(optional)</param>
+            <param name="formName">Form Name(optional)</param>
+            <param name="pageNumber">Page Number(optional)</param>
+            <param name="pageSize">The number of form responses per page; default is 20 (optional)</param>
+            <returns>Report Data</returns>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ReviewController">
+            <summary>
+            Test site using this controller
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.#ctor(Aspree.Provider.Interface.MongoProvider.IProjectDeployProvider,Aspree.Provider.Interface.MongoProvider.ISearchProvider,Aspree.Provider.Interface.IUserLoginProvider,Aspree.Provider.Interface.IFormDataEntryProvider,Aspree.Provider.Interface.IActivityProvider,Aspree.Provider.Interface.IFormProvider,Aspree.Provider.Interface.MongoProvider.ISummaryProvider,Aspree.Provider.Interface.IForgotPasswordProvider)">
+            <summary>
+            Constructor of ReviewController class
+            </summary>
+            <param name="projectDeployProvider"></param>
+            <param name="searchProvider"></param>
+            <param name="userLoginProvider"></param>
+            <param name="formDataEntryProvider"></param>
+            <param name="activityProvider"></param>
+            <param name="formProvider"></param>
+            <param name="summaryProvider"></param>
+            <param name="forgotPassword"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.GetProjectMongo(System.Nullable{System.Guid})">
+            <summary>
+            Get project from mongo db by project guid
+            </summary>
+            <remarks>
+            Get project from mongo db by project guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get project by its guid .
+            - Project will be fetched from Mongo Database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Guid of a project that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.GetAllDeployedProject">
+            <summary>
+            Get all deployed projects
+            </summary>
+            <remarks>
+            Get all deployed projects<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get all deployed projects from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.CheckEntityLinkedProject(System.Nullable{System.Guid},System.Int32)">
+            <summary>
+            Check project linked by entityId
+            </summary>
+            <remarks>
+            Check project linked by entityId<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to check whether the project is already linked to entity or not.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Guid of a project</param>
+            <param name="entityId">Entity id</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.SearchEntities(Aspree.Core.ViewModels.SearchPageVariableViewModel)">
+            <summary>
+            Search Entities
+            </summary>
+            <remarks>
+            Search Entities<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to search an entity from SQL database.
+            - This api takes SearchPageVariableViewModel as request model.
+            - This api return list of FormDataEntryVariableViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="searchPageVariables">SearchPageVariableViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.Post(Aspree.Core.ViewModels.FormDataEntryViewModel)">
+            <summary>
+            Save new entities into Mongo database
+            </summary>
+            <remarks>
+            Save new entities into Mongo database<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new entity into the system.
+            - The new entity will be saved into Mongo database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newFormDataEntry">Forms Data Entry Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.Put(System.String,Aspree.Core.ViewModels.FormDataEntryViewModel)">
+            <summary>
+            Update entities into mongo db
+            </summary>
+            <remarks>
+            Update entities into mongo db<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update an existing entity by its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editForm">Edit Forms Model</param>
+            <param name="guid">guid of Forms that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.DeleteSummaryPageFormData(System.String)">
+            <summary>
+            Delete activities on summary page
+            </summary>
+            <remarks>
+            Delete activities on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete activity added on summary page.
+            - This api will delete data from SQL table.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="id">id of summary page activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.GetAllSummaryPageActivity(System.String,System.Nullable{System.Guid})">
+            <summary>
+            Get all summary page activities of an entity
+            </summary>
+            <remarks>
+            Get all summary page activities of an entity<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get all activities of summary page, based on entityid and projectid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="entId">entity id</param>
+            <param name="projectId">project id</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.AddSummaryPageActivity_SQL(Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel)">
+            <summary>
+            Add Activities on Summary page
+            </summary>
+            <remarks>
+            Add Activities on Summary page
+            <para />1. This api is used for add an activity on summary page.
+            <para />2. This api takes NewAddSummaryPageActivityViewModel model as request model.
+            <para />3. This api return AddSummaryPageActivityViewModel model as response.
+            </remarks>
+            <param name="newActivity">AddActivities Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.EditSummaryPageActivity_SQL(Aspree.Core.ViewModels.NewAddSummaryPageActivityViewModel)">
+            <summary>
+            Edit Activity of Summary page
+            </summary>
+            <remarks>
+            Edit Activity of Summary page
+            <para />1. This api is used to edit activity that is added on summary page.
+            <para />2. This api is used to edit activity date, and completed by, of summary page activity
+            <para />3. This api takes NewAddSummaryPageActivityViewModel as input request.
+            <para />4. This api return updated response model.
+            </remarks>
+            <param name="editSummarypageActivity">edit summarypageActivity Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.DeleteSummaryPageActivity_SQL(System.Int32)">
+            <summary>
+            Delete activities on Summary page
+            </summary>
+            <remarks>
+            Delete activities on Summary page
+            <para />1. This api is used to delete an summary page added activity.
+            <para />2. This api takes id of summary page added activity as input request.
+            <para />3. This api return model of deleted summary page activity.
+            </remarks>
+            <param name="id">id of summary page activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.GetActivityFormBySearchedEntity(System.Int32,System.Nullable{System.Guid},System.Nullable{System.Guid},System.Int32)">
+            <summary>
+            Get activity form by searched entity
+            </summary>
+            <remarks>
+            Get activity form by searched entity<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to return a DataEntry form.
+            - This api takes entityid, formid, activityid, summarypage activity id as input parameters.
+            - This api returns DataEntry form, FormViewModel in response.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="entId">Entity Id</param>
+            <param name="formId">Form Id</param>
+            <param name="activityId">Activity Id</param>
+            <param name="summaryPageActivityId">Summary page activity Id</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.FormDataEntrySave(Aspree.Core.ViewModels.FormDataEntryViewModel)">
+            <summary>
+            Add new forms for DataEntry
+            </summary>
+            <remarks>
+            Add new forms for DataEntry<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new form for Data Entry and save into SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newFormDataEntry">New Forms Data Entry Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.FormDataEntryEdit(System.Guid,Aspree.Core.ViewModels.FormDataEntryViewModel)">
+            <summary>
+            Edit existing forms for DataEntry
+            </summary>
+            <remarks>
+            Edit existing forms for DataEntry<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update an existing form for DataEntry by its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editFormDataEntry">Edit forms model of DataEntry</param>
+            <param name="guid">Guid of forms of DataEntry that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.SearchTestEntities(Aspree.Core.ViewModels.SearchPageVariableViewModel)">
+            <summary>
+            Search entities
+            </summary>
+            <remarks>
+            Search entities<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to search an entity from database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="searchPageVariables">SearchPageVariableViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.GetSummaryDetails(System.Nullable{System.Guid},System.Int64)">
+             <summary>
+             Get summary details by entityid and projectid
+             </summary>
+             <remarks>
+             Get summary details by entityid and projectid<br></br>
+             <strong>Purpose.</strong>
+             - The purpose of this api is to get details of summary page.
+             - Summary page details will be fetched based on entity id and project id.<br></br>
+             <strong>Authentication.</strong>
+             - HTTP Basic Authentication.
+             </remarks>        
+             <param name="projectId">guid of project</param>
+            <param name="entityId">entity number</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.GetSummaryPageForm(System.Int32,System.Guid,System.Guid,System.Guid,System.Int32,System.String,System.Guid)">
+            <summary>
+            Open DataEntry form on summary page
+            </summary>
+            <remarks>
+            Open DataEntry form on summary page<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get details of data entry form, based on entity id, guid of form, guid of activity, guid of project etc.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="entId">Entity id</param>
+            <param name="formId">Guid of form</param>
+            <param name="activityId">Guid of activity</param>
+            <param name="projectId">Guid of project</param>
+            <param name="p_Version">version</param>
+            <param name="currentProjectId">Guid of loggedin project</param>
+            <param name="summaryPageActivityId">activity id added on summary page</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.AddSummaryPageActivityMongo(Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel)">
+            <summary>
+            Add activities on summary page
+            </summary>
+            <remarks>
+            Add activities on summary page<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to add an activity on summary page.
+            - Activity added on summary page contains form for data entry.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newActivity">SummaryPageActivityViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.EditSummaryPageActivity(System.String,Aspree.Core.ViewModels.MongoViewModels.SummaryPageActivityViewModel)">
+            <summary>
+            Edit activity on summary page
+            </summary>
+            <remarks>
+            Edit activity on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit activity date, completed by etc. on summary page.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="id">Id of summary page activity</param>
+            <param name="editActivity">SummaryPageActivityViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.DeleteSummaryPageActivity(System.String)">
+            <summary>
+            Delete activities on summary page
+            </summary>
+            <remarks>
+            Delete activities on summary page<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete an activity based on id on summary page.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="id">Id of summary page activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.ResetForgetPassword(System.Guid,Aspree.Core.ViewModels.ResetPassword)">
+            <summary>
+            Reset user password
+            </summary>
+            <remarks>
+            Reset user password<br></br>   
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create/reset password.
+            - User can create/reset password from password creation link sent via email.
+            - Reset password will be saved in SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="resetPassword">ResetPassword Model</param>
+            <param name="guid">guid of the user whose password to be change</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.GetUserByTempGuid(System.Nullable{System.Guid})">
+            <summary>
+            Get user by temp guid
+            </summary>
+            <remarks>
+            Get user by temp guid<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to get user by tempguid.
+            - This api returns UserLoginViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Temp Guid of an user that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.ForgotPasswordPost(Aspree.Core.ViewModels.ResetPasswordViewModel)">
+            <summary>
+            Forgot password
+            </summary>
+            <remarks>
+            Forgot password<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to reset forgotten password.
+            - This api sends a password reset link on e-mail id of the user.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="resetPass">ResetPassword Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.ResetForgetPasswordPost(System.Guid,Aspree.Core.ViewModels.ResetPassword)">
+            <summary>
+            Reset user password
+            </summary>
+            <remarks>
+            Reset user password<br></br>   
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create/reset password.
+            - User can create/reset password from password creation link sent via email.
+            - Reset password will be saved in SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="resetPassword">ResetPassword Model</param>
+            <param name="guid">guid of the user whose password to be change</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ReviewController.UpdateMyProfile(System.Guid,Aspree.Core.ViewModels.EditUserViewModel)">
+            <summary>
+            Edit existing user
+            </summary>
+            <remarks>
+            Edit existing user<br></br> 
+            <strong>Purpose.</strong>        
+            - This api is used to update an existing user.
+            - This api takes EditUserViewModel and guid of user as input request.
+            - This api returns UserLoginViewModel of updated user in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editUser">Edit EditUserViewModel Model</param>
+            <param name="guid">guid of user that has to be edited</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.RoleController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RoleController.#ctor(Aspree.Provider.Interface.IRoleProvider)">
+            <summary>
+             
+            </summary>
+            <param name="roleProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RoleController.GetAll">
+            <summary>
+            Get all roles
+            </summary>
+            <remarks>
+            Get all roles<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all roles.
+            - This api returns list of RoleModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <returns>all roles</returns>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RoleController.Get(System.Guid)">
+            <summary>
+            Get role by guid
+            </summary>
+            <remarks>
+            Get role by guid<br></br>   
+            <strong>Purpose.</strong>
+            - This api is used to get role by its guid.
+            - This api returns RoleModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of Role</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RoleController.Post(Aspree.Core.ViewModels.NewRoleModel)">
+            <summary>
+            Add new role
+            </summary>
+            <remarks>
+            Add new role<br></br>  
+            <strong>Purpose.</strong>
+            - This api is used to create new role.
+            - This api takes NewRoleModel for role as input request.
+            - This api returns RoleModel of newly created role in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newRoleModel">RoleModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RoleController.Put(System.Guid,Aspree.Core.ViewModels.EditRoleModel)">
+            <summary>
+            Edit existing role
+            </summary>
+            <remarks>
+            Edit existing role<br></br>
+            <strong>Purpose.</strong>        
+            - This api is used to update an existing role.
+            - This api takes EditRoleModel and guid of role as input request.
+            - This api returns RoleModel of updated role in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editRoleModel">EditRoleModel</param>
+            <param name="guid">Guid of role to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RoleController.Delete(System.Guid)">
+            <summary>
+            Delete existing role
+            </summary>
+            <remarks>
+            Delete existing role<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing role.
+            - This api takes guid of a role that needs to be deleted as input request.
+            - This api returns RoleModel of deleted role in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of the role to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ActivityCategoryController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityCategoryController.#ctor(Aspree.Provider.Interface.IActivityCategoryProvider)">
+            <summary>
+            
+            </summary>
+            <param name="activityCategoryProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityCategoryController.GetAll">
+            <summary>
+            Get all activity categories
+            </summary>
+            <remarks>
+            Get all activity categories<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all activity categories.
+            - This api returns list of ActivityCategoryViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityCategoryController.Get(System.Guid)">
+            <summary>
+            Get activity category by guid
+            </summary>
+            <remarks>
+            Get activity category by guid<br></br>   
+            <strong>Purpose.</strong>
+            - This api is used to get an activity category by its guid.
+            - This api returns ActivityCategoryViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an activity category that has to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityCategoryController.Post(Aspree.Core.ViewModels.NewCategory)">
+            <summary>
+            Add new activity category
+            </summary>
+            <remarks>
+            Add new activity category<br></br>  
+            <strong>Purpose.</strong>
+            - This api is used to create a new activity category.
+            - This api returns the newly created ActivityCategoryViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newCategory">NewCategory Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityCategoryController.Put(System.Guid,Aspree.Core.ViewModels.EditCategory)">
+            <summary>
+            Edit existing activity category
+            </summary>
+            <remarks>
+            Edit existing activity category<br></br> 
+            <strong>Purpose.</strong>        
+            - This api is used to edit an existing activity category.
+            - This api takes guid of an activity category and EditCategory model as input request.
+            - This api returns updated ActivityCategoryViewModel model in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editCategory">EditCategory model</param>
+            <param name="guid">Guid of activity category that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityCategoryController.Delete(System.Guid)">
+            <summary>
+            Delete existing activity category
+            </summary>
+            <remarks>
+            Delete existing activity category<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing activity category.
+            - This api takes guid of activity category to be deleted as an input parameter.
+            - This api returns ActivityCategoryViewModel of deleted activity category in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of activity category that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ActivityStatusController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityStatusController.#ctor(Aspree.Provider.Interface.IActivityStatusProvider)">
+            <summary>
+            
+            </summary>
+            <param name="activityStatusProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityStatusController.GetAll">
+             <summary>
+             Get all activity status
+             </summary>
+             <remarks>
+            Get all activity status
+             <para /> This api is used to get all activity status.
+             </remarks>
+             <returns>All Activity Category</returns>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityStatusController.Get(System.Guid)">
+            <summary>
+            Get activity status by guid
+            </summary>
+            <remarks>
+            Get activity status by guid
+            <para />This api is used to get activity status using guid.
+            <para />This api returns ActivityStatusViewModel model as response.
+            </remarks>
+            <param name="guid">Guid of Activity Status</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityStatusController.Post(Aspree.Core.ViewModels.NewStatus)">
+            <summary>
+            Add New Activity Status
+            </summary>
+            <remarks>
+            Add New Activity Status
+            <para />This api is used to create a new activity status.
+            <para />This api takes NewStatus model as input request.
+            <para />This api returns created ActivityStatusViewModel model as response model.
+            </remarks>
+            <param name="newStatus">Activity Status Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityStatusController.Put(System.Guid,Aspree.Core.ViewModels.EditStatus)">
+            <summary>
+            Update an existing activity status
+            </summary>
+            <remarks>
+            Update an existing activity status
+            <para />This api is used to update an existing activity status.
+            <para />This api takes guid of an activity status and  EditStatus model with updated values as input request.
+            <para />This api returns updated ActivityStatusViewModel model as response model.
+            </remarks>
+            <param name="editStatus">Activity Status Model</param>
+            <param name="guid">Guid of ativity status that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ActivityStatusController.Delete(System.Guid)">
+            <summary>
+            Delete an activity status by guid
+            </summary>
+            <remarks>
+             Delete an activity status by guid
+             <para />This api is used to delete an activity status.
+             <para />This api takes guid of an activity status as input parameter in input request.
+             <para />This api returns ActivityStatusViewModel of deleted activity status.
+            </remarks>
+            <param name="guid">Guid of activity status that has to be deleted</param>
+        </member>
+        <member name="P:Aspree.WebApi.Controllers.BaseController.LoggedInUserId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Controllers.BaseController.LoggedInUserTenantId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.BaseController.WriteLog(System.String,System.Int32,System.String)">
+            <summary>
+            write logs
+            </summary>
+            <param name="logMessage">message to be write</param>
+            <param name="lineNumber">line no. from this method is called</param>
+            <param name="caller">caller method name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.BaseController.GuidExceptionHandler">
+            <summary>
+            Exception handler for GUID type parameter
+            </summary>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.CheckListController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CheckListController.#ctor(Aspree.Provider.Interface.ICheckListProvider)">
+            <summary>
+            
+            </summary>
+            <param name="checklistProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CheckListController.GetAll">
+            <summary>
+            Get Check List
+            </summary>
+            <remarks>
+            Get Check List
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CheckListController.Get(System.Guid)">
+            <summary>
+            Get Check List By Guid
+            </summary>
+            <remarks>
+            Get Check List By Guid
+            </remarks>
+            <param name="guid">Guid of an check list that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CheckListController.Post(Aspree.Core.ViewModels.NewCheckListViewModel)">
+            <summary>
+            Add New Check List
+            </summary>
+            <remarks>
+            Add New Check List
+            </remarks>
+            <param name="checkListViewModel">New CheckListViewModel Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CheckListController.Put(System.Guid,Aspree.Core.ViewModels.EditCheckListViewModel)">
+            <summary>
+            Edit Existing Check List
+            </summary>
+            <remarks>
+            Edit Existing Check List
+            </remarks>
+            <param name="checkListViewModel">Edit CheckListViewModel Model</param>
+            <param name="guid">guid of check list that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CheckListController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Check List
+            </summary>
+            <remarks>
+            Delete Existing Check List
+            </remarks>
+            <param name="guid">Guid of check list that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.CityController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CityController.#ctor(Aspree.Provider.Interface.ICityProvider)">
+            <summary>
+            
+            </summary>
+            <param name="cityProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CityController.GetAll">
+            <summary>
+            Get all cities
+            </summary>
+            <remarks>
+            Get all cities<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all cities.
+            - This api returns list of CityViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CityController.Get(System.Guid)">
+            <summary>
+            Get city by guid
+            </summary>
+            <remarks>
+            Get city by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get city by its guid.
+            - This api returns CityViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a city that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CityController.Post(Aspree.Core.ViewModels.NewCityViewModel)">
+            <summary>
+            Add new city
+            </summary>
+            <remarks>
+            Add new city<br></br>    
+            <strong>Purpose.</strong>
+            - This api is used to create new city.
+            - This api takes NewCityViewModel of a city as input request.
+            - This api returns CityViewModel of created city in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="cityViewModel">NewCityViewModel Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CityController.Put(System.Guid,Aspree.Core.ViewModels.EditCityViewModel)">
+            <summary>
+            Edit existing city
+            </summary>
+            <remarks>
+            Edit existing city<br></br>    
+            <strong>Purpose.</strong>
+            - This api is used to update an existing city.
+            - This api takes EditCityViewModel and guid of city as input request.
+            - This api returns CityViewModel of updated city in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="cityViewModel">EditCityViewModel Model</param>
+            <param name="guid">guid of city that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CityController.Delete(System.Guid)">
+            <summary>
+            Delete existing city
+            </summary>
+            <remarks>
+            Delete existing city<br></br>      
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing city.
+            - This api takes guid of a city that has to be deleted as input request.
+            - This api returns CityViewModel of deleted city in response model.
+            - City will be soft deleted from SQL table
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of city that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.CountryController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CountryController.#ctor(Aspree.Provider.Interface.ICountryProvider)">
+            <summary>
+            
+            </summary>
+            <param name="countryProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CountryController.GetAll">
+            <summary>
+            Get all countries
+            </summary>
+            <remarks>
+            Get all countries<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get the list of all countries.
+            - The api fetches country list from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CountryController.Get(System.Guid)">
+            <summary>
+            Get country by guid
+            </summary>
+            <remarks>
+            Get country by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get country based on its guid.
+            - The api fetches country from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a country that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CountryController.Post(Aspree.Core.ViewModels.NewCountryViewModel)">
+            <summary>
+            Add new country
+            </summary>
+            <remarks>
+            Add new country<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new country into the system.
+            - Country name will be saved with its abbreviation into SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newCountry">NewCountry Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CountryController.Put(System.Guid,Aspree.Core.ViewModels.EditCountryViewModel)">
+            <summary>
+            Edit existing country
+            </summary>
+            <remarks>
+            Edit existing country<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update country using its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editCountry">Edit EditCountry Model</param>
+            <param name="guid">guid of country that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.CountryController.Delete(System.Guid)">
+             <summary>
+             Delete existing country
+             </summary>
+             <remarks>
+            Delete existing country<br></br>
+             <strong>Purpose.</strong>
+             - This api provides the functionality to delete an existing country using its guid.
+             - The api will soft delete data from SQL table
+             <br></br>
+             <strong>Authentication.</strong>
+             - HTTP Basic Authentication.
+             </remarks>
+             <param name="guid">Guid of country that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.EntitySubTypeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntitySubTypeController.#ctor(Aspree.Provider.Interface.IEntitySubTypeProvider)">
+            <summary>
+            
+            </summary>
+            <param name="entitySubTypeProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntitySubTypeController.GetAll">
+            <summary>
+            Get all entity sub types
+            </summary>
+            <remarks>
+            Get all entity sub types<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get the list of all entity subtypes.
+            - The api fetches entity subtypes from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntitySubTypeController.Get(System.Guid)">
+            <summary>
+            Get entity subtype by guid
+            </summary>
+            <remarks>
+            Get entity subtype by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get an entity subtype based on its guid.
+            - Entity subtype will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an entity sub type that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntitySubTypeController.Post(Aspree.Core.ViewModels.NewEntitySubTypeViewModel)">
+            <summary>
+            Add new entity subtype
+            </summary>
+            <remarks>
+             Add new entity subtype<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new entity subtype into the system.
+            - Entity subtype will be saved in SQL database with its associated entity type id.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newEntitySubTypeViewModel">New EntitySubTypeViewModel Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntitySubTypeController.Put(System.Guid,Aspree.Core.ViewModels.EditEntitySubTypeViewModel)">
+            <summary>
+            Edit existing entity subtype
+            </summary>
+            <remarks>
+            Edit existing entity subtype<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update an existing entity subtype using its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editEntitySubType">Edit EntitySubType Model</param>
+            <param name="guid">guid of entity sub type that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntitySubTypeController.Delete(System.Guid)">
+            <summary>
+            Delete existing entity subtype
+            </summary>
+            <remarks>
+            Delete existing entity subtype<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete an existing entity subtype by its guid.
+            - The api will delete data from SQL table(EntitySubType).
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of entity sub type that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.EntityTypeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityTypeController.#ctor(Aspree.Provider.Interface.IEntityTypeProvider)">
+            <summary>
+            
+            </summary>
+            <param name="entityTypeProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityTypeController.GetAll">
+            <summary>
+            Get all entity types
+            </summary>
+            <remarks>
+            Get all entity types<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get list of all entity types.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityTypeController.Get(System.Guid)">
+            <summary>
+            Get entity type by guid
+            </summary>
+            <remarks>
+            Get entity type by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get entity type details based on its guid.
+            - Entity type will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an entity type that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityTypeController.Post(Aspree.Core.ViewModels.NewEntityTypeViewModel)">
+            <summary>
+            Add new entity type
+            </summary>
+            <remarks>
+            Add new entity type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new entity type for the system.
+            - The new entity type will be saved into SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newEntityTypeViewModel">New EntityTypeViewModel Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityTypeController.Put(System.Guid,Aspree.Core.ViewModels.EditEntityTypeViewModel)">
+            <summary>
+            Edit existing entity type
+            </summary>
+            <remarks>
+            Edit existing entity type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to update entity type based on its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editEntityType">Edit EntityType Model</param>
+            <param name="guid">guid of entity type that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.EntityTypeController.Delete(System.Guid)">
+            <summary>
+            Delete existing entity type
+            </summary>
+            <remarks>
+            Delete existing entity type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete an existing entity type by its guid.
+            - The api will delete data from SQL table(EntityType).
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of entity type that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.FormCategoryController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormCategoryController.#ctor(Aspree.Provider.Interface.IFormCategoryProvider)">
+            <summary>
+            
+            </summary>
+            <param name="formCategoryProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormCategoryController.GetAll">
+            <summary>
+            Get all form categories
+            </summary>
+            <remarks>
+            Get all form categories<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get all form categories.
+            - The api fetches categories of form from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormCategoryController.Get(System.Guid)">
+            <summary>
+            Get form category by guid
+            </summary>
+            <remarks>
+            Get form category by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get form category by its guid.
+            - This api returns FormCategoryViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a form category that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormCategoryController.Post(Aspree.Core.ViewModels.NewCategory)">
+            <summary>
+            Add new form category
+            </summary>
+            <remarks>
+            Add new form category<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to create new form category.
+            - This api takes NewCategory of a form category as input request.
+            - This api returns FormCategoryViewModel of created form category in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newFormCategory">New FormCategory Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormCategoryController.Put(System.Guid,Aspree.Core.ViewModels.EditCategory)">
+            <summary>
+            Edit existing form category
+            </summary>
+            <remarks>
+            Edit existing form category<br></br>
+            - This api is used to update an existing form category.
+            - This api takes EditCategory and guid of form category as input request.
+            - This api returns FormCategoryViewModel of updated form category in response model.
+            </remarks>
+            <param name="editFormCategory">Edit FormCategory Model</param>
+            <param name="guid">Guid of form category that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormCategoryController.Delete(System.Guid)">
+            <summary>
+            Delete existing form category
+            </summary>
+            <remarks>
+            Delete existing form category<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing form category.
+            - This api takes guid of a form category that needs to be deleted as input request.
+            - This api returns FormCategoryViewModel of deleted form category in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of form category that needs to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.FormStatusController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormStatusController.#ctor(Aspree.Provider.Interface.IFormStatusProvider)">
+            <summary>
+            
+            </summary>
+            <param name="formStatusProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormStatusController.GetAll">
+            <summary>
+            Get All Form Status
+            </summary>
+            <remarks>
+            Get All Form Status
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormStatusController.Get(System.Guid)">
+            <summary>
+            Get Form Status By Guid
+            </summary>
+            <remarks>
+            Get Form Status By Guid
+            </remarks>
+            <param name="guid">Guid of a form status that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormStatusController.Post(Aspree.Core.ViewModels.NewStatus)">
+            <summary>
+            Add New Form Status
+            </summary>
+            <remarks>
+            Add New Form Status
+            </remarks>
+            <param name="newFormStatus">New Form Status Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormStatusController.Put(System.Guid,Aspree.Core.ViewModels.EditStatus)">
+            <summary>
+            Edit Existing Form Status
+            </summary>
+            <remarks>
+            Edit Existing Form Status
+            </remarks>
+            <param name="editFormStatus">Edit Form Status Model</param>
+            <param name="guid">guid of form status that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.FormStatusController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Form Status
+            </summary>
+            <remarks>
+            Delete Existing Form Status
+            </remarks>
+            <param name="guid">Guid of form status that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.LookupDataController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataController.#ctor(Aspree.Provider.Interface.ILookupDataProvider,Aspree.Provider.Interface.IVariableTypeProvider)">
+            <summary>
+            
+            </summary>
+            <param name="lookupDataProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataController.GetAll">
+            <summary>
+            Get All Lookup Data
+            </summary>
+            <remarks>
+            Get All Lookup Data
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataController.Get(System.Guid)">
+            <summary>
+            Get Lookup Data By Guid
+            </summary>
+            <remarks>
+            Get Lookup Data By Guid
+            </remarks>
+            <param name="guid">Guid of an lookup data that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataController.Post(Aspree.Core.ViewModels.NewLookupDataViewModel)">
+            <summary>
+            Add New Lookup Data
+            </summary>
+            <remarks>
+            Add New Lookup Data
+            </remarks>
+            <param name="newLookupData">New LookupData Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataController.Put(System.Guid,Aspree.Core.ViewModels.EditLookupDataViewModel)">
+            <summary>
+            Edit Existing Lookup Data
+            </summary>
+            <remarks>
+            Edit Existing Lookup Data
+            </remarks>
+            <param name="editLookupData">Edit LookupData Model</param>
+            <param name="guid">guid of lookup data that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Lookup Data
+            </summary>
+            <remarks>
+            Delete Existing Lookup Data
+            </remarks>
+            <param name="guid">Guid of lookup data that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.LookupDataGroupOptionController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataGroupOptionController.#ctor(Aspree.Provider.Interface.ILookupDataGroupOptionProvider)">
+            <summary>
+            
+            </summary>
+            <param name="lookupDataGroupOptionProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataGroupOptionController.GetAll">
+            <summary>
+            Get All Lookup Data Group Options
+            </summary>
+            <remarks>
+            Get All Lookup Data Group Options
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataGroupOptionController.Get(System.Guid)">
+            <summary>
+            Get Lookup Data Group Option By Guid
+            </summary>
+            <remarks>
+            Get Lookup Data Group Option By Guid
+            </remarks>
+            <param name="guid">Guid of an lookup data group option that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataGroupOptionController.Post(Aspree.Core.ViewModels.NewLookupDataGroupOptionViewModel)">
+            <summary>
+            Add New Lookup Data Group Option
+            </summary>
+            <remarks>
+            Add New Lookup Data Group Option
+            </remarks>
+            <param name="newLookupDataGroupOption">New LookupDataGroupOption Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataGroupOptionController.Put(System.Guid,Aspree.Core.ViewModels.EditLookupDataGroupOptionViewModel)">
+            <summary>
+            Edit Existing Lookup Data Group Option
+            </summary>
+            <remarks>
+            Edit Existing Lookup Data Group Option
+            </remarks>
+            <param name="editLookupDataGroupOption">Edit LookupDataGroupOption Model</param>
+            <param name="guid">guid of lookup data group option that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataGroupOptionController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Lookup Data Group Option
+            </summary>
+            <remarks>
+            Delete Existing Lookup Data Group Option
+            </remarks>
+            <param name="guid">Guid of lookup data group option that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.LookupDataOptionGroupController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataOptionGroupController.#ctor(Aspree.Provider.Interface.ILookupDataOptionGroupProvider)">
+            <summary>
+            
+            </summary>
+            <param name="lookupDataOptionGroupProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataOptionGroupController.GetAll">
+            <summary>
+            Get All Lookup Data Option Groups
+            </summary>
+            <remarks>
+            Get All Lookup Data Option Groups
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataOptionGroupController.Get(System.Guid)">
+            <summary>
+            Get Lookup Data Option Group By Guid
+            </summary>
+            <remarks>
+            Get Lookup Data Option Group By Guid
+            </remarks>
+            <param name="guid">Guid of an lookup data option group that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataOptionGroupController.Post(Aspree.Core.ViewModels.NewLookupDataOptionGroupViewModel)">
+            <summary>
+            Add New Lookup Data Option Group
+            </summary>
+            <remarks>
+            Add New Lookup Data Option Group
+            </remarks>
+            <param name="newLookupDataOptionGroup">New LookupDataOptionGroup Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataOptionGroupController.Put(System.Guid,Aspree.Core.ViewModels.EditLookupDataOptionGroupViewModel)">
+            <summary>
+            Edit Existing Lookup Data Option Group
+            </summary>
+            <remarks>
+            Edit Existing Lookup Data Option Group
+            </remarks>
+            <param name="editLookupDataOption">Edit LookupDataOption Model</param>
+            <param name="guid">guid of lookup data option group that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.LookupDataOptionGroupController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Lookup Data Option Group
+            </summary>
+            <remarks>
+            Delete Existing Lookup Data Option Group
+            </remarks>
+            <param name="guid">Guid of lookup data option group that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ProjectStatusController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectStatusController.#ctor(Aspree.Provider.Interface.IProjectStatusProvider)">
+            <summary>
+            
+            </summary>
+            <param name="projectStatusProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectStatusController.GetAll">
+            <summary>
+            Get All Project Status
+            </summary>
+            <remarks>
+            Get All Project Status
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectStatusController.Get(System.Guid)">
+            <summary>
+            Get Project Status By Guid
+            </summary>
+            <remarks>
+            Get Project Status By Guid
+            </remarks>
+            <param name="guid">Guid of a project status that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectStatusController.Post(Aspree.Core.ViewModels.NewStatus)">
+            <summary>
+            Add New Project Status
+            </summary>
+            <remarks>
+            Add New Project Status
+            </remarks>
+            <param name="newProjectStatus">New Project Status Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectStatusController.Put(System.Guid,Aspree.Core.ViewModels.EditStatus)">
+            <summary>
+            Edit Existing Project Status
+            </summary>
+            <remarks>
+            Edit Existing Project Status
+            </remarks>
+            <param name="editProjectStatus">Edit Project Status Model</param>
+            <param name="guid">guid of project status that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ProjectStatusController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Project Status
+            </summary>
+            <remarks>
+            Delete Existing Project Status
+            </remarks>
+            <param name="guid">Guid of project status that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.RegExRuleController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RegExRuleController.#ctor(Aspree.Provider.Interface.IRegExRuleProvider)">
+            <summary>
+            
+            </summary>
+            <param name="regExRuleProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RegExRuleController.GetAll">
+            <summary>
+            Get All RegEx Rules
+            </summary>
+            <remarks>
+            Get All RegEx Rules
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RegExRuleController.Get(System.Guid)">
+            <summary>
+            Get RegEx Rule By Guid
+            </summary>
+            <remarks>
+            Get RegEx Rule By Guid
+            </remarks>
+            <param name="guid">Guid of an regex rule that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RegExRuleController.Post(Aspree.Core.ViewModels.NewRegExRuleViewModel)">
+            <summary>
+            Add New RegEx Rule
+            </summary>
+            <remarks>
+            Add New RegEx Rule
+            </remarks>
+            <param name="newRegExRule">New RegEx Rule Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RegExRuleController.Put(System.Guid,Aspree.Core.ViewModels.EditRegExRuleViewModel)">
+            <summary>
+            Edit Existing RegEx Rule
+            </summary>
+            <remarks>
+            Edit Existing RegEx Rule
+            </remarks>
+            <param name="editRegExRule">Edit RegEx Rule Model</param>
+            <param name="guid">guid of regex rule that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.RegExRuleController.Delete(System.Guid)">
+            <summary>
+            Delete Existing RegEx Rule
+            </summary>
+            <remarks>
+            Delete Existing RegEx Rule
+            </remarks>
+            <param name="guid">Guid of regex rule that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.SchedulingController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SchedulingController.#ctor(Aspree.Provider.Interface.ISchedulingProvider)">
+            <summary>
+            
+            </summary>
+            <param name="schedulingProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SchedulingController.Get(System.Guid)">
+            <summary>
+            Get activities scheduling by guid
+            </summary>
+            <remarks>
+            Get activities scheduling by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get scheduling based on its guid which will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an activity that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SchedulingController.Post(Aspree.Core.ViewModels.NewSchedulingViewModel)">
+            <summary>
+            Add new scheduling
+            </summary>
+            <remarks>
+            Add new scheduling<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new scheduling into the system which will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newScheduling">NewSchedulingViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SchedulingController.Put(System.Guid,Aspree.Core.ViewModels.EditSchedulingViewModel)">
+            <summary>
+            Edit existing scheduling
+            </summary>
+            <remarks>
+            Edit existing scheduling<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update an existing scheduling by its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editScheduling">EditSchedulingViewModel</param>
+            <param name="guid">Guid of activities whose scheduling needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SchedulingController.GetSchedulingByActivityId(System.Guid)">
+            <summary>
+            Get activities scheduling by guid
+            </summary>
+            <remarks>
+            Get activities scheduling by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get activity scheduling based on its guid which will be fetched from SQL database.
+            - This api returns SchedulingViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an activities that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SchedulingController.GetAllScheduledActivityByProjectId(System.Guid)">
+            <summary>
+            Get all scheduled activities by project id
+            </summary>
+            <remarks>
+            Get all scheduled activities by project id<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get all scheduled activities based on its project id which will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of project for get all its scheduled activity</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SchedulingController.PushScheduledActivities(System.Int32,System.Collections.Generic.List{System.Guid})">
+            <summary>
+            Currently not in use
+            </summary>
+            <remarks>
+            Currently not in use
+            </remarks>
+            <param name="deployType">type</param>
+            <param name="activitiesList">Guid list of Scheduled activities</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SchedulingController.InactivateActivity(System.Collections.Generic.List{System.Guid},System.Guid)">
+             <summary>
+             Inactivate the activity
+             </summary>
+             <remarks>
+            Inactivate the activity<br></br>
+             <strong>Purpose.</strong>
+             - This api provides the functionality to inactivate the activity scheduling based on its guid.
+             <br></br>
+             <strong>Authentication.</strong>
+             - HTTP Basic Authentication.
+             </remarks>
+            <param name="activityIdList">List of activity id to inactive</param>
+            <param name="projectId">Guid of project</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.SecurityQuestionController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SecurityQuestionController.#ctor(Aspree.Provider.Interface.ISecurityQuestionProvider)">
+            <summary>
+            
+            </summary>
+            <param name="securityQuestionProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SecurityQuestionController.GetAll">
+            <summary>
+            Get all security questions
+            </summary>
+            <remarks>
+            Get all security questions<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all security questions.
+            - This api returns list of SecurityQuestionViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SecurityQuestionController.Get(System.Nullable{System.Guid})">
+            <summary>
+            Get security question by guid
+            </summary>
+            <remarks>
+            Get security question by guid<br></br>   
+            <strong>Purpose.</strong>
+            - This api is used to get security question by its Guid.
+            - This api takes guid of a security question that needs to be fetched.
+            - This api returns SecurityQuestionViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a security question that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SecurityQuestionController.Post(Aspree.Core.ViewModels.NewSecurityQuestionViewModel)">
+            <summary>
+            Add new security question
+            </summary>
+            <remarks>
+            Add new security question<br></br>  
+            <strong>Purpose.</strong>
+            - This api is used to create new security question.
+            - This api takes NewSecurityQuestionViewModel of a security question as input request.
+            - This api returns SecurityQuestionViewModel of new created security question in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newSecurityQuestion">NewSecurityQuestionViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SecurityQuestionController.Put(System.Guid,Aspree.Core.ViewModels.EditSecurityQuestionViewModel)">
+            <summary>
+            Edit existing security question
+            </summary>
+            <remarks>
+            Edit existing security question<br></br> 
+            <strong>Purpose.</strong>        
+            - This api is used to update an existing security question.
+            - This api takes EditSecurityQuestionViewModel and guid of security question as input request.
+            - This api returns SecurityQuestionViewModel of updated security question in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editSecurityQuestion">EditSecurityQuestionViewModel</param>
+            <param name="guid">Guid of security question that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SecurityQuestionController.Delete(System.Guid)">
+            <summary>
+            Delete existing security question
+            </summary>
+            <remarks>
+            Delete existing security question<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing security question.
+            - This api takes guid of a security question that needs to be deleted as input request.
+            - This api returns SecurityQuestionViewModel of deleted security question in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of security question that needs to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.SiteController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SiteController.#ctor(Aspree.Provider.Interface.ISiteProvider)">
+            <summary>
+            
+            </summary>
+            <param name="siteProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SiteController.GetAll">
+            <summary>
+            Get All Sites
+            </summary>
+            <remarks>
+            Get All Sites
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SiteController.Get(System.Guid)">
+            <summary>
+            Get Site By Guid
+            </summary>
+            <remarks>
+            Get Site By Guid
+            </remarks>
+            <param name="guid">Guid of a site that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SiteController.Post(Aspree.Core.ViewModels.NewSiteViewModel)">
+            <summary>
+            Add New Site
+            </summary>
+            <remarks>
+            Add New Site
+            </remarks>
+            <param name="newSite">New Project Site Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SiteController.Put(System.Guid,Aspree.Core.ViewModels.EditSiteViewModel)">
+            <summary>
+            Edit Existing Site
+            </summary>
+            <remarks>
+            Edit Existing Site
+            </remarks>
+            <param name="editSite">Edit Project Site Model</param>
+            <param name="guid">guid of site that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.SiteController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Site
+            </summary>
+            <remarks>
+            Delete Existing Site
+            </remarks>
+            <param name="guid">Guid of site that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.StateController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StateController.#ctor(Aspree.Provider.Interface.IStateProvider)">
+            <summary>
+            
+            </summary>
+            <param name="stateProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StateController.GetAll">
+            <summary>
+            Get All States
+            </summary>
+            <remarks>
+            Get All States
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StateController.Get(System.Guid)">
+            <summary>
+            Get State By Guid
+            </summary>
+            <remarks>
+            Get State By Guid
+            </remarks>
+            <param name="guid">Guid of a state that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StateController.Post(Aspree.Core.ViewModels.NewStateViewModel)">
+            <summary>
+            Add New State
+            </summary>
+            <remarks>
+            Add New State
+            </remarks>
+            <param name="newState">New State Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StateController.Put(System.Guid,Aspree.Core.ViewModels.EditStateViewModel)">
+            <summary>
+            Edit Existing State
+            </summary>
+            <remarks>
+            Edit Existing State
+            </remarks>
+            <param name="editState">Edit State Model</param>
+            <param name="guid">guid of variable category that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StateController.Delete(System.Guid)">
+            <summary>
+            Delete Existing State
+            </summary>
+            <remarks>
+            Delete Existing State
+            </remarks>
+            <param name="guid">Guid of state that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.StatusController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StatusController.#ctor(Aspree.Provider.Interface.IStatusProvider)">
+            <summary>
+            
+            </summary>
+            <param name="statusProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StatusController.GetAll">
+            <summary>
+            Get All Status
+            </summary>
+            <remarks>
+            Get All Status
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StatusController.Get(System.Guid)">
+            <summary>
+            Get Status By Guid
+            </summary>
+            <remarks>
+            Get Status By Guid
+            </remarks>
+            <param name="guid">Guid of status that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StatusController.Post(Aspree.Core.ViewModels.NewStatus)">
+            <summary>
+            Add New Status
+            </summary>
+            <remarks>
+            Add New Status
+            </remarks>
+            <param name="newStatus">New Status Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StatusController.Put(System.Guid,Aspree.Core.ViewModels.EditStatus)">
+            <summary>
+            Edit Existing Status
+            </summary>
+            <remarks>
+            Edit Existing Status
+            </remarks>
+            <param name="editStatus">Edit Status Model</param>
+            <param name="guid">guid of variable category that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.StatusController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Status
+            </summary>
+            <remarks>
+            Delete Existing Status
+            </remarks>
+            <param name="guid">Guid of status that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.TenantController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.TenantController.#ctor(Aspree.Provider.Interface.ITenantProvider)">
+            <summary>
+            
+            </summary>
+            <param name="tenantProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.TenantController.GetAll">
+            <summary>
+            Get All Tenants
+            </summary>
+            <remarks>
+            Get All Tenants
+            </remarks>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.UserController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.#ctor(Aspree.Provider.Interface.IUserLoginProvider,Aspree.Provider.Interface.IForgotPasswordProvider)">
+            <summary>
+            
+            </summary>
+            <param name="userLoginProvider"></param>
+            <param name="forgotPasswordProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.GetAll">
+            <summary>
+            Get all users
+            </summary>
+            <remarks>
+            Get all users<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all users.
+            - This api returns list of UserLoginViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.Get(System.Guid)">
+            <summary>
+            Get user by guid
+            </summary>
+            <remarks>
+            Get user by guid<br></br>   
+            <strong>Purpose.</strong>
+            - This api is used to get user by its guid.
+            - This api returns UserLoginViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an user that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.Profile(System.Guid)">
+            <summary>
+            Get user profile by guid
+            </summary>
+            <remarks>
+            Get user profile by guid<br></br>   
+            <strong>Purpose.</strong>
+            - This api is used to get user profile by its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of an user that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.Post(Aspree.Core.ViewModels.NewUserViewModel)">
+            <summary>
+            Add new user
+            </summary>
+            <remarks>
+            Add new user<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to create new user.
+            - This api takes NewUserViewModel of an user as input request.
+            - This api returns UserLoginViewModel of new created user in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newUser">NewUserViewModel</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.Put(System.Guid,Aspree.Core.ViewModels.EditUserViewModel)">
+            <summary>
+            Edit existing user
+            </summary>
+            <remarks>
+            Edit existing user<br></br> 
+            <strong>Purpose.</strong>        
+            - This api is used to update an existing user.
+            - This api takes EditUserViewModel and guid of user as input request.
+            - This api returns UserLoginViewModel of updated user in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editUser">Edit EditUserViewModel Model</param>
+            <param name="guid">guid of user that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.Delete(System.Guid)">
+            <summary>
+            Delete existing user
+            </summary>
+            <remarks>
+            Delete existing user<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing user.
+            - This api takes guid of an user that needs to be deleted as input request.
+            - This api returns UserLoginViewModel of deleted user in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of user that needs to be deleted</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.GetUserByTempGuid(System.Nullable{System.Guid})">
+            <summary>
+            Get user by temp guid
+            </summary>
+            <remarks>
+            Get user by temp guid<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to get user by tempguid.
+            - This api returns UserLoginViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Temp Guid of an user that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.GetUserById(System.Int32)">
+            <summary>
+            Get user by main id
+            </summary>
+            <remarks>
+            Get user by main id<br></br>   
+            <strong>Purpose.</strong>
+            - This api is to get user details by id.
+            - This api returns UserLoginViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="id">id of an user that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.GetProjectAllUsers(System.Guid)">
+            <summary>
+            Get project users
+            </summary>
+            <remarks>
+            Get project users<br></br>   
+            <strong>Purpose.</strong>
+            - This api is used to get all users of a project.
+            - This api takes project id as input request.
+            - This api returns list of UserLoginViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Project id to get project users</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.GetAllSystemAdminToolsUser(System.Guid)">
+            <summary>
+            Get all users for system admin tools
+            </summary>
+            <remarks>
+            Get all users for system admin tools<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all users for system admin tools
+            - This api returns list of UserLoginViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">project id</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.UserController.GetUserStatus(System.String,System.Boolean)">
+            <summary>
+            Get all users for system admin tools
+            </summary>
+            <remarks>
+            Get all users for system admin tools<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all users for system admin tools
+            - This api returns list of UserLoginViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="username">project id</param>
+            <param name="isTestSite">is test site</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ValidationRuleController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ValidationRuleController.#ctor(Aspree.Provider.Interface.IValidationRuleProvider)">
+            <summary>
+            
+            </summary>
+            <param name="validationRuleProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ValidationRuleController.GetAll">
+            <summary>
+            Get All Validation Rules
+            </summary>
+            <remarks>
+            Get All Validation Rules
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ValidationRuleController.Get(System.Guid)">
+            <summary>
+            Get Validation Rule By Guid
+            </summary>
+            <remarks>
+            Get Validation Rule By Guid
+            </remarks>
+            <param name="guid">Guid of a validation rule that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ValidationRuleController.Post(Aspree.Core.ViewModels.NewValidationRuleViewModel)">
+            <summary>
+            Add New Validation Rule
+            </summary>
+            <remarks>
+            Add New Validation Rule
+            </remarks>
+            <param name="newValidationRule">New Validation Rule Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ValidationRuleController.Put(System.Guid,Aspree.Core.ViewModels.EditValidationRuleViewModel)">
+            <summary>
+            Edit Existing Validation Rule
+            </summary>
+            <remarks>
+            Edit Existing Validation Rule
+            </remarks>
+            <param name="editValidationRule">Edit Validation Rule Model</param>
+            <param name="guid">guid of validation rule that has to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ValidationRuleController.Delete(System.Guid)">
+            <summary>
+            Delete Existing Validation Rule
+            </summary>
+            <remarks>
+            Delete Existing Validation Rule
+            </remarks>
+            <param name="guid">Guid of validation rule that is to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.ValidatorController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ValidatorController.#ctor(Aspree.Provider.Interface.IValidatorProvider)">
+            <summary>
+            
+            </summary>
+            <param name="validatorProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.ValidatorController.Post(Aspree.Core.ViewModels.ValidatorViewModal)">
+            <summary>
+            Validate Fields for forms
+            </summary>
+            <remarks>
+            Validate Fields for forms
+            </remarks>
+            <param name="validator">Validator Model</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.VariableCategoryController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableCategoryController.#ctor(Aspree.Provider.Interface.IVariableCategoryProvider)">
+            <summary>
+            
+            </summary>
+            <param name="VariableCategoryProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableCategoryController.GetAll">
+            <summary>
+            Get all variable categories
+            </summary>
+            <remarks>
+            Get all variable categories<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all variable categories.
+            - This api returns list of VariableCategoryViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableCategoryController.Get(System.Guid)">
+            <summary>
+            Get variable category by guid
+            </summary>
+            <remarks>
+            Get variable category by guid<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to get variable category by its guid.
+            - This api returns VariableCategoryViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a variable category that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableCategoryController.Post(Aspree.Core.ViewModels.NewCategory)">
+            <summary>
+            Add new variable category
+            </summary>
+            <remarks>
+            Add new variable category<br></br>  
+            <strong>Purpose.</strong>
+            - This api is used to create new variable category.
+            - This api takes NewCategory of a variable category as input request.
+            - This api returns VariableCategoryViewModel of new created variable category in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newCategory">New Category Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableCategoryController.Put(System.Guid,Aspree.Core.ViewModels.EditCategory)">
+            <summary>
+            Edit existing variable category
+            </summary>
+            <remarks>
+            Edit existing variable category<br></br>
+            <strong>Purpose.</strong>        
+            - This api is used to update an existing variable category.
+            - This api takes EditCategory and guid of variable category as input request.
+            - This api returns VariableCategoryViewModel of updated variable category in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editCategory">EditCategory</param>
+            <param name="guid">Guid of variable category that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableCategoryController.Delete(System.Guid)">
+            <summary>
+            Delete existing variable category
+            </summary>
+            <remarks>
+            Delete existing variable category<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to delete an existing variable category by its guid.
+            - This api returns VariableCategoryViewModel of deleted variable category in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of variable category that needs to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.VariableController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.#ctor(Aspree.Provider.Interface.IVariableProvider)">
+            <summary>
+            
+            </summary>
+            <param name="variableProvider"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.GetAll">
+            <summary>
+            Get all variables
+            </summary>
+            <remarks>
+            Get all variables<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all variables.
+            - This api returns list of VariableViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.Get(System.Guid)">
+            <summary>
+            Get variable by guid
+            </summary>
+            <remarks>
+            Get variable by guid<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to get variable by its guid.
+            - This api returns VariableViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a variable that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.Post(Aspree.Core.ViewModels.NewVariableViewModel)">
+            <summary>
+            Add new variable
+            </summary>
+            <remarks>
+            Add new variable<br></br>  
+            <strong>Purpose.</strong>
+            - This api is used for create new Variable.
+            - This api takes NewVariableViewModel of a variable as input request.
+            - This api returns VariableViewModel of new created variable in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newVariable">New Variable Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.Put(System.Guid,Aspree.Core.ViewModels.EditVariableViewModel)">
+            <summary>
+            Edit existing variable
+            </summary>
+            <remarks>
+            Edit existing variable<br></br>      
+            <strong>Purpose.</strong>        
+            - This api is used to update an existing variable.
+            - This api takes EditVariableViewModel and guid of variable as input request.
+            - This api returns VariableViewModel of updated variable in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editVariable">EditVariableViewModel</param>
+            <param name="guid">Guid of variable that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.Delete(System.Guid)">
+            <summary>
+            Delete existing variable
+            </summary>
+            <remarks>
+            Delete existing variable<br></br> 
+            <strong>Purpose.</strong>
+            - The purpose of this api is to delete an existing variable by its guild.
+            - Variable will be soft deleted from SQL table(variable)
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of variable that needs to be deleted</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.ProjectBuilderVariables(System.Guid)">
+            <summary>
+            Get project builder variables
+            </summary>
+            <remarks>
+            Get project builder variables<br></br>   
+            <strong>Purpose.</strong>
+            - This api is used for return all details of variable page in project builder.
+            - This api return all existing Forms, VariableType, ValidationRule, VariableCategory and roles.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">Guid of a project that variables to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.GetFormVariableByProjectId(System.Guid)">
+            <summary>
+            Get variables by project guid
+            </summary>
+            <remarks>
+            Get variables by project guid<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used for return all form variables by project id.
+            - This api return list of ProjectBuilderFormViewModelViewModel as response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a project that to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.GetAllVariables(System.Guid)">
+            <summary>
+            Get all variables for form page
+            </summary>
+            <remarks>
+            Get all variables for form page<br></br>
+            <strong>Purpose.</strong>
+            - This api is used to get all variable in project.
+            - This api return list of VariableViewModel as response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="projectId">project id</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableController.GetVariables(System.Guid,System.Guid)">
+            <summary>
+            Get variable by guid and projct id and userloginid
+            </summary>
+            <remarks>
+            Get variable by guid<br></br> 
+            <strong>Purpose.</strong>
+            - This api is used to get variable by its guid.
+            - This api returns VariableViewModel in response model.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a variable that needs to be fetched</param>
+            <param name="projectid">projectid of a variable that needs to be fetched</param>
+        </member>
+        <member name="T:Aspree.WebApi.Controllers.VariableTypeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableTypeController.#ctor(Aspree.Provider.Interface.IVariableTypeProvider)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableTypeController.GetAll">
+            <summary>
+            Get all variable types
+            </summary>
+            <remarks>
+            Get all variable types<br></br>
+            <strong>Purpose.</strong>
+            - The purpose of this api is to get all variable types which will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableTypeController.Get(System.Guid)">
+            <summary>
+            Get variable type by guid
+            </summary>
+            <remarks>
+            Get variable type by guid<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to get variable type based on its guid which will be fetched from SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of a variable type that needs to be fetched</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableTypeController.Post(Aspree.Core.ViewModels.NewVariableType)">
+            <summary>
+            Add new variable type
+            </summary>
+            <remarks>
+            Add new variable type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to create new variable type into the system.
+            - Variable type will be saved with its associated variable type id into SQL database.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="newVariableType">NewVariableType Model</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableTypeController.Put(System.Guid,Aspree.Core.ViewModels.EditVariableType)">
+            <summary>
+            Edit existing variable type
+            </summary>
+            <remarks>
+            Edit existing variable type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to edit/update an existing variable type by its guid.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="editVariableType">EditVariableType model</param>
+            <param name="guid">Guid of variable type that needs to be edited</param>
+        </member>
+        <member name="M:Aspree.WebApi.Controllers.VariableTypeController.Delete(System.Guid)">
+            <summary>
+            Delete existing variable type
+            </summary>
+            <remarks>
+            Delete existing variable type<br></br>
+            <strong>Purpose.</strong>
+            - This api provides the functionality to delete an existing variable type by its guid.
+            - The data will be deleted from SQL table.
+            <br></br>
+            <strong>Authentication.</strong>
+            - HTTP Basic Authentication.
+            </remarks>
+            <param name="guid">Guid of variable type that needs to be deleted</param>
+        </member>
+        <member name="T:Aspree.WebApi.Services.EmailService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Services.EmailService.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Services.EmailService.SendEmail(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="to"></param>
+            <param name="subject"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aspree.WebApi.Services.EmailService.SendWelcomeEmail(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="to"></param>
+            <param name="userName"></param>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aspree.WebApi.Services.EmailService.SendForgotPasswordEmail(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="to"></param>
+            <param name="userName"></param>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aspree.WebApi.Services.EmailService.EmailTemplate">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Aspree.WebApi.ExceptionHander.CustomExceptionFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.ExceptionHander.CustomExceptionFilter.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="T:Aspree.WebApi.WebApiApplication">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.WebApiApplication.Application_Start">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.WebApi.Utilities.ConfigSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.WebUrl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.WebUrlTestSite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.ProfileImageBasePath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.UploadsBasePath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.UploadsDataEntryVariablePath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.SmtpHost">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.EmailFrom">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.Port">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.DateFormat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.ReportAPIUrl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aspree.WebApi.Utilities.ConfigSettings.TestSiteKeyword">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aspree.WebApi.Utilities.LogAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Utilities.LogAttribute.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="M:Aspree.WebApi.Utilities.LogAttribute.OnActionExecuted(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="T:Aspree.WebApi.Utilities.ModelStateExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aspree.WebApi.Utilities.ModelStateExtensions.AllErrors(System.Web.Http.ModelBinding.ModelStateDictionary)">
+            <summary>
+            
+            </summary>
+            <param name="modelState"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

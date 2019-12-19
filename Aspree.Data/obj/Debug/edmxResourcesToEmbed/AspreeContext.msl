@@ -1,135 +1,898 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Aspree_StaggingModelStoreContainer" CdmEntityContainer="Entities">
-    <EntitySetMapping Name="EntitySubTypes">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.EntitySubType">
-        <MappingFragment StoreEntitySet="EntitySubType">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+  <EntityContainerMapping StorageEntityContainer="AspreeModelStoreContainer" CdmEntityContainer="AspreeEntities">
+    <EntitySetMapping Name="Activities">
+      <EntityTypeMapping TypeName="AspreeModel.Activity">
+        <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="IsActivityRequireAnEntity" ColumnName="IsActivityRequireAnEntity" />
+          <ScalarProperty Name="IsDefaultActivity" ColumnName="IsDefaultActivity" />
+          <ScalarProperty Name="PreviewSchedulingDone" ColumnName="PreviewSchedulingDone" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
           <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ActivityStatusId" ColumnName="ActivityStatusId" />
+          <ScalarProperty Name="ScheduleType" ColumnName="ScheduleType" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ActivityCategoryId" ColumnName="ActivityCategoryId" />
+          <ScalarProperty Name="DependentActivityId" ColumnName="DependentActivityId" />
+          <ScalarProperty Name="RepeatationOffset" ColumnName="RepeatationOffset" />
+          <ScalarProperty Name="RepeatationCount" ColumnName="RepeatationCount" />
+          <ScalarProperty Name="RepeatationType" ColumnName="RepeatationType" />
+          <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityCategories">
+      <EntityTypeMapping TypeName="AspreeModel.ActivityCategory">
+        <MappingFragment StoreEntitySet="ActivityCategory">
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityEntityTypes">
+      <EntityTypeMapping TypeName="AspreeModel.ActivityEntityType">
+        <MappingFragment StoreEntitySet="ActivityEntityType">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityForms">
+      <EntityTypeMapping TypeName="AspreeModel.ActivityForm">
+        <MappingFragment StoreEntitySet="ActivityForm">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivitySchedulings">
+      <EntityTypeMapping TypeName="AspreeModel.ActivityScheduling">
+        <MappingFragment StoreEntitySet="ActivityScheduling">
+          <ScalarProperty Name="CanCreatedMultipleTime" ColumnName="CanCreatedMultipleTime" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+          <ScalarProperty Name="IsScheduled" ColumnName="IsScheduled" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="CreationWindowClose" ColumnName="CreationWindowClose" />
+          <ScalarProperty Name="CreationWindowOpens" ColumnName="CreationWindowOpens" />
+          <ScalarProperty Name="SpecifiedActivity" ColumnName="SpecifiedActivity" />
+          <ScalarProperty Name="OffsetType" ColumnName="OffsetType" />
+          <ScalarProperty Name="OffsetCount" ColumnName="OffsetCount" />
+          <ScalarProperty Name="OtherActivity" ColumnName="OtherActivity" />
+          <ScalarProperty Name="RoleToCreateActivityRegardlessScheduled" ColumnName="RoleToCreateActivityRegardlessScheduled" />
+          <ScalarProperty Name="RolesToCreateActivity" ColumnName="RolesToCreateActivity" />
+          <ScalarProperty Name="ActivityAvailableForCreation" ColumnName="ActivityAvailableForCreation" />
+          <ScalarProperty Name="ScheduledToBeCompleted" ColumnName="ScheduledToBeCompleted" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityStatus">
+      <EntityTypeMapping TypeName="AspreeModel.ActivityStatu">
+        <MappingFragment StoreEntitySet="ActivityStatus">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddActivities">
+      <EntityTypeMapping TypeName="AspreeModel.AddActivity">
+        <MappingFragment StoreEntitySet="AddActivity">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="PersonEntityId" ColumnName="PersonEntityId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="IsActivityAdded" ColumnName="IsActivityAdded" />
+          <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+          <ScalarProperty Name="ActivityCompletedByUser" ColumnName="ActivityCompletedByUser" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthTypeMasters">
+      <EntityTypeMapping TypeName="AspreeModel.AuthTypeMaster">
+        <MappingFragment StoreEntitySet="AuthTypeMaster">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="AuthType" ColumnName="AuthType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckLists">
+      <EntityTypeMapping TypeName="AspreeModel.CheckList">
+        <MappingFragment StoreEntitySet="CheckList">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="AspreeModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Abbr" ColumnName="Abbr" />
+          <ScalarProperty Name="StatedId" ColumnName="StatedId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactTypes">
+      <EntityTypeMapping TypeName="AspreeModel.ContactType">
+        <MappingFragment StoreEntitySet="ContactType">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="AspreeModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Abbr" ColumnName="Abbr" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="AspreeModel.Email">
+        <MappingFragment StoreEntitySet="Email">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="SmtpServerId" ColumnName="SmtpServerId" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsImmediate" ColumnName="IsImmediate" />
+          <ScalarProperty Name="FailedAttempt" ColumnName="FailedAttempt" />
+          <ScalarProperty Name="IsSend" ColumnName="IsSend" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailTemplates">
+      <EntityTypeMapping TypeName="AspreeModel.EmailTemplate">
+        <MappingFragment StoreEntitySet="EmailTemplate">
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EmailKeywords" ColumnName="EmailKeywords" />
+          <ScalarProperty Name="MailBody" ColumnName="MailBody" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="PushEmailEventId" ColumnName="PushEmailEventId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entities">
+      <EntityTypeMapping TypeName="AspreeModel.Entity">
+        <MappingFragment StoreEntitySet="Entity">
+          <ScalarProperty Name="EntityVariablesDetail" ColumnName="EntityVariablesDetail" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ParentEntityId" ColumnName="ParentEntityId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EntitySubTypeId" ColumnName="EntitySubTypeId" />
+          <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntityFormDataVariables">
+      <EntityTypeMapping TypeName="AspreeModel.EntityFormDataVariable">
+        <MappingFragment StoreEntitySet="EntityFormDataVariable">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Json" ColumnName="Json" />
+          <ScalarProperty Name="EntitySubTypeId" ColumnName="EntitySubTypeId" />
+          <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+          <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+          <ScalarProperty Name="SelectedValues" ColumnName="SelectedValues" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntitySubTypes">
+      <EntityTypeMapping TypeName="AspreeModel.EntitySubType">
+        <MappingFragment StoreEntitySet="EntitySubType">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="EntityTypes">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.EntityType">
+      <EntityTypeMapping TypeName="AspreeModel.EntityType">
         <MappingFragment StoreEntitySet="EntityType">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Guid" ColumnName="Guid" />
           <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntityVariables">
+      <EntityTypeMapping TypeName="AspreeModel.EntityVariable">
+        <MappingFragment StoreEntitySet="EntityVariable">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExternalLinks">
+      <EntityTypeMapping TypeName="AspreeModel.ExternalLink">
+        <MappingFragment StoreEntitySet="ExternalLink">
+          <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Forms">
+      <EntityTypeMapping TypeName="AspreeModel.Form">
+        <MappingFragment StoreEntitySet="Form">
+          <ScalarProperty Name="FormComposeDetails" ColumnName="FormComposeDetails" />
+          <ScalarProperty Name="IsDefaultForm" ColumnName="IsDefaultForm" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="PreviousVersion" ColumnName="PreviousVersion" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="FormStatusId" ColumnName="FormStatusId" />
+          <ScalarProperty Name="FormState" ColumnName="FormState" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="FormCategoryId" ColumnName="FormCategoryId" />
+          <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+          <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="FormTitle" ColumnName="FormTitle" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormCategories">
+      <EntityTypeMapping TypeName="AspreeModel.FormCategory">
+        <MappingFragment StoreEntitySet="FormCategory">
+          <ScalarProperty Name="IsDefaultFormCategory" ColumnName="IsDefaultFormCategory" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormDataEntries">
+      <EntityTypeMapping TypeName="AspreeModel.FormDataEntry">
+        <MappingFragment StoreEntitySet="FormDataEntry">
+          <ScalarProperty Name="ProjectDeployedVersion" ColumnName="ProjectDeployedVersion" />
+          <ScalarProperty Name="ProjectDeployedId" ColumnName="ProjectDeployedId" />
+          <ScalarProperty Name="ProjectDeployStatus" ColumnName="ProjectDeployStatus" />
+          <ScalarProperty Name="ParentEntityNumber" ColumnName="ParentEntityNumber" />
+          <ScalarProperty Name="EntityNumber" ColumnName="EntityNumber" />
+          <ScalarProperty Name="ThisUserId" ColumnName="ThisUserId" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormDataEntryVariables">
+      <EntityTypeMapping TypeName="AspreeModel.FormDataEntryVariable">
+        <MappingFragment StoreEntitySet="FormDataEntryVariable">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="FormDataEntryId" ColumnName="FormDataEntryId" />
+          <ScalarProperty Name="SelectedValues_float" ColumnName="SelectedValues_float" />
+          <ScalarProperty Name="SelectedValues_int" ColumnName="SelectedValues_int" />
+          <ScalarProperty Name="SelectedValues" ColumnName="SelectedValues" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormEntityTypes">
+      <EntityTypeMapping TypeName="AspreeModel.FormEntityType">
+        <MappingFragment StoreEntitySet="FormEntityType">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormStatus">
+      <EntityTypeMapping TypeName="AspreeModel.FormStatu">
+        <MappingFragment StoreEntitySet="FormStatus">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormVariables">
+      <EntityTypeMapping TypeName="AspreeModel.FormVariable">
+        <MappingFragment StoreEntitySet="FormVariable">
+          <ScalarProperty Name="IsBlank" ColumnName="IsBlank" />
+          <ScalarProperty Name="VariableOrderNo" ColumnName="VariableOrderNo" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="SearchPageOrder" ColumnName="SearchPageOrder" />
+          <ScalarProperty Name="IsSearchVisible" ColumnName="IsSearchVisible" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ValidationMessage" ColumnName="ValidationMessage" />
+          <ScalarProperty Name="ResponseOption" ColumnName="ResponseOption" />
+          <ScalarProperty Name="DependentVariableId" ColumnName="DependentVariableId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="ValidationRuleType" ColumnName="ValidationRuleType" />
+          <ScalarProperty Name="RegEx" ColumnName="RegEx" />
+          <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
+          <ScalarProperty Name="MinRange" ColumnName="MinRange" />
+          <ScalarProperty Name="HelpText" ColumnName="HelpText" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormVariableRoles">
+      <EntityTypeMapping TypeName="AspreeModel.FormVariableRole">
+        <MappingFragment StoreEntitySet="FormVariableRole">
+          <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+          <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+          <ScalarProperty Name="CanView" ColumnName="CanView" />
+          <ScalarProperty Name="CanCreate" ColumnName="CanCreate" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="FormVariableId" ColumnName="FormVariableId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginAuthTypeMasters">
+      <EntityTypeMapping TypeName="AspreeModel.LoginAuthTypeMaster">
+        <MappingFragment StoreEntitySet="LoginAuthTypeMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserinfoEndpoint" ColumnName="UserinfoEndpoint" />
+          <ScalarProperty Name="KeysEndpoint" ColumnName="KeysEndpoint" />
+          <ScalarProperty Name="LogoutEndpoint" ColumnName="LogoutEndpoint" />
+          <ScalarProperty Name="RevokeEndpoint" ColumnName="RevokeEndpoint" />
+          <ScalarProperty Name="IntrospectEndpoint" ColumnName="IntrospectEndpoint" />
+          <ScalarProperty Name="TokenEndpoint" ColumnName="TokenEndpoint" />
+          <ScalarProperty Name="AuthorizeEndpoint" ColumnName="AuthorizeEndpoint" />
+          <ScalarProperty Name="AuthenticationProviderClaim" ColumnName="AuthenticationProviderClaim" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Scope" ColumnName="Scope" />
+          <ScalarProperty Name="ClientSecret" ColumnName="ClientSecret" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="AuthType" ColumnName="AuthType" />
+          <ScalarProperty Name="AuthTypeName" ColumnName="AuthTypeName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupDatas">
+      <EntityTypeMapping TypeName="AspreeModel.LookupData">
+        <MappingFragment StoreEntitySet="LookupData">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LookupDataType" ColumnName="LookupDataType" />
+          <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupDataGroupOptions">
+      <EntityTypeMapping TypeName="AspreeModel.LookupDataGroupOption">
+        <MappingFragment StoreEntitySet="LookupDataGroupOption">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="LookupDataOptionGroupId" ColumnName="LookupDataOptionGroupId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupDataOptionGroups">
+      <EntityTypeMapping TypeName="AspreeModel.LookupDataOptionGroup">
+        <MappingFragment StoreEntitySet="LookupDataOptionGroup">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="LookupDataId" ColumnName="LookupDataId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostCodes">
+      <EntityTypeMapping TypeName="AspreeModel.PostCode">
+        <MappingFragment StoreEntitySet="PostCode">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="SuburbId" ColumnName="SuburbId" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Privileges">
+      <EntityTypeMapping TypeName="AspreeModel.Privilege">
+        <MappingFragment StoreEntitySet="Privilege">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsProjectAdmin" ColumnName="IsProjectAdmin" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="AspreeModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="ProjectDetails" ColumnName="ProjectDetails" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="CheckListID" ColumnName="CheckListID" />
+          <ScalarProperty Name="ProjectUrl" ColumnName="ProjectUrl" />
+          <ScalarProperty Name="PreviousProjectId" ColumnName="PreviousProjectId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ProjectStatusId" ColumnName="ProjectStatusId" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectBuilderJSONs">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectBuilderJSON">
+        <MappingFragment StoreEntitySet="ProjectBuilderJSON">
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="ProjectBuilderJSONData" ColumnName="ProjectBuilderJSONData" />
+          <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectBuilderJSONEntityValues">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectBuilderJSONEntityValue">
+        <MappingFragment StoreEntitySet="ProjectBuilderJSONEntityValues">
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ProjectBuilderJSONValues" ColumnName="ProjectBuilderJSONValues" />
+          <ScalarProperty Name="ParentEntityNumber" ColumnName="ParentEntityNumber" />
+          <ScalarProperty Name="EntId" ColumnName="EntId" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectCheckLists">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectCheckList">
+        <MappingFragment StoreEntitySet="ProjectCheckList">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CommonField" ColumnName="CommonField" />
+          <ScalarProperty Name="CheckListId" ColumnName="CheckListId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectEntityTypes">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectEntityType">
+        <MappingFragment StoreEntitySet="ProjectEntityType">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectParticipants">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectParticipant">
+        <MappingFragment StoreEntitySet="ProjectParticipant">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectRoles">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectRole">
+        <MappingFragment StoreEntitySet="ProjectRole">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectSites">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectSite">
+        <MappingFragment StoreEntitySet="ProjectSite">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectStaffMembers">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectStaffMember">
+        <MappingFragment StoreEntitySet="ProjectStaffMember">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectStaffMemberRoles">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectStaffMemberRole">
+        <MappingFragment StoreEntitySet="ProjectStaffMemberRole">
+          <ScalarProperty Name="ProjectLeftDate" ColumnName="ProjectLeftDate" />
+          <ScalarProperty Name="ProjectJoinedDate" ColumnName="ProjectJoinedDate" />
+          <ScalarProperty Name="IsActiveProjectUser" ColumnName="IsActiveProjectUser" />
+          <ScalarProperty Name="StaffCreatedDate" ColumnName="StaffCreatedDate" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectStatus">
+      <EntityTypeMapping TypeName="AspreeModel.ProjectStatu">
+        <MappingFragment StoreEntitySet="ProjectStatus">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PushEmailEvents">
+      <EntityTypeMapping TypeName="AspreeModel.PushEmailEvent">
+        <MappingFragment StoreEntitySet="PushEmailEvent">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="IsEmailEvent" ColumnName="IsEmailEvent" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegExRules">
+      <EntityTypeMapping TypeName="AspreeModel.RegExRule">
+        <MappingFragment StoreEntitySet="RegExRule">
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="RegEx" ColumnName="RegEx" />
+          <ScalarProperty Name="RegExName" ColumnName="RegExName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReviewerFeedbacks">
+      <EntityTypeMapping TypeName="AspreeModel.ReviewerFeedback">
+        <MappingFragment StoreEntitySet="ReviewerFeedback">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.Role">
+      <EntityTypeMapping TypeName="AspreeModel.Role">
         <MappingFragment StoreEntitySet="Role">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsSystemRole" ColumnName="IsSystemRole" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
-          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
-          <ScalarProperty Name="Guid" ColumnName="Guid" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Variables">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.Variable">
-        <MappingFragment StoreEntitySet="Variable">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="VariableName" ColumnName="VariableName" />
-          <ScalarProperty Name="VariableLabel" ColumnName="VariableLabel" />
-          <ScalarProperty Name="Question" ColumnName="Question" />
-          <ScalarProperty Name="Values" ColumnName="Values" />
-          <ScalarProperty Name="ValueDescription" ColumnName="ValueDescription" />
-          <ScalarProperty Name="HelpText" ColumnName="HelpText" />
-          <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
-          <ScalarProperty Name="ValidationMessage" ColumnName="ValidationMessage" />
-          <ScalarProperty Name="RequiredMessage" ColumnName="RequiredMessage" />
-          <ScalarProperty Name="MinRange" ColumnName="MinRange" />
-          <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
-          <ScalarProperty Name="RegEx" ColumnName="RegEx" />
-          <ScalarProperty Name="IsSoftRange" ColumnName="IsSoftRange" />
-          <ScalarProperty Name="ValidationRuleId" ColumnName="ValidationRuleId" />
-          <ScalarProperty Name="DependentVariableId" ColumnName="DependentVariableId" />
-          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
-          <ScalarProperty Name="CanCollectMultiple" ColumnName="CanCollectMultiple" />
-          <ScalarProperty Name="VariableCategoryId" ColumnName="VariableCategoryId" />
-          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-          <ScalarProperty Name="Comment" ColumnName="Comment" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
-          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+    <EntitySetMapping Name="RolePrivileges">
+      <EntityTypeMapping TypeName="AspreeModel.RolePrivilege">
+        <MappingFragment StoreEntitySet="RolePrivilege">
           <ScalarProperty Name="Guid" ColumnName="Guid" />
-          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
-          <ScalarProperty Name="VariableValueDescription" ColumnName="VariableValueDescription" />
-          <ScalarProperty Name="IsDefaultVariable" ColumnName="IsDefaultVariable" />
-          <ScalarProperty Name="CanFutureDate" ColumnName="CanFutureDate" />
-          <ScalarProperty Name="VariableDetails" ColumnName="VariableDetails" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="VariableCategories">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.VariableCategory">
-        <MappingFragment StoreEntitySet="VariableCategory">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
-          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
-          <ScalarProperty Name="Guid" ColumnName="Guid" />
-          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
-          <ScalarProperty Name="IsDefaultVariableCategory" ColumnName="IsDefaultVariableCategory" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="VariableRoles">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.VariableRole">
-        <MappingFragment StoreEntitySet="VariableRole">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="PrivilegeId" ColumnName="PrivilegeId" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="Guid" ColumnName="Guid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="VariableTypes">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.VariableType">
-        <MappingFragment StoreEntitySet="VariableType">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Guid" ColumnName="Guid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ValidationRules">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.ValidationRule">
-        <MappingFragment StoreEntitySet="ValidationRule">
+    <EntitySetMapping Name="RolesToCreateActivitySchedulings">
+      <EntityTypeMapping TypeName="AspreeModel.RolesToCreateActivityScheduling">
+        <MappingFragment StoreEntitySet="RolesToCreateActivityScheduling">
           <ScalarProperty Name="Guid" ColumnName="Guid" />
-          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
-          <ScalarProperty Name="RegExId" ColumnName="RegExId" />
-          <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
-          <ScalarProperty Name="MinRange" ColumnName="MinRange" />
-          <ScalarProperty Name="RuleType" ColumnName="RuleType" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ActivitySchedulingId" ColumnName="ActivitySchedulingId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleToCreateActivityRegardlessScheduleds">
+      <EntityTypeMapping TypeName="AspreeModel.RoleToCreateActivityRegardlessScheduled">
+        <MappingFragment StoreEntitySet="RoleToCreateActivityRegardlessScheduled">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ActivitySchedulingId" ColumnName="ActivitySchedulingId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchedulingTypeMasters">
+      <EntityTypeMapping TypeName="AspreeModel.SchedulingTypeMaster">
+        <MappingFragment StoreEntitySet="SchedulingTypeMaster">
+          <ScalarProperty Name="SchedulingType" ColumnName="SchedulingType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityQuestions">
+      <EntityTypeMapping TypeName="AspreeModel.SecurityQuestion">
+        <MappingFragment StoreEntitySet="SecurityQuestion">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sites">
+      <EntityTypeMapping TypeName="AspreeModel.Site">
+        <MappingFragment StoreEntitySet="Site">
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="GPSLocations" ColumnName="GPSLocations" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SmtpServers">
+      <EntityTypeMapping TypeName="AspreeModel.SmtpServer">
+        <MappingFragment StoreEntitySet="SmtpServer">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MailServer" ColumnName="MailServer" />
+          <ScalarProperty Name="Port" ColumnName="Port" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FromEmail" ColumnName="FromEmail" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="AspreeModel.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="AspreeModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status1" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suburbs">
+      <EntityTypeMapping TypeName="AspreeModel.Suburb">
+        <MappingFragment StoreEntitySet="Suburb">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Abbr" ColumnName="Abbr" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tenants">
-      <EntityTypeMapping TypeName="Aspree_StaggingModel.Tenant">
+      <EntityTypeMapping TypeName="AspreeModel.Tenant">
         <MappingFragment StoreEntitySet="Tenant">
           <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
           <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
@@ -144,6 +907,226 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Guid" ColumnName="Guid" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="AspreeModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="SkypeId" ColumnName="SkypeId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="AspreeModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="LoginFailedAttemptDate" ColumnName="LoginFailedAttemptDate" />
+          <ScalarProperty Name="LoginFailedAttemptCount" ColumnName="LoginFailedAttemptCount" />
+          <ScalarProperty Name="IsUserApprovedBySystemAdmin" ColumnName="IsUserApprovedBySystemAdmin" />
+          <ScalarProperty Name="IsApiAccessEnabled" ColumnName="IsApiAccessEnabled" />
+          <ScalarProperty Name="IsMailSend" ColumnName="IsMailSend" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="TempGuid" ColumnName="TempGuid" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="AuthTypeId" ColumnName="AuthTypeId" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="SecurityQuestionId" ColumnName="SecurityQuestionId" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="AspreeModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ValidationRules">
+      <EntityTypeMapping TypeName="AspreeModel.ValidationRule">
+        <MappingFragment StoreEntitySet="ValidationRule">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="RegExId" ColumnName="RegExId" />
+          <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
+          <ScalarProperty Name="MinRange" ColumnName="MinRange" />
+          <ScalarProperty Name="RuleType" ColumnName="RuleType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Variables">
+      <EntityTypeMapping TypeName="AspreeModel.Variable">
+        <MappingFragment StoreEntitySet="Variable">
+          <ScalarProperty Name="VariableDetails" ColumnName="VariableDetails" />
+          <ScalarProperty Name="CanFutureDate" ColumnName="CanFutureDate" />
+          <ScalarProperty Name="IsDefaultVariable" ColumnName="IsDefaultVariable" />
+          <ScalarProperty Name="VariableValueDescription" ColumnName="VariableValueDescription" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="VariableCategoryId" ColumnName="VariableCategoryId" />
+          <ScalarProperty Name="CanCollectMultiple" ColumnName="CanCollectMultiple" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="DependentVariableId" ColumnName="DependentVariableId" />
+          <ScalarProperty Name="ValidationRuleId" ColumnName="ValidationRuleId" />
+          <ScalarProperty Name="IsSoftRange" ColumnName="IsSoftRange" />
+          <ScalarProperty Name="RegEx" ColumnName="RegEx" />
+          <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
+          <ScalarProperty Name="MinRange" ColumnName="MinRange" />
+          <ScalarProperty Name="RequiredMessage" ColumnName="RequiredMessage" />
+          <ScalarProperty Name="ValidationMessage" ColumnName="ValidationMessage" />
+          <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+          <ScalarProperty Name="HelpText" ColumnName="HelpText" />
+          <ScalarProperty Name="ValueDescription" ColumnName="ValueDescription" />
+          <ScalarProperty Name="Values" ColumnName="Values" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="VariableLabel" ColumnName="VariableLabel" />
+          <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariableApprovalLogs">
+      <EntityTypeMapping TypeName="AspreeModel.VariableApprovalLog">
+        <MappingFragment StoreEntitySet="VariableApprovalLog">
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariableCategories">
+      <EntityTypeMapping TypeName="AspreeModel.VariableCategory">
+        <MappingFragment StoreEntitySet="VariableCategory">
+          <ScalarProperty Name="IsDefaultVariableCategory" ColumnName="IsDefaultVariableCategory" />
+          <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariableEntityTypes">
+      <EntityTypeMapping TypeName="AspreeModel.VariableEntityType">
+        <MappingFragment StoreEntitySet="VariableEntityType">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="EntitySubTypeId" ColumnName="EntitySubTypeId" />
+          <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariableRoles">
+      <EntityTypeMapping TypeName="AspreeModel.VariableRole">
+        <MappingFragment StoreEntitySet="VariableRole">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariableTypes">
+      <EntityTypeMapping TypeName="AspreeModel.VariableType">
+        <MappingFragment StoreEntitySet="VariableType">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariableValidationRules">
+      <EntityTypeMapping TypeName="AspreeModel.VariableValidationRule">
+        <MappingFragment StoreEntitySet="VariableValidationRule">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="LimitType" ColumnName="LimitType" />
+          <ScalarProperty Name="Max" ColumnName="Max" />
+          <ScalarProperty Name="Min" ColumnName="Min" />
+          <ScalarProperty Name="RegEx" ColumnName="RegEx" />
+          <ScalarProperty Name="ValidationMessage" ColumnName="ValidationMessage" />
+          <ScalarProperty Name="ValidationId" ColumnName="ValidationId" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariableValues">
+      <EntityTypeMapping TypeName="AspreeModel.VariableValue">
+        <MappingFragment StoreEntitySet="VariableValue">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="ResponseVariableId" ColumnName="ResponseVariableId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Error_Log">
+      <EntityTypeMapping TypeName="AspreeModel.Error_Log">
+        <MappingFragment StoreEntitySet="Error_Log">
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="error_message" ColumnName="error_message" />
+          <ScalarProperty Name="error_line" ColumnName="error_line" />
+          <ScalarProperty Name="error_procedure" ColumnName="error_procedure" />
+          <ScalarProperty Name="error_state" ColumnName="error_state" />
+          <ScalarProperty Name="error_number" ColumnName="error_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HashPasswords">
+      <EntityTypeMapping TypeName="AspreeModel.HashPassword">
+        <MappingFragment StoreEntitySet="HashPassword">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HashPassword1" ColumnName="HashPassword" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

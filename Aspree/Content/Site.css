@@ -1,0 +1,155 @@
+﻿.alert-dismissible .close {
+    padding: 13px !important;
+}
+
+.alerts .alert {
+    width: 100%;
+}
+
+.page-wrapper {
+    padding-top: 0 !important;
+}
+
+.left-sidebar {
+    position: relative !important;
+    padding: 0 !important;
+}
+
+.has-danger .form-ctrl {
+    border: 1px solid #fc4b6c !important;
+    color: #222;
+}
+
+    .has-danger .form-ctrl .custom-control-label {
+        color: #222 !important;
+    }
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#Privileges .p-item:last-child {
+    border: none !important;
+    margin-bottom: 0px !important;
+}
+
+#Privileges .p-item label {
+    cursor: pointer;
+}
+
+.input-validation-error {
+    border: 1px solid #fc4b6c;
+}
+
+.field-validation-error {
+    color: #fc4b6c;
+}
+
+.text-break-word {
+    word-break: break-word;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+body.light-gray-bg.modal-open, body header {
+    padding: 0px !important;
+}
+
+.wizard-content {
+    border-bottom: 4px solid #009efb;
+    margin-bottom: 10px;
+}
+
+#variableContainer div.row:nth-child(odd), #formContainer div.row:nth-child(odd) {
+    background-color: #f7f7f7;
+    height: 40px;
+    padding: 6px;
+    cursor: pointer;
+}
+
+#variableContainer div.row:nth-child(even), #formContainer div.row:nth-child(even) {
+    background-color: white;
+    height: 40px;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.bootstrap-select button {
+    border: 1px solid #ced4da;
+}
+
+/*  validation error style for search page  */
+.input-validation-error-search {
+    background-image: linear-gradient(#4587f7, #4587f7), linear-gradient(#ff0000, #ff0000) !important;
+}
+
+.dropdown-disabled-options-background {
+    background: #d2d6d7;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+/*.list-element-disabled {
+    pointer-events: none;
+    color: #8f8f8f !important;
+    cursor: not-allowed !important;
+    
+}*/
+
+.list-element-disabled {
+    position: relative;
+    cursor: not-allowed; /* This is used */
+    color: #8f8f8f !important;
+}
+
+    .list-element-disabled a {
+        pointer-events: none;
+        color: #8f8f8f !important;
+    }
+
+.library-li-active {
+    color: #0284f5 !important;
+    font-weight: 500;
+}
+
+.selectpicker-dropdown-right .dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+}
+
+div#activityformVariableContainer .form-control {
+    color: #000000;
+}
+
+div#activityformVariableContainer .summary-page-missing-data-error {
+    border: 1px solid #ffa500;
+}
+
+div#activityformVariableContainer .view-permissions-false {
+    display: none;
+}
+
+.text-submit-for-review {
+    color: #a6501e !important;
+}

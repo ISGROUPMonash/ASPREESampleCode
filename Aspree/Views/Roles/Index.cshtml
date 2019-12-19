@@ -1,0 +1,145 @@
+﻿@model List<Aspree.Core.ViewModels.PrivilegeSmallViewModel>
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    var prililegeGroups = Model.GroupBy(c => c.Name.Substring(c.Name.IndexOf(' '))).ToList();
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+
+@section NavBarLeft{
+         <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+}
+ <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="main-content TabCard">
+        <div class="justify-content-lg-center">
+            <div class="col-md-11">
+                <div class="card">
+                    <div class="card-body">
+                        @Html.Partial("~/Views/Shared/ManageSystemAdminTools.cshtml")
+                        <div class="tab-content tabcontent-border">
+                            <div class="tab-pane active" id="manageentities" role="tabpanel">
+                                <div class="p-20">
+                                <div class="pull-left">
+                                    <h4 class="card-title">Roles</h4>
+                                </div>
+                                <div class="pull-right">
+                                    @if (ViewBag.LoggedInUser.Roles.Contains("System Admin"))
+                                    {
+                                        <button onclick="Role.addRoleRedict()" type="button" class="btn waves-effect waves-light btn-info">Add New</button>
+                                    }
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="table-responsive">
+                                    <table id="example23" class="table table-striped text-center table-sm FullWidthTable" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Role Type</th>
+                                                <th>Status</th>
+                                                <th>Modified</th>
+                                                <th class="no-sort">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search Popus -->
+<div class="modal fade user-search-poppus" id="manage-role" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit Role</h5>
+            </div>
+            <div class="modal-body">
+                <div class="role-model-error"></div>
+                <div class="sf-submit-info">
+                    <form class="form-horizontal">
+                        <div class="form-group row">
+                            <label for="Name" class="col-sm-2 text-right control-label col-form-label">Role Name<span class="text-danger">*</span></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Name" required name="Name" maxlength="30" placeholder="Role Name">
+                                <div class="form-control-feedback"></div>
+                                <input id="Guid" name="Guid" type="hidden" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 text-right control-label col-form-label">Permissions<span class="text-danger">*</span></label>
+                            <div class="col-sm-10">
+                                <div id="Privileges" class="form-ctrl" style="max-height:300px;overflow-y:auto;padding: 5px;border: 1px solid #ced4da;border-radius: .25rem;">
+                                    @foreach (var grp in prililegeGroups)
+                                    {
+                                        <div class="clearfix p-item" style="border-bottom:1px solid #ced4da;margin-bottom:6px">
+                                            <div class="col-sm-3 pull-left custom-control-label">@grp.Key</div>
+                                            @foreach (var item in grp.ToList())
+                                            {
+                                                <div class="col-sm-1 pull-left" style="max-width: 14%!important;">
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" value="@item.Guid" name="Permissions" class="custom-control-input">
+                                                        <span class="custom-control-label">@item.Name.Split(' ')[0]</span>
+                                                    </label>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                                <div class="form-control-feedback"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Role.saveRole()" class="btn-sm waves-effect waves-light btn-info">Save</button>
+                <button id="btn-cancel" type="button" class="btn-sm btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade user-search-poppus" id="manage-confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    Are you sure want to active/deactivate selected role?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Role.deleteRole()" class="btn-sm waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn-sm btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/apps/roles")
+<script>
+        $(function () {
+            $('.system-admin-tools li a').removeClass('active show');
+            $('.system-admin-tools li a:eq(1)').addClass('active show');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(6)').addClass('active');
+        })
+</script>
+}

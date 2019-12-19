@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{37066102-A8AE-4E1A-A13B-803A7EF82C17}</ProjectGuid>
+    <ProjectGuid>{B598933A-ACC4-4DF8-8FC8-1198D37251FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aspree.Provider</RootNamespace>
     <AssemblyName>Aspree.Provider</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,10 +32,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MongoDB.Bson, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.4.4\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.4.4.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="MongoDB.Driver.Legacy, Version=2.4.4.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,27 +57,124 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\ConfigSettings.cs" />
+    <Compile Include="Interface\IActivityCategoryProvider.cs" />
+    <Compile Include="Interface\IActivityProvider.cs" />
+    <Compile Include="Interface\IActivityStatusProvider.cs" />
+    <Compile Include="Interface\IAuthenticationTypeProvider.cs" />
+    <Compile Include="Interface\ICheckListProvider.cs" />
+    <Compile Include="Interface\ICityProvider.cs" />
+    <Compile Include="Interface\ICountryProvider.cs" />
+    <Compile Include="Interface\IDashboardProvider.cs" />
+    <Compile Include="Interface\IDeployProjectProvider.cs" />
+    <Compile Include="Interface\IEmailProvider.cs" />
+    <Compile Include="Interface\IEmailTemplateProvider.cs" />
+    <Compile Include="Interface\IEntityFormDataVariableProvider.cs" />
+    <Compile Include="Interface\IEntityProvider.cs" />
+    <Compile Include="Interface\IEntitySubTypeProvider.cs" />
+    <Compile Include="Interface\IEntityTypeProvider.cs" />
+    <Compile Include="Interface\IForgotPasswordProvider.cs" />
+    <Compile Include="Interface\IFormCategoryProvider.cs" />
+    <Compile Include="Interface\IFormDataEntryProvider.cs" />
+    <Compile Include="Interface\IFormProvider.cs" />
+    <Compile Include="Interface\IFormStatusProvider.cs" />
+    <Compile Include="Interface\ILookupDataGroupOptionProvider.cs" />
+    <Compile Include="Interface\ILookupDataOptionGroupProvider.cs" />
+    <Compile Include="Interface\ILookupDataProvider.cs" />
+    <Compile Include="Interface\IActionListProvider.cs" />
+    <Compile Include="Interface\IPostCodeProvider.cs" />
+    <Compile Include="Interface\IPrivilege.cs" />
+    <Compile Include="Interface\IProjectProvider.cs" />
+    <Compile Include="Interface\IProjectStatusProvider.cs" />
+    <Compile Include="Interface\IProvider.cs" />
+    <Compile Include="Interface\IProviderNew.cs" />
+    <Compile Include="Interface\IPushEmailEventProvider.cs" />
+    <Compile Include="Interface\IRegExRuleProvider.cs" />
+    <Compile Include="Interface\IReportProvider.cs" />
     <Compile Include="Interface\IRoleProvider.cs" />
+    <Compile Include="Interface\ISchedulingProvider.cs" />
+    <Compile Include="Interface\ISecurity.cs" />
+    <Compile Include="Interface\ISecurityQuestionProvider.cs" />
+    <Compile Include="Interface\ISiteProvider.cs" />
+    <Compile Include="Interface\IStateProvider.cs" />
+    <Compile Include="Interface\IStatusProvider.cs" />
+    <Compile Include="Interface\ITenantProvider.cs" />
+    <Compile Include="Interface\IUnitOfWork.cs" />
+    <Compile Include="Interface\IUserLoginProvider.cs" />
     <Compile Include="Interface\IValidationRuleProvider.cs" />
+    <Compile Include="Interface\IValidatorProvider.cs" />
     <Compile Include="Interface\IVariableCategoryProvider.cs" />
     <Compile Include="Interface\IVariableProvider.cs" />
     <Compile Include="Interface\IVariableTypeProvider.cs" />
+    <Compile Include="Interface\MongoProvider\IProjectDeployProvider.cs" />
+    <Compile Include="Interface\MongoProvider\ISearchProvider.cs" />
+    <Compile Include="Interface\MongoProvider\ISummaryProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\ActionListProvider.cs" />
+    <Compile Include="Provider\ActivityCategoryProvider.cs" />
+    <Compile Include="Provider\ActivityProvider.cs" />
+    <Compile Include="Provider\ActivityStatusProvider.cs" />
+    <Compile Include="Provider\AuthenticationTypeProvider.cs" />
+    <Compile Include="Provider\CheckListProvider.cs" />
+    <Compile Include="Provider\CityProvider.cs" />
+    <Compile Include="Provider\CountryProvider.cs" />
+    <Compile Include="Provider\DashboardProvider.cs" />
+    <Compile Include="Provider\EmailProvider.cs" />
+    <Compile Include="Provider\EmailTemplateProvider.cs" />
+    <Compile Include="Provider\EntityFormDataVariableProvider.cs" />
+    <Compile Include="Provider\EntityProvider.cs" />
+    <Compile Include="Provider\EntitySubTypeProvider.cs" />
+    <Compile Include="Provider\EntityTypeProvider.cs" />
+    <Compile Include="Provider\FormCategoryProvider.cs" />
+    <Compile Include="Provider\FormDataEntryProvider.cs" />
+    <Compile Include="Provider\FormProvider.cs" />
+    <Compile Include="Provider\FormStatusProvider.cs" />
+    <Compile Include="Provider\ForgotPasswordProvider.cs" />
+    <Compile Include="Provider\LoginUserProvider.cs" />
+    <Compile Include="Provider\LookupDataGroupOptionProvider.cs" />
+    <Compile Include="Provider\LookupDataOptionGroupProvider.cs" />
+    <Compile Include="Provider\LookupDataProvider.cs" />
+    <Compile Include="Provider\MongoProvider\ProjectDeployProvider.cs" />
+    <Compile Include="Provider\MongoProvider\SearchProvider.cs" />
+    <Compile Include="Provider\MongoProvider\SummaryProvider.cs" />
+    <Compile Include="Provider\PostCodeProvider.cs" />
+    <Compile Include="Provider\PrivilegeProvider.cs" />
+    <Compile Include="Provider\ProjectProvider.cs" />
+    <Compile Include="Provider\ProjectStatusProvider.cs" />
+    <Compile Include="Provider\Provider.cs" />
+    <Compile Include="Provider\PushEmailEventProvider.cs" />
+    <Compile Include="Provider\RegExRuleProvider.cs" />
+    <Compile Include="Provider\ReportProvider.cs" />
     <Compile Include="Provider\RoleProvider.cs" />
+    <Compile Include="Provider\SchedulingProvider.cs" />
+    <Compile Include="Provider\Security.cs" />
+    <Compile Include="Provider\SecurityQuestionProvider.cs" />
+    <Compile Include="Provider\SiteProvider.cs" />
+    <Compile Include="Provider\StateProvider.cs" />
+    <Compile Include="Provider\StatusProvider.cs" />
+    <Compile Include="Provider\TenantProvider.cs" />
+    <Compile Include="Provider\UnitOfWork.cs" />
+    <Compile Include="Provider\UserLoginProvider.cs" />
     <Compile Include="Provider\ValidationRuleProvider.cs" />
+    <Compile Include="Provider\ValidatorProvider.cs" />
     <Compile Include="Provider\VariableCategoryProvider.cs" />
     <Compile Include="Provider\VariableProvider.cs" />
     <Compile Include="Provider\VariableTypeProvider.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Aspree.Core\Aspree.Core.csproj">
-      <Project>{a23b2a57-55f9-4a2c-b981-f96985434e08}</Project>
+      <Project>{9a55ecb7-58e8-4524-bdd6-116f7549b88b}</Project>
       <Name>Aspree.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Aspree.Data\Aspree.Data.csproj">
-      <Project>{0F49F3DD-62E3-42FA-803B-96610BE3A051}</Project>
+      <Project>{f2177ab9-3b84-4723-a178-1331c459b1eb}</Project>
       <Name>Aspree.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

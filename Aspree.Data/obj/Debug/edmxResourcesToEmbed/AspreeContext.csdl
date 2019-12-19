@@ -1,32 +1,1341 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Aspree_StaggingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="AspreeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AspreeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Activities" EntityType="AspreeModel.Activity" />
+    <EntitySet Name="ActivityCategories" EntityType="AspreeModel.ActivityCategory" />
+    <EntitySet Name="ActivityEntityTypes" EntityType="AspreeModel.ActivityEntityType" />
+    <EntitySet Name="ActivityForms" EntityType="AspreeModel.ActivityForm" />
+    <EntitySet Name="ActivitySchedulings" EntityType="AspreeModel.ActivityScheduling" />
+    <EntitySet Name="ActivityStatus" EntityType="AspreeModel.ActivityStatu" />
+    <EntitySet Name="AddActivities" EntityType="AspreeModel.AddActivity" />
+    <EntitySet Name="AuthTypeMasters" EntityType="AspreeModel.AuthTypeMaster" />
+    <EntitySet Name="CheckLists" EntityType="AspreeModel.CheckList" />
+    <EntitySet Name="Cities" EntityType="AspreeModel.City" />
+    <EntitySet Name="ContactTypes" EntityType="AspreeModel.ContactType" />
+    <EntitySet Name="Countries" EntityType="AspreeModel.Country" />
+    <EntitySet Name="Emails" EntityType="AspreeModel.Email" />
+    <EntitySet Name="EmailTemplates" EntityType="AspreeModel.EmailTemplate" />
+    <EntitySet Name="Entities" EntityType="AspreeModel.Entity" />
+    <EntitySet Name="EntityFormDataVariables" EntityType="AspreeModel.EntityFormDataVariable" />
+    <EntitySet Name="EntitySubTypes" EntityType="AspreeModel.EntitySubType" />
+    <EntitySet Name="EntityTypes" EntityType="AspreeModel.EntityType" />
+    <EntitySet Name="EntityVariables" EntityType="AspreeModel.EntityVariable" />
+    <EntitySet Name="ExternalLinks" EntityType="AspreeModel.ExternalLink" />
+    <EntitySet Name="Forms" EntityType="AspreeModel.Form" />
+    <EntitySet Name="FormCategories" EntityType="AspreeModel.FormCategory" />
+    <EntitySet Name="FormDataEntries" EntityType="AspreeModel.FormDataEntry" />
+    <EntitySet Name="FormDataEntryVariables" EntityType="AspreeModel.FormDataEntryVariable" />
+    <EntitySet Name="FormEntityTypes" EntityType="AspreeModel.FormEntityType" />
+    <EntitySet Name="FormStatus" EntityType="AspreeModel.FormStatu" />
+    <EntitySet Name="FormVariables" EntityType="AspreeModel.FormVariable" />
+    <EntitySet Name="FormVariableRoles" EntityType="AspreeModel.FormVariableRole" />
+    <EntitySet Name="LoginAuthTypeMasters" EntityType="AspreeModel.LoginAuthTypeMaster" />
+    <EntitySet Name="LookupDatas" EntityType="AspreeModel.LookupData" />
+    <EntitySet Name="LookupDataGroupOptions" EntityType="AspreeModel.LookupDataGroupOption" />
+    <EntitySet Name="LookupDataOptionGroups" EntityType="AspreeModel.LookupDataOptionGroup" />
+    <EntitySet Name="PostCodes" EntityType="AspreeModel.PostCode" />
+    <EntitySet Name="Privileges" EntityType="AspreeModel.Privilege" />
+    <EntitySet Name="Projects" EntityType="AspreeModel.Project" />
+    <EntitySet Name="ProjectBuilderJSONs" EntityType="AspreeModel.ProjectBuilderJSON" />
+    <EntitySet Name="ProjectBuilderJSONEntityValues" EntityType="AspreeModel.ProjectBuilderJSONEntityValue" />
+    <EntitySet Name="ProjectCheckLists" EntityType="AspreeModel.ProjectCheckList" />
+    <EntitySet Name="ProjectEntityTypes" EntityType="AspreeModel.ProjectEntityType" />
+    <EntitySet Name="ProjectParticipants" EntityType="AspreeModel.ProjectParticipant" />
+    <EntitySet Name="ProjectRoles" EntityType="AspreeModel.ProjectRole" />
+    <EntitySet Name="ProjectSites" EntityType="AspreeModel.ProjectSite" />
+    <EntitySet Name="ProjectStaffMembers" EntityType="AspreeModel.ProjectStaffMember" />
+    <EntitySet Name="ProjectStaffMemberRoles" EntityType="AspreeModel.ProjectStaffMemberRole" />
+    <EntitySet Name="ProjectStatus" EntityType="AspreeModel.ProjectStatu" />
+    <EntitySet Name="PushEmailEvents" EntityType="AspreeModel.PushEmailEvent" />
+    <EntitySet Name="RegExRules" EntityType="AspreeModel.RegExRule" />
+    <EntitySet Name="ReviewerFeedbacks" EntityType="AspreeModel.ReviewerFeedback" />
+    <EntitySet Name="Roles" EntityType="AspreeModel.Role" />
+    <EntitySet Name="RolePrivileges" EntityType="AspreeModel.RolePrivilege" />
+    <EntitySet Name="RolesToCreateActivitySchedulings" EntityType="AspreeModel.RolesToCreateActivityScheduling" />
+    <EntitySet Name="RoleToCreateActivityRegardlessScheduleds" EntityType="AspreeModel.RoleToCreateActivityRegardlessScheduled" />
+    <EntitySet Name="SchedulingTypeMasters" EntityType="AspreeModel.SchedulingTypeMaster" />
+    <EntitySet Name="SecurityQuestions" EntityType="AspreeModel.SecurityQuestion" />
+    <EntitySet Name="Sites" EntityType="AspreeModel.Site" />
+    <EntitySet Name="SmtpServers" EntityType="AspreeModel.SmtpServer" />
+    <EntitySet Name="States" EntityType="AspreeModel.State" />
+    <EntitySet Name="Status" EntityType="AspreeModel.Status" />
+    <EntitySet Name="Suburbs" EntityType="AspreeModel.Suburb" />
+    <EntitySet Name="Tenants" EntityType="AspreeModel.Tenant" />
+    <EntitySet Name="Users" EntityType="AspreeModel.User" />
+    <EntitySet Name="UserLogins" EntityType="AspreeModel.UserLogin" />
+    <EntitySet Name="UserRoles" EntityType="AspreeModel.UserRole" />
+    <EntitySet Name="ValidationRules" EntityType="AspreeModel.ValidationRule" />
+    <EntitySet Name="Variables" EntityType="AspreeModel.Variable" />
+    <EntitySet Name="VariableApprovalLogs" EntityType="AspreeModel.VariableApprovalLog" />
+    <EntitySet Name="VariableCategories" EntityType="AspreeModel.VariableCategory" />
+    <EntitySet Name="VariableEntityTypes" EntityType="AspreeModel.VariableEntityType" />
+    <EntitySet Name="VariableRoles" EntityType="AspreeModel.VariableRole" />
+    <EntitySet Name="VariableTypes" EntityType="AspreeModel.VariableType" />
+    <EntitySet Name="VariableValidationRules" EntityType="AspreeModel.VariableValidationRule" />
+    <EntitySet Name="VariableValues" EntityType="AspreeModel.VariableValue" />
+    <EntitySet Name="Error_Log" EntityType="AspreeModel.Error_Log" />
+    <AssociationSet Name="FK_Activity_Activity" Association="AspreeModel.FK_Activity_Activity">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="Activity1" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_ActivityCategory" Association="AspreeModel.FK_Activity_ActivityCategory">
+      <End Role="ActivityCategory" EntitySet="ActivityCategories" />
+      <End Role="Activity" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_ActivityStatus" Association="AspreeModel.FK_Activity_ActivityStatus">
+      <End Role="ActivityStatu" EntitySet="ActivityStatus" />
+      <End Role="Activity" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_Project" Association="AspreeModel.FK_Activity_Project">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="Activity" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_Tenant" Association="AspreeModel.FK_Activity_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="Activity" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityEntityType_Activity" Association="AspreeModel.FK_ActivityEntityType_Activity">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="ActivityEntityType" EntitySet="ActivityEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityForm_Activity" Association="AspreeModel.FK_ActivityForm_Activity">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="ActivityForm" EntitySet="ActivityForms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityScheduling_Activity" Association="AspreeModel.FK_ActivityScheduling_Activity">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="ActivityScheduling" EntitySet="ActivitySchedulings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityScheduling_Activity1" Association="AspreeModel.FK_ActivityScheduling_Activity1">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="ActivityScheduling" EntitySet="ActivitySchedulings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddActivity_AddActivity" Association="AspreeModel.FK_AddActivity_AddActivity">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="AddActivity" EntitySet="AddActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntry_Activity" Association="AspreeModel.FK_FormDataEntry_Activity">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBuilderJSONEntityValues_Activity" Association="AspreeModel.FK_ProjectBuilderJSONEntityValues_Activity">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="ProjectBuilderJSONEntityValue" EntitySet="ProjectBuilderJSONEntityValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityCategory_Tenant" Association="AspreeModel.FK_ActivityCategory_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="ActivityCategory" EntitySet="ActivityCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityEntityType_EntityType" Association="AspreeModel.FK_ActivityEntityType_EntityType">
+      <End Role="EntityType" EntitySet="EntityTypes" />
+      <End Role="ActivityEntityType" EntitySet="ActivityEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityForm_Forms" Association="AspreeModel.FK_ActivityForm_Forms">
+      <End Role="Form" EntitySet="Forms" />
+      <End Role="ActivityForm" EntitySet="ActivityForms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityFormRole_ActivityForm" Association="AspreeModel.FK_ActivityFormRole_ActivityForm">
+      <End Role="ActivityScheduling" EntitySet="ActivitySchedulings" />
+      <End Role="RoleToCreateActivityRegardlessScheduled" EntitySet="RoleToCreateActivityRegardlessScheduleds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityRole_Activity" Association="AspreeModel.FK_ActivityRole_Activity">
+      <End Role="ActivityScheduling" EntitySet="ActivitySchedulings" />
+      <End Role="RolesToCreateActivityScheduling" EntitySet="RolesToCreateActivitySchedulings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityScheduling_FormDataEntry" Association="AspreeModel.FK_ActivityScheduling_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="ActivityScheduling" EntitySet="ActivitySchedulings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddActivity_FormDataEntry" Association="AspreeModel.FK_AddActivity_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="AddActivity" EntitySet="AddActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddActivity_FormDataEntry1" Association="AspreeModel.FK_AddActivity_FormDataEntry1">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="AddActivity" EntitySet="AddActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddActivity_UserLogin" Association="AspreeModel.FK_AddActivity_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="AddActivity" EntitySet="AddActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectCheckList_CheckList" Association="AspreeModel.FK_ProjectCheckList_CheckList">
+      <End Role="CheckList" EntitySet="CheckLists" />
+      <End Role="ProjectCheckList" EntitySet="ProjectCheckLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterCity_MasterState" Association="AspreeModel.FK_MasterCity_MasterState">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCode_City" Association="AspreeModel.FK_PostCode_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="PostCode" EntitySet="PostCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Suburb_City" Association="AspreeModel.FK_Suburb_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Suburb" EntitySet="Suburbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterState_MasterContry" Association="AspreeModel.FK_MasterState_MasterContry">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Email_SmtpServer" Association="AspreeModel.FK_Email_SmtpServer">
+      <End Role="SmtpServer" EntitySet="SmtpServers" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmailTemplate_PushEmailEvent" Association="AspreeModel.FK_EmailTemplate_PushEmailEvent">
+      <End Role="PushEmailEvent" EntitySet="PushEmailEvents" />
+      <End Role="EmailTemplate" EntitySet="EmailTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmailTemplate_Tenant" Association="AspreeModel.FK_EmailTemplate_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="EmailTemplate" EntitySet="EmailTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entity_Entity" Association="AspreeModel.FK_Entity_Entity">
+      <End Role="EntityType" EntitySet="EntityTypes" />
+      <End Role="Entity" EntitySet="Entities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entity_EntityType" Association="AspreeModel.FK_Entity_EntityType">
+      <End Role="EntitySubType" EntitySet="EntitySubTypes" />
+      <End Role="Entity" EntitySet="Entities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entity_Tenant" Association="AspreeModel.FK_Entity_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="Entity" EntitySet="Entities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityVariable_Entity" Association="AspreeModel.FK_EntityVariable_Entity">
+      <End Role="Entity" EntitySet="Entities" />
+      <End Role="EntityVariable" EntitySet="EntityVariables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityDataVariable_Variable" Association="AspreeModel.FK_EntityDataVariable_Variable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="EntityFormDataVariable" EntitySet="EntityFormDataVariables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntitySubType_EntityType" Association="AspreeModel.FK_EntitySubType_EntityType">
+      <End Role="EntityType" EntitySet="EntityTypes" />
+      <End Role="EntitySubType" EntitySet="EntitySubTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableEntityType_EntitySubType" Association="AspreeModel.FK_VariableEntityType_EntitySubType">
+      <End Role="EntitySubType" EntitySet="EntitySubTypes" />
+      <End Role="VariableEntityType" EntitySet="VariableEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityType_Tenant" Association="AspreeModel.FK_EntityType_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="EntityType" EntitySet="EntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormEntityType_EntityType" Association="AspreeModel.FK_FormEntityType_EntityType">
+      <End Role="EntityType" EntitySet="EntityTypes" />
+      <End Role="FormEntityType" EntitySet="FormEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableEntityType_EntityType" Association="AspreeModel.FK_MasterVariableEntityType_EntityType">
+      <End Role="EntityType" EntitySet="EntityTypes" />
+      <End Role="VariableEntityType" EntitySet="VariableEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectEntityType_EntityType" Association="AspreeModel.FK_ProjectEntityType_EntityType">
+      <End Role="EntityType" EntitySet="EntityTypes" />
+      <End Role="ProjectEntityType" EntitySet="ProjectEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityVariable_Variable" Association="AspreeModel.FK_EntityVariable_Variable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="EntityVariable" EntitySet="EntityVariables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Form_Project" Association="AspreeModel.FK_Form_Project">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="Form" EntitySet="Forms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Form_Tenant" Association="AspreeModel.FK_Form_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="Form" EntitySet="Forms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntry_Form" Association="AspreeModel.FK_FormDataEntry_Form">
+      <End Role="Form" EntitySet="Forms" />
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormEntityType_Form" Association="AspreeModel.FK_FormEntityType_Form">
+      <End Role="Form" EntitySet="Forms" />
+      <End Role="FormEntityType" EntitySet="FormEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Forms_FormCategory" Association="AspreeModel.FK_Forms_FormCategory">
+      <End Role="FormCategory" EntitySet="FormCategories" />
+      <End Role="Form" EntitySet="Forms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Forms_FormStatus" Association="AspreeModel.FK_Forms_FormStatus">
+      <End Role="FormStatu" EntitySet="FormStatus" />
+      <End Role="Form" EntitySet="Forms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormVariable_Forms" Association="AspreeModel.FK_FormVariable_Forms">
+      <End Role="Form" EntitySet="Forms" />
+      <End Role="FormVariable" EntitySet="FormVariables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBuilderJSONEntityValues_Form" Association="AspreeModel.FK_ProjectBuilderJSONEntityValues_Form">
+      <End Role="Form" EntitySet="Forms" />
+      <End Role="ProjectBuilderJSONEntityValue" EntitySet="ProjectBuilderJSONEntityValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReviewerFeedback_Form" Association="AspreeModel.FK_ReviewerFeedback_Form">
+      <End Role="Form" EntitySet="Forms" />
+      <End Role="ReviewerFeedback" EntitySet="ReviewerFeedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormCategory_Tenant" Association="AspreeModel.FK_FormCategory_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="FormCategory" EntitySet="FormCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntry_UserLogin" Association="AspreeModel.FK_FormDataEntry_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntryVariable_FormDataEntry" Association="AspreeModel.FK_FormDataEntryVariable_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="FormDataEntryVariable" EntitySet="FormDataEntryVariables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBuilderJSON_FormDataEntry" Association="AspreeModel.FK_ProjectBuilderJSON_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="ProjectBuilderJSON" EntitySet="ProjectBuilderJSONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBuilderJSONEntityValues_FormDataEntry" Association="AspreeModel.FK_ProjectBuilderJSONEntityValues_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="ProjectBuilderJSONEntityValue" EntitySet="ProjectBuilderJSONEntityValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMemberRole_Project" Association="AspreeModel.FK_ProjectStaffMemberRole_Project">
+      <End Role="FormDataEntry" EntitySet="FormDataEntries" />
+      <End Role="ProjectStaffMemberRole" EntitySet="ProjectStaffMemberRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntryVariable_MasterVariable" Association="AspreeModel.FK_FormDataEntryVariable_MasterVariable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="FormDataEntryVariable" EntitySet="FormDataEntryVariables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormVariable_MasterVariable" Association="AspreeModel.FK_FormVariable_MasterVariable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="FormVariable" EntitySet="FormVariables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormVariableRole_FormVariable" Association="AspreeModel.FK_FormVariableRole_FormVariable">
+      <End Role="FormVariable" EntitySet="FormVariables" />
+      <End Role="FormVariableRole" EntitySet="FormVariableRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormVariableRole_Role" Association="AspreeModel.FK_FormVariableRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="FormVariableRole" EntitySet="FormVariableRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_AuthTypeMaster" Association="AspreeModel.FK_UserLogin_AuthTypeMaster">
+      <End Role="LoginAuthTypeMaster" EntitySet="LoginAuthTypeMasters" />
+      <End Role="UserLogin" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LookupData_VariableType" Association="AspreeModel.FK_LookupData_VariableType">
+      <End Role="VariableType" EntitySet="VariableTypes" />
+      <End Role="LookupData" EntitySet="LookupDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LookupDataOptionGroup_LookupData" Association="AspreeModel.FK_LookupDataOptionGroup_LookupData">
+      <End Role="LookupData" EntitySet="LookupDatas" />
+      <End Role="LookupDataOptionGroup" EntitySet="LookupDataOptionGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LookupDataGroupOption_LookupDataOptionGroup" Association="AspreeModel.FK_LookupDataGroupOption_LookupDataOptionGroup">
+      <End Role="LookupDataOptionGroup" EntitySet="LookupDataOptionGroups" />
+      <End Role="LookupDataGroupOption" EntitySet="LookupDataGroupOptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCode_State" Association="AspreeModel.FK_PostCode_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="PostCode" EntitySet="PostCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCode_Suburb" Association="AspreeModel.FK_PostCode_Suburb">
+      <End Role="Suburb" EntitySet="Suburbs" />
+      <End Role="PostCode" EntitySet="PostCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePrivilege_Privilege" Association="AspreeModel.FK_RolePrivilege_Privilege">
+      <End Role="Privilege" EntitySet="Privileges" />
+      <End Role="RolePrivilege" EntitySet="RolePrivileges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Project" Association="AspreeModel.FK_Project_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Project1" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_ProjectStatus" Association="AspreeModel.FK_Project_ProjectStatus">
+      <End Role="ProjectStatu" EntitySet="ProjectStatus" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Tenant" Association="AspreeModel.FK_Project_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectCheckList_Project" Association="AspreeModel.FK_ProjectCheckList_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectCheckList" EntitySet="ProjectCheckLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectEntityType_Project" Association="AspreeModel.FK_ProjectEntityType_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectEntityType" EntitySet="ProjectEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectParticipant_Project" Association="AspreeModel.FK_ProjectParticipant_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectParticipant" EntitySet="ProjectParticipants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectRole_Project" Association="AspreeModel.FK_ProjectRole_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectRole" EntitySet="ProjectRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectSite_Project" Association="AspreeModel.FK_ProjectSite_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectSite" EntitySet="ProjectSites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMember_Project" Association="AspreeModel.FK_ProjectStaffMember_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectStaffMember" EntitySet="ProjectStaffMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectRole_Role" Association="AspreeModel.FK_ProjectRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="ProjectRole" EntitySet="ProjectRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectSite_Site" Association="AspreeModel.FK_ProjectSite_Site">
+      <End Role="Site" EntitySet="Sites" />
+      <End Role="ProjectSite" EntitySet="ProjectSites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMember_UserLogin" Association="AspreeModel.FK_ProjectStaffMember_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="ProjectStaffMember" EntitySet="ProjectStaffMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMemberRole_Role" Association="AspreeModel.FK_ProjectStaffMemberRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="ProjectStaffMemberRole" EntitySet="ProjectStaffMemberRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMemberRole_UserLogin" Association="AspreeModel.FK_ProjectStaffMemberRole_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="ProjectStaffMemberRole" EntitySet="ProjectStaffMemberRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMemberRole_UserLogin1" Association="AspreeModel.FK_ProjectStaffMemberRole_UserLogin1">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="ProjectStaffMemberRole" EntitySet="ProjectStaffMemberRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ValidationRule_RegExRule" Association="AspreeModel.FK_ValidationRule_RegExRule">
+      <End Role="RegExRule" EntitySet="RegExRules" />
+      <End Role="ValidationRule" EntitySet="ValidationRules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityFormRole_Role" Association="AspreeModel.FK_ActivityFormRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RoleToCreateActivityRegardlessScheduled" EntitySet="RoleToCreateActivityRegardlessScheduleds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityRole_Role" Association="AspreeModel.FK_ActivityRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RolesToCreateActivityScheduling" EntitySet="RolesToCreateActivitySchedulings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableRole_Role" Association="AspreeModel.FK_MasterVariableRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="VariableRole" EntitySet="VariableRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_Tenant" Association="AspreeModel.FK_Role_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="Role" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePrivilege_Role" Association="AspreeModel.FK_RolePrivilege_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RolePrivilege" EntitySet="RolePrivileges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role" Association="AspreeModel.FK_UserRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_SecurityQuestion" Association="AspreeModel.FK_UserLogin_SecurityQuestion">
+      <End Role="SecurityQuestion" EntitySet="SecurityQuestions" />
+      <End Role="UserLogin" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Site_Tenant" Association="AspreeModel.FK_Site_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="Site" EntitySet="Sites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Suburb_State" Association="AspreeModel.FK_Suburb_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="Suburb" EntitySet="Suburbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_Tenant" Association="AspreeModel.FK_UserLogin_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="UserLogin" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variable_Tenant" Association="AspreeModel.FK_Variable_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="Variable" EntitySet="Variables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableCategory_Tenant" Association="AspreeModel.FK_VariableCategory_Tenant">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="VariableCategory" EntitySet="VariableCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_UserLogin" Association="AspreeModel.FK_UserRole_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableValidationRule_ValidationRule" Association="AspreeModel.FK_VariableValidationRule_ValidationRule">
+      <End Role="ValidationRule" EntitySet="ValidationRules" />
+      <End Role="VariableValidationRule" EntitySet="VariableValidationRules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableEntityType_MasterVariable" Association="AspreeModel.FK_MasterVariableEntityType_MasterVariable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="VariableEntityType" EntitySet="VariableEntityTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableRole_MasterVariable" Association="AspreeModel.FK_MasterVariableRole_MasterVariable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="VariableRole" EntitySet="VariableRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableValue_MasterVariable" Association="AspreeModel.FK_MasterVariableValue_MasterVariable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="VariableValue" EntitySet="VariableValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variable_VariableCategory" Association="AspreeModel.FK_Variable_VariableCategory">
+      <End Role="VariableCategory" EntitySet="VariableCategories" />
+      <End Role="Variable" EntitySet="Variables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variable_VariableType" Association="AspreeModel.FK_Variable_VariableType">
+      <End Role="VariableType" EntitySet="VariableTypes" />
+      <End Role="Variable" EntitySet="Variables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableApprovalLog_Variable" Association="AspreeModel.FK_VariableApprovalLog_Variable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="VariableApprovalLog" EntitySet="VariableApprovalLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableValidationRule_Variable" Association="AspreeModel.FK_VariableValidationRule_Variable">
+      <End Role="Variable" EntitySet="Variables" />
+      <End Role="VariableValidationRule" EntitySet="VariableValidationRules" />
+    </AssociationSet>
+    <EntitySet Name="HashPasswords" EntityType="AspreeModel.HashPassword" />
+  </EntityContainer>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RepeatationType" Type="Int32" />
+    <Property Name="RepeatationCount" Type="Int32" />
+    <Property Name="RepeatationOffset" Type="Int32" />
+    <Property Name="DependentActivityId" Type="Int32" />
+    <Property Name="ActivityCategoryId" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ScheduleType" Type="Int32" Nullable="false" />
+    <Property Name="ActivityStatusId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <Property Name="PreviewSchedulingDone" Type="Boolean" />
+    <Property Name="IsDefaultActivity" Type="Int32" Nullable="false" />
+    <Property Name="IsActivityRequireAnEntity" Type="Boolean" />
+    <NavigationProperty Name="Activity1" Relationship="AspreeModel.FK_Activity_Activity" FromRole="Activity" ToRole="Activity1" />
+    <NavigationProperty Name="Activity2" Relationship="AspreeModel.FK_Activity_Activity" FromRole="Activity1" ToRole="Activity" />
+    <NavigationProperty Name="ActivityCategory" Relationship="AspreeModel.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
+    <NavigationProperty Name="ActivityStatu" Relationship="AspreeModel.FK_Activity_ActivityStatus" FromRole="Activity" ToRole="ActivityStatu" />
+    <NavigationProperty Name="FormDataEntry" Relationship="AspreeModel.FK_Activity_Project" FromRole="Activity" ToRole="FormDataEntry" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_Activity_Tenant" FromRole="Activity" ToRole="Tenant" />
+    <NavigationProperty Name="ActivityEntityTypes" Relationship="AspreeModel.FK_ActivityEntityType_Activity" FromRole="Activity" ToRole="ActivityEntityType" />
+    <NavigationProperty Name="ActivityForms" Relationship="AspreeModel.FK_ActivityForm_Activity" FromRole="Activity" ToRole="ActivityForm" />
+    <NavigationProperty Name="ActivitySchedulings" Relationship="AspreeModel.FK_ActivityScheduling_Activity" FromRole="Activity" ToRole="ActivityScheduling" />
+    <NavigationProperty Name="ActivitySchedulings1" Relationship="AspreeModel.FK_ActivityScheduling_Activity1" FromRole="Activity" ToRole="ActivityScheduling" />
+    <NavigationProperty Name="AddActivities" Relationship="AspreeModel.FK_AddActivity_AddActivity" FromRole="Activity" ToRole="AddActivity" />
+    <NavigationProperty Name="FormDataEntries" Relationship="AspreeModel.FK_FormDataEntry_Activity" FromRole="Activity" ToRole="FormDataEntry" />
+    <NavigationProperty Name="ProjectBuilderJSONEntityValues" Relationship="AspreeModel.FK_ProjectBuilderJSONEntityValues_Activity" FromRole="Activity" ToRole="ProjectBuilderJSONEntityValue" />
+  </EntityType>
+  <EntityType Name="ActivityCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <NavigationProperty Name="Activities" Relationship="AspreeModel.FK_Activity_ActivityCategory" FromRole="ActivityCategory" ToRole="Activity" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_ActivityCategory_Tenant" FromRole="ActivityCategory" ToRole="Tenant" />
+  </EntityType>
+  <EntityType Name="ActivityEntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityId" Type="Int32" Nullable="false" />
+    <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Activity" Relationship="AspreeModel.FK_ActivityEntityType_Activity" FromRole="ActivityEntityType" ToRole="Activity" />
+    <NavigationProperty Name="EntityType" Relationship="AspreeModel.FK_ActivityEntityType_EntityType" FromRole="ActivityEntityType" ToRole="EntityType" />
+  </EntityType>
+  <EntityType Name="ActivityForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormId" Type="Int32" Nullable="false" />
+    <Property Name="ActivityId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Activity" Relationship="AspreeModel.FK_ActivityForm_Activity" FromRole="ActivityForm" ToRole="Activity" />
+    <NavigationProperty Name="Form" Relationship="AspreeModel.FK_ActivityForm_Forms" FromRole="ActivityForm" ToRole="Form" />
+  </EntityType>
+  <EntityType Name="ActivityScheduling">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityId" Type="Int32" Nullable="false" />
+    <Property Name="ScheduledToBeCompleted" Type="Int32" Nullable="false" />
+    <Property Name="ActivityAvailableForCreation" Type="Int32" Nullable="false" />
+    <Property Name="RolesToCreateActivity" Type="Int32" Nullable="false" />
+    <Property Name="RoleToCreateActivityRegardlessScheduled" Type="Int32" Nullable="false" />
+    <Property Name="OtherActivity" Type="Int32" />
+    <Property Name="OffsetCount" Type="Int32" />
+    <Property Name="OffsetType" Type="Int32" />
+    <Property Name="SpecifiedActivity" Type="Int32" />
+    <Property Name="CreationWindowOpens" Type="Int32" />
+    <Property Name="CreationWindowClose" Type="Int32" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="IsScheduled" Type="Boolean" />
+    <Property Name="ScheduleDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Activity" Relationship="AspreeModel.FK_ActivityScheduling_Activity" FromRole="ActivityScheduling" ToRole="Activity" />
+    <NavigationProperty Name="Activity1" Relationship="AspreeModel.FK_ActivityScheduling_Activity1" FromRole="ActivityScheduling" ToRole="Activity" />
+    <NavigationProperty Name="RoleToCreateActivityRegardlessScheduleds" Relationship="AspreeModel.FK_ActivityFormRole_ActivityForm" FromRole="ActivityScheduling" ToRole="RoleToCreateActivityRegardlessScheduled" />
+    <NavigationProperty Name="RolesToCreateActivitySchedulings" Relationship="AspreeModel.FK_ActivityRole_Activity" FromRole="ActivityScheduling" ToRole="RolesToCreateActivityScheduling" />
+    <NavigationProperty Name="FormDataEntry" Relationship="AspreeModel.FK_ActivityScheduling_FormDataEntry" FromRole="ActivityScheduling" ToRole="FormDataEntry" />
+    <Property Name="CanCreatedMultipleTime" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActivityStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Activities" Relationship="AspreeModel.FK_Activity_ActivityStatus" FromRole="ActivityStatu" ToRole="Activity" />
+  </EntityType>
+  <EntityType Name="AddActivity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityId" Type="Int32" Nullable="false" />
+    <Property Name="ActivityCompletedByUser" Type="Int32" Nullable="false" />
+    <Property Name="ActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActivityAdded" Type="Boolean" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="PersonEntityId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Activity" Relationship="AspreeModel.FK_AddActivity_AddActivity" FromRole="AddActivity" ToRole="Activity" />
+    <NavigationProperty Name="FormDataEntry" Relationship="AspreeModel.FK_AddActivity_FormDataEntry" FromRole="AddActivity" ToRole="FormDataEntry" />
+    <NavigationProperty Name="FormDataEntry1" Relationship="AspreeModel.FK_AddActivity_FormDataEntry1" FromRole="AddActivity" ToRole="FormDataEntry" />
+    <NavigationProperty Name="UserLogin" Relationship="AspreeModel.FK_AddActivity_UserLogin" FromRole="AddActivity" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="AuthTypeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CheckList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ProjectCheckLists" Relationship="AspreeModel.FK_ProjectCheckList_CheckList" FromRole="CheckList" ToRole="ProjectCheckList" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatedId" Type="Int32" Nullable="false" />
+    <Property Name="Abbr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="State" Relationship="AspreeModel.FK_MasterCity_MasterState" FromRole="City" ToRole="State" />
+    <NavigationProperty Name="PostCodes" Relationship="AspreeModel.FK_PostCode_City" FromRole="City" ToRole="PostCode" />
+    <NavigationProperty Name="Suburbs" Relationship="AspreeModel.FK_Suburb_City" FromRole="City" ToRole="Suburb" />
+  </EntityType>
+  <EntityType Name="ContactType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Abbr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="States" Relationship="AspreeModel.FK_MasterState_MasterContry" FromRole="Country" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="To" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="From" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsSend" Type="Boolean" Nullable="false" />
+    <Property Name="FailedAttempt" Type="Int32" />
+    <Property Name="IsImmediate" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SentDate" Type="DateTime" Precision="3" />
+    <Property Name="SmtpServerId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="SmtpServer" Relationship="AspreeModel.FK_Email_SmtpServer" FromRole="Email" ToRole="SmtpServer" />
+  </EntityType>
+  <EntityType Name="EmailTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PushEmailEventId" Type="Int32" Nullable="false" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MailBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailKeywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <NavigationProperty Name="PushEmailEvent" Relationship="AspreeModel.FK_EmailTemplate_PushEmailEvent" FromRole="EmailTemplate" ToRole="PushEmailEvent" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_EmailTemplate_Tenant" FromRole="EmailTemplate" ToRole="Tenant" />
+  </EntityType>
+  <EntityType Name="Entity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="EntitySubTypeId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentEntityId" Type="Int32" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <Property Name="EntityVariablesDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EntityType" Relationship="AspreeModel.FK_Entity_Entity" FromRole="Entity" ToRole="EntityType" />
+    <NavigationProperty Name="EntitySubType" Relationship="AspreeModel.FK_Entity_EntityType" FromRole="Entity" ToRole="EntitySubType" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_Entity_Tenant" FromRole="Entity" ToRole="Tenant" />
+    <NavigationProperty Name="EntityVariables" Relationship="AspreeModel.FK_EntityVariable_Entity" FromRole="Entity" ToRole="EntityVariable" />
+  </EntityType>
+  <EntityType Name="EntityFormDataVariable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntityId" Type="Int32" Nullable="false" />
+    <Property Name="VariableId" Type="Int32" Nullable="false" />
+    <Property Name="SelectedValues" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EntityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="EntitySubTypeId" Type="Int32" />
+    <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_EntityDataVariable_Variable" FromRole="EntityFormDataVariable" ToRole="Variable" />
+  </EntityType>
   <EntityType Name="EntitySubType">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
     <Property Name="Guid" Type="Guid" Nullable="false" />
-    <NavigationProperty Name="EntityType" Relationship="Self.FK_EntitySubType_EntityType" FromRole="EntitySubType" ToRole="EntityType" />
+    <NavigationProperty Name="Entities" Relationship="AspreeModel.FK_Entity_EntityType" FromRole="EntitySubType" ToRole="Entity" />
+    <NavigationProperty Name="EntityType" Relationship="AspreeModel.FK_EntitySubType_EntityType" FromRole="EntitySubType" ToRole="EntityType" />
+    <NavigationProperty Name="VariableEntityTypes" Relationship="AspreeModel.FK_VariableEntityType_EntitySubType" FromRole="EntitySubType" ToRole="VariableEntityType" />
   </EntityType>
   <EntityType Name="EntityType">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Guid" Type="Guid" Nullable="false" />
     <Property Name="TenantId" Type="Int32" />
-    <NavigationProperty Name="EntitySubTypes" Relationship="Self.FK_EntitySubType_EntityType" FromRole="EntityType" ToRole="EntitySubType" />
-    <NavigationProperty Name="Tenant" Relationship="Aspree_StaggingModel.FK_EntityType_Tenant" FromRole="EntityType" ToRole="Tenant" />
+    <NavigationProperty Name="ActivityEntityTypes" Relationship="AspreeModel.FK_ActivityEntityType_EntityType" FromRole="EntityType" ToRole="ActivityEntityType" />
+    <NavigationProperty Name="Entities" Relationship="AspreeModel.FK_Entity_Entity" FromRole="EntityType" ToRole="Entity" />
+    <NavigationProperty Name="EntitySubTypes" Relationship="AspreeModel.FK_EntitySubType_EntityType" FromRole="EntityType" ToRole="EntitySubType" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_EntityType_Tenant" FromRole="EntityType" ToRole="Tenant" />
+    <NavigationProperty Name="FormEntityTypes" Relationship="AspreeModel.FK_FormEntityType_EntityType" FromRole="EntityType" ToRole="FormEntityType" />
+    <NavigationProperty Name="VariableEntityTypes" Relationship="AspreeModel.FK_MasterVariableEntityType_EntityType" FromRole="EntityType" ToRole="VariableEntityType" />
+    <NavigationProperty Name="ProjectEntityTypes" Relationship="AspreeModel.FK_ProjectEntityType_EntityType" FromRole="EntityType" ToRole="ProjectEntityType" />
+  </EntityType>
+  <EntityType Name="EntityVariable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntityId" Type="Int32" Nullable="false" />
+    <Property Name="VariableId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Entity" Relationship="AspreeModel.FK_EntityVariable_Entity" FromRole="EntityVariable" ToRole="Entity" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_EntityVariable_Variable" FromRole="EntityVariable" ToRole="Variable" />
+  </EntityType>
+  <EntityType Name="ExternalLink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserGuid" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Form">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsPublished" Type="Boolean" Nullable="false" />
+    <Property Name="ApprovedBy" Type="Int32" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsTemplate" Type="Boolean" Nullable="false" />
+    <Property Name="FormCategoryId" Type="Int32" />
+    <Property Name="ProjectId" Type="Int32" />
+    <Property Name="FormState" Type="Int32" Nullable="false" />
+    <Property Name="FormStatusId" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int32" />
+    <Property Name="PreviousVersion" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <Property Name="IsDefaultForm" Type="Int32" Nullable="false" />
+    <Property Name="FormComposeDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ActivityForms" Relationship="AspreeModel.FK_ActivityForm_Forms" FromRole="Form" ToRole="ActivityForm" />
+    <NavigationProperty Name="FormDataEntry" Relationship="AspreeModel.FK_Form_Project" FromRole="Form" ToRole="FormDataEntry" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_Form_Tenant" FromRole="Form" ToRole="Tenant" />
+    <NavigationProperty Name="FormDataEntries" Relationship="AspreeModel.FK_FormDataEntry_Form" FromRole="Form" ToRole="FormDataEntry" />
+    <NavigationProperty Name="FormEntityTypes" Relationship="AspreeModel.FK_FormEntityType_Form" FromRole="Form" ToRole="FormEntityType" />
+    <NavigationProperty Name="FormCategory" Relationship="AspreeModel.FK_Forms_FormCategory" FromRole="Form" ToRole="FormCategory" />
+    <NavigationProperty Name="FormStatu" Relationship="AspreeModel.FK_Forms_FormStatus" FromRole="Form" ToRole="FormStatu" />
+    <NavigationProperty Name="FormVariables" Relationship="AspreeModel.FK_FormVariable_Forms" FromRole="Form" ToRole="FormVariable" />
+    <NavigationProperty Name="ProjectBuilderJSONEntityValues" Relationship="AspreeModel.FK_ProjectBuilderJSONEntityValues_Form" FromRole="Form" ToRole="ProjectBuilderJSONEntityValue" />
+    <NavigationProperty Name="ReviewerFeedbacks" Relationship="AspreeModel.FK_ReviewerFeedback_Form" FromRole="Form" ToRole="ReviewerFeedback" />
+  </EntityType>
+  <EntityType Name="FormCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <Property Name="IsDefaultFormCategory" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Forms" Relationship="AspreeModel.FK_Forms_FormCategory" FromRole="FormCategory" ToRole="Form" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_FormCategory_Tenant" FromRole="FormCategory" ToRole="Tenant" />
+  </EntityType>
+  <EntityType Name="FormDataEntry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityId" Type="Int32" />
+    <Property Name="ProjectId" Type="Int32" />
+    <Property Name="EntityId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="FormId" Type="Int32" />
+    <Property Name="ThisUserId" Type="Int32" />
+    <Property Name="EntityNumber" Type="Int32" />
+    <Property Name="ParentEntityNumber" Type="Int32" />
+    <NavigationProperty Name="Activities" Relationship="AspreeModel.FK_Activity_Project" FromRole="FormDataEntry" ToRole="Activity" />
+    <NavigationProperty Name="Activity" Relationship="AspreeModel.FK_FormDataEntry_Activity" FromRole="FormDataEntry" ToRole="Activity" />
+    <NavigationProperty Name="ActivitySchedulings" Relationship="AspreeModel.FK_ActivityScheduling_FormDataEntry" FromRole="FormDataEntry" ToRole="ActivityScheduling" />
+    <NavigationProperty Name="AddActivities" Relationship="AspreeModel.FK_AddActivity_FormDataEntry" FromRole="FormDataEntry" ToRole="AddActivity" />
+    <NavigationProperty Name="AddActivities1" Relationship="AspreeModel.FK_AddActivity_FormDataEntry1" FromRole="FormDataEntry" ToRole="AddActivity" />
+    <NavigationProperty Name="Forms" Relationship="AspreeModel.FK_Form_Project" FromRole="FormDataEntry" ToRole="Form" />
+    <NavigationProperty Name="Form" Relationship="AspreeModel.FK_FormDataEntry_Form" FromRole="FormDataEntry" ToRole="Form" />
+    <NavigationProperty Name="UserLogin" Relationship="AspreeModel.FK_FormDataEntry_UserLogin" FromRole="FormDataEntry" ToRole="UserLogin" />
+    <NavigationProperty Name="FormDataEntryVariables" Relationship="AspreeModel.FK_FormDataEntryVariable_FormDataEntry" FromRole="FormDataEntry" ToRole="FormDataEntryVariable" />
+    <NavigationProperty Name="ProjectBuilderJSONs" Relationship="AspreeModel.FK_ProjectBuilderJSON_FormDataEntry" FromRole="FormDataEntry" ToRole="ProjectBuilderJSON" />
+    <NavigationProperty Name="ProjectBuilderJSONEntityValues" Relationship="AspreeModel.FK_ProjectBuilderJSONEntityValues_FormDataEntry" FromRole="FormDataEntry" ToRole="ProjectBuilderJSONEntityValue" />
+    <NavigationProperty Name="ProjectStaffMemberRoles" Relationship="AspreeModel.FK_ProjectStaffMemberRole_Project" FromRole="FormDataEntry" ToRole="ProjectStaffMemberRole" />
+    <Property Name="ProjectDeployStatus" Type="Int32" />
+    <Property Name="ProjectDeployedId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectDeployedVersion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FormDataEntryVariable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VariableId" Type="Int32" Nullable="false" />
+    <Property Name="SelectedValues" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SelectedValues_int" Type="Int32" />
+    <Property Name="SelectedValues_float" Type="Double" />
+    <Property Name="FormDataEntryId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="ParentId" Type="Int32" />
+    <NavigationProperty Name="FormDataEntry" Relationship="AspreeModel.FK_FormDataEntryVariable_FormDataEntry" FromRole="FormDataEntryVariable" ToRole="FormDataEntry" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_FormDataEntryVariable_MasterVariable" FromRole="FormDataEntryVariable" ToRole="Variable" />
+  </EntityType>
+  <EntityType Name="FormEntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormId" Type="Int32" Nullable="false" />
+    <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="EntityType" Relationship="AspreeModel.FK_FormEntityType_EntityType" FromRole="FormEntityType" ToRole="EntityType" />
+    <NavigationProperty Name="Form" Relationship="AspreeModel.FK_FormEntityType_Form" FromRole="FormEntityType" ToRole="Form" />
+  </EntityType>
+  <EntityType Name="FormStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Forms" Relationship="AspreeModel.FK_Forms_FormStatus" FromRole="FormStatu" ToRole="Form" />
+  </EntityType>
+  <EntityType Name="FormVariable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormId" Type="Int32" Nullable="false" />
+    <Property Name="VariableId" Type="Int32" Nullable="false" />
+    <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+    <Property Name="HelpText" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MinRange" Type="Int32" />
+    <Property Name="MaxRange" Type="Int32" />
+    <Property Name="RegEx" Type="Int32" />
+    <Property Name="ValidationRuleType" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="DependentVariableId" Type="Int32" />
+    <Property Name="ResponseOption" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ValidationMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="IsSearchVisible" Type="Boolean" />
+    <Property Name="SearchPageOrder" Type="Int32" />
+    <Property Name="QuestionText" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Form" Relationship="AspreeModel.FK_FormVariable_Forms" FromRole="FormVariable" ToRole="Form" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_FormVariable_MasterVariable" FromRole="FormVariable" ToRole="Variable" />
+    <NavigationProperty Name="FormVariableRoles" Relationship="AspreeModel.FK_FormVariableRole_FormVariable" FromRole="FormVariable" ToRole="FormVariableRole" />
+    <Property Name="VariableOrderNo" Type="Int32" />
+    <Property Name="IsBlank" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="FormVariableRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormVariableId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="CanCreate" Type="Boolean" Nullable="false" />
+    <Property Name="CanView" Type="Boolean" Nullable="false" />
+    <Property Name="CanEdit" Type="Boolean" Nullable="false" />
+    <Property Name="CanDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FormVariable" Relationship="AspreeModel.FK_FormVariableRole_FormVariable" FromRole="FormVariableRole" ToRole="FormVariable" />
+    <NavigationProperty Name="Role" Relationship="AspreeModel.FK_FormVariableRole_Role" FromRole="FormVariableRole" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="LoginAuthTypeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AuthTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AuthType" Type="Int32" Nullable="false" />
+    <Property Name="Domain" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ClientId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ClientSecret" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Scope" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="UserLogins" Relationship="AspreeModel.FK_UserLogin_AuthTypeMaster" FromRole="LoginAuthTypeMaster" ToRole="UserLogin" />
+    <Property Name="AuthenticationProviderClaim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorizeEndpoint" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TokenEndpoint" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IntrospectEndpoint" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RevokeEndpoint" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LogoutEndpoint" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="KeysEndpoint" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="UserinfoEndpoint" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LookupData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="VariableTypeId" Type="Int32" Nullable="false" />
+    <Property Name="LookupDataType" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" />
+    <NavigationProperty Name="VariableType" Relationship="AspreeModel.FK_LookupData_VariableType" FromRole="LookupData" ToRole="VariableType" />
+    <NavigationProperty Name="LookupDataOptionGroups" Relationship="AspreeModel.FK_LookupDataOptionGroup_LookupData" FromRole="LookupData" ToRole="LookupDataOptionGroup" />
+  </EntityType>
+  <EntityType Name="LookupDataGroupOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LookupDataOptionGroupId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="LookupDataOptionGroup" Relationship="AspreeModel.FK_LookupDataGroupOption_LookupDataOptionGroup" FromRole="LookupDataGroupOption" ToRole="LookupDataOptionGroup" />
+  </EntityType>
+  <EntityType Name="LookupDataOptionGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Label" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LookupDataId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="LookupData" Relationship="AspreeModel.FK_LookupDataOptionGroup_LookupData" FromRole="LookupDataOptionGroup" ToRole="LookupData" />
+    <NavigationProperty Name="LookupDataGroupOptions" Relationship="AspreeModel.FK_LookupDataGroupOption_LookupDataOptionGroup" FromRole="LookupDataOptionGroup" ToRole="LookupDataGroupOption" />
+  </EntityType>
+  <EntityType Name="PostCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SuburbId" Type="Int32" Nullable="false" />
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="AspreeModel.FK_PostCode_City" FromRole="PostCode" ToRole="City" />
+    <NavigationProperty Name="State" Relationship="AspreeModel.FK_PostCode_State" FromRole="PostCode" ToRole="State" />
+    <NavigationProperty Name="Suburb" Relationship="AspreeModel.FK_PostCode_Suburb" FromRole="PostCode" ToRole="Suburb" />
+  </EntityType>
+  <EntityType Name="Privilege">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsProjectAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="RolePrivileges" Relationship="AspreeModel.FK_RolePrivilege_Privilege" FromRole="Privilege" ToRole="RolePrivilege" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectStatusId" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="PreviousProjectId" Type="Int32" />
+    <Property Name="ProjectUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CheckListID" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <Property Name="ProjectDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Project1" Relationship="AspreeModel.FK_Project_Project" FromRole="Project" ToRole="Project1" />
+    <NavigationProperty Name="Project2" Relationship="AspreeModel.FK_Project_Project" FromRole="Project1" ToRole="Project" />
+    <NavigationProperty Name="ProjectStatu" Relationship="AspreeModel.FK_Project_ProjectStatus" FromRole="Project" ToRole="ProjectStatu" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_Project_Tenant" FromRole="Project" ToRole="Tenant" />
+    <NavigationProperty Name="ProjectCheckLists" Relationship="AspreeModel.FK_ProjectCheckList_Project" FromRole="Project" ToRole="ProjectCheckList" />
+    <NavigationProperty Name="ProjectEntityTypes" Relationship="AspreeModel.FK_ProjectEntityType_Project" FromRole="Project" ToRole="ProjectEntityType" />
+    <NavigationProperty Name="ProjectParticipants" Relationship="AspreeModel.FK_ProjectParticipant_Project" FromRole="Project" ToRole="ProjectParticipant" />
+    <NavigationProperty Name="ProjectRoles" Relationship="AspreeModel.FK_ProjectRole_Project" FromRole="Project" ToRole="ProjectRole" />
+    <NavigationProperty Name="ProjectSites" Relationship="AspreeModel.FK_ProjectSite_Project" FromRole="Project" ToRole="ProjectSite" />
+    <NavigationProperty Name="ProjectStaffMembers" Relationship="AspreeModel.FK_ProjectStaffMember_Project" FromRole="Project" ToRole="ProjectStaffMember" />
+  </EntityType>
+  <EntityType Name="ProjectBuilderJSON">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectType" Type="Int32" Nullable="false" />
+    <Property Name="ProjectBuilderJSONData" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Double" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <NavigationProperty Name="FormDataEntry" Relationship="AspreeModel.FK_ProjectBuilderJSON_FormDataEntry" FromRole="ProjectBuilderJSON" ToRole="FormDataEntry" />
+  </EntityType>
+  <EntityType Name="ProjectBuilderJSONEntityValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="ActivityId" Type="Int32" Nullable="false" />
+    <Property Name="FormId" Type="Int32" Nullable="false" />
+    <Property Name="EntId" Type="Int32" Nullable="false" />
+    <Property Name="ParentEntityNumber" Type="Int32" />
+    <Property Name="ProjectBuilderJSONValues" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <NavigationProperty Name="Activity" Relationship="AspreeModel.FK_ProjectBuilderJSONEntityValues_Activity" FromRole="ProjectBuilderJSONEntityValue" ToRole="Activity" />
+    <NavigationProperty Name="Form" Relationship="AspreeModel.FK_ProjectBuilderJSONEntityValues_Form" FromRole="ProjectBuilderJSONEntityValue" ToRole="Form" />
+    <NavigationProperty Name="FormDataEntry" Relationship="AspreeModel.FK_ProjectBuilderJSONEntityValues_FormDataEntry" FromRole="ProjectBuilderJSONEntityValue" ToRole="FormDataEntry" />
+  </EntityType>
+  <EntityType Name="ProjectCheckList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="CheckListId" Type="Int32" Nullable="false" />
+    <Property Name="CommonField" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="CheckList" Relationship="AspreeModel.FK_ProjectCheckList_CheckList" FromRole="ProjectCheckList" ToRole="CheckList" />
+    <NavigationProperty Name="Project" Relationship="AspreeModel.FK_ProjectCheckList_Project" FromRole="ProjectCheckList" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="ProjectEntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="EntityType" Relationship="AspreeModel.FK_ProjectEntityType_EntityType" FromRole="ProjectEntityType" ToRole="EntityType" />
+    <NavigationProperty Name="Project" Relationship="AspreeModel.FK_ProjectEntityType_Project" FromRole="ProjectEntityType" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="ProjectParticipant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="EntityId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="AspreeModel.FK_ProjectParticipant_Project" FromRole="ProjectParticipant" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="ProjectRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="AspreeModel.FK_ProjectRole_Project" FromRole="ProjectRole" ToRole="Project" />
+    <NavigationProperty Name="Role" Relationship="AspreeModel.FK_ProjectRole_Role" FromRole="ProjectRole" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="ProjectSite">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="SiteId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="AspreeModel.FK_ProjectSite_Project" FromRole="ProjectSite" ToRole="Project" />
+    <NavigationProperty Name="Site" Relationship="AspreeModel.FK_ProjectSite_Site" FromRole="ProjectSite" ToRole="Site" />
+  </EntityType>
+  <EntityType Name="ProjectStaffMember">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="AspreeModel.FK_ProjectStaffMember_Project" FromRole="ProjectStaffMember" ToRole="Project" />
+    <NavigationProperty Name="UserLogin" Relationship="AspreeModel.FK_ProjectStaffMember_UserLogin" FromRole="ProjectStaffMember" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="ProjectStaffMemberRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="StaffCreatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FormDataEntry" Relationship="AspreeModel.FK_ProjectStaffMemberRole_Project" FromRole="ProjectStaffMemberRole" ToRole="FormDataEntry" />
+    <NavigationProperty Name="Role" Relationship="AspreeModel.FK_ProjectStaffMemberRole_Role" FromRole="ProjectStaffMemberRole" ToRole="Role" />
+    <NavigationProperty Name="UserLogin" Relationship="AspreeModel.FK_ProjectStaffMemberRole_UserLogin" FromRole="ProjectStaffMemberRole" ToRole="UserLogin" />
+    <NavigationProperty Name="UserLogin1" Relationship="AspreeModel.FK_ProjectStaffMemberRole_UserLogin1" FromRole="ProjectStaffMemberRole" ToRole="UserLogin" />
+    <Property Name="IsActiveProjectUser" Type="Boolean" />
+    <Property Name="ProjectJoinedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProjectLeftDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ProjectStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Projects" Relationship="AspreeModel.FK_Project_ProjectStatus" FromRole="ProjectStatu" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="PushEmailEvent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsEmailEvent" Type="Boolean" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="EmailTemplates" Relationship="AspreeModel.FK_EmailTemplate_PushEmailEvent" FromRole="PushEmailEvent" ToRole="EmailTemplate" />
+  </EntityType>
+  <EntityType Name="RegExRule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegExName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegEx" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Guid" Type="Guid" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ValidationRules" Relationship="AspreeModel.FK_ValidationRule_RegExRule" FromRole="RegExRule" ToRole="ValidationRule" />
+  </EntityType>
+  <EntityType Name="ReviewerFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="FormId" Type="Int32" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Form" Relationship="AspreeModel.FK_ReviewerFeedback_Form" FromRole="ReviewerFeedback" ToRole="Form" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IsSystemRole" Type="Boolean" Nullable="false" />
     <Property Name="CreatedBy" Type="Int32" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -37,16 +1346,258 @@
     <Property Name="Guid" Type="Guid" Nullable="false" />
     <Property Name="Status" Type="Int32" Nullable="false" />
     <Property Name="TenantId" Type="Int32" />
-    <NavigationProperty Name="VariableRoles" Relationship="Self.FK_MasterVariableRole_Role" FromRole="Role" ToRole="VariableRole" />
-    <NavigationProperty Name="Tenant" Relationship="Aspree_StaggingModel.FK_Role_Tenant" FromRole="Role" ToRole="Tenant" />
+    <NavigationProperty Name="FormVariableRoles" Relationship="AspreeModel.FK_FormVariableRole_Role" FromRole="Role" ToRole="FormVariableRole" />
+    <NavigationProperty Name="ProjectRoles" Relationship="AspreeModel.FK_ProjectRole_Role" FromRole="Role" ToRole="ProjectRole" />
+    <NavigationProperty Name="ProjectStaffMemberRoles" Relationship="AspreeModel.FK_ProjectStaffMemberRole_Role" FromRole="Role" ToRole="ProjectStaffMemberRole" />
+    <NavigationProperty Name="RoleToCreateActivityRegardlessScheduleds" Relationship="AspreeModel.FK_ActivityFormRole_Role" FromRole="Role" ToRole="RoleToCreateActivityRegardlessScheduled" />
+    <NavigationProperty Name="RolesToCreateActivitySchedulings" Relationship="AspreeModel.FK_ActivityRole_Role" FromRole="Role" ToRole="RolesToCreateActivityScheduling" />
+    <NavigationProperty Name="VariableRoles" Relationship="AspreeModel.FK_MasterVariableRole_Role" FromRole="Role" ToRole="VariableRole" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_Role_Tenant" FromRole="Role" ToRole="Tenant" />
+    <NavigationProperty Name="RolePrivileges" Relationship="AspreeModel.FK_RolePrivilege_Role" FromRole="Role" ToRole="RolePrivilege" />
+    <NavigationProperty Name="UserRoles" Relationship="AspreeModel.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="RolePrivilege">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="PrivilegeId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Privilege" Relationship="AspreeModel.FK_RolePrivilege_Privilege" FromRole="RolePrivilege" ToRole="Privilege" />
+    <NavigationProperty Name="Role" Relationship="AspreeModel.FK_RolePrivilege_Role" FromRole="RolePrivilege" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="RolesToCreateActivityScheduling">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivitySchedulingId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ActivityScheduling" Relationship="AspreeModel.FK_ActivityRole_Activity" FromRole="RolesToCreateActivityScheduling" ToRole="ActivityScheduling" />
+    <NavigationProperty Name="Role" Relationship="AspreeModel.FK_ActivityRole_Role" FromRole="RolesToCreateActivityScheduling" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="RoleToCreateActivityRegardlessScheduled">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivitySchedulingId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ActivityScheduling" Relationship="AspreeModel.FK_ActivityFormRole_ActivityForm" FromRole="RoleToCreateActivityRegardlessScheduled" ToRole="ActivityScheduling" />
+    <NavigationProperty Name="Role" Relationship="AspreeModel.FK_ActivityFormRole_Role" FromRole="RoleToCreateActivityRegardlessScheduled" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="SchedulingTypeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchedulingType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="UserLogins" Relationship="AspreeModel.FK_UserLogin_SecurityQuestion" FromRole="SecurityQuestion" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="Site">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CountyId" Type="Int32" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="AddressLine1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Suburb" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GPSLocations" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <NavigationProperty Name="ProjectSites" Relationship="AspreeModel.FK_ProjectSite_Site" FromRole="Site" ToRole="ProjectSite" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_Site_Tenant" FromRole="Site" ToRole="Tenant" />
+  </EntityType>
+  <EntityType Name="SmtpServer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FromEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Port" Type="Int32" Nullable="false" />
+    <Property Name="MailServer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Emails" Relationship="AspreeModel.FK_Email_SmtpServer" FromRole="SmtpServer" ToRole="Email" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Cities" Relationship="AspreeModel.FK_MasterCity_MasterState" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="AspreeModel.FK_MasterState_MasterContry" FromRole="State" ToRole="Country" />
+    <NavigationProperty Name="PostCodes" Relationship="AspreeModel.FK_PostCode_State" FromRole="State" ToRole="PostCode" />
+    <NavigationProperty Name="Suburbs" Relationship="AspreeModel.FK_Suburb_State" FromRole="State" ToRole="Suburb" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suburb">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="Abbr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="AspreeModel.FK_Suburb_City" FromRole="Suburb" ToRole="City" />
+    <NavigationProperty Name="PostCodes" Relationship="AspreeModel.FK_PostCode_Suburb" FromRole="Suburb" ToRole="PostCode" />
+    <NavigationProperty Name="State" Relationship="AspreeModel.FK_Suburb_State" FromRole="Suburb" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Tenant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Activities" Relationship="AspreeModel.FK_Activity_Tenant" FromRole="Tenant" ToRole="Activity" />
+    <NavigationProperty Name="ActivityCategories" Relationship="AspreeModel.FK_ActivityCategory_Tenant" FromRole="Tenant" ToRole="ActivityCategory" />
+    <NavigationProperty Name="EmailTemplates" Relationship="AspreeModel.FK_EmailTemplate_Tenant" FromRole="Tenant" ToRole="EmailTemplate" />
+    <NavigationProperty Name="Entities" Relationship="AspreeModel.FK_Entity_Tenant" FromRole="Tenant" ToRole="Entity" />
+    <NavigationProperty Name="EntityTypes" Relationship="AspreeModel.FK_EntityType_Tenant" FromRole="Tenant" ToRole="EntityType" />
+    <NavigationProperty Name="Forms" Relationship="AspreeModel.FK_Form_Tenant" FromRole="Tenant" ToRole="Form" />
+    <NavigationProperty Name="FormCategories" Relationship="AspreeModel.FK_FormCategory_Tenant" FromRole="Tenant" ToRole="FormCategory" />
+    <NavigationProperty Name="Projects" Relationship="AspreeModel.FK_Project_Tenant" FromRole="Tenant" ToRole="Project" />
+    <NavigationProperty Name="Roles" Relationship="AspreeModel.FK_Role_Tenant" FromRole="Tenant" ToRole="Role" />
+    <NavigationProperty Name="Sites" Relationship="AspreeModel.FK_Site_Tenant" FromRole="Tenant" ToRole="Site" />
+    <NavigationProperty Name="UserLogins" Relationship="AspreeModel.FK_UserLogin_Tenant" FromRole="Tenant" ToRole="UserLogin" />
+    <NavigationProperty Name="Variables" Relationship="AspreeModel.FK_Variable_Tenant" FromRole="Tenant" ToRole="Variable" />
+    <NavigationProperty Name="VariableCategories" Relationship="AspreeModel.FK_VariableCategory_Tenant" FromRole="Tenant" ToRole="VariableCategory" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SkypeId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityQuestionId" Type="Int32" />
+    <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccessToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenantId" Type="Int32" Nullable="false" />
+    <Property Name="AuthTypeId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="TempGuid" Type="Guid" />
+    <Property Name="UserTypeId" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AddActivities" Relationship="AspreeModel.FK_AddActivity_UserLogin" FromRole="UserLogin" ToRole="AddActivity" />
+    <NavigationProperty Name="FormDataEntries" Relationship="AspreeModel.FK_FormDataEntry_UserLogin" FromRole="UserLogin" ToRole="FormDataEntry" />
+    <NavigationProperty Name="LoginAuthTypeMaster" Relationship="AspreeModel.FK_UserLogin_AuthTypeMaster" FromRole="UserLogin" ToRole="LoginAuthTypeMaster" />
+    <NavigationProperty Name="ProjectStaffMembers" Relationship="AspreeModel.FK_ProjectStaffMember_UserLogin" FromRole="UserLogin" ToRole="ProjectStaffMember" />
+    <NavigationProperty Name="ProjectStaffMemberRoles" Relationship="AspreeModel.FK_ProjectStaffMemberRole_UserLogin" FromRole="UserLogin" ToRole="ProjectStaffMemberRole" />
+    <NavigationProperty Name="ProjectStaffMemberRoles1" Relationship="AspreeModel.FK_ProjectStaffMemberRole_UserLogin1" FromRole="UserLogin" ToRole="ProjectStaffMemberRole" />
+    <NavigationProperty Name="SecurityQuestion" Relationship="AspreeModel.FK_UserLogin_SecurityQuestion" FromRole="UserLogin" ToRole="SecurityQuestion" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_UserLogin_Tenant" FromRole="UserLogin" ToRole="Tenant" />
+    <NavigationProperty Name="UserRoles" Relationship="AspreeModel.FK_UserRole_UserLogin" FromRole="UserLogin" ToRole="UserRole" />
+    <Property Name="IsMailSend" Type="Boolean" />
+    <Property Name="IsApiAccessEnabled" Type="Boolean" />
+    <Property Name="IsUserApprovedBySystemAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="LoginFailedAttemptCount" Type="Int32" />
+    <Property Name="LoginFailedAttemptDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="AspreeModel.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="UserLogin" Relationship="AspreeModel.FK_UserRole_UserLogin" FromRole="UserRole" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="ValidationRule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RuleType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MinRange" Type="Double" />
+    <Property Name="MaxRange" Type="Double" />
+    <Property Name="RegExId" Type="Int32" />
+    <Property Name="ErrorMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="RegExRule" Relationship="AspreeModel.FK_ValidationRule_RegExRule" FromRole="ValidationRule" ToRole="RegExRule" />
+    <NavigationProperty Name="VariableValidationRules" Relationship="AspreeModel.FK_VariableValidationRule_ValidationRule" FromRole="ValidationRule" ToRole="VariableValidationRule" />
   </EntityType>
   <EntityType Name="Variable">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="VariableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="VariableLabel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VariableName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VariableLabel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Values" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ValueDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
@@ -77,17 +1628,40 @@
     <Property Name="IsDefaultVariable" Type="Int32" Nullable="false" />
     <Property Name="CanFutureDate" Type="Boolean" />
     <Property Name="VariableDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="VariableRoles" Relationship="Self.FK_MasterVariableRole_MasterVariable" FromRole="Variable" ToRole="VariableRole" />
-    <NavigationProperty Name="VariableCategory" Relationship="Self.FK_Variable_VariableCategory" FromRole="Variable" ToRole="VariableCategory" />
-    <NavigationProperty Name="VariableType" Relationship="Self.FK_Variable_VariableType" FromRole="Variable" ToRole="VariableType" />
-    <NavigationProperty Name="Tenant" Relationship="Aspree_StaggingModel.FK_Variable_Tenant" FromRole="Variable" ToRole="Tenant" />
+    <NavigationProperty Name="EntityFormDataVariables" Relationship="AspreeModel.FK_EntityDataVariable_Variable" FromRole="Variable" ToRole="EntityFormDataVariable" />
+    <NavigationProperty Name="EntityVariables" Relationship="AspreeModel.FK_EntityVariable_Variable" FromRole="Variable" ToRole="EntityVariable" />
+    <NavigationProperty Name="FormDataEntryVariables" Relationship="AspreeModel.FK_FormDataEntryVariable_MasterVariable" FromRole="Variable" ToRole="FormDataEntryVariable" />
+    <NavigationProperty Name="FormVariables" Relationship="AspreeModel.FK_FormVariable_MasterVariable" FromRole="Variable" ToRole="FormVariable" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_Variable_Tenant" FromRole="Variable" ToRole="Tenant" />
+    <NavigationProperty Name="VariableEntityTypes" Relationship="AspreeModel.FK_MasterVariableEntityType_MasterVariable" FromRole="Variable" ToRole="VariableEntityType" />
+    <NavigationProperty Name="VariableRoles" Relationship="AspreeModel.FK_MasterVariableRole_MasterVariable" FromRole="Variable" ToRole="VariableRole" />
+    <NavigationProperty Name="VariableValues" Relationship="AspreeModel.FK_MasterVariableValue_MasterVariable" FromRole="Variable" ToRole="VariableValue" />
+    <NavigationProperty Name="VariableCategory" Relationship="AspreeModel.FK_Variable_VariableCategory" FromRole="Variable" ToRole="VariableCategory" />
+    <NavigationProperty Name="VariableType" Relationship="AspreeModel.FK_Variable_VariableType" FromRole="Variable" ToRole="VariableType" />
+    <NavigationProperty Name="VariableApprovalLogs" Relationship="AspreeModel.FK_VariableApprovalLog_Variable" FromRole="Variable" ToRole="VariableApprovalLog" />
+    <NavigationProperty Name="VariableValidationRules" Relationship="AspreeModel.FK_VariableValidationRule_Variable" FromRole="Variable" ToRole="VariableValidationRule" />
+  </EntityType>
+  <EntityType Name="VariableApprovalLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VariableId" Type="Int32" Nullable="false" />
+    <Property Name="CommentText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeactivatedBy" Type="Int32" />
+    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_VariableApprovalLog_Variable" FromRole="VariableApprovalLog" ToRole="Variable" />
   </EntityType>
   <EntityType Name="VariableCategory">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CreatedBy" Type="Int32" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifiedBy" Type="Int32" />
@@ -97,8 +1671,21 @@
     <Property Name="Guid" Type="Guid" Nullable="false" />
     <Property Name="TenantId" Type="Int32" />
     <Property Name="IsDefaultVariableCategory" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Variables" Relationship="Self.FK_Variable_VariableCategory" FromRole="VariableCategory" ToRole="Variable" />
-    <NavigationProperty Name="Tenant" Relationship="Aspree_StaggingModel.FK_VariableCategory_Tenant" FromRole="VariableCategory" ToRole="Tenant" />
+    <NavigationProperty Name="Tenant" Relationship="AspreeModel.FK_VariableCategory_Tenant" FromRole="VariableCategory" ToRole="Tenant" />
+    <NavigationProperty Name="Variables" Relationship="AspreeModel.FK_Variable_VariableCategory" FromRole="VariableCategory" ToRole="Variable" />
+  </EntityType>
+  <EntityType Name="VariableEntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VariableId" Type="Int32" Nullable="false" />
+    <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="EntitySubTypeId" Type="Int32" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="EntitySubType" Relationship="AspreeModel.FK_VariableEntityType_EntitySubType" FromRole="VariableEntityType" ToRole="EntitySubType" />
+    <NavigationProperty Name="EntityType" Relationship="AspreeModel.FK_MasterVariableEntityType_EntityType" FromRole="VariableEntityType" ToRole="EntityType" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_MasterVariableEntityType_MasterVariable" FromRole="VariableEntityType" ToRole="Variable" />
   </EntityType>
   <EntityType Name="VariableRole">
     <Key>
@@ -108,22 +1695,470 @@
     <Property Name="VariableId" Type="Int32" Nullable="false" />
     <Property Name="RoleId" Type="Int32" Nullable="false" />
     <Property Name="Guid" Type="Guid" Nullable="false" />
-    <NavigationProperty Name="Role" Relationship="Self.FK_MasterVariableRole_Role" FromRole="VariableRole" ToRole="Role" />
-    <NavigationProperty Name="Variable" Relationship="Self.FK_MasterVariableRole_MasterVariable" FromRole="VariableRole" ToRole="Variable" />
+    <NavigationProperty Name="Role" Relationship="AspreeModel.FK_MasterVariableRole_Role" FromRole="VariableRole" ToRole="Role" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_MasterVariableRole_MasterVariable" FromRole="VariableRole" ToRole="Variable" />
   </EntityType>
   <EntityType Name="VariableType">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Int32" Nullable="false" />
     <Property Name="Guid" Type="Guid" Nullable="false" />
-    <NavigationProperty Name="Variables" Relationship="Self.FK_Variable_VariableType" FromRole="VariableType" ToRole="Variable" />
+    <NavigationProperty Name="LookupDatas" Relationship="AspreeModel.FK_LookupData_VariableType" FromRole="VariableType" ToRole="LookupData" />
+    <NavigationProperty Name="Variables" Relationship="AspreeModel.FK_Variable_VariableType" FromRole="VariableType" ToRole="Variable" />
   </EntityType>
+  <EntityType Name="VariableValidationRule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VariableId" Type="Int32" Nullable="false" />
+    <Property Name="ValidationId" Type="Int32" />
+    <Property Name="ValidationMessage" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RegEx" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Min" Type="Double" />
+    <Property Name="Max" Type="Double" />
+    <Property Name="LimitType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ValidationRule" Relationship="AspreeModel.FK_VariableValidationRule_ValidationRule" FromRole="VariableValidationRule" ToRole="ValidationRule" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_VariableValidationRule_Variable" FromRole="VariableValidationRule" ToRole="Variable" />
+  </EntityType>
+  <EntityType Name="VariableValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VariableId" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ResponseVariableId" Type="Int32" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Variable" Relationship="AspreeModel.FK_MasterVariableValue_MasterVariable" FromRole="VariableValue" ToRole="Variable" />
+  </EntityType>
+  <EntityType Name="Error_Log">
+    <Key>
+      <PropertyRef Name="Created" />
+    </Key>
+    <Property Name="error_number" Type="Int32" />
+    <Property Name="error_state" Type="Int32" />
+    <Property Name="error_procedure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="error_line" Type="Int32" />
+    <Property Name="error_message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Activity_Activity">
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="0..1" />
+    <End Type="AspreeModel.Activity" Role="Activity1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity1">
+        <PropertyRef Name="DependentActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_ActivityCategory">
+    <End Type="AspreeModel.ActivityCategory" Role="ActivityCategory" Multiplicity="0..1" />
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ActivityCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_ActivityStatus">
+    <End Type="AspreeModel.ActivityStatu" Role="ActivityStatu" Multiplicity="1" />
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityStatu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ActivityStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_Project">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="1" />
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityEntityType_Activity">
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="1" />
+    <End Type="AspreeModel.ActivityEntityType" Role="ActivityEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityEntityType">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityForm_Activity">
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="1" />
+    <End Type="AspreeModel.ActivityForm" Role="ActivityForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityForm">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityScheduling_Activity">
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="1" />
+    <End Type="AspreeModel.ActivityScheduling" Role="ActivityScheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityScheduling">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityScheduling_Activity1">
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="0..1" />
+    <End Type="AspreeModel.ActivityScheduling" Role="ActivityScheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityScheduling">
+        <PropertyRef Name="SpecifiedActivity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddActivity_AddActivity">
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="1" />
+    <End Type="AspreeModel.AddActivity" Role="AddActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddActivity">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntry_Activity">
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="0..1" />
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntry">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBuilderJSONEntityValues_Activity">
+    <End Type="AspreeModel.Activity" Role="Activity" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectBuilderJSONEntityValue" Role="ProjectBuilderJSONEntityValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectBuilderJSONEntityValue">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityCategory_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.ActivityCategory" Role="ActivityCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityCategory">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityEntityType_EntityType">
+    <End Type="AspreeModel.EntityType" Role="EntityType" Multiplicity="1" />
+    <End Type="AspreeModel.ActivityEntityType" Role="ActivityEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityEntityType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityForm_Forms">
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="1" />
+    <End Type="AspreeModel.ActivityForm" Role="ActivityForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityForm">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityFormRole_ActivityForm">
+    <End Type="AspreeModel.ActivityScheduling" Role="ActivityScheduling" Multiplicity="1" />
+    <End Type="AspreeModel.RoleToCreateActivityRegardlessScheduled" Role="RoleToCreateActivityRegardlessScheduled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityScheduling">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleToCreateActivityRegardlessScheduled">
+        <PropertyRef Name="ActivitySchedulingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityRole_Activity">
+    <End Type="AspreeModel.ActivityScheduling" Role="ActivityScheduling" Multiplicity="1" />
+    <End Type="AspreeModel.RolesToCreateActivityScheduling" Role="RolesToCreateActivityScheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityScheduling">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolesToCreateActivityScheduling">
+        <PropertyRef Name="ActivitySchedulingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityScheduling_FormDataEntry">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="1" />
+    <End Type="AspreeModel.ActivityScheduling" Role="ActivityScheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityScheduling">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddActivity_FormDataEntry">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="1" />
+    <End Type="AspreeModel.AddActivity" Role="AddActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddActivity">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddActivity_FormDataEntry1">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="1" />
+    <End Type="AspreeModel.AddActivity" Role="AddActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddActivity">
+        <PropertyRef Name="PersonEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddActivity_UserLogin">
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="AspreeModel.AddActivity" Role="AddActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddActivity">
+        <PropertyRef Name="ActivityCompletedByUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectCheckList_CheckList">
+    <End Type="AspreeModel.CheckList" Role="CheckList" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectCheckList" Role="ProjectCheckList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckList">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectCheckList">
+        <PropertyRef Name="CheckListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterCity_MasterState">
+    <End Type="AspreeModel.State" Role="State" Multiplicity="1" />
+    <End Type="AspreeModel.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StatedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostCode_City">
+    <End Type="AspreeModel.City" Role="City" Multiplicity="1" />
+    <End Type="AspreeModel.PostCode" Role="PostCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostCode">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Suburb_City">
+    <End Type="AspreeModel.City" Role="City" Multiplicity="1" />
+    <End Type="AspreeModel.Suburb" Role="Suburb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Suburb">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterState_MasterContry">
+    <End Type="AspreeModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="AspreeModel.State" Role="State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Email_SmtpServer">
+    <End Type="AspreeModel.SmtpServer" Role="SmtpServer" Multiplicity="1" />
+    <End Type="AspreeModel.Email" Role="Email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SmtpServer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="SmtpServerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmailTemplate_PushEmailEvent">
+    <End Type="AspreeModel.PushEmailEvent" Role="PushEmailEvent" Multiplicity="1" />
+    <End Type="AspreeModel.EmailTemplate" Role="EmailTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PushEmailEvent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmailTemplate">
+        <PropertyRef Name="PushEmailEventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmailTemplate_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.EmailTemplate" Role="EmailTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmailTemplate">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entity_Entity">
+    <End Type="AspreeModel.EntityType" Role="EntityType" Multiplicity="1" />
+    <End Type="AspreeModel.Entity" Role="Entity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entity_EntityType">
+    <End Type="AspreeModel.EntitySubType" Role="EntitySubType" Multiplicity="0..1" />
+    <End Type="AspreeModel.Entity" Role="Entity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntitySubType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="EntitySubTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entity_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.Entity" Role="Entity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntityVariable_Entity">
+    <End Type="AspreeModel.Entity" Role="Entity" Multiplicity="1" />
+    <End Type="AspreeModel.EntityVariable" Role="EntityVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityVariable">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntityDataVariable_Variable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.EntityFormDataVariable" Role="EntityFormDataVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityFormDataVariable">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_EntitySubType_EntityType">
-    <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
-    <End Role="EntitySubType" Type="Self.EntitySubType" Multiplicity="*" />
+    <End Type="AspreeModel.EntityType" Role="EntityType" Multiplicity="1" />
+    <End Type="AspreeModel.EntitySubType" Role="EntitySubType" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="EntityType">
         <PropertyRef Name="Id" />
@@ -133,138 +2168,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_MasterVariableRole_Role">
-    <End Role="Role" Type="Self.Role" Multiplicity="1" />
-    <End Role="VariableRole" Type="Self.VariableRole" Multiplicity="*" />
+  <Association Name="FK_VariableEntityType_EntitySubType">
+    <End Type="AspreeModel.EntitySubType" Role="EntitySubType" Multiplicity="0..1" />
+    <End Type="AspreeModel.VariableEntityType" Role="VariableEntityType" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Role">
+      <Principal Role="EntitySubType">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="VariableRole">
-        <PropertyRef Name="RoleId" />
+      <Dependent Role="VariableEntityType">
+        <PropertyRef Name="EntitySubTypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_MasterVariableRole_MasterVariable">
-    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
-    <End Role="VariableRole" Type="Self.VariableRole" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Variable">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="VariableRole">
-        <PropertyRef Name="VariableId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Variable_VariableCategory">
-    <End Role="VariableCategory" Type="Self.VariableCategory" Multiplicity="0..1" />
-    <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="VariableCategory">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Variable">
-        <PropertyRef Name="VariableCategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Variable_VariableType">
-    <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
-    <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="VariableType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Variable">
-        <PropertyRef Name="VariableTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="EntitySubTypes" EntityType="Self.EntitySubType" />
-    <EntitySet Name="EntityTypes" EntityType="Self.EntityType" />
-    <EntitySet Name="Roles" EntityType="Self.Role" />
-    <EntitySet Name="Variables" EntityType="Self.Variable" />
-    <EntitySet Name="VariableCategories" EntityType="Self.VariableCategory" />
-    <EntitySet Name="VariableRoles" EntityType="Self.VariableRole" />
-    <EntitySet Name="VariableTypes" EntityType="Self.VariableType" />
-    <AssociationSet Name="FK_EntitySubType_EntityType" Association="Self.FK_EntitySubType_EntityType">
-      <End Role="EntityType" EntitySet="EntityTypes" />
-      <End Role="EntitySubType" EntitySet="EntitySubTypes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_MasterVariableRole_Role" Association="Self.FK_MasterVariableRole_Role">
-      <End Role="Role" EntitySet="Roles" />
-      <End Role="VariableRole" EntitySet="VariableRoles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_MasterVariableRole_MasterVariable" Association="Self.FK_MasterVariableRole_MasterVariable">
-      <End Role="Variable" EntitySet="Variables" />
-      <End Role="VariableRole" EntitySet="VariableRoles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Variable_VariableCategory" Association="Self.FK_Variable_VariableCategory">
-      <End Role="VariableCategory" EntitySet="VariableCategories" />
-      <End Role="Variable" EntitySet="Variables" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Variable_VariableType" Association="Self.FK_Variable_VariableType">
-      <End Role="VariableType" EntitySet="VariableTypes" />
-      <End Role="Variable" EntitySet="Variables" />
-    </AssociationSet>
-    <EntitySet Name="ValidationRules" EntityType="Aspree_StaggingModel.ValidationRule" />
-    <EntitySet Name="Tenants" EntityType="Aspree_StaggingModel.Tenant" />
-    <AssociationSet Name="FK_EntityType_Tenant" Association="Aspree_StaggingModel.FK_EntityType_Tenant">
-      <End Role="Tenant" EntitySet="Tenants" />
-      <End Role="EntityType" EntitySet="EntityTypes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Role_Tenant" Association="Aspree_StaggingModel.FK_Role_Tenant">
-      <End Role="Tenant" EntitySet="Tenants" />
-      <End Role="Role" EntitySet="Roles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Variable_Tenant" Association="Aspree_StaggingModel.FK_Variable_Tenant">
-      <End Role="Tenant" EntitySet="Tenants" />
-      <End Role="Variable" EntitySet="Variables" />
-    </AssociationSet>
-    <AssociationSet Name="FK_VariableCategory_Tenant" Association="Aspree_StaggingModel.FK_VariableCategory_Tenant">
-      <End Role="Tenant" EntitySet="Tenants" />
-      <End Role="VariableCategory" EntitySet="VariableCategories" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="ValidationRule">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RuleType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MinRange" Type="Double" />
-    <Property Name="MaxRange" Type="Double" />
-    <Property Name="RegExId" Type="Int32" />
-    <Property Name="ErrorMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Guid" Type="Guid" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Tenant">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Guid" Type="Guid" Nullable="false" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Status" Type="Int32" Nullable="false" />
-    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedBy" Type="Int32" />
-    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-    <Property Name="DeactivatedBy" Type="Int32" />
-    <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="EntityTypes" Relationship="Aspree_StaggingModel.FK_EntityType_Tenant" FromRole="Tenant" ToRole="EntityType" />
-    <NavigationProperty Name="Roles" Relationship="Aspree_StaggingModel.FK_Role_Tenant" FromRole="Tenant" ToRole="Role" />
-    <NavigationProperty Name="Variables" Relationship="Aspree_StaggingModel.FK_Variable_Tenant" FromRole="Tenant" ToRole="Variable" />
-    <NavigationProperty Name="VariableCategories" Relationship="Aspree_StaggingModel.FK_VariableCategory_Tenant" FromRole="Tenant" ToRole="VariableCategory" />
-  </EntityType>
   <Association Name="FK_EntityType_Tenant">
-    <End Type="Aspree_StaggingModel.Tenant" Role="Tenant" Multiplicity="0..1" />
-    <End Type="Aspree_StaggingModel.EntityType" Role="EntityType" Multiplicity="*" />
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.EntityType" Role="EntityType" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Tenant">
         <PropertyRef Name="Id" />
@@ -274,9 +2192,597 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_FormEntityType_EntityType">
+    <End Type="AspreeModel.EntityType" Role="EntityType" Multiplicity="1" />
+    <End Type="AspreeModel.FormEntityType" Role="FormEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormEntityType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableEntityType_EntityType">
+    <End Type="AspreeModel.EntityType" Role="EntityType" Multiplicity="1" />
+    <End Type="AspreeModel.VariableEntityType" Role="VariableEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableEntityType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectEntityType_EntityType">
+    <End Type="AspreeModel.EntityType" Role="EntityType" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectEntityType" Role="ProjectEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectEntityType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntityVariable_Variable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.EntityVariable" Role="EntityVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityVariable">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Form_Project">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="0..1" />
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Form_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntry_Form">
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="0..1" />
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntry">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormEntityType_Form">
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="1" />
+    <End Type="AspreeModel.FormEntityType" Role="FormEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormEntityType">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Forms_FormCategory">
+    <End Type="AspreeModel.FormCategory" Role="FormCategory" Multiplicity="0..1" />
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="FormCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Forms_FormStatus">
+    <End Type="AspreeModel.FormStatu" Role="FormStatu" Multiplicity="1" />
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormStatu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="FormStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormVariable_Forms">
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="1" />
+    <End Type="AspreeModel.FormVariable" Role="FormVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormVariable">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBuilderJSONEntityValues_Form">
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectBuilderJSONEntityValue" Role="ProjectBuilderJSONEntityValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectBuilderJSONEntityValue">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReviewerFeedback_Form">
+    <End Type="AspreeModel.Form" Role="Form" Multiplicity="1" />
+    <End Type="AspreeModel.ReviewerFeedback" Role="ReviewerFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReviewerFeedback">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormCategory_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.FormCategory" Role="FormCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormCategory">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntry_UserLogin">
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="0..1" />
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntry">
+        <PropertyRef Name="ThisUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntryVariable_FormDataEntry">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="1" />
+    <End Type="AspreeModel.FormDataEntryVariable" Role="FormDataEntryVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntryVariable">
+        <PropertyRef Name="FormDataEntryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBuilderJSON_FormDataEntry">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectBuilderJSON" Role="ProjectBuilderJSON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectBuilderJSON">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBuilderJSONEntityValues_FormDataEntry">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectBuilderJSONEntityValue" Role="ProjectBuilderJSONEntityValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectBuilderJSONEntityValue">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMemberRole_Project">
+    <End Type="AspreeModel.FormDataEntry" Role="FormDataEntry" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectStaffMemberRole" Role="ProjectStaffMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMemberRole">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntryVariable_MasterVariable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.FormDataEntryVariable" Role="FormDataEntryVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntryVariable">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormVariable_MasterVariable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.FormVariable" Role="FormVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormVariable">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormVariableRole_FormVariable">
+    <End Type="AspreeModel.FormVariable" Role="FormVariable" Multiplicity="1" />
+    <End Type="AspreeModel.FormVariableRole" Role="FormVariableRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormVariable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormVariableRole">
+        <PropertyRef Name="FormVariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormVariableRole_Role">
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AspreeModel.FormVariableRole" Role="FormVariableRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormVariableRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_AuthTypeMaster">
+    <End Type="AspreeModel.LoginAuthTypeMaster" Role="LoginAuthTypeMaster" Multiplicity="1" />
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginAuthTypeMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="AuthTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LookupData_VariableType">
+    <End Type="AspreeModel.VariableType" Role="VariableType" Multiplicity="1" />
+    <End Type="AspreeModel.LookupData" Role="LookupData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VariableType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LookupData">
+        <PropertyRef Name="VariableTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LookupDataOptionGroup_LookupData">
+    <End Type="AspreeModel.LookupData" Role="LookupData" Multiplicity="1" />
+    <End Type="AspreeModel.LookupDataOptionGroup" Role="LookupDataOptionGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupData">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LookupDataOptionGroup">
+        <PropertyRef Name="LookupDataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LookupDataGroupOption_LookupDataOptionGroup">
+    <End Type="AspreeModel.LookupDataOptionGroup" Role="LookupDataOptionGroup" Multiplicity="1" />
+    <End Type="AspreeModel.LookupDataGroupOption" Role="LookupDataGroupOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupDataOptionGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LookupDataGroupOption">
+        <PropertyRef Name="LookupDataOptionGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostCode_State">
+    <End Type="AspreeModel.State" Role="State" Multiplicity="1" />
+    <End Type="AspreeModel.PostCode" Role="PostCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostCode">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostCode_Suburb">
+    <End Type="AspreeModel.Suburb" Role="Suburb" Multiplicity="1" />
+    <End Type="AspreeModel.PostCode" Role="PostCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suburb">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostCode">
+        <PropertyRef Name="SuburbId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePrivilege_Privilege">
+    <End Type="AspreeModel.Privilege" Role="Privilege" Multiplicity="1" />
+    <End Type="AspreeModel.RolePrivilege" Role="RolePrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilege">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolePrivilege">
+        <PropertyRef Name="PrivilegeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Project">
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="0..1" />
+    <End Type="AspreeModel.Project" Role="Project1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project1">
+        <PropertyRef Name="PreviousProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_ProjectStatus">
+    <End Type="AspreeModel.ProjectStatu" Role="ProjectStatu" Multiplicity="1" />
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectStatu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ProjectStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectCheckList_Project">
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectCheckList" Role="ProjectCheckList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectCheckList">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectEntityType_Project">
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectEntityType" Role="ProjectEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectEntityType">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectParticipant_Project">
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectParticipant" Role="ProjectParticipant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectParticipant">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectRole_Project">
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectRole" Role="ProjectRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectRole">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectSite_Project">
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectSite" Role="ProjectSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectSite">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMember_Project">
+    <End Type="AspreeModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectStaffMember" Role="ProjectStaffMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMember">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectRole_Role">
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectRole" Role="ProjectRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectSite_Site">
+    <End Type="AspreeModel.Site" Role="Site" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectSite" Role="ProjectSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectSite">
+        <PropertyRef Name="SiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMember_UserLogin">
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectStaffMember" Role="ProjectStaffMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMember">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMemberRole_Role">
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectStaffMemberRole" Role="ProjectStaffMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMemberRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMemberRole_UserLogin">
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectStaffMemberRole" Role="ProjectStaffMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMemberRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMemberRole_UserLogin1">
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="AspreeModel.ProjectStaffMemberRole" Role="ProjectStaffMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMemberRole">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ValidationRule_RegExRule">
+    <End Type="AspreeModel.RegExRule" Role="RegExRule" Multiplicity="0..1" />
+    <End Type="AspreeModel.ValidationRule" Role="ValidationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegExRule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ValidationRule">
+        <PropertyRef Name="RegExId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityFormRole_Role">
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AspreeModel.RoleToCreateActivityRegardlessScheduled" Role="RoleToCreateActivityRegardlessScheduled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleToCreateActivityRegardlessScheduled">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityRole_Role">
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AspreeModel.RolesToCreateActivityScheduling" Role="RolesToCreateActivityScheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolesToCreateActivityScheduling">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableRole_Role">
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AspreeModel.VariableRole" Role="VariableRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Role_Tenant">
-    <End Type="Aspree_StaggingModel.Tenant" Role="Tenant" Multiplicity="0..1" />
-    <End Type="Aspree_StaggingModel.Role" Role="Role" Multiplicity="*" />
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Tenant">
         <PropertyRef Name="Id" />
@@ -286,9 +2792,81 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_RolePrivilege_Role">
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AspreeModel.RolePrivilege" Role="RolePrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolePrivilege">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_Role">
+    <End Type="AspreeModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AspreeModel.UserRole" Role="UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_SecurityQuestion">
+    <End Type="AspreeModel.SecurityQuestion" Role="SecurityQuestion" Multiplicity="0..1" />
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Site_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.Site" Role="Site" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Site">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Suburb_State">
+    <End Type="AspreeModel.State" Role="State" Multiplicity="1" />
+    <End Type="AspreeModel.Suburb" Role="Suburb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Suburb">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_Tenant">
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="1" />
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Variable_Tenant">
-    <End Type="Aspree_StaggingModel.Tenant" Role="Tenant" Multiplicity="0..1" />
-    <End Type="Aspree_StaggingModel.Variable" Role="Variable" Multiplicity="*" />
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Tenant">
         <PropertyRef Name="Id" />
@@ -299,8 +2877,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_VariableCategory_Tenant">
-    <End Type="Aspree_StaggingModel.Tenant" Role="Tenant" Multiplicity="0..1" />
-    <End Type="Aspree_StaggingModel.VariableCategory" Role="VariableCategory" Multiplicity="*" />
+    <End Type="AspreeModel.Tenant" Role="Tenant" Multiplicity="0..1" />
+    <End Type="AspreeModel.VariableCategory" Role="VariableCategory" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Tenant">
         <PropertyRef Name="Id" />
@@ -310,4 +2888,119 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UserRole_UserLogin">
+    <End Type="AspreeModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="AspreeModel.UserRole" Role="UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VariableValidationRule_ValidationRule">
+    <End Type="AspreeModel.ValidationRule" Role="ValidationRule" Multiplicity="0..1" />
+    <End Type="AspreeModel.VariableValidationRule" Role="VariableValidationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ValidationRule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableValidationRule">
+        <PropertyRef Name="ValidationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableEntityType_MasterVariable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.VariableEntityType" Role="VariableEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableEntityType">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableRole_MasterVariable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.VariableRole" Role="VariableRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableRole">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableValue_MasterVariable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.VariableValue" Role="VariableValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableValue">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Variable_VariableCategory">
+    <End Type="AspreeModel.VariableCategory" Role="VariableCategory" Multiplicity="0..1" />
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VariableCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Variable">
+        <PropertyRef Name="VariableCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Variable_VariableType">
+    <End Type="AspreeModel.VariableType" Role="VariableType" Multiplicity="1" />
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VariableType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Variable">
+        <PropertyRef Name="VariableTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VariableApprovalLog_Variable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.VariableApprovalLog" Role="VariableApprovalLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableApprovalLog">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VariableValidationRule_Variable">
+    <End Type="AspreeModel.Variable" Role="Variable" Multiplicity="1" />
+    <End Type="AspreeModel.VariableValidationRule" Role="VariableValidationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableValidationRule">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HashPassword">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HashPassword1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
 </Schema>

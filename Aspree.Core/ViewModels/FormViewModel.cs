@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swashbuckle.Examples;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Aspree.Core.ViewModels
         /// <summary>
         /// 
         /// </summary>
+        [IgnoreDataMember]
         public int Id { get; set; }
 
         /// <summary>
@@ -165,11 +167,150 @@ namespace Aspree.Core.ViewModels
         ///  IsNewForm
         /// </summary>
         public bool IsNewForm { get; set; }
+
+
+        /// <summary>
+        /// Form ModifiedBy
+        /// </summary>
+        public string ModifiedByString { get; set; }
+
+        /// <summary>
+        /// ModifiedDate of Form
+        /// </summary>
+        public string ModifiedDateString { get; set; }
+
+
+
     }
 
-    
+    public class GetAllFormViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new List<FormViewModel>()
+            {
+                new FormViewModel
+                {
+                    Id = 1,
+                    Guid = Guid.NewGuid(),
+                    ApprovedBy=1,
+                    ApprovedDate=DateTime.UtcNow,
+                    CreatedBy=Guid.NewGuid(),
+                    CreatedDate=DateTime.UtcNow,
+                    DateDeactivated=DateTime.UtcNow,
+                    DeactivatedBy=Guid.NewGuid(),
+                    EntityTypes=new List<Guid>(),
+                    FormCategoryId=Guid.NewGuid(),
+                    FormDataEntryGuid=Guid.NewGuid(),
+                    FormState=1,
+                    FormStatusId=Guid.NewGuid(),
+                    FormTitle="Text",
+                    FormUsedInActivityList=new List<Guid>(),
+                    IsDefaultForm=1,
+                    IsNewForm=true,
+                    IsPublished=true,
+                    IsTemplate=true,
+                    ModifiedBy=Guid.NewGuid(),
+                    ModifiedDate=DateTime.UtcNow,
+                    PreviousVersion=1,
+                    ProjectId=Guid.NewGuid(),
+                    TenantId=Guid.NewGuid(),
+                    UsedVariablesNameList=new List<string>(),
+                    Version=1,
+                    Variables=new List<FormVariableViewModel>()
+                    {
+                        new FormVariableViewModel
+                        {
+                            DependentVariableId=Guid.NewGuid(),
+                            FormVariableIsApprovedStatus=true,
+                            FormVariableRoles=new List<Guid>(),
+                            formVariableRoleViewModel=new List<FormVariableRoleViewModel>()
+                            {
+                                new FormVariableRoleViewModel
+                                {
+                                    CanCreate=true,
+                                    CanDelete=true,
+                                    CanEdit=true,
+                                    CanView=true,
+                                    FormVariableId=1,
+                                    Guid=Guid.NewGuid(),
+                                    RoleGuidId=Guid.NewGuid()
+                                }
+                            }
+
+                        }
+                    },
+            }
+
+        };
+        }
+    }
+
+    public class FormViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new FormViewModel
+            {
+                Id = 1,
+                Guid = Guid.NewGuid(),
+                ApprovedBy = 1,
+                ApprovedDate = DateTime.UtcNow,
+                CreatedBy = Guid.NewGuid(),
+                CreatedDate = DateTime.UtcNow,
+                DateDeactivated = DateTime.UtcNow,
+                DeactivatedBy = Guid.NewGuid(),
+                EntityTypes = new List<Guid>(),
+                FormCategoryId = Guid.NewGuid(),
+                FormDataEntryGuid = Guid.NewGuid(),
+                FormState = 1,
+                FormStatusId = Guid.NewGuid(),
+                FormTitle = "Text",
+                FormUsedInActivityList = new List<Guid>(),
+                IsDefaultForm = 1,
+                IsNewForm = true,
+                IsPublished = true,
+                IsTemplate = true,
+                ModifiedBy = Guid.NewGuid(),
+                ModifiedDate = DateTime.UtcNow,
+                PreviousVersion = 1,
+                ProjectId = Guid.NewGuid(),
+                TenantId = Guid.NewGuid(),
+                UsedVariablesNameList = new List<string>(),
+                Version = 1,
+                Variables = new List<FormVariableViewModel>()
+                    {
+                        new FormVariableViewModel
+                        {
+                            DependentVariableId=Guid.NewGuid(),
+                            FormVariableIsApprovedStatus=true,
+                            FormVariableRoles=new List<Guid>(),
+                            formVariableRoleViewModel=new List<FormVariableRoleViewModel>()
+                            {
+                                new FormVariableRoleViewModel
+                                {
+                                    CanCreate=true,
+                                    CanDelete=true,
+                                    CanEdit=true,
+                                    CanView=true,
+                                    FormVariableId=1,
+                                    Guid=Guid.NewGuid(),
+                                    RoleGuidId=Guid.NewGuid()
+                                }
+                            }
+
+                        }
+                    },
+            };
+
+       
+        }
+    }
+
+
     public class NewFormViewModel
     {
+        [IgnoreDataMember]
         public int Id { get; set; }
         /// <summary>
         /// Title of Form
@@ -251,7 +392,53 @@ namespace Aspree.Core.ViewModels
         //public Nullable<int> PreviousVersion { get; set; }
     }
 
-    
+    public class EditFormViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new EditFormViewModel()
+            {
+
+                Id = 1,
+                Guid = Guid.NewGuid(),
+                ApprovedBy = 1,
+                ApprovedDate = DateTime.UtcNow,
+                EntityTypes = new List<Guid>(),
+                FormCategoryId = Guid.NewGuid(),
+                FormState = 1,
+                FormStatusId = Guid.NewGuid(),
+                FormTitle = "Text",
+                IsPublished = true,
+                IsTemplate = true,
+                ProjectId = Guid.NewGuid(),
+                Variables = new List<FormVariableViewModel>()
+                    {
+                        new FormVariableViewModel
+                        {
+                            DependentVariableId=Guid.NewGuid(),
+                            FormVariableIsApprovedStatus=true,
+                            FormVariableRoles=new List<Guid>(),
+                            formVariableRoleViewModel=new List<FormVariableRoleViewModel>()
+                            {
+                                new FormVariableRoleViewModel
+                                {
+                                    CanCreate=true,
+                                    CanDelete=true,
+                                    CanEdit=true,
+                                    CanView=true,
+                                    FormVariableId=1,
+                                    Guid=Guid.NewGuid(),
+                                    RoleGuidId=Guid.NewGuid()
+                                }
+                            }
+
+                        }
+                    }
+
+
+            };
+        }
+    }
 
     public class FormVariableViewModel
     {
@@ -336,11 +523,31 @@ namespace Aspree.Core.ViewModels
         /// </summary>
         public string QuestionText { get; set; }
 
+        public bool? IsBlank { get; set; }
+
         public FormVariableViewModel()
         {
             this.FormVariableRoles = new List<Guid>();
         }
     }
 
-   
+    public class NewFormViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new NewFormViewModel
+            {
+                ApprovedBy = 1,
+                ApprovedDate = DateTime.Now,
+                FormCategoryId = Guid.NewGuid(),
+                FormState = 1,
+                FormStatusId = Guid.NewGuid(),
+                FormTitle = "Example form title",
+                Id = 1,
+                IsPublished = false,
+                IsTemplate = true,
+                ProjectId = Guid.NewGuid(),
+            };
+        }
+    }
 }

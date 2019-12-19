@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace Aspree.Provider.Interface
 {
-    /// <summary>
-    /// Handles form variable type & related operations
-    /// </summary>
-    public interface IVariableTypeProvider
+    public interface IVariableTypeProvider : IProviderCommon<VariableTypeViewModel, Data.VariableType>
     {
-        IEnumerable<VariableTypeViewModel> GetAll();
+       
     }
 }

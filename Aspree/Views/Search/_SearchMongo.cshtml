@@ -1,0 +1,754 @@
+﻿@model Aspree.Core.ViewModels.MongoViewModels.MongoSearchPageReturnViewModel
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+
+    var absolutePath = string.Empty;
+    string testingEnvironmentClass = "";
+
+    var ActivityList = Model._ViewMongoActivityList;// ViewBag.ActivityList as Dictionary<Guid, string>
+    bool isTesturipath = false;
+    try
+    {
+        isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains(Aspree.Utility.ConfigSettings.TestSiteKeyword);
+        absolutePath = isTesturipath ? "test/" : "";
+        if (absolutePath == "test/")
+        {
+            Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml";
+        }
+    }
+    catch (Exception exc)
+    { Console.WriteLine(exc.Message); }
+
+
+    List<Aspree.Core.ViewModels.MongoViewModels.FormsMongo>
+        searchForms = Model._ViewMongoFormsList;// ViewBag.SearchForms;
+
+    var participantForm = searchForms.FirstOrDefault(x => x.FormTitle.Replace(" ", "_") == Aspree.Core.Enum.SearchForms.Participant_Registration.ToString());
+    var personForm = searchForms.FirstOrDefault(x => x.FormTitle.Replace(" ", "_") == Aspree.Core.Enum.SearchForms.Person_Registration.ToString());
+    var placeGroupForm = searchForms.FirstOrDefault(x => x.FormTitle == Aspree.Core.Enum.SearchForms.Place__Group_Registration.ToString().Replace("__", "/").Replace("_", " "));
+    var projectRegForm = searchForms.FirstOrDefault(x => x.FormTitle == Aspree.Core.Enum.SearchForms.Project_Registration.ToString().Replace("_", " "));
+    var IsSystemAdmin = ViewBag.LoggedInUser.Roles.Contains("System Admin");
+    var IsProjectAdmin = ViewBag.LoggedInUser.Roles.Contains("Project Admin");
+
+
+
+}
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0" id="displayProjName">@LoggedInUser.ProjectDisplayName</h3>
+}
+
+
+<input type="hidden" id="ProjectEthicsApproval" name="ProjectEthicsApproval" value="@(Convert.ToString(ViewBag.ProjectEthicsApproval)!=null?Convert.ToString(ViewBag.ProjectEthicsApproval).ToLower():null)" />
+<input type="hidden" id="RecruitmentStartDate" name="RecruitmentStartDate" value="@ViewBag.RecruitmentStartDate" />
+<input type="hidden" id="RecruitmentEndDate" name="RecruitmentEndDate" value="@ViewBag.RecruitmentEndDate" />
+<div class="col-sm-12  @testingEnvironmentClass">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-12 col-md-12 col-lg-10 @(IsSystemAdmin?" col-xl-8":"col-lg-7")">
+
+            <div class="card pb-redioTb-wrap01 user-ctm-card">
+                @if (absolutePath == "test/")
+                {
+                    <h2 class="text-align-center field-validation-error">TEST SITE- DO NOT ENTER REAL DATA HERE</h2>
+                }
+                <div class="card-header">
+                    <div class="row justify-content-lg-center">
+                        <div class="col-md-12 col-lg-10 px-sm-0">
+                            <h3 class="card-title small-title">I want to search for a...</h3>
+                            <div class="sp-tabnav-redio">
+                                <ul class="list-unstyled list-inline">
+                                    <li>
+                                        <input type="radio" class="check sp-active" id="sp-participant" data-form-type="Participant" data-participant="cus-rediotab-01" name="sp-participant-radio" checked>
+                                        <label for="sp-participant">Participant</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" class="check" id="sp-staff_person" data-form-type="Person" data-participant="cus-rediotab-02" name="sp-participant-radio">
+                                        <label for="sp-staff_person">Staff/Physician/Contact Person</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" class="check" id="sp-place" data-form-type="Place" data-participant="cus-rediotab-03" name="sp-participant-radio">
+                                        <label for="sp-place">Place</label>
+                                    </li>
+                                    @if (IsSystemAdmin && absolutePath != "test/")
+                                    {
+                                        <li>
+                                            <input type="radio" class="check" id="sp-project" data-form-type="Project" data-participant="cus-rediotab-04" name="sp-participant-radio">
+                                            <label for="sp-project">Project</label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div><!-- /.sp-tabnav-redio -->
+                        </div>
+                    </div>
+                </div><!-- /.card-header -->
+                <div class="sp-tabcontent-wrap">
+
+                    <input type="hidden" id="ProjectId" value="@Model._ViewProjectGuid" />
+
+                    <div class="sp-tabcontent-redio sp-active" id="cus-rediotab-01">
+                        <form class="form-material" autocomplete="off">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9 px-sm-0">
+                                        <div class="sp-tabcontent">
+                                            @foreach (var person in participantForm.VariablesListMongo.Where(x => x.IsSearchVisible == true).OrderBy(x => x.SearchPageOrder))
+                                            {
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-3 pr-md-0">
+                                                        @if (person.VariableName == "EntID")
+                                                        {
+                                                            <label>
+                                                                Participant ID:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.VariableName == "Name")
+                                                        {
+                                                            <label>
+                                                                Surname:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else
+                                                        {
+                                                            if (person.VariableName == "DOB")
+                                                            {
+                                                                <label>
+                                                                    Date of Birth:@if (person.IsRequired == true)
+                                                                    {<span class="warning" style="color:red">*</span> }
+                                                                    @if (person.VariableName == "DOB")
+                                                                    {
+                                                                    }
+                                                                </label>
+                                                            }
+                                                            else
+                                                            {
+                                                                <label>
+                                                                    @person.Question:@if (person.IsRequired == true)
+                                                                    {<span class="warning" style="color:red">*</span> }
+                                                                    @if (person.VariableName == "DOB")
+                                                                    {
+                                                                    }
+                                                                </label>
+                                                            }
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        @if (person.VariableTypeName == "Text Box" || person.VariableTypeName == "Free Text" || person.VariableTypeName == "Numeric (Integer)")
+                                                        {
+                                                            <input type="text" id="Participant-@person.VariableName" data-variable-key="@person.VariableId" data-variable-name="@person.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line participant-search-form" placeholder="@(person.VariableName == " Name" ? "Surname" : person.Question)">
+                                                        }
+                                                        else if (person.VariableTypeName == "Dropdown")
+                                                        {
+                                                            <select id="Participant-@person.VariableName" data-variable-key="@person.VariableId" data-variable-name="@person.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line participant-search-form">
+                                                                <option value="">Select</option>
+                                                                @for (var i = 0; i < person.Values.Count; i++)
+                                                                {
+                                                                    <option value="@person.Values[i]">@person.ValueDescription[i]</option>
+                                                                }
+                                                            </select>
+                                                        }
+                                                        else if (person.VariableTypeName == "Date")
+                                                        {
+                                                            <a href="#"
+                                                               id="Participant-@person.VariableName"
+                                                               data-variable-key="@person.VariableId"
+                                                               data-variable-name="@person.VariableName"
+                                                               data-variable-required="@person.IsRequired"
+                                                               class="d-block form-control form-control-line singledate participant-search-form"
+                                                               placeholder="@person.Question (DD-MM-YYYY)"
+                                                               data-type="combodate"
+                                                               data-format="DD-MM-YYYY"
+                                                               data-viewformat="DD-MM-YYYY"
+                                                               data-template="D / MMM / YYYY"
+                                                               data-pk="1"
+                                                               name="Participant-@person.VariableName"
+                                                               data-title="@person.Question (DD-MM-YYYY)">Date of Birth</a>
+                                                            <span id="spndob" class="hide text-danger">Future dates are not allowed.</span>
+                                                             }
+                                                    </div>
+                                                </div><!-- /.form-group -->
+                                                if (person.VariableName == "EntID")
+                                                {
+                                                    <div class="form-group row align-items-center mb-3">
+                                                        <div class="col-md-3 pr-md-0">
+                                                            <label>OR</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                        </div>
+                                                    </div><!-- /.form-group -->
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10 px-sm-0">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearchMongo('@participantForm.FormGuid', 1)" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            <button type="button" onclick="Search.ClearParticipant(1)" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div><!-- /.col-lg-10 -->
+                                </div>
+                            </div><!-- /.card-footer -->
+                        </form>
+                    </div><!-- /.sp-tabcontent-redio -->
+                    <div class="sp-tabcontent-redio" id="cus-rediotab-02">
+                        <form class="form-material" autocomplete="off">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9 px-sm-0">
+                                        <div class="sp-tabcontent">
+                                            <input type="hidden" id="personFormGuid" name="personFormGuid" value="@personForm.FormGuid" />
+                                            @foreach (var person in personForm.VariablesListMongo.Where(x => x.IsSearchVisible == true).OrderBy(x => x.SearchPageOrder))
+                                            {
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-3 pr-md-0">
+                                                        @if (person.VariableName == "EntID")
+                                                        {
+                                                            <label>
+                                                                ID:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.VariableName == "Name")
+                                                        {
+                                                            <label>
+                                                                Surname:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.VariableName == "PerSType")
+                                                        {
+                                                            <label>
+                                                                Sub-type:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else
+                                                        {
+                                                            <label>
+                                                                @person.Question:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        @if (person.VariableTypeName == "Text Box" || person.VariableTypeName == "Free Text" || person.VariableTypeName == "Numeric (Integer)")
+                                                        {
+                                                            <input type="text" id="Person-@person.VariableName" data-variable-key="@person.VariableId" data-variable-name="@person.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line person-search-form" placeholder="@(person.VariableName == " Name" ? "Surname" : person.Question)">
+                                                        }
+                                                        else if (person.VariableTypeName == "Dropdown")
+                                                        {
+                                                            <select id="Person-@person.VariableName" data-variable-key="@person.VariableId" data-variable-name="@person.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line person-search-form">
+                                                                <option value="">Select</option>
+                                                                @for (var i = 0; i < person.Values.Count; i++)
+                                                                {
+                                                                    <option value="@person.Values[i]">@person.ValueDescription[i]</option>
+                                                                }
+                                                            </select>
+                                                        }
+                                                    </div>
+                                                </div><!-- /.form-group -->
+                                                if (person.VariableName == "EntID")
+                                                {
+                                                    <div class="form-group row align-items-center mb-3">
+                                                        <div class="col-md-3 pr-md-0">
+                                                            <label>OR</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10 px-sm-0">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearchMongo('@personForm.FormGuid', 2)" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            <button type="button" onclick="Search.ClearParticipant(2)" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="sp-tabcontent-redio" id="cus-rediotab-03">
+                        <form class="form-material" autocomplete="off">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9 px-sm-0">
+                                        <div class="sp-tabcontent">
+                                            <input type="hidden" id="placeGroupFormGuid" name="placeGroupFormGuid" value="@placeGroupForm.FormGuid" />
+                                            @foreach (var person in placeGroupForm.VariablesListMongo.Where(x => x.IsSearchVisible == true).OrderBy(x => x.SearchPageOrder))
+                                            {
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-3 pr-md-0">
+                                                        @if (person.VariableName == "EntID")
+                                                        {
+                                                            <label>
+                                                                ID:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.VariableName == "Name")
+                                                        {
+                                                            <label>
+                                                                Name:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (person.VariableName == "EntType")
+                                                        {
+                                                            <label>
+                                                                Type:@if (person.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else
+                                                        {
+                                                            <label>@person.Question:</label>
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        @if (person.VariableTypeName == "Text Box" || person.VariableTypeName == "Free Text" || person.VariableTypeName == "Numeric (Integer)")
+                                                        {
+                                                            <input type="text" id="PlaceGroup-@person.VariableName" data-variable-key="@person.VariableId" data-variable-name="@person.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line place-group-search-form" placeholder="@(person.VariableName == " Name" ? "Name" : person.Question)">
+                                                        }
+                                                        else if (person.VariableTypeName == "Dropdown")
+                                                        {
+                                                            <select id="PlaceGroup-@person.VariableName" data-variable-key="@person.VariableId" data-variable-name="@person.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line place-group-search-form">
+                                                                <option value="">Select</option>
+                                                                @for (var i = 0; i < person.Values.Count; i++)
+                                                                {
+                                                                    if (person.VariableName == "EntType" && person.Values[i] == "1" && person.ValueDescription[i] == "Person")
+                                                                    {
+                                                                        continue;
+                                                                    }
+                                                                    <option value="@person.Values[i]">@person.ValueDescription[i]</option>
+                                                                }
+                                                            </select>
+                                                        }
+                                                        else if (person.VariableTypeName == "Date")
+                                                        {
+                                                            <a href="#"
+                                                               id="PlaceGroup-@person.VariableName"
+                                                               data-variable-key="@person.VariableId"
+                                                               data-variable-name="@person.VariableName"
+                                                               data-variable-required="@person.IsRequired"
+                                                               class="form-control form-control-line singledate place-group-search-form"
+                                                               placeholder="@person.Question"
+                                                               data-type="combodate"
+                                                               data-value="@DateTime.UtcNow.ToString(" dd-MM-yyyy")"
+                                                               value="@DateTime.UtcNow.ToString(" dd-MM-yyyy")"
+                                                               data-format="DD-MM-YYYY"
+                                                               data-viewformat="DD-MM-YYYY"
+                                                               data-template="D / MMM / YYYY"
+                                                               data-pk="1"
+                                                               name="PlaceGroup-@person.VariableName"
+                                                               data-title="@person.Question"></a>
+                                                        }
+                                                        else if (person.VariableTypeName == "LKUP")
+                                                        {
+                                                            var attr = "";
+                                                            if (person.VariableName == "State")
+                                                            {
+                                                                attr = "onchange = Search.PostCodeListByState(this) onblur=Search.PostCodeListByState(this)";
+                                                            }
+                                                            else if (person.VariableName == "Country")
+                                                            {
+                                                                attr = "onchange = Search.StateListByCountry(this) onblur=Search.StateListByCountry(this)";
+                                                            }
+                                                            <input type="text" id="PlaceGroup-@person.VariableName" data-variable-key="@person.VariableId" data-variable-name="@person.VariableName" data-variable-required="@person.IsRequired" class="form-control form-control-line autocomplete-custom place-group-search-form" placeholder="@person.Question" @attr>
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                if (person.VariableName == "EntID")
+                                                {
+                                                    <div class="form-group row align-items-center mb-3">
+                                                        <div class="col-md-3 pr-md-0">
+                                                            <label>OR</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center px-sm-0">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearchMongo('@placeGroupForm.FormGuid', 3)" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            <button type="button" onclick="Search.ClearParticipant(3)" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sp-tabcontent-redio" id="cus-rediotab-04">
+                        <form class="form-material" autocomplete="off">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9 px-sm-0">
+                                        <div class="sp-tabcontent">
+                                            <input type="hidden" id="projectRegFormGuid" name="projectRegFormGuid" value="@projectRegForm.FormGuid" />
+                                            @foreach (var project in projectRegForm.VariablesListMongo.Where(x => x.IsSearchVisible == true).OrderBy(x => x.SearchPageOrder))
+                                            {
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-7">
+                                                        @if (project.VariableName == "EntID")
+                                                        {
+                                                            <label>
+                                                                Project ID:@if (project.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "Name")
+                                                        {
+                                                            <label>
+                                                                Name:@if (project.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "ProSType")
+                                                        {
+                                                            <label>
+                                                                @project.Question:@if (project.IsRequired == true)
+                                                                {<span class="warning" style="color:red">*</span> }
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "ConfData")
+                                                        {
+                                                            <label>
+                                                                @project.Question<span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "CnstModel")
+                                                        {
+                                                            <label>
+                                                                @project.Question<span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "Ethics")
+                                                        {
+                                                            <label>
+                                                                @project.Question<span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "DataStore")
+                                                        {
+                                                            <label>
+                                                                @project.Question<span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+                                                        else if (project.VariableName == "ProDt")
+                                                        {
+                                                            <label>
+                                                                @project.Question:<i>(DD-MM-YYYY)</i><span class="warning" style="color:red"></span>
+                                                            </label>
+                                                        }
+
+
+                                                        else
+                                                        {
+                                                            if (project.VariableTypeName == "Date")
+                                                            {
+                                                                if (project.VariableName == Aspree.Core.Enum.DefaultsVariables.RecruitStart.ToString() || project.VariableName == Aspree.Core.Enum.DefaultsVariables.RecruitEnd.ToString())
+                                                                {
+                                                                    <label>
+                                                                        @project.Question:<i>(DD-MM-YYYY)</i><span class="warning" style="color:red"></span>
+                                                                    </label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label>
+                                                                        @project.Question:<i>(DD-MM-YYYY)</i><span class="warning" style="color:red">*</span>
+                                                                    </label>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                <label>
+                                                                    @project.Question:<span class="warning" style="color:red">*</span>
+                                                                </label>
+                                                            }
+
+
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        @if (project.VariableTypeName == "Text Box" || project.VariableTypeName == "Free Text" || project.VariableTypeName == "Numeric (Integer)")
+                                                        {
+                                                            <input type="text" id="ProjectRegestration-@project.VariableName" data-variable-key="@project.VariableId" data-variable-name="@project.VariableName" data-variable-required="@project.IsRequired" class="form-control form-control-line project-search-form" placeholder="@(project.VariableName == " Name" ? "Name" : project.Question)">
+                                                        }
+                                                        else if (project.VariableTypeName == "Dropdown")
+                                                        {
+                                                            <select id="ProjectRegestration-@project.VariableName" data-variable-key="@project.VariableId" data-variable-name="@project.VariableName" data-variable-required="@project.IsRequired" class="form-control form-control-line project-search-form">
+                                                                <option value="">Select</option>
+                                                                @for (var i = 0; i < project.Values.Count; i++)
+                                                                {
+                                                                    if (project.VariableName == "EntType" && project.Values[i] == "1" && project.ValueDescription[i] == "Person")
+                                                                    {
+                                                                        continue;
+                                                                    }
+                                                                    <option value="@project.Values[i]">@project.ValueDescription[i]</option>
+                                                                }
+                                                            </select>
+                                                        }
+                                                        else if (project.VariableTypeName == "Date")
+                                                        {
+                                                            <a href="#"
+                                                               id="ProjectRegestration-@project.VariableName"
+                                                               data-variable-key="@project.VariableId"
+                                                               data-variable-name="@project.VariableName"
+                                                               data-variable-required="@project.IsRequired"
+                                                               class="d-block form-control form-control-line singledate project-search-form"
+                                                               placeholder="@project.Question"
+                                                               data-type="combodate"
+                                                               data-format="DD-MM-YYYY"
+                                                               data-viewformat="DD-MM-YYYY"
+                                                               data-template="D / MMM / YYYY"
+                                                               data-pk="1"
+                                                               name="PlaceGroup-@project.VariableName"
+                                                               data-title="@project.Question">@project.Question</a>
+                                                        }
+                                                        else if (project.VariableTypeName == "LKUP")
+                                                        {
+                                                            var attr = "";
+                                                            if (project.VariableName == "State")
+                                                            {
+                                                                attr = "onchange = Search.PostCodeListByState(this) onblur=Search.PostCodeListByState(this)";
+                                                            }
+                                                            else if (project.VariableName == "Country")
+                                                            {
+                                                                attr = "onchange = Search.StateListByCountry(this) onblur=Search.StateListByCountry(this)";
+                                                            }
+                                                            <input type="text" id="ProjectRegestration-@project.VariableName" data-variable-key="@project.VariableId" data-variable-name="@project.VariableName" data-variable-required="@project.IsRequired" class="form-control form-control-line autocomplete-custom project-search-form" placeholder="@project.Question" @attr>
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                if (project.VariableName == "EntID")
+                                                {
+                                                    <div class="form-group row align-items-center mb-3">
+                                                        <div class="col-md-3 pr-md-0">
+                                                            <label>OR</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10 px">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearchMongo('@projectRegForm.FormGuid', 4)" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            <button type="button" onclick="Search.ClearParticipant(4)" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search not found popu -->
+            <div class="modal fade user-search-poppus" id="sf-not-found-search-popus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">New Participant?</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="sf-submit-info">
+                                <p>This participant could not be found in your project. Please confirm if this is a new participant.</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer" id="footerAllDetails">
+                            <button type="button" onclick="Search.save()" class="btn btn waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">No</button>
+                        </div>
+                        <div class="hide modal-footer" id="footerEntiId">
+                            <button type="button" class="btn btn waves-effect waves-light btn-info" data-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- search responce in table -->
+            <div class="modal fade DefaultModal HospitalsList" id="search-variable-result-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="search-variable-result-model-title"></h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0" id="search-variable-result-model-table"></table>
+                            </div>
+                        </div>
+                        <div class="modal-footer" id="search-variable-result-model-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="search-validation-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                        </div>
+                        <div class="modal-body">
+                            <div id="popup-body">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info waves-effect waves-light" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<input type="hidden" id="LoggedInUserRole" name="LoggedInUserRole" value="@((IsSystemAdmin || IsProjectAdmin) ? " System Admin" : "Data Entry" )" />
+
+@foreach (var act in ActivityList)
+{
+    string val = string.Empty;
+    string frm = string.Empty;
+    switch (act.Value)
+    {
+        case "Participant Registration":
+            val = "act_ParticipantRegistration";
+            frm = "frm_ParticipantRegistration";
+            break;
+        case "Person Registration":
+            val = "act_PersonRegistration";
+            frm = "frm_PersonRegistration";
+            break;
+        case "Place/Group Registration":
+            val = "act_PlaceGroupRegistration";
+            frm = "frm_PlaceGroupRegistration";
+            break;
+        case "Project Registration":
+            val = "act_ProjectRegistration";
+            frm = "frm_ProjectRegistration";
+            break;
+        case "Project Linkage":
+            val = "act_ProjectLinkage";
+            frm = "frm_ProjectLinkage";
+            break;
+        default:
+            break;
+    }
+    <input type="hidden" value="@act.Key" id="@val" />
+    <input type="hidden" value="@act.Value" id="@frm" />
+}
+
+@section Scripts{
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="/content/assets/plugins/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
+    @*
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+    <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.js"></script>
+
+
+    <script>
+        $(function () {
+            App.IsTestSite = @(isTesturipath == true ? "true" : "false");
+            
+            $('#sp-participant').prop('checked', true);
+
+            Search.GetCountryList();
+            Search.GetStateList();
+            Search.GetPostCodeList();
+
+            $('.wizard-content ul li:eq(3)').removeClass('disabled').addClass('current');
+
+            $('.singledate').editable({
+                //mode: 'popup'
+                mode: 'inline',
+                maxDate: "09-08-2019",// new Date(),
+
+            });
+
+            $('.singledate').val('');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(3)').addClass('active');
+        })
+
+
+        $(".list-dropdown > a").click(function () {
+            if ($(this).parent().hasClass("active")) {
+                $(".list-dropdown", $(this).parent()).removeClass("active");
+                $(".list-submenu", $(this).parent()).slideUp(200);
+                $(this).parent().removeClass("active");
+            } else {
+                $(".list-dropdown", $(this).parent()).removeClass("active");
+                $(this).next(".list-submenu").slideDown(200);
+                $(this).parent().addClass("active");
+            }
+        });
+
+        $("#Participant-DOB").on("click", function () {
+            setTimeout(function () {
+                $("form .editableform").on("submit", function () {
+                    
+                    var currentDate = new Date();
+                    var tempnewDate = $("#Participant-DOB").text();
+                    var from = tempnewDate.split("-")
+                    var newDate = new Date(from[2], from[1] - 1, from[0])
+                    console.log(newDate);
+                    if (new Date(newDate) > currentDate) {
+                        $("#Participant-DOB").text("");
+                        $("#spndob").removeClass('hide');
+                    }
+                    else {
+                        $("#spndob").addClass('hide');
+                    }
+                });
+            }, 300);
+        });
+
+    </script>
+    @Scripts.Render("~/apps/mongo/searches")
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+}

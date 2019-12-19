@@ -8,11 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Aspree.Provider.Interface
-{  
-    /// <summary>
-   /// Handles category of variables & related operations
-   /// </summary>
-    public interface IVariableCategoryProvider
+{
+    public interface IVariableCategoryProvider : IProviderCommon<VariableCategoryViewModel, VariableCategory>
     {
         IEnumerable<VariableCategoryViewModel> GetAll(Guid tenantId);
     }

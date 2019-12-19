@@ -1,0 +1,507 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    var searchForms = ViewBag.SearchForms;
+}
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">@Session["ProjectName"]</h3>
+}
+
+<div class="col-sm-12">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-12 col-md-12 col-lg-7">
+            <div class="card pb-redioTb-wrap01 user-ctm-card">
+                <div class="card-header">
+                    <div class="row justify-content-lg-center">
+                        <div class="col-md-12 col-lg-10">
+                            <h3 class="card-title small-title">I want to search for a...</h3>
+                            <div class="sp-tabnav-redio">
+                                <ul class="list-unstyled list-inline">
+                                    <li>
+                                        <input type="radio" class="check sp-active" id="sp-participant" data-participant="cus-rediotab-01" name="sp-participant-radio" checked>
+                                        <label for="sp-participant">Participant</label>
+                                    </li>
+
+                                    <li>
+                                        <input type="radio" class="check" id="sp-staff_person" data-participant="cus-rediotab-02" name="sp-participant-radio">
+                                        <label for="sp-staff_person">Staff/Physician/Contact Person</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" class="check" id="sp-place" data-participant="cus-rediotab-03" name="sp-participant-radio">
+                                        <label for="sp-place">Place</label>
+                                    </li>
+                                </ul>
+                            </div><!-- /.sp-tabnav-redio -->
+                        </div>
+                    </div>
+                </div><!-- /.card-header -->
+                <div class="sp-tabcontent-wrap">
+                <input type="hidden" id="ProjectId" value="@ViewBag.ProjectId" />
+                    <div class="sp-tabcontent-redio sp-active" id="cus-rediotab-01">
+                        <form class="form-material">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9">
+                                        <div class="sp-tabcontent">
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-3 pr-md-0">
+                                                    <label>Participant ID:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="EntID" class="form-control form-control-line" placeholder="123456">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center mb-3">
+                                                <div class="col-md-3 pr-md-0">
+                                                    <label>OR</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-3 pr-md-0">
+                                                    <label>First Name:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="FirstName" class="form-control form-control-line" placeholder="What is their first name?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-3 pr-md-0">
+                                                    <label>Middle Name:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="MiddleName" class="form-control form-control-line" placeholder="What is their middle name?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-3 pr-md-0">
+                                                    <label>Surname:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="Name" class="form-control form-control-line" placeholder="What is their surname?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-3 pr-md-0">
+                                                    <label>Date of birth:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="DOB" class="form-control form-control-line singledate" placeholder="DD/MMM/YYY">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-3 pr-md-0">
+                                                    <label>Gender:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <select id="Gender" class="form-control form-control-line" >
+                                                        <option value="">Select Gender</option>
+                                                        <option value="1">Male</option>
+                                                        <option value="2">Female</option>
+                                                        <option value="3">Other</option>
+                                                    </select>                                                    
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card-btn-group">
+                                            <button type="button" onclick="Search.participantSearch()" class="btn waves-effect waves-light btn-info mb-2">Search</button>
+                                            @*<button type="button" onclick="Search.participantSearch()" class="btn waves-effect waves-light btn-info mb-2" data-toggle="modal" data-target="#sf-search-popus">Search</button>*@
+                                            <button type="button" onclick="Search.ClearParticipant()" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div><!-- /.col-lg-10 -->
+                                </div>
+                            </div><!-- /.card-footer -->
+                        </form>
+                    </div><!-- /.sp-tabcontent-redio -->
+                    <div class="sp-tabcontent-redio" id="cus-rediotab-02">
+                        <form class="form-material">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9">
+                                        <div class="sp-tabcontent">
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>ID:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="1234">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center mb-3">
+                                                <div class="col-md-4">
+                                                    <label>OR</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>First Name:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="What is their first name?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Surname:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="What is their surname?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Type:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Are they a general practioner, a staff member?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Sponsor/Organisation:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Are they linked to a project or organisation?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Address:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Street Adress">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Suburb:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Suburb">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>State:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="State">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Postcode:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Postcode/Zipcode">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Country:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Country">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Email:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="email" class="form-control form-control-line" placeholder="example@example.com">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Phone:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="+61 (03) 9999 9999">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Fax:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="+61 (03) 9999 9999">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card-btn-group">
+                                            <button type="button" class="btn waves-effect waves-light btn-info mb-2" data-toggle="modal" data-target="#sf-search-popus">Search</button>
+                                            <button type="button" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div><!-- /.col-lg-10 -->
+                                </div>
+                            </div><!-- /.card-footer -->
+                        </form>
+                    </div>
+                    <div class="sp-tabcontent-redio" id="cus-rediotab-03">
+                        <form class="form-material">
+                            <div class="card-body">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-9">
+                                        <div class="sp-tabcontent">
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>ID:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="1234">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center mb-3">
+                                                <div class="col-md-4">
+                                                    <label>OR</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Name:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="What is the name of the place you are searching for?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Type:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Are they a hospital, departmen or an organisation?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Sponsor/Organisation:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Are they linked to a project or organisation?">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Address:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Street Adress">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Suburb:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Suburb">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>State:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="State">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Postcode:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Postcode/Zipcode">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Country:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="Country">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Email:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="email" class="form-control form-control-line" placeholder="example@example.com">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Phone:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="+61 (03) 9999 9999">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-4">
+                                                    <label>Fax:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control form-control-line" placeholder="+61 (03) 9999 9999">
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="row justify-content-lg-center">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card-btn-group">
+                                            <button type="button" class="btn waves-effect waves-light btn-info mb-2" data-toggle="modal" data-target="#sf-search-popus">Search</button>
+                                            <button type="button" class="btn waves-effect waves-light btn-danger ml-sm-2 mb-2">Clear</button>
+                                        </div>
+                                    </div><!-- /.col-lg-10 -->
+                                </div>
+                            </div><!-- /.card-footer -->
+                        </form>
+                    </div>
+                </div><!-- /.sp-tabcontent-wrap -->
+            </div>
+
+            <!-- Search Popus -->
+            <div class="modal fade user-search-poppus" id="sf-search-popus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Is this who you're looking for?</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="sf-submit-info">
+                                <table class="table">
+                                    <tr>
+                                        <td class="sf-hd-title">Participant ID:</td>
+                                        <td><span id="spnParticipantId"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sf-hd-title">First Name:</td>
+                                        <td><span id="spnFirstname"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sf-hd-title">Surname:</td>
+                                        <td><span id="spnSurname"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sf-hd-title">Date of birth:</td>
+                                        <td><span id="spnDob"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sf-hd-title">Gender:</td>
+                                        <td><span id="spnGender"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="Search.resultRedirect('@ViewBag.ProjectId')">Yes</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Search Popus -->
+            <div class="modal fade user-search-poppus" id="sf-not-found-search-popus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">New Participant?</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="sf-submit-info">
+                                <p>This participant could not be found in your project. Please confirm if this is a new participant.</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $('.wizard-content ul li:eq(3)').removeClass('disabled').addClass('current');
+
+            $('.singledate').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+
+            });
+            $('.singledate').val('');
+
+
+            
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(3)').addClass('active');
+        })
+
+        $(".list-dropdown > a").click(function () {
+            //$(".list-submenu").slideUp(200);
+            if ($(this).parent().hasClass("active")) {
+                $(".list-dropdown", $(this).parent()).removeClass("active");
+                $(".list-submenu", $(this).parent()).slideUp(200);
+                $(this).parent().removeClass("active");
+            } else {
+                $(".list-dropdown", $(this).parent()).removeClass("active");
+                $(this).next(".list-submenu").slideDown(200);
+                $(this).parent().addClass("active");
+            }
+        });
+
+
+        
+        
+
+    </script>
+    @*<script src="~/Content/app/search.js"></script>*@
+    @Scripts.Render("~/apps/searches")
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+}

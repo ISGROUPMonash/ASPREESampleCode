@@ -4,22 +4,25 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A23B2A57-55F9-4A2C-B981-F96985434E08}</ProjectGuid>
+    <ProjectGuid>{9A55ECB7-58E8-4524-BDD6-116F7549B88B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aspree.Core</RootNamespace>
     <AssemblyName>Aspree.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>resources\ViewModelDescription.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,9 +33,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.4.4\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Examples, Version=3.12.0.0, Culture=neutral, PublicKeyToken=aa1e9c5053bfbe95, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Examples.3.12.0\lib\net40\Swashbuckle.Examples.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\AspreePackages\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\..\AspreePackages\System.Web.WebPages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,24 +78,145 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\ActivityStatusTypes.cs" />
+    <Compile Include="Enum\AuthenticationTypes.cs" />
+    <Compile Include="Enum\EmailTemplateTypes.cs" />
+    <Compile Include="Enum\EntityTypes.cs" />
+    <Compile Include="Enum\EnumHelpers.cs" />
     <Compile Include="Enum\FormStatusTypes.cs" />
+    <Compile Include="Enum\Geolocation.cs" />
+    <Compile Include="Enum\ProjectStatusTypes.cs" />
+    <Compile Include="Enum\RepeatationTypes.cs" />
     <Compile Include="Enum\RoleTypes.cs" />
+    <Compile Include="Enum\Privileges.cs" />
+    <Compile Include="Enum\ScheduleTypes.cs" />
+    <Compile Include="Enum\Search.cs" />
+    <Compile Include="Enum\Status.cs" />
+    <Compile Include="Enum\UsersLoginType.cs" />
+    <Compile Include="Enum\VariableAccess.cs" />
     <Compile Include="Enum\VariableTypes.cs" />
     <Compile Include="Exceptions\CustomException.cs" />
+    <Compile Include="Enum\Enumerations.cs" />
+    <Compile Include="Exceptions\ExceptionResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionResource.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Exceptions\MessageResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessageResource.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Common.cs" />
+    <Compile Include="Validators\FileUploadValidator.cs" />
+    <Compile Include="Validators\ImageDimensionValidator.cs" />
+    <Compile Include="Validators\MaximumFileSizeValidator.cs" />
+    <Compile Include="Validators\MinimumFileSizeValidator.cs" />
+    <Compile Include="Validators\ObjectIdConverter .cs" />
+    <Compile Include="Validators\ToConcatenatedString.cs" />
+    <Compile Include="Validators\ValidFileTypeValidator.cs" />
+    <Compile Include="ViewModels\AccessToken.cs" />
+    <Compile Include="ViewModels\ActionListViewModel.cs" />
     <Compile Include="ViewModels\ActivityCategoryViewModel.cs" />
+    <Compile Include="ViewModels\AddSummaryPageActivityViewModel.cs" />
+    <Compile Include="ViewModels\AuthenticationTypeViewModel.cs" />
+    <Compile Include="ViewModels\DeployProjectJsonViewModel.cs" />
+    <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\FormDataEntryProjectsViewModel.cs" />
+    <Compile Include="ViewModels\MongoViewModels\FormDataEntryMongo.cs" />
+    <Compile Include="ViewModels\MongoViewModels\MongoSearchPageReturnViewModel.cs" />
+    <Compile Include="ViewModels\MongoViewModels\ProjectDeployViewModel.cs" />
+    <Compile Include="ViewModels\MongoViewModels\SQLSearchPageReturnViewModel.cs" />
+    <Compile Include="ViewModels\MongoViewModels\SummaryViewModel.cs" />
+    <Compile Include="ViewModels\ProjectLinkageViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="ViewModels\SchedulingViewModel.cs" />
+    <Compile Include="ViewModels\ActivityStatusViewModel.cs" />
+    <Compile Include="ViewModels\ActivityViewModel.cs" />
+    <Compile Include="ViewModels\ApiRequestViewModel.cs" />
+    <Compile Include="ViewModels\ApiResponseViewModel.cs" />
+    <Compile Include="ViewModels\ChangePassword.cs" />
+    <Compile Include="ViewModels\CheckListViewModel.cs" />
+    <Compile Include="ViewModels\CityViewModel.cs" />
+    <Compile Include="ViewModels\CountryViewModel.cs" />
+    <Compile Include="ViewModels\Dashboard.cs" />
+    <Compile Include="ViewModels\EditCategory.cs" />
+    <Compile Include="ViewModels\EditStatus.cs" />
+    <Compile Include="ViewModels\EmailTemplateViewModel.cs" />
+    <Compile Include="ViewModels\EmailViewModel.cs" />
+    <Compile Include="ViewModels\EntityFormDataVariableViewModel.cs" />
+    <Compile Include="ViewModels\EntitySubTypeViewModel.cs" />
     <Compile Include="ViewModels\EntityTypeViewModel.cs" />
+    <Compile Include="ViewModels\EntityVariableViewModel.cs" />
+    <Compile Include="ViewModels\EntityViewModel.cs" />
     <Compile Include="ViewModels\FormCategoryViewModel.cs" />
+    <Compile Include="ViewModels\FormDataEntryVariableViewModel.cs" />
+    <Compile Include="ViewModels\FormDataEntryViewModel.cs" />
+    <Compile Include="ViewModels\FormStatusViewModel.cs" />
     <Compile Include="ViewModels\FormVariableRoleViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
+    <Compile Include="ViewModels\LoggedInUser.cs" />
+    <Compile Include="ViewModels\LookupDataGroupOptionViewModel.cs" />
+    <Compile Include="ViewModels\LookupDataOptionGroupViewModel.cs" />
+    <Compile Include="ViewModels\LookupDataViewModel.cs" />
+    <Compile Include="ViewModels\NewCategory.cs" />
+    <Compile Include="ViewModels\NewStatus.cs" />
+    <Compile Include="ViewModels\OktaAccessToken.cs" />
+    <Compile Include="ViewModels\OktaUserViewModel.cs" />
+    <Compile Include="ViewModels\PostCodeViewModel.cs" />
+    <Compile Include="ViewModels\PrivilegeViewModel.cs" />
     <Compile Include="ViewModels\ProjectBuilderViewModel.cs" />
+    <Compile Include="ViewModels\ProjectStaffMemberRoleViewModel.cs" />
+    <Compile Include="ViewModels\ProjectStatusViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\PushEmailEventViewModel.cs" />
+    <Compile Include="ViewModels\RegExRuleViewModel.cs" />
+    <Compile Include="ViewModels\MessageContainer.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewModels\ScheduleActivityViewModel.cs" />
+    <Compile Include="ViewModels\SearchPageVariableViewModel.cs" />
+    <Compile Include="ViewModels\SecurityQuestionViewModel.cs" />
+    <Compile Include="ViewModels\SiteViewModel.cs" />
+    <Compile Include="ViewModels\StateViewModel.cs" />
+    <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\SubCategoryViewModel.cs" />
+    <Compile Include="ViewModels\SummaryPageLeftPanelViewModel.cs" />
+    <Compile Include="ViewModels\TenantViewModel.cs" />
+    <Compile Include="ViewModels\UserLoginViewModel.cs" />
     <Compile Include="ViewModels\ValidationRuleViewModel.cs" />
+    <Compile Include="ViewModels\ValidatorViewModal.cs" />
     <Compile Include="ViewModels\VariableCategoryViewModel.cs" />
     <Compile Include="ViewModels\VariableTypeViewModel.cs" />
     <Compile Include="ViewModels\VariableValidationRuleViewModel.cs" />
     <Compile Include="ViewModels\VariableViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Constant\" />
+    <Folder Include="Logger\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Exceptions\ExceptionResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionResource.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exceptions\MessageResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageResource.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\ViewModelDescription.XML">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Variables";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">Project Builder</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+        <li class="breadcrumb-item">Project Builder</li>
+        <li class="breadcrumb-item active">Forms</li>
+    </ol>
+}
+
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-body">
+            @Html.Partial("~/Views/Shared/ProjectBuilder.cshtml")
+
+           
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+    $(function () {
+        $('.wizard-content ul li:eq(0)').removeClass('disabled').addClass('current');
+    })
+    </script>
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+
+}

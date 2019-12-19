@@ -1,0 +1,78 @@
+﻿@model Aspree.Core.ViewModels.EmailTemplateViewModel
+@{
+    ViewBag.Title = "Edit Email Template";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">Users</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+        <li class="breadcrumb-item"><a href="/EmailTemplate">Email Templates</a></li>
+        <li class="breadcrumb-item active">Edit Email Template</li>
+    </ol>
+}
+<div class="col-sm-12">
+    <div class="card card-body">
+        <h4 class="card-title">Edit Email Template</h4>
+        <form id="frmUser" class="form-horizontal m-t-40" method="post" action="/users/edit/Model.UserGuid">
+            <div class="form-group">
+                <label for="PushEmailEventID" class="">Event Types<span class="text-danger">*</span></label>
+                @Html.DropDownListFor(m => m.PushEmailEventID, new System.Web.Mvc.SelectList(Model.EventList, "Guid", "DisplayName"), new { @class = "form-control select-height", @id = "ddleventList", @disabled = true })
+            </div>
+            <div class="form-group">
+                <label for="Subject" class="">Subject<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @maxlength=50 })
+                @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "form-control-feedback" })
+            </div>
+            <div class="form-group">
+                <label for="kewords" class="">Keywords<span class="text-danger">*</span></label>
+                <div class="form-control" style="display:block;">
+                   @foreach (var item in Model.EMailKeywords.Split(' '))
+                   {
+                       <span ondblclick="onSelection('@item.Trim()')" class="mr-2 badge badge-success" style="cursor:move;user-select: all;">@item.Trim()</span>
+                   }
+                </div>
+            </div>
+            <input id="Guid" name="Guid" value="@Model.Guid" type="hidden" />
+            <div class="form-group">
+                <label for="FirstName" class="">Email Body<span class="text-danger">*</span></label>
+                @Html.TextAreaFor(x => x.MailBody, new { @class = "textarea_editor form-control", @style = "height:300px"})
+                @Html.ValidationMessageFor(m => m.MailBody, "", new { @class = "form-control-feedback", @style = "display:block;" })
+            </div>
+            <div class="">
+                <a href="/EmailTemplate" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                <button type="button" onclick="EmailTemplate.saveTemplate();" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+@section Styles{
+    <link rel="stylesheet" href="/content/assets/plugins/html5-editor/bootstrap-wysihtml5.css" />
+}
+@section Scripts {
+    <script src="/content/assets/plugins/html5-editor/wysihtml5-0.3.0.js"></script>
+    <script src="/content/assets/plugins/html5-editor/bootstrap-wysihtml5.js"></script>
+    @Scripts.Render("~/apps/emailtemplates")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $('.textarea_editor').wysihtml5({
+                parser: function (html) {
+                    return html;
+                }
+            });
+            $('iframe.wysihtml5-sandbox').contents().find('body').on("drop", function (e) {
+                e.preventDefault();
+                var wysihtml5Editor = $('.textarea_editor').data("wysihtml5").editor;
+                wysihtml5Editor.composer.commands.exec("insertHTML", e.originalEvent.dataTransfer.getData('Text'));
+                return false;
+            });
+        })
+        function onSelection(text)
+        {
+            var wysihtml5Editor = $('.textarea_editor').data("wysihtml5").editor;
+            wysihtml5Editor.composer.commands.exec("insertHTML", text);
+        }
+    </script>
+}

@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F49F3DD-62E3-42FA-803B-96610BE3A051}</ProjectGuid>
+    <ProjectGuid>{F2177AB9-3B84-4723-A178-1331C459B1EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aspree.Data</RootNamespace>
     <AssemblyName>Aspree.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,14 +31,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.4.4\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.4.4\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.4.4\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.2.4.4\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +73,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activity.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActivityCategory.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActivityEntityType.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActivityForm.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActivityScheduling.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActivityStatu.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AddActivity.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="AspreeContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,17 +109,181 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AspreeContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="AuthTypeMaster.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CheckList.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactType.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Email.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailTemplate.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFormDataVariable.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntitySubType.cs">
       <DependentUpon>AspreeContext.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityType.cs">
       <DependentUpon>AspreeContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityVariable.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Error_Log.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalLink.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormCategory.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormDataEntry.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormDataEntryVariable.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormEntityType.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormStatu.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormVariable.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormVariableRole.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HashPassword.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoginAuthTypeMaster.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LookupData.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LookupDataGroupOption.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LookupDataOptionGroup.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MongoDB\MongoDBContext.cs" />
+    <Compile Include="MongoDB\TestMongoDBContext.cs" />
+    <Compile Include="PostCode.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Privilege.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Project.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectBuilderJSON.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectBuilderJSONEntityValue.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectCheckList.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectEntityType.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectParticipant.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectRole.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSite.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectStaffMember.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectStaffMemberRole.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectStatu.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PushEmailEvent.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegExRule.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewerFeedback.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>AspreeContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="RolePrivilege.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RolesToCreateActivityScheduling.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleToCreateActivityRegardlessScheduled.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchedulingTypeMaster.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityQuestion.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Site.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SmtpServer.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Suburb.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tenant.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
       <DependentUpon>AspreeContext.tt</DependentUpon>
     </Compile>
     <Compile Include="ValidationRule.cs">
@@ -82,7 +292,13 @@
     <Compile Include="Variable.cs">
       <DependentUpon>AspreeContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="VariableApprovalLog.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="VariableCategory.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VariableEntityType.cs">
       <DependentUpon>AspreeContext.tt</DependentUpon>
     </Compile>
     <Compile Include="VariableRole.cs">
@@ -91,9 +307,18 @@
     <Compile Include="VariableType.cs">
       <DependentUpon>AspreeContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="VariableValidationRule.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VariableValue.cs">
+      <DependentUpon>AspreeContext.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Folder Include="Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="AspreeContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AspreeContext.Designer.cs</LastGenOutput>

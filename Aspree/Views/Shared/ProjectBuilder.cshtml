@@ -1,0 +1,46 @@
+﻿@{
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = null;
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+}
+<div class="wizard-content">
+    <form class="validation-wizard wizard-circle wizard clearfix" id="steps-uid-2">
+        @*@if (Session["ProjectName"] != null)*@
+        @if (LoggedInUser != null)
+        {
+            <div class="border-bottom">
+                @*<h2>@Session["ProjectName"]</h2>*@
+                <h2>@LoggedInUser.ProjectDisplayName</h2>
+            </div>
+        }
+        <div class="steps clearfix">
+            <ul role="tablist">
+                <li role="tab" class="disabled first" aria-disabled="false" aria-selected="true">
+                    <a id="steps-uid-2-t-0" href="javascript:void(0)" aria-controls="steps-uid-2-p-0">
+                        <span class="current-info audible">current step: </span>
+                        <span class="step  cursor-pointer" onclick="App.goto('/ProjectBuilder/Variables/@Session["ProjectId"]')">1</span> Variables
+                    </a>
+                </li>
+                <li role="tab" class="disabled" aria-disabled="true">
+                    <a id="steps-uid-2-t-1" href="javascript:void(0)" aria-controls="steps-uid-2-p-1">
+                        <span class="step cursor-pointer" onclick="App.goto('/ProjectBuilder/Forms/@Session["ProjectId"]')">2</span> Forms
+                    </a>
+                </li>
+                <li role="tab" class="disabled" aria-disabled="true">
+                    <a id="steps-uid-2-t-2" href="javascript:void(0)" aria-controls="steps-uid-2-p-2">
+                        <span class="step cursor-pointer" onclick="App.goto('/ProjectBuilder/Activities/@Session["ProjectId"]')">3</span> Activities
+                    </a>
+                </li>
+                <li role="tab" class="disabled" aria-disabled="true">
+                    <a id="steps-uid-2-t-3" href="javascript:void(0)" aria-controls="steps-uid-2-p-3">
+                        <span class="step cursor-pointer" onclick="App.goto('/ProjectBuilder/Scheduling/@Session["ProjectId"]')">4</span> Scheduling
+                    </a>
+                </li>
+                <li role="tab" class="disabled last" aria-disabled="true">
+                    <a id="steps-uid-2-t-4" href="javascript:void(0)" aria-controls="steps-uid-2-p-4">
+                        <span class="step cursor-pointer" onclick="App.goto('/ProjectBuilder/Deployment/@Session["ProjectId"]')">5</span> Testing/Deployment
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,79 @@
+﻿@model  Aspree.Core.ViewModels.NewRoleModel
+@{
+    ViewBag.Title = "Create";
+    //Removed for [ASPMONASH-346]
+    //var prililegeGroups = ((List<Aspree.Core.ViewModels.PrivilegeSmallViewModel>)ViewBag.Roles).GroupBy(c => c.Name.Substring(c.Name.IndexOf(' '))).OrderBy(c => c.Key).ToList();
+
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+    int selectAll = 5;
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+@*@section NavBarLeft{
+        <h3 class="text-themecolor m-b-0 m-t-0">Users</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Roles">Roles</a></li>
+            <li class="breadcrumb-item active">Create Role</li>
+        </ol>
+    }
+    <div class="col-sm-12">*@
+@section NavBarLeft{
+     
+        <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+     
+}
+
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="main-content TabCard">
+        <div class="justify-content-lg-center">
+            <div class="col-md-11">
+                <div class="card card-body">
+                    @Html.Partial("~/Views/Shared/ManageSystemAdminTools.cshtml")
+                    <div class="tab-content tabcontent-border">
+                        <div class="tab-pane active" id="manageproject" role="tabpanel">
+                            <div class="p-20">
+                                <h4 class="card-title">Create Role</h4>
+                                <form id="roleForm" class="form-horizontal m-t-40" method="post" action="/Roles/Create" autocomplete="off">
+                                    <div class="form-group">
+                                        <label for="Name" class="">Role Name<span class="text-danger">*</span></label>
+                                        @Html.HiddenFor(m => m.TenantId)
+                                        <input type="hidden" name="Guid" id="Guid" value="" />
+                                        @Html.TextBoxFor(m => m.Name, new { @data_remote_prop = "UserRole", @data_remote_message = "Role name already exists.", @class = "form-control", @required = "required", @maxlength = "30", @placeholder = "Role Name" })
+                                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "form-control-feedback" })
+                                        <input id="Guid" name="Guid" type="hidden" />
+                                    </div>
+                                    <div class="form-group hide">
+                                    </div>
+                                    <a href="/Roles" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                                    <button type="button" onclick="Role.saveRole(false)" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/apps/roles")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        Role.selectAllOnLoad(@selectAll);
+    </script>
+    <script>
+        $(function () {
+            $('.system-admin-tools li a').removeClass('active show');
+            $('.system-admin-tools li a:eq(1)').addClass('active show');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(6)').addClass('active');
+        })
+    </script>
+}
+

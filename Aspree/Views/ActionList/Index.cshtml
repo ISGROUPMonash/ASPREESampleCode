@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "ActionList";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+}
+
+
+@section NavBarRight{
+}
+<input type="hidden" id="PersonEntityId" name="PersonEntityId" />
+<input type="hidden" id="ActivityId" name="ActivityId" data-activity-guid="" />
+<input type="hidden" id="CurrentEntityProjectId" name="CurrentEntityProjectId" value="" />
+<input type="hidden" id="LoggedInUserRoleName" name="LoggedInUserRoleName" value="@LoggedInUser.Roles.FirstOrDefault()" />
+<input type="hidden" id="LoggedInUserRoleGuid" name="LoggedInUserRoleGuid" value="@ViewBag.LoggedInUserRoleGuid" />
+<input type="hidden" id="hdnFormDataEntryGuid" name="hdnFormDataEntryGuid" value="" />
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="pull-left">
+                <h3 class="text-themecolor m-b-0 m-t-0">Action List</h3>
+                <p>Enter data and submit the Form to remove an item from the list</p>
+
+                <input type="hidden" id="ProjectId" value="@ViewBag.ProjectGuid" />
+                <input type="hidden" id="TenantId" value="TenantId" />
+
+            </div>
+            <div class="pull-right">
+            </div>
+            <div class="clearfix"></div>
+            <div class="table-responsive actionlistDataTableWrap">
+                <table id="actionlistDataTable" class="table table-bordered table-striped text-center table-sm dataTables_wrapper" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Entity Type</th>
+                            <th>Entity ID</th>
+                            <th>Activity</th>
+                            <th>Form</th>
+                            <th>Form Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Open data entry form of mongo entity-->
+<div class="modal fade DefaultModal HospitalsList" id="activity-form-variables-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+        <div class="modal-content">
+            <div class="modal-header mhl">
+                <h1 id="search-variable-result-model-title"></h1>
+                <input type="hidden" id="hdnFormDataEntryGuid" />
+                <input type="hidden" id="hdnFormDataEntryTypeIsNew" />
+            </div>
+            <div class="modal-body">
+                <form class="p-20 pt-0 pb-0 activity-form" id="frm-1" autocomplete="off">
+                    <div id="activityformVariableContainer">
+
+                    </div>
+                    <div class="role-model-error"></div>
+                    <div class="modal-footer" id="search-variable-result-model-footer">
+
+                    </div>
+                    <div class="d_fll" id="result-model-footer-for-modifiedby">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Open data entry from of sql entity-->
+<div class="modal fade DefaultModal HospitalsList" id="activity-form-variables-model-SQL" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-dataSQL">
+        <div class="modal-content">
+            <div class="modal-header mhl">
+                <h1 id="search-variable-result-model-titleSQL"></h1>
+                <input type="hidden" id="hdnFormDataEntryGuidSQL" />
+                <input type="hidden" id="hdnFormDataEntryTypeIsNewSQL" />
+            </div>
+            <div class="modal-body">
+                <form class="p-20 pt-0 pb-0 activity-form" id="frm-1-SQL" autocomplete="off">
+                    <div id="activityformVariableContainerSQL">
+
+                    </div>
+                    <div class="role-model-error"></div>
+                    <div class="modal-footer" id="search-variable-result-model-footerSQL">
+
+                    </div>
+                    <div class="d_fll" id="result-model-footer-for-modifiedbySQL">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles{
+
+}
+
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
+    @Scripts.Render("~/apps/actionlist")
+}

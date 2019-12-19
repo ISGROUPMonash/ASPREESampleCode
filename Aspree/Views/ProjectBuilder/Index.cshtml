@@ -1,0 +1,71 @@
+﻿@model List<Aspree.Core.ViewModels.ProjectViewModel>
+@{
+    ViewBag.Title = "Project Builder";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">Project Builder</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+        <li class="breadcrumb-item active">Project Builder</li>
+    </ol>
+}
+
+@section NavBarRight{
+
+}
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-body">
+            @Html.Partial("~/Views/Shared/ProjectBuilder.cshtml")
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Project Builder Tutorial
+                        </div>
+                        <div class="card-body">
+                            <div style="height:400px">
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <p>Welcome to the project builder.</p>
+                                <p>This tool allows you to create or edit variables.</p>
+                                <p>You can then add these variables to forms.</p>
+                                <p>Forms that are collected at the same time point can be grouped into activities.</p>
+                                <p>Activities can then be scheduled to occur as required.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 hidden-lg-up">
+                    <div class="card">
+                        <div class="card-header">
+                            Getting Started
+                        </div>
+                        <div class="card-body">
+                            <div style="height:400px">
+                                <form class="form-horizontal">
+                                    <div class="input-group form-group">
+                                        <label class="w-100">Which project would you like to work on?</label>
+                                        <select class="form-control" id="project-list" style="border-radius: .25rem 0 0 .25rem;">
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button onclick="App.goto('/projectbuilder/variables/' + $('#project-list').val())" class="btn btn-info" type="button">Go!</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+}

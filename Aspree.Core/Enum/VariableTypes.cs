@@ -20,7 +20,6 @@ namespace Aspree.Core.Enum
         Other_Text = 10,
         ColorPicker = 11,
         FileType = 12
-
     }
 
     public enum VariableStatusTypes
@@ -39,7 +38,7 @@ namespace Aspree.Core.Enum
     }
 
     public enum VariableCategories
-    {
+    { 
         System = 1,
         Default = 2,
     }
@@ -62,37 +61,78 @@ namespace Aspree.Core.Enum
     }
     public enum DefaultsVariables
     {
+        Heading = 1,
+        OtherText = 2,
         EntID = 3,
         EntGrp = 4,
         EntType = 5,
         PerSType = 6,
+        HospSType = 7,
+        PracSType = 8,
+        LabSType = 9,
+        ProSType = 10,
+        GovSType = 11,
+        IndSType = 12,
+        ConSType = 13,
+        Title = 14,
         Name = 15,
         FirstName = 16,
         MiddleName = 17,
         NoMidNm = 18,
+        PrefName = 19,
+        Unit = 20,
+        NoUnit = 21,
+        StrtNum = 22,
+        StrtNme = 23,
+        StrtType = 24,
+        Suburb = 25,
+        Country = 26,
+        State = 27,
+        Postcode = 28,
+        DifAddress = 29,
+        StrtNum2 = 30,
+        StrtNme2 = 31,
+        StrtType2 = 32,
+        Suburb2 = 33,
+        Country2 = 34,
+        State2 = 35,
+        Postcode2 = 36,
+        NoAddress = 37,
         Email = 38,
+        Phone = 39,
         Username = 40,
-        DOB = 44,
-        Gender = 45,
-        AuthenticationMethod = 51,
-        ProRole = 56,
-        LnkPro = 52,
         SysAppr = 41,
         Active = 42,
-        ProjectDisplayName = 319,
         SysRole = 43,
+        DOB = 44,
+        Gender = 45,
+        ConfData = 46,
+        CnstModel = 47,
+        Ethics = 48,
+        DataStore = 49,
+        ProDt = 50,
+        AuthenticationMethod = 51,
+        LnkPro = 52,
+        Join = 53,
+        Actv = 54,
+        End = 55,
+        ProRole = 56,
+        ProjectLogo = 57,
+        ProjectColor = 58,
+        ProjectDisplayName = 59,
+        ProjectDisplayNameTextColour = 60,
+        ApiAccessEnabled = 61,
+        RecruitStart = 62,
+        RecruitEnd = 63,
+        PlaceProfilePicture = 147,
+        Fax = 0,
+    }
 
-        RecruitStart = 664,
-        RecruitEnd = 665,
-
-        HospSType =7,
-        PracSType=8,
-        LabSType=9,
-        ProSType=10,
-        GovSType = 11,
-
-        IndSType=12,
-        ConSType=13,
-
+    public enum ProjectSubTypeEnum
+    {
+        Registry = 1,
+        Clinical_Trial = 2,
+        Cohort_Study = 3,
+        Other = 4,
     }
 }

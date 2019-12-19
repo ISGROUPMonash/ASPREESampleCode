@@ -1,0 +1,61 @@
+﻿@model  Aspree.Models.RegisterViewModel
+<section class="section registration-section">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card card-body mt-5 mb-5">
+                    <h3 class="box-title m-b-0">Registration</h3>
+                    <p class="text-muted m-b-30 font-13"></p>
+                    @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {                        
+                        @Html.AntiForgeryToken()
+                        <div class="form-group row">
+                            <label for="rgt_firstname" class="col-sm-3 text-right control-label col-form-label">First Name<span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="FirstName" value="@Model.FirstName" maxlength="30" class="form-control" id="rgt_firstname" required placeholder="First Name">
+                                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "form-control-feedback" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="rgt_lastname" class="col-sm-3 text-right control-label col-form-label">Last Name<span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="LastName" value="@Model.LastName" maxlength="30" class="form-control" id="rgt_lastname" required placeholder="Last Name">
+                                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "form-control-feedback" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="rgt_address" class="col-sm-3 text-right control-label col-form-label">Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="Address" value="@Model.Address" maxlength="250" class="form-control" id="rgt_address" placeholder="Current Address">
+                            </div>
+                        </div>
+                        <div class="form-group row has1-danger">
+                            <label for="rgt_email" class="col-sm-3 text-right control-label col-form-label">Email<span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="email" name="Email" value="@Model.Email" maxlength="30" class="form-control form-control-danger" id="rgt_email" required placeholder="Email">
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "form-control-feedback" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="rgt_mobile" class="col-sm-3 text-right control-label col-form-label">Mobile</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="Mobile" value="@Model.Mobile" class="form-control" maxlength="12" id="rgt_mobile" placeholder="Mobile No.">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="rgt_skype" class="col-sm-3 text-right control-label col-form-label">Skype</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="SkypeId" value="@Model.SkypeId" class="form-control" maxlength="50" id="rgt_skype" placeholder="Skype Id">
+                            </div>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Submit</button>
+                            </div>
+                        </div>
+                   }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

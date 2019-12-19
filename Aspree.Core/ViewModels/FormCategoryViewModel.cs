@@ -1,4 +1,5 @@
 ﻿using System;
+using Swashbuckle.Examples;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -9,6 +10,7 @@ namespace Aspree.Core.ViewModels
 {
     public class FormCategoryViewModel
     {
+        [IgnoreDataMember]
         public int Id { get; set; }
         /// <summary>
         /// Name of Form Category
@@ -53,5 +55,82 @@ namespace Aspree.Core.ViewModels
         public int IsDefaultFormCategory { get; set; }
     }
 
-    
+    public class GetAllFormCategoryViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+           return new List<FormCategoryViewModel>()
+           { 
+            new FormCategoryViewModel
+            {
+                CategoryName = "Example Category Name",
+                CreatedBy = Guid.NewGuid(),
+                CreatedDate = DateTime.UtcNow,
+                ModifiedBy = Guid.NewGuid(),
+                ModifiedDate = DateTime.UtcNow,
+                DeactivatedBy = null,
+                DateDeactivated = DateTime.UtcNow,
+                Guid = Guid.NewGuid(),
+                Forms = null,
+                //Forms = (c => new Core.ViewModels.SubCategoryViewModel
+                //{
+                //    Guid = c.Guid,
+                //    Id = c.Id,
+                //    Name = c.ActivityName,
+                //    Status = c.ActivityStatu.Status,
+                //    ProjectId = c.FormDataEntry.Guid,
+                //    DateDeactivated = c.DateDeactivated,
+                //    RepeatationCount = c.RepeatationCount,
+                //    ScheduleType = c.ScheduleType,
+                //    StartDate = c.StartDate,
+                //    EndDate = c.EndDate,
+                //    RepeatationOffset = c.RepeatationOffset,
+                //    IsDefaultVariable = c.IsDefaultActivity,
+                //    DeploymentStatus = c.ActivitySchedulings.FirstOrDefault(x => x.ActivityId == c.Id) != null ? c.ActivitySchedulings.FirstOrDefault(x => x.ActivityId == c.Id).Status : (int?)null,
+                //    IsAllVariableApprovedOfActivity = CheckAllVariableApproval(c),
+                //}).OrderBy(x => x.Name).ToList()
+                TenantId = Guid.NewGuid(),
+                IsDefaultFormCategory = 1
+            }
+            };
+        }
+    }
+
+    public class FormCategoryViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new FormCategoryViewModel
+            {
+                CategoryName = "Example Category Name",
+                CreatedBy = Guid.NewGuid(),
+                CreatedDate = DateTime.UtcNow,
+                ModifiedBy = Guid.NewGuid(),
+                ModifiedDate = DateTime.UtcNow,
+                DeactivatedBy = null,
+                DateDeactivated = DateTime.UtcNow,
+                Guid = Guid.NewGuid(),
+                Forms = null,
+                //Forms = (c => new Core.ViewModels.SubCategoryViewModel
+                //{
+                //    Guid = c.Guid,
+                //    Id = c.Id,
+                //    Name = c.ActivityName,
+                //    Status = c.ActivityStatu.Status,
+                //    ProjectId = c.FormDataEntry.Guid,
+                //    DateDeactivated = c.DateDeactivated,
+                //    RepeatationCount = c.RepeatationCount,
+                //    ScheduleType = c.ScheduleType,
+                //    StartDate = c.StartDate,
+                //    EndDate = c.EndDate,
+                //    RepeatationOffset = c.RepeatationOffset,
+                //    IsDefaultVariable = c.IsDefaultActivity,
+                //    DeploymentStatus = c.ActivitySchedulings.FirstOrDefault(x => x.ActivityId == c.Id) != null ? c.ActivitySchedulings.FirstOrDefault(x => x.ActivityId == c.Id).Status : (int?)null,
+                //    IsAllVariableApprovedOfActivity = CheckAllVariableApproval(c),
+                //}).OrderBy(x => x.Name).ToList()
+                TenantId = Guid.NewGuid(),
+                IsDefaultFormCategory = 1
+            };
+        }
+    }
 }

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/content/assets/images/favicon.png">
+    <title>@ViewBag.Title | Aspree</title>
+    <!-- Bootstrap core css -->
+    <link href="/content/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontawesome icon css -->
+    <link href="/content/vendor/css/fontawesome-all.min.css" rel="stylesheet">
+    <!--Range slider css -->
+    <link href="/content/vendor/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="/content/vendor/css/ion.rangeSlider.skinModern.css" rel="stylesheet">
+    <!-- Switch button css -->
+    <!--23-09-2019-->
+    @*<link href="/content/vendor/css/switchery.min.css" rel="stylesheet">*@
+    <!-- Animate css -->
+    <link href="/content/assets/css/animate.css" rel="stylesheet">
+    <!-- Theme css -->
+    <link href="/content/assets/css/style.css" rel="stylesheet">
+    <!-- Custom style css -->
+    <link href="/content/assets/css/custom-style.css" rel="stylesheet">
+    <link href="/content/assets/css/responsive.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+
+<body class="light-gray-bg">
+    <div id="page-wrapper">
+
+        <!-- ==========================================================
+        Start Header
+        =========================================================== -->
+        <header class="topbar rgt-header">
+            <div class="rgt-project-name">Aspree</div>
+        </header>
+
+        <!-- ==========================================================
+        Start Main Content
+        =========================================================== -->
+        <div class="main-content">
+            <div id="alerts" class="alerts"></div>
+            @RenderBody()
+
+        </div><!-- /.main-content -->
+        <!-- ==========================================================
+        End Main Content
+        =========================================================== -->
+
+    </div><!-- #page-wrapper -->
+    <!-- ==========================================================
+    All Jquery Import
+    =========================================================== -->
+    <script src="/content/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/content/vendor/js/popper.min.js"></script>
+    <script src="/content/vendor/js/bootstrap.min.js"></script>
+    <!-- Range slider  -->
+
+    <!--23-09-2019-->
+    @*<script src="/content/vendor/js/ion.rangeSlider.min.js"></script>
+    <script src="/content/vendor/js/ion.rangeSlider-init.js"></script>*@
+    <!-- Switche button js -->
+    <!--23-09-2019-->
+    @*<script src="/content/vendor/js/switchery.min.js"></script>*@
+    <!--Wave effects -->
+    <script src="/content/assets/js/waves.js"></script>
+    <!--Custom js -->
+    <script src="/content/assets/js/custom.js"></script>
+    @RenderSection("Scripts",false)
+</body>
+</html>
+

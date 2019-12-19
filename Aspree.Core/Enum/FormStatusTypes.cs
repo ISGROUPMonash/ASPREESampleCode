@@ -27,6 +27,9 @@ namespace Aspree.Core.Enum
     public enum FormCategories
     {
         System = 1,
+        //Default = 1,
+        //Unique_Identifier = 2,
+        //Entity_Registration = 3,
     }
 
     public enum DefaultFormType

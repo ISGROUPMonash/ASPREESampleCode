@@ -1,0 +1,511 @@
+﻿
+@{
+    ViewBag.Title = "Summary";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    Guid? userProjectRole = ViewBag.ProjectStaffMembersRoles as Guid?;
+
+    string absolutePath = string.Empty;
+    string testingEnvironmentClass = "";
+    try
+    {
+        /////--------local host test url.
+        //absolutePath = (Request.Url.Segments.Count() > 1 ? Request.Url.Segments[1].ToLower() : string.Empty);
+
+        ////---------live domain test url.
+        bool isTesturipath = Request.Url.AbsoluteUri.ToLower().Contains("uds-test");
+        absolutePath = isTesturipath ? "test/" : "";
+
+    }
+    catch (Exception exc)
+    { }
+
+
+    try
+    {
+        if (absolutePath == "test/")
+        {
+            Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml";
+            //testingEnvironmentClass = "draft-watermark";
+        }
+    }
+    catch (Exception exc) { }
+
+    List<Aspree.Core.ViewModels.AddSummaryPageActivityViewModel> SummaryPageActivityList = ViewBag.SummaryPageActivityList as List<Aspree.Core.ViewModels.AddSummaryPageActivityViewModel>;
+}
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">@Session["ProjectName"]</h3>
+}
+
+<input type="hidden" id="ProjectId" name="ProjectId" value="@ViewBag.ProjectId" />
+<input type="hidden" id="ActivityId" name="ActivityId" value="" data-activity-guid="" />
+<input type="hidden" id="UserProjectRole" name="UserProjectRole" value="@userProjectRole" />
+<input type="hidden" id="PersonEntityId" name="PersonEntityId" value="@ViewBag.SearchId" />
+<input type="hidden" id="EntityCreatedDate" name="EntityCreatedDate" value="@ViewBag.EntityCreatedDate.ToString("MM-dd-yyyy")" />
+<div class="row justify-content-lg-center">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row justify-content-lg-center">
+            <div class="col-sm-4 col-md-4 col-lg-3">
+                <div class="card @testingEnvironmentClass">
+                    <div class="card-body text-center p-2">
+                        @{
+                            string style = "";
+                            if (ViewBag.EntityType == "Person")
+                            {
+                                style = "style=background:#950056;color:#ffffff;";
+                            }
+                            else if (ViewBag.EntityType == "Participant")
+                            {
+                                style = "style=background:#282b2b;color:#ffffff;";
+                            }
+                            else if (ViewBag.EntityType == "Project")
+                            {
+                                style = "style=background:#218fcfab;color:#ffffff;";
+                            }
+                        }
+                        <div class="m-t-20 border border-dark round content-circle" @style>
+                            @ViewBag.EntityType
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-Text pb-1">
+                            <h6>ID: </h6>
+                            <span class="ml-2">@ViewBag.SearchId</span>
+                        </div>
+                        @if (ViewBag.FirstName != null)
+                        {
+                            <div class="card-Text pb-1">
+                                <h6 class="text-capitalize">name:</h6>
+                                <span class="ml-2">@ViewBag.FirstName</span>
+                            </div>
+                        }
+                        @if (ViewBag.Surname != null)
+                        {
+                            <div class="card-Text pb-1">
+                                <h6 class="text-capitalize">Surname:</h6>
+                                <span class="ml-2">@ViewBag.Surname</span>
+                            </div>
+                        }
+                        @if (ViewBag.DOB != null)
+                        {
+                            <div class="card-Text pb-1">
+                                <h6 class="text-capitalize">DOB:</h6>
+                                <span class="ml-2">@ViewBag.DOB</span>
+                            </div>
+                        }
+                        @if (ViewBag.Gender != null)
+                        {
+                            <div class="card-Text pb-1">
+                                <h6 class="text-capitalize">Gender:</h6>
+                                <span class="ml-2">@ViewBag.Gender</span>
+                            </div>
+                        }
+
+                        <div class="card-Text pt-5">
+                            <h6 class="text-capitalize">Address:</h6>
+                            <span class="ml-2">@ViewBag.Address</span>
+                        </div>
+
+
+                        <div class="card-Text pb-1">
+                            <h6 class="text-capitalize">Suburb:</h6>
+                            <span class="ml-2">@ViewBag.Suburb</span>
+                        </div>
+                        <div class="card-Text pb-1">
+                            <h6 class="text-capitalize">state:</h6>
+                            <span class="ml-2" id="spnState">@ViewBag.State</span>
+                        </div>
+                        <div class="card-Text pb-1">
+                            <h6 class="text-capitalize">Phone:</h6>
+                            <span class="ml-2">@ViewBag.Phone</span>
+                        </div>
+                        <div class="card-Text pb-1">
+                            <h6 class="text-capitalize">Email:</h6>
+                            <span style="width: 80%;" class="ml-2">@ViewBag.Email</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-9">
+                <div class="card pb-redioTb-wrap02 @testingEnvironmentClass">
+                    <div class="card-header">
+                        <h3 class="card-title">Summary Page </h3>
+                        <h4 class="card-subtitle">What would you like to do?</h4>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="clearfix pt-05 theme-bgcolor theme-gray-bgcolor"></div>
+                    <div class="card-body custome-timeline">
+                        <form action="javascript:void(0)" autocomplete="off" id="frmAddSummaryPageActivity">
+                            <div class="form-body timeline-form-body">
+                                <div class="form-badge"><span class="round text-uppercase">new</span></div>
+                                <div class="form-panel">
+                                    <div class="row less-m-row">
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="form-group">
+                                                <label class="control-label">Activity Type</label>
+                                                <!--<input type="text" id="firstName" class="form-control">-->
+                                                <select id="ActivityType" name="ActivityType" class="form-control" required data-val="true" data-val-required="This field is required.">
+                                                    <option value="">Select Activity</option>
+                                                    @foreach (var activity in Model)
+                                                    {
+                                                        if (activity.IsDefaultActivity == (int)Aspree.Core.Enum.DefaultActivityType.Default && activity.ActivityName != "Project Linkage") { continue; }
+                                                        <option value="@activity.ActivityId">@activity.ActivityName</option>
+                                                    }
+                                                </select>
+                                                <span class="field-validation-valid form-control-feedback" data-valmsg-for="ActivityType" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="form-group">
+                                                <label class="control-label">Activity completed by</label>
+                                                <select id="CompletedByUser" name="CompletedByUser" class="form-control" required data-val="true" data-val-required="This field is required.">
+                                                    <option value="">Select User</option>
+                                                </select>
+                                                <span class="field-validation-valid form-control-feedback" data-valmsg-for="CompletedByUser" data-valmsg-replace="true"></span>
+
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="form-group">
+                                                <label class="control-label">Activity date</label>
+                                                <div class="row">
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <input type="text" id="ActivityDate_DD" name="ActivityDate" placeholder="DD" maxlength="2" class="form-control number-dd" required data-val="true" data-val-required="This field is required.">
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <input type="text" id="ActivityDate_MM" name="ActivityDate" placeholder="MM" maxlength="2" class="form-control number-mm" required data-val="true" data-val-required="This field is required.">
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <div class="input-group input-group-radius-0">
+                                                            <input type="text" id="ActivityDate_YYYY" name="ActivityDate" placeholder="YYYY" maxlength="4" class="form-control number-yyyy" required data-val="true" data-val-required="This field is required.">
+                                                            <div class="input-group-btn">
+                                                                <button class="btn btn-info btn-outline bootstrap-touchspin-up ml-2 white-text" type="button" onclick="Deployment.AddActivity()"><i class="fas fa-plus" aria-hidden="true"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="ActivityDate" data-valmsg-replace="true"></span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="timeline p-b-0" id="scheduledActivitiesContainer">
+                            @{int index = 0;}
+                            @foreach (var activity in SummaryPageActivityList)
+                            {
+                                index++;
+                                DateTime activityDate = activity.ActivityDate;
+                                int day = activityDate.Day;
+                                string month = activityDate.ToString("MMM");
+
+                                <li class="pb-4" data-activities-order="@index" data-activity-date="@activityDate.ToString("yyyy-MM-dd")">
+                                    <div class="timeline-badge success">
+                                        @day
+                                        <br>
+                                        @month
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <h4 class="timeline-title">@activity.ActivityName</h4>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-xs-12"> <small class="hide"> Activity date : 3 Mar 2018</small> </div>
+                                                <div class="col-md-4 col-sm-4 col-xs-12"> <small> Staff: @activity.ActivityCompletedByUserName </small> </div>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        @foreach (var forms in activity.Forms)
+                                        {
+                                            <div class="timeline-body">
+                                                @if (ViewBag.FormStatus != null)
+                                                {
+                                                    if (forms.Id == ViewBag.FormStatus.FormGuid && ViewBag.FormStatus.FormDataEntryStatus == 4)
+                                                    {
+
+                                                        <div class="row">
+                                                            <div class="col-sm-4">@forms.FormTitle</div>
+                                                            <div class="col-sm-4">
+                                                                <small class="text-success ml-5 link" data-is-form-submitted="true" onclick="Deployment.OpenActivityForm1('@ViewBag.SearchId', '@forms.Id', '@activity.ActivityId', this)">Submitted</small>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="row">
+                                                            <div class="col-sm-4">@forms.FormTitle</div>
+                                                            <div class="col-sm-4">
+                                                                <small class="text-warning ml-5 link" id="formStatus-@forms.Id" onclick="Deployment.OpenActivityForm1('@ViewBag.SearchId', '@forms.Id', '@activity.ActivityId', this)">Draft</small>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="row">
+                                                        <div class="col-sm-4">@forms.FormTitle</div>
+                                                        <div class="col-sm-4">
+                                                            <small class="text-warning ml-5 link" id="formStatus-@forms.Id" onclick="Deployment.OpenActivityForm1('@ViewBag.SearchId', '@forms.Id', '@activity.ActivityId', this)">Draft</small>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        }
+
+                                    </div>
+                                </li>
+                            }
+
+
+
+                            <!--
+                                                        <li class="pb-4">
+                                                            <div class="timeline-badge success">
+                                                                23<br>
+                                                                May
+                                                            </div>
+                                                            <div class="timeline-panel">
+                                                                <div class="timeline-heading">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                            <h4 class="timeline-title">ASPREE - XT Doc Collection</h4>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Activity completed by : Jess Lockery</small> </div>
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Activity date : 3 Mar 2018</small> </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="timeline-body">
+                                                                    <p> Collection Details <small class="text-success ml-5">Submitted</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="pb-4">
+                                                            <div class="timeline-badge success">
+                                                                23<br>
+                                                                May
+                                                            </div>
+                                                            <div class="timeline-panel">
+                                                                <div class="timeline-heading">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                            <h4 class="timeline-title">ASPREE - XT Doc Collection</h4>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Activity completed by : Jess Lockery</small> </div>
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Activity date : 3 Mar 2018</small> </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="timeline-body">
+                                                                    <p> Collection Details <small class="text-success ml-5">Submitted</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="pb-4">
+                                                            <div class="timeline-badge info">
+                                                                23<br>
+                                                                May
+                                                            </div>
+                                                            <div class="timeline-panel">
+                                                                <div class="timeline-heading">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                            <h4 class="timeline-title">ASPREE - XT Doc Collection</h4>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Activity completed by : Jess Lockery</small> </div>
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Activity date : 3 Mar 2018</small> </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="timeline-body">
+                                                                    <p> Collection Details <small class="text-success ml-5">Submitted</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="timeline-badge InProgress">
+                                                                23<br>
+                                                                May
+                                                            </div>
+                                                            <div class="timeline-panel">
+                                                                <div class="timeline-heading">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                            <h4 class="timeline-title">ASPREE - XT Doc Collection</h4>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Activity completed by : Jess Lockery</small> </div>
+                                                                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Activity date : 3 Mar 2018</small> </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="timeline-body">
+                                                                    <p> Collection Details <small class="text-success ml-5">Submitted</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        -->
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.pb-card-redio -->
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+
+
+
+
+<div class="modal fade DefaultModal HospitalsList" id="activity-form-variables-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+        <div class="modal-content @testingEnvironmentClass">
+            <div class="modal-header">
+                <h3 class="modal-title bold" id="search-variable-result-model-title"></h3>
+                <input type="hidden" id="hdnFormDataEntryGuid" />
+                <input type="hidden" id="hdnFormDataEntryTypeIsNew" />
+            </div>
+            <div class="modal-body">
+                <form class="p-20 pt-0 pb-0 activity-form" id="frm-1" autocomplete="off">
+                    <div id="activityformVariableContainer">
+
+                    </div>
+                    <div class="role-model-error"></div>
+                    <div class="modal-footer" id="search-variable-result-model-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--search popup-->
+<div class="modal fade DefaultModal HospitalsList" id="search-popup-template-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="searchHeader"></h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="sp-tabcontent-redio sp-active" id="search-popup-template">
+                    <form class="form-material" autocomplete="off">
+                        <div class="card-body">
+                            <div class="row justify-content-lg-center">
+                                <div class="col-md-12 col-lg-11">
+                                    <div class="sp-tabcontent" id="search-popup-body">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row justify-content-lg-center">
+                                <div class="col-md-12 col-lg-10">
+                                    <div id="search-popup-template-footer" class="card-btn-group pull-right">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--search result popup-->
+<div class="modal fade DefaultModal HospitalsList" id="search-variable-result-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="search-for-tabular-data">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="search-variable-result-model-title"></h5>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table mb-0" id="search-variable-result-model-table"></table>
+                </div>
+            </div>
+            <div class="modal-footer" id="search-variable-result-model-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hide">
+    <ul id="scheduledActivitiesTemplate">
+        <li class="pb-4" data-activities-order="0" data-activity-date="">
+            <div class="timeline-badge success">
+                scheduled_activities_day
+                <br>
+                scheduled_activities_month
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <h4 class="timeline-title"></h4>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12"> <small class="hide"> Activity date : 3 Mar 2018</small> </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12"> <small> Staff: scheduled_activities_completedby</small> </div>
+                    </div>
+                    <hr>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>
+
+@section Scripts{
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="/content/assets/plugins/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
+@*<script src="https://wrappixel.com/demos/admin-templates/material-pro/assets/plugins/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>*@
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    @*<script src="~/Content/app/Deployment.js"></script>*@
+    @Scripts.Render("~/apps/deployments")
+    @*@Scripts.Render("~/apps/searches")*@
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+        $(function () {
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(4)').addClass('active');
+
+            Deployment.DateFormat = '@Aspree.Utility.ConfigSettings.DateFormat.ToUpper()'; // 'DD-MM-YYYY'
+            //Deployment.GetSummaryPageScheduledActivity($("#ProjectId").val());
+            Deployment.GetSummaryPageUserList();
+            Deployment.GetAllCountries();
+            Deployment.GetAllStates();
+            Deployment.GetAllPostcodes();
+            Deployment.GetAllProjectByUserId();
+        });
+    </script>
+
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+}

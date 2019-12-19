@@ -1,0 +1,257 @@
+﻿@{
+    ViewBag.Title = "Manage Authentication";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = null;
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+
+@section NavBarLeft{
+@*@if (Session["ProjectName"] != null)*@
+    @if (LoggedInUser != null)
+    {
+        <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+    }
+}
+@*<div class="col-sm-12 col-md-12 col-lg-12">*@
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="main-content TabCard">
+        <div class="justify-content-lg-center">
+            <div class="col-md-11">
+                <div class="card">
+                    <div class="card-body">
+                        @Html.Partial("~/Views/Shared/ManageSystemAdminTools.cshtml")
+                        <div class="tab-content tabcontent-border">
+                            <div class="tab-pane active" id="manageAuthentication" role="tabpanel">
+                                <div class="p-20">
+                                    <div class="pull-left">
+                                        <h4 class="card-title">Authentication Endpoint</h4>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button onclick="Authentication.addAuthenticationType()" type="button" class="btn waves-effect waves-light btn-info">Add New</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <div class="table-responsive">
+                                        <table id="example23" class="table table-striped text-center table-sm FullWidthTable" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Type</th>
+                                                    <th>Status</th>
+                                                    <th>Modified</th>
+                                                    <th class="no-sort">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add New LoginAuthTypeMaster modal -->
+<div class="modal fade user-search-poppus" id="add-login-auth-type-master-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="model-popup-title">Add Authentication Type</h5>
+            </div>
+            <div class="modal-body">
+                <div class="role-model-error"></div>
+                <div class="sf-submit-info1">
+                    <form class="form-horizontal" id="frmAuthenticationType" autocomplete="off">
+                        <input id="Guid" name="Guid" type="hidden" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="UserName">Authentication Provider’s Claim<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="AuthenticationProviderClaim" required name="AuthenticationProviderClaim" maxlength="240" data-val="true" data-val-required="This field is required." value="sub">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="AuthenticationProviderClaim" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="AuthTypeName">AuthType Name<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="AuthTypeName" required name="AuthTypeName" maxlength="240" data-val="true" data-val-required="This field is required.">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="AuthTypeName" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="AuthType">Authentication Type<span class="text-danger">*</span></label>
+                                    <select id="AuthType" name="AuthType" class="form-control" required data-val="true" data-val-required="This field is required.">
+                                        <option value="">Select Auth Type</option>
+                                        @foreach (var authType in ViewBag.AuthenticationType)
+                                        {
+                                            if (authType.Text != Aspree.Core.Enum.AuthenticationTypes.Local_Password.ToString())
+                                            {
+                                                <option value="@authType.Value">@authType.Text.Replace("_", " ")</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="AuthType" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 hide">
+                                <div class="form-group">
+                                    <label for="Domain">Domain<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="Domain" name="Domain" maxlength="240" value="https://dev-852589.oktapreview.com/oauth2/default/v1/">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="Domain" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ClientId">Client ID<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="ClientId" required name="ClientId" maxlength="240" data-val="true" data-val-required="This field is required.">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="ClientId" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ClientSecret">Client Secret<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="ClientSecret" required name="ClientSecret" maxlength="240" data-val="true" data-val-required="This field is required.">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="ClientSecret" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Scope">Scope<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="Scope" required name="Scope" maxlength="240" data-val="true" data-val-required="This field is required.">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="Scope" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="AuthorizeEndpoint">Authorize Endpoint<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="AuthorizeEndpoint" required name="AuthorizeEndpoint" maxlength="240" data-val="true" data-val-required="This field is required.">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="AuthorizeEndpoint" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="TokenEndpoint">Token Endpoint<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="TokenEndpoint" required name="TokenEndpoint" maxlength="240" data-val="true" data-val-required="This field is required.">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="TokenEndpoint" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="UserinfoEndpoint">Userinfo Endpoint<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="UserinfoEndpoint" required name="UserinfoEndpoint" maxlength="240" data-val="true" data-val-required="This field is required.">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="UserinfoEndpoint" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="IntrospectEndpoint">Introspect Endpoint<span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" id="IntrospectEndpoint" name="IntrospectEndpoint" maxlength="240">
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="IntrospectEndpoint" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="RevokeEndpoint">Revoke Endpoint<span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" id="RevokeEndpoint" name="RevokeEndpoint" maxlength="240" >
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="RevokeEndpoint" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="LogoutEndpoint">Logout Endpoint<span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" id="LogoutEndpoint" name="LogoutEndpoint" maxlength="240" >
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="LogoutEndpoint" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="KeysEndpoint">Keys Endpoint<span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" id="KeysEndpoint" name="KeysEndpoint" maxlength="240" >
+                                    <span class="field-validation-valid form-control-feedback" data-valmsg-for="KeysEndpoint" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                                                  </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Authentication.saveAuthenticationType();" class="btn-sm waves-effect waves-light btn-info">Save</button>
+                <button id="btn-cancel" type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete LoginAuthTypeMaster confirmation modal-->
+<div class="modal fade user-search-poppus" id="delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    Are you sure want to active/deactivate selected user?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Authentication.deleteAuthenticationType()" class="btn-sm waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn-sm  btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Inactive-->
+<div class="modal fade user-search-poppus" id="active-inactive-confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="sf-submit-info">
+                    Are you sure want to active/deactivate selected role?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Authentication.activeInactivePost()" class="btn-sm waves-effect waves-light btn-info" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn-sm btn btn-inverse waves-effect waves-light" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/apps/authenticationtypes")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            $('.system-admin-tools li a').removeClass('active show');
+            $('.system-admin-tools li a:eq(4)').addClass('active show');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(6)').addClass('active');
+        })
+    </script>
+}

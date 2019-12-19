@@ -1,0 +1,75 @@
+﻿@model  List<Aspree.Core.ViewModels.ActivityCategoryViewModel>
+@{
+    ViewBag.Title = "Preview Scheduling";
+    Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml";
+
+    var IsProjectAdmin = ViewBag.LoggedInUser.Roles.Contains("Project Admin");
+    var AllRoles = ViewBag.Roles;
+    var listData = new List<Guid>();
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+
+@section NavBarLeft{
+<h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+}
+
+<input type="hidden" id="ProjectId" name="ProjectId" value="@ViewBag.ProjectId" />
+<div class="col-sm-12 col-md-12">
+    <div class="card draft-watermark">
+        <div class="card-body hide">
+            @Html.Partial("~/Views/Shared/ProjectBuilder.cshtml")
+        </div>
+      
+                            <div class="card-header">
+                            </div>
+                            <div class="card-body" style="min-height:300px;">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Select Role </label>
+                                            <select class="form-control" id="projectRoles" onchange="Deployment.GetProjectUserByRole(this)">
+                                                <option value="">Select Role</option>
+                                                @foreach (var role in AllRoles)
+                                                {
+                                                    <option value="@role.Guid">@role.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Select User </label>
+                                        <select id="projectUsers" class="form-control">
+                                            <option value="">Select User</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/projectbuilder/Deployment/@ViewBag.ProjectId" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                                <button type="button" onclick="Deployment.SubmitRoleUser('@ViewBag.ProjectId')" class="btn waves-effect waves-light btn-info pull-right m-r-10">Next</button>
+                            </div>
+                        
+                    </div>
+                </div>
+      
+
+@section Scripts{
+    <script>
+        $(function () {
+            Deployment.GetProjectByGuid('@ViewBag.ProjectId');
+            $('.wizard-content ul li:eq(4)').removeClass('disabled').addClass('current');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(5)').addClass('active');
+        })
+    </script>
+    @Scripts.Render("~/apps/deployments")
+}
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+}

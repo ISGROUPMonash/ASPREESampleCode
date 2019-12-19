@@ -1,0 +1,381 @@
+﻿@model  List<Aspree.Core.ViewModels.ActivityCategoryViewModel>
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+
+    var IsProjectAdmin = ViewBag.LoggedInUser.Roles.Contains("Project Admin");
+    var AllActivityForms = ViewBag.AllActivityForms;
+    var listData = new List<Guid>();
+    var formTabHeader = 0;
+    var formTabBody = 0;
+    var activeCls = "";
+    int varIndex = 0;
+}
+
+@section NavBarLeft{
+    @*<h3 class="text-themecolor m-b-0 m-t-0"> </h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item">Project Builder</li>
+            <li class="breadcrumb-item active">Scheduling</li>
+        </ol>*@
+}
+
+<div class="col-sm-12 col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 id="ActivityId" data-activity-guid="@ViewBag.ActivityGuid">@ViewBag.ActivityName</h4>
+            <input type="hidden" id="ProjectId" name="ProjectId" value="@ViewBag.ProjectId" />
+        </div>
+        <div class="card-body">
+            <div class="main-content TabCard">
+                <div class="container-fluid">
+                    <div class="row justify-content-lg-center mt-4">
+                        <div class="col-md-11">
+                            <div class="card">
+                                <div class="card-body">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        @foreach (var formTitle in ViewBag.AllActivityForms)
+                                        {
+                                            formTabHeader++;
+                                            if (formTabHeader == 1) { activeCls = "active"; }
+                                            else { activeCls = ""; }
+                                            <li class="nav-item"><a class="nav-link @activeCls" data-toggle="tab" href="#tabBody-@formTabHeader" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@formTitle.FormTitle</span></a></li>
+                                        }
+                                          </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content tabcontent-border">
+                                        @foreach (var formBody in ViewBag.AllActivityForms)
+                                        {
+                                            formTabBody++;
+                                            <input type="hidden" value="@formBody.Guid" class="form-guid" />
+                                            if (formTabBody == 1) { activeCls = "active"; }
+                                            else { activeCls = ""; }
+                                            <div class="tab-pane @activeCls" id="tabBody-@formTabBody" role="tabpanel">
+                                                <form class="p-20 activity-form" id="frm-@formTabBody" data-form-guid="@formBody.Guid">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h3 class="justify-content-lg-center">@formBody.FormTitle</h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="form-horizontal p-20">
+                                                                <div class="card-body" id="activityformVariableContainer" style="min-height:300px">
+                                                                    @foreach (var formVariables in formBody.Variables)
+                                                                    {
+                                                                        varIndex++;
+                                                                        List<string>
+                                                                            PreviewPane_ValidationName = new List<string>
+                                                                                ();
+                                                                        List<string>
+                                                                            PreviewPane_ValidationRegEx = new List<string>
+                                                                                ();
+                                                                        List<string>
+                                                                            PreviewPane_ValidationMin = new List<string>
+                                                                                ();
+                                                                        List<string>
+                                                                            PreviewPane_ValidationMax = new List<string>
+                                                                                ();
+                                                                        List<string>
+                                                                            PreviewPane_ValidationErrorMessage = new List<string>
+                                                                                ();
+
+                                                                        for (int key = 0; key < formVariables.variableViewModel.variableValidationRuleViewModel.Count; key++)
+                                                                        {
+                                                                            PreviewPane_ValidationName.Add(formVariables.variableViewModel.variableValidationRuleViewModel[key].ValidationName);
+                                                                            PreviewPane_ValidationRegEx.Add(formVariables.variableViewModel.variableValidationRuleViewModel[key].RegEx);
+                                                                            PreviewPane_ValidationMin.Add(formVariables.variableViewModel.variableValidationRuleViewModel[key].Min);
+                                                                            PreviewPane_ValidationMax.Add(formVariables.variableViewModel.variableValidationRuleViewModel[key].Max);
+                                                                            PreviewPane_ValidationErrorMessage.Add(formVariables.variableViewModel.variableValidationRuleViewModel[key].ValidationMessage);
+                                                                        }
+
+                                                                        if (formVariables.VariableType == "Numeric")
+                                                                        {
+                                                                            <div class="form-group row align-items-center">
+                                                                                <div class="col-md-3 pr-md-0">
+                                                                                    <label>
+                                                                                        @formVariables.variableViewModel.ValueDescription @if (formVariables.IsRequired)
+                                                                                        {<span class="warning" style="color:red">*</span>} :
+                                                                                        <input type="hidden" value="@formVariables.variableViewModel.Guid" class="variable-guid" />
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputField-@varIndex" class='form-control form-control-line dynamic-variables' name="inputField-@varIndex"
+                                                                                           value="@formVariables.variableViewModel.VariableSelectedValues" placeholder="@formVariables.variableViewModel.ValueDescription"
+                                                                                           data-validationname="@Json.Encode(PreviewPane_ValidationName)"
+                                                                                           data-validation-regex="@Json.Encode(PreviewPane_ValidationRegEx)"
+                                                                                           data-validation-min="@Json.Encode(PreviewPane_ValidationMin)"
+                                                                                           data-validation-max="@Json.Encode(PreviewPane_ValidationMax)"
+                                                                                           data-validation-error-message="@Json.Encode(PreviewPane_ValidationErrorMessage)"
+                                                                                           data-variable-guid="@formVariables.variableViewModel.Id"
+                                                                                           onblur="Deployment.validateFreeText(this.value, this.id, @Json.Encode(PreviewPane_ValidationName) , @Json.Encode(PreviewPane_ValidationRegEx), @Json.Encode(PreviewPane_ValidationMin), @Json.Encode(PreviewPane_ValidationMax), @Json.Encode(PreviewPane_ValidationErrorMessage))" />
+
+                                                                                    <span class='field-validation-valid form-control-feedback' data-valmsg-for="inputField-@varIndex" data-valmsg-replace='true'></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else if (formVariables.VariableType == "Text Box")
+                                                                        {
+                                                                            <div class="form-group row align-items-center">
+                                                                                <div class="col-md-3 pr-md-0">
+                                                                                    <label>
+                                                                                        @formVariables.variableViewModel.ValueDescription @if (formVariables.IsRequired)
+                                                                                        {<span class="warning" style="color:red">*</span>} :
+                                                                                        <input type="hidden" value="@formVariables.variableViewModel.Guid" class="variable-guid" />
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputField-@varIndex" class='form-control form-control-line dynamic-variables' name="inputField-@varIndex"
+                                                                                           value="@formVariables.variableViewModel.VariableSelectedValues" placeholder="@formVariables.variableViewModel.ValueDescription"
+                                                                                           data-validationname="@Json.Encode(PreviewPane_ValidationName)"
+                                                                                           data-validation-regex="@Json.Encode(PreviewPane_ValidationRegEx)"
+                                                                                           data-validation-min="@Json.Encode(PreviewPane_ValidationMin)"
+                                                                                           data-validation-max="@Json.Encode(PreviewPane_ValidationMax)"
+                                                                                           data-validation-error-message="@Json.Encode(PreviewPane_ValidationErrorMessage)"
+                                                                                           data-variable-guid="@formVariables.variableViewModel.Id"
+                                                                                           onblur="Deployment.validateFreeText(this.value, this.id, @Json.Encode(PreviewPane_ValidationName) , @Json.Encode(PreviewPane_ValidationRegEx), @Json.Encode(PreviewPane_ValidationMin), @Json.Encode(PreviewPane_ValidationMax), @Json.Encode(PreviewPane_ValidationErrorMessage))" />
+
+                                                                                    <span class='field-validation-valid form-control-feedback' data-valmsg-for="inputField-@varIndex" data-valmsg-replace='true'></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else if (formVariables.VariableType == "Free Text")
+                                                                        {
+                                                                            <div class="form-group row align-items-center">
+                                                                                <div class="col-md-3 pr-md-0">
+                                                                                    <label>
+                                                                                        @formVariables.variableViewModel.ValueDescription @if (formVariables.IsRequired)
+                                                                                        {<span class="warning" style="color:red">*</span>} :
+                                                                                        <input type="hidden" value="@formVariables.variableViewModel.Guid" class="variable-guid" />
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <textarea id="inputField-@varIndex" class='form-control form-control-line dynamic-variables' name="inputField-@varIndex" placeholder="@formVariables.variableViewModel.ValueDescription"
+                                                                                              data-validationname="@Json.Encode(PreviewPane_ValidationName)"
+                                                                                              data-validation-regex="@Json.Encode(PreviewPane_ValidationRegEx)"
+                                                                                              data-validation-min="@Json.Encode(PreviewPane_ValidationMin)"
+                                                                                              data-validation-max="@Json.Encode(PreviewPane_ValidationMax)"
+                                                                                              data-validation-error-message="@Json.Encode(PreviewPane_ValidationErrorMessage)"
+                                                                                              data-variable-guid="@formVariables.variableViewModel.Id"
+                                                                                              onblur="Deployment.validateFreeText(this.value, this.id, @Json.Encode(PreviewPane_ValidationName) , @Json.Encode(PreviewPane_ValidationRegEx), @Json.Encode(PreviewPane_ValidationMin), @Json.Encode(PreviewPane_ValidationMax), @Json.Encode(PreviewPane_ValidationErrorMessage))">@formVariables.variableViewModel.VariableSelectedValues</textarea>
+
+                                                                                        <span class='field-validation-valid form-control-feedback' data-valmsg-for="inputField-@varIndex" data-valmsg-replace='true'></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                        }
+                                                                        else if (formVariables.VariableType == "Dropdown")
+                                                                        {
+                                                                            <div class="form-group row align-items-center">
+                                                                                <div class="col-md-3 pr-md-0">
+                                                                                    <label>
+                                                                                        @formVariables.variableViewModel.ValueDescription @if (formVariables.IsRequired)
+                                                                                        {<span class="warning" style="color:red">*</span>} :
+                                                                                        <input type="hidden" value="@formVariables.variableViewModel.Guid" class="variable-guid" />
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <select id="inputField-@varIndex" class='form-control form-control-line dynamic-variables' name="inputField-@varIndex" data-variable-guid="@formVariables.variableViewModel.Id">
+                                                                                        <option value="">Select</option>
+                                                                                        @for (int i = 0; i < formVariables.variableViewModel.Values.Count; i++)
+                                                                                        {
+                                                                                            if (formVariables.variableViewModel.VariableSelectedValues == formVariables.variableViewModel.Values[i])
+                                                                                            {
+                                                                                        <option selected value="@formVariables.variableViewModel.Values[i]">@formVariables.variableViewModel.VariableValueDescription[i]</option>
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                        <option value="@formVariables.variableViewModel.Values[i]">@formVariables.variableViewModel.VariableValueDescription[i]</option>
+                                                                                            }
+                                                                                        }
+                                                                                    </select>
+                                                                                    <span class='field-validation-valid form-control-feedback' data-valmsg-for="inputField-@varIndex" data-valmsg-replace='true'></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else if (formVariables.VariableType == "LKUP")
+                                                                        {
+                                                                            <div class="form-group row align-items-center">
+                                                                                <div class="col-md-3 pr-md-0">
+                                                                                    <label>
+                                                                                        @formVariables.variableViewModel.ValueDescription @if (formVariables.IsRequired)
+                                                                                        {<span class="warning" style="color:red">*</span>} :
+                                                                                        <input type="hidden" value="@formVariables.variableViewModel.Guid" class="variable-guid" />
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <select id="inputField-@varIndex" class='form-control form-control-line dynamic-variables' data-variable-guid="@formVariables.variableViewModel.Id" name="inputField-@varIndex">
+                                                                                        <option value="">Select</option>
+                                                                                        @for (int i = 0; i < formVariables.variableViewModel.Values.Count; i++)
+                                                                                        {
+                                                                                            if (formVariables.variableViewModel.VariableSelectedValues == formVariables.variableViewModel.Values[i])
+                                                                                            {
+                                                                                        <option selected value="@formVariables.variableViewModel.Values[i]">@formVariables.variableViewModel.VariableValueDescription[i]</option>
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                        <option value="@formVariables.variableViewModel.Values[i]">@formVariables.variableViewModel.VariableValueDescription[i]</option>
+                                                                                            }
+                                                                                        }
+                                                                                    </select>
+                                                                                    <span class='field-validation-valid form-control-feedback' data-valmsg-for="inputField-@varIndex" data-valmsg-replace='true'></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else if (formVariables.VariableType == "Checkbox")
+                                                                        {
+                                                                            List<string> chkList = new List<string>();
+                                                                            var cList = formVariables.variableViewModel.VariableSelectedValues.Split(',');
+                                                                            foreach (string chk in cList)
+                                                                            {
+                                                                                chkList.Add(chk);
+                                                                            }
+                                                                            <div class="form-group row align-items-center">
+                                                                                <div class="col-md-3 pr-md-0">
+                                                                                    <label>
+                                                                                        @formVariables.variableViewModel.ValueDescription @if (formVariables.IsRequired)
+                                                                                        {<span class="warning" style="color:red">*</span>} :
+                                                                                        <input type="hidden" value="@formVariables.variableViewModel.Guid" class="variable-guid" />
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    @for (int i = 0; i < formVariables.variableViewModel.Values.Count; i++)
+                                                                                    {
+                                                                                        var checkChecked = "";
+                                                                                        if (((List<string>)chkList).Contains(formVariables.variableViewModel.Values[i]))
+                                                                                        {
+                                                                                            checkChecked = "checked";
+                                                                                        }
+                                                                                        <label class="custom-control custom-checkbox">
+                                                                                            <input @checkChecked type="checkbox" name="inputField-@varIndex" id="inputField-@varIndex" value="@formVariables.variableViewModel.Values[i]" data-variable-guid="@formVariables.variableViewModel.Id" class="custom-control-input dynamic-variables" />
+                                                                                            <span class="custom-control-label">
+                                                                                                @formVariables.variableViewModel.VariableValueDescription[i]
+                                                                                            </span>
+                                                                                        </label>
+                                                                                    }
+                                                                                    <span class='field-validation-valid form-control-feedback' data-valmsg-for="inputField-@varIndex" data-valmsg-replace='true'></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else if (formVariables.VariableType == "Radio")
+                                                                        {
+                                                                            <div class="form-group row align-items-center">
+                                                                                <div class="col-md-3 pr-md-0">
+                                                                                    <label>
+                                                                                        @formVariables.variableViewModel.ValueDescription @if (formVariables.IsRequired)
+                                                                                        {<span class="warning" style="color:red">*</span>} :
+                                                                                        <input type="hidden" value="@formVariables.variableViewModel.Guid" class="variable-guid" />
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <div class="form-group">
+                                                                                        @for (int i = 0; i < formVariables.variableViewModel.Values.Count; i++)
+                                                                                        {
+                                                                                            var checkChecked = "";
+                                                                                            if (formVariables.variableViewModel.VariableSelectedValues == formVariables.variableViewModel.Values[i])
+                                                                                            {
+                                                                                                checkChecked = "checked";
+                                                                                            }
+                                                                                            <label class="custom-control custom-radio">
+                                                                                                <input @checkChecked type="radio" name="inputField-@varIndex" id="inputField-@varIndex" data-variable-guid="@formVariables.variableViewModel.Id" value="@formVariables.variableViewModel.Values[i]" class="custom-control-input dynamic-variables" />
+                                                                                                <span class="custom-control-label">
+                                                                                                    @formVariables.variableViewModel.VariableValueDescription[i]
+                                                                                                </span>
+                                                                                            </label>
+                                                                                        }
+                                                                                    </div>
+                                                                                    <span class='field-validation-valid form-control-feedback' data-valmsg-for="inputField-@varIndex" data-valmsg-replace='true'></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else if (formVariables.VariableType == "Date")
+                                                                        {
+                                                                            <div class="form-group row align-items-center">
+                                                                                <div class="col-md-3 pr-md-0">
+                                                                                    <label>
+                                                                                        @formVariables.variableViewModel.ValueDescription @if (formVariables.IsRequired)
+                                                                                        {<span class="warning" style="color:red">*</span>} :
+                                                                                        <input type="hidden" value="@formVariables.variableViewModel.Guid" class="variable-guid" />
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputField-@varIndex" class='singledate form-control form-control-line dynamic-variables' name="inputField-@varIndex"
+                                                                                           value="@formVariables.variableViewModel.VariableSelectedValues" placeholder="@formVariables.variableViewModel.ValueDescription"
+                                                                                           data-validationname="@Json.Encode(PreviewPane_ValidationName)"
+                                                                                           data-validation-regex="@Json.Encode(PreviewPane_ValidationRegEx)"
+                                                                                           data-validation-min="@Json.Encode(PreviewPane_ValidationMin)"
+                                                                                           data-validation-max="@Json.Encode(PreviewPane_ValidationMax)"
+                                                                                           data-validation-error-message="@Json.Encode(PreviewPane_ValidationErrorMessage)"
+                                                                                           data-variable-guid="@formVariables.variableViewModel.Id"
+                                                                                           onblur="Deployment.validateFreeText(this.value, this.id, @Json.Encode(PreviewPane_ValidationName) , @Json.Encode(PreviewPane_ValidationRegEx), @Json.Encode(PreviewPane_ValidationMin), @Json.Encode(PreviewPane_ValidationMax), @Json.Encode(PreviewPane_ValidationErrorMessage))" />
+
+                                                                                    <span class='field-validation-valid form-control-feedback' data-valmsg-for="inputField-@varIndex" data-valmsg-replace='true'></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                    }
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <button type="button" onclick="Deployment.GetActivityform()" class="btn waves-effect waves-light btn-info pull-right m-r-10">Close</button>
+                                                            <button type="button" onclick="Deployment.saveActivityform(this)" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+                                                            <button type="button" onclick="Deployment.submitActivityform()" class="btn waves-effect waves-light btn-info pull-right m-r-10">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            @if (ViewBag.AllActivityForms.Count > 1)
+            {
+                <button type = "button" onclick = "Deployment.GetActivityform()" class="btn waves-effect waves-light btn-info pull-right m-r-10" id="btnNext">Next</button>
+            }
+            else
+            {
+                <button type="button" onclick="Deployment.GetActivityform()" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+                                                                                        {
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $('.wizard-content ul li:eq(3)').removeClass('disabled').addClass('current');
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(3)').addClass('active');
+
+            $('.singledate').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                locale:
+                                                                                                    {
+                                                                                                        format: '@Aspree.Utility.ConfigSettings.DateFormat.ToUpper()', // 'DD-MM-YYYY'
+                                                                                                    }
+            });
+        });
+    </script>
+
+    @Scripts.Render("~/apps/deployments")
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+}

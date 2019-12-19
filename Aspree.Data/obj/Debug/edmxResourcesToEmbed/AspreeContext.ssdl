@@ -1,5 +1,248 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Aspree_StaggingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="AspreeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityName" Type="nvarchar" MaxLength="250" />
+    <Property Name="RepeatationType" Type="int" />
+    <Property Name="RepeatationCount" Type="int" />
+    <Property Name="RepeatationOffset" Type="int" />
+    <Property Name="DependentActivityId" Type="int" />
+    <Property Name="ActivityCategoryId" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ScheduleType" Type="int" Nullable="false" />
+    <Property Name="ActivityStatusId" Type="int" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+    <Property Name="PreviewSchedulingDone" Type="bit" />
+    <Property Name="IsDefaultActivity" Type="int" Nullable="false" />
+    <Property Name="IsActivityRequireAnEntity" Type="bit" />
+  </EntityType>
+  <EntityType Name="ActivityCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+  </EntityType>
+  <EntityType Name="ActivityEntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+    <Property Name="EntityTypeId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActivityForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormId" Type="int" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActivityScheduling">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+    <Property Name="ScheduledToBeCompleted" Type="int" Nullable="false" />
+    <Property Name="ActivityAvailableForCreation" Type="int" Nullable="false" />
+    <Property Name="RolesToCreateActivity" Type="int" Nullable="false" />
+    <Property Name="RoleToCreateActivityRegardlessScheduled" Type="int" Nullable="false" />
+    <Property Name="OtherActivity" Type="int" />
+    <Property Name="OffsetCount" Type="int" />
+    <Property Name="OffsetType" Type="int" />
+    <Property Name="SpecifiedActivity" Type="int" />
+    <Property Name="CreationWindowOpens" Type="int" />
+    <Property Name="CreationWindowClose" Type="int" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsScheduled" Type="bit" />
+    <Property Name="ScheduleDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="CanCreatedMultipleTime" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActivityStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AddActivity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+    <Property Name="ActivityCompletedByUser" Type="int" Nullable="false" />
+    <Property Name="ActivityDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActivityAdded" Type="bit" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="PersonEntityId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuthTypeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthType" Type="nvarchar" MaxLength="150" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CheckList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StatedId" Type="int" Nullable="false" />
+    <Property Name="Abbr" Type="varchar" MaxLength="50" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Abbr" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="To" Type="nvarchar" MaxLength="250" />
+    <Property Name="From" Type="nvarchar" MaxLength="100" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="250" />
+    <Property Name="Body" Type="nvarchar(max)" />
+    <Property Name="IsSend" Type="bit" Nullable="false" />
+    <Property Name="FailedAttempt" Type="int" />
+    <Property Name="IsImmediate" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="SentDate" Type="datetime" />
+    <Property Name="SmtpServerId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmailTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PushEmailEventId" Type="int" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MailBody" Type="nvarchar(max)" />
+    <Property Name="EmailKeywords" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+  </EntityType>
+  <EntityType Name="Entity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityTypeId" Type="int" Nullable="false" />
+    <Property Name="EntitySubTypeId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentEntityId" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+    <Property Name="EntityVariablesDetail" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="EntityFormDataVariable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityId" Type="int" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="SelectedValues" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EntityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EntityTypeId" Type="int" Nullable="false" />
+    <Property Name="EntitySubTypeId" Type="int" />
+    <Property Name="Json" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
   <EntityType Name="EntitySubType">
     <Key>
       <PropertyRef Name="Id" />
@@ -18,6 +261,472 @@
     <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
     <Property Name="TenantId" Type="int" />
   </EntityType>
+  <EntityType Name="EntityVariable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityId" Type="int" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Aspree.dbo.Error_Log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Error_Log">
+    <Key>
+      <PropertyRef Name="Created" />
+    </Key>
+    <Property Name="error_number" Type="int" />
+    <Property Name="error_state" Type="int" />
+    <Property Name="error_procedure" Type="nvarchar(max)" />
+    <Property Name="error_line" Type="int" />
+    <Property Name="error_message" Type="varchar(max)" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExternalLink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+    <Property Name="UserGuid" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Form">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsPublished" Type="bit" Nullable="false" />
+    <Property Name="ApprovedBy" Type="int" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="IsTemplate" Type="bit" Nullable="false" />
+    <Property Name="FormCategoryId" Type="int" />
+    <Property Name="ProjectId" Type="int" />
+    <Property Name="FormState" Type="int" Nullable="false" />
+    <Property Name="FormStatusId" Type="int" Nullable="false" />
+    <Property Name="Version" Type="int" />
+    <Property Name="PreviousVersion" Type="int" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+    <Property Name="IsDefaultForm" Type="int" Nullable="false" />
+    <Property Name="FormComposeDetails" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="FormCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+    <Property Name="IsDefaultFormCategory" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormDataEntry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityId" Type="int" />
+    <Property Name="ProjectId" Type="int" />
+    <Property Name="EntityId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FormId" Type="int" />
+    <Property Name="ThisUserId" Type="int" />
+    <Property Name="EntityNumber" Type="int" />
+    <Property Name="ParentEntityNumber" Type="int" />
+    <Property Name="ProjectDeployStatus" Type="int" />
+    <Property Name="ProjectDeployedId" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectDeployedVersion" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="FormDataEntryVariable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="SelectedValues" Type="nvarchar(max)" />
+    <Property Name="SelectedValues_int" Type="int" />
+    <Property Name="SelectedValues_float" Type="float" />
+    <Property Name="FormDataEntryId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+  </EntityType>
+  <EntityType Name="FormEntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormId" Type="int" Nullable="false" />
+    <Property Name="EntityTypeId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormVariable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormId" Type="int" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="IsRequired" Type="bit" Nullable="false" />
+    <Property Name="HelpText" Type="nvarchar" MaxLength="250" />
+    <Property Name="MinRange" Type="int" />
+    <Property Name="MaxRange" Type="int" />
+    <Property Name="RegEx" Type="int" />
+    <Property Name="ValidationRuleType" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DependentVariableId" Type="int" />
+    <Property Name="ResponseOption" Type="nvarchar" MaxLength="250" />
+    <Property Name="ValidationMessage" Type="nvarchar" MaxLength="250" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="IsSearchVisible" Type="bit" />
+    <Property Name="SearchPageOrder" Type="int" />
+    <Property Name="QuestionText" Type="nvarchar" MaxLength="250" />
+    <Property Name="VariableOrderNo" Type="int" />
+    <Property Name="IsBlank" Type="bit" />
+  </EntityType>
+  <EntityType Name="FormVariableRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormVariableId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CanCreate" Type="bit" Nullable="false" />
+    <Property Name="CanView" Type="bit" Nullable="false" />
+    <Property Name="CanEdit" Type="bit" Nullable="false" />
+    <Property Name="CanDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HashPassword">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HashPassword" Type="nvarchar" MaxLength="100" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginAuthTypeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="150" />
+    <Property Name="AuthTypeName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AuthType" Type="int" Nullable="false" />
+    <Property Name="Domain" Type="nvarchar" MaxLength="250" />
+    <Property Name="ClientId" Type="nvarchar" MaxLength="250" />
+    <Property Name="ClientSecret" Type="nvarchar" MaxLength="250" />
+    <Property Name="Scope" Type="nvarchar" MaxLength="250" />
+    <Property Name="State" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AuthenticationProviderClaim" Type="nvarchar" MaxLength="250" />
+    <Property Name="AuthorizeEndpoint" Type="nvarchar" MaxLength="250" />
+    <Property Name="TokenEndpoint" Type="nvarchar" MaxLength="250" />
+    <Property Name="IntrospectEndpoint" Type="nvarchar" MaxLength="250" />
+    <Property Name="RevokeEndpoint" Type="nvarchar" MaxLength="250" />
+    <Property Name="LogoutEndpoint" Type="nvarchar" MaxLength="250" />
+    <Property Name="KeysEndpoint" Type="nvarchar" MaxLength="250" />
+    <Property Name="UserinfoEndpoint" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LookupData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="VariableTypeId" Type="int" Nullable="false" />
+    <Property Name="LookupDataType" Type="int" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="LookupDataGroupOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LookupDataOptionGroupId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LookupDataOptionGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Label" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LookupDataId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PostCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SuburbId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Privilege">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsProjectAdmin" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectStatusId" Type="int" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Version" Type="int" Nullable="false" />
+    <Property Name="PreviousProjectId" Type="int" />
+    <Property Name="ProjectUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="CheckListID" Type="int" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+    <Property Name="ProjectDetails" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ProjectBuilderJSON">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="ProjectType" Type="int" Nullable="false" />
+    <Property Name="ProjectBuilderJSONData" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Version" Type="float" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+  </EntityType>
+  <EntityType Name="ProjectBuilderJSONEntityValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+    <Property Name="FormId" Type="int" Nullable="false" />
+    <Property Name="EntId" Type="int" Nullable="false" />
+    <Property Name="ParentEntityNumber" Type="int" />
+    <Property Name="ProjectBuilderJSONValues" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+  </EntityType>
+  <EntityType Name="ProjectCheckList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="CheckListId" Type="int" Nullable="false" />
+    <Property Name="CommonField" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectEntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="EntityTypeId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectParticipant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="EntityId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectSite">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="SiteId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectStaffMember">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectStaffMemberRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="StaffCreatedDate" Type="datetime" />
+    <Property Name="IsActiveProjectUser" Type="bit" />
+    <Property Name="ProjectJoinedDate" Type="datetime" />
+    <Property Name="ProjectLeftDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProjectStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PushEmailEvent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventName" Type="nvarchar(max)" />
+    <Property Name="IsEmailEvent" Type="bit" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegExRule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegExName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegEx" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReviewerFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="FormId" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
@@ -34,6 +743,113 @@
     <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="TenantId" Type="int" />
+  </EntityType>
+  <EntityType Name="RolePrivilege">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="PrivilegeId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolesToCreateActivityScheduling">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivitySchedulingId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleToCreateActivityRegardlessScheduled">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivitySchedulingId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchedulingTypeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchedulingType" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Site">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CountyId" Type="int" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="200" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="200" />
+    <Property Name="Suburb" Type="nvarchar" MaxLength="200" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="GPSLocations" Type="nvarchar" MaxLength="150" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+  </EntityType>
+  <EntityType Name="SmtpServer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FromEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Port" Type="int" Nullable="false" />
+    <Property Name="MailServer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suburb">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+    <Property Name="Abbr" Type="nvarchar" MaxLength="50" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="Tenant">
     <Key>
@@ -52,6 +868,61 @@
     <Property Name="ModifiedDate" Type="datetime" />
     <Property Name="DeactivatedBy" Type="int" />
     <Property Name="DateDeactivated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+    <Property Name="SkypeId" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Salt" Type="nvarchar" MaxLength="50" />
+    <Property Name="SecurityQuestionId" Type="int" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccessToken" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenantId" Type="int" Nullable="false" />
+    <Property Name="AuthTypeId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="TempGuid" Type="uniqueidentifier" />
+    <Property Name="UserTypeId" Type="int" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsMailSend" Type="bit" />
+    <Property Name="IsApiAccessEnabled" Type="bit" />
+    <Property Name="IsUserApprovedBySystemAdmin" Type="bit" Nullable="false" />
+    <Property Name="LoginFailedAttemptCount" Type="int" />
+    <Property Name="LoginFailedAttemptDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="ValidationRule">
     <Key>
@@ -103,6 +974,20 @@
     <Property Name="CanFutureDate" Type="bit" />
     <Property Name="VariableDetails" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="VariableApprovalLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="CommentText" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="DeactivatedBy" Type="int" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TenantId" Type="int" />
+  </EntityType>
   <EntityType Name="VariableCategory">
     <Key>
       <PropertyRef Name="Id" />
@@ -118,6 +1003,16 @@
     <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
     <Property Name="TenantId" Type="int" />
     <Property Name="IsDefaultVariableCategory" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VariableEntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="EntityTypeId" Type="int" Nullable="false" />
+    <Property Name="EntitySubTypeId" Type="int" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="VariableRole">
     <Key>
@@ -137,6 +1032,331 @@
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
+  <EntityType Name="VariableValidationRule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="ValidationId" Type="int" />
+    <Property Name="ValidationMessage" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="RegEx" Type="nvarchar(max)" />
+    <Property Name="Min" Type="float" />
+    <Property Name="Max" Type="float" />
+    <Property Name="LimitType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VariableValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VariableId" Type="int" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ResponseVariableId" Type="int" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Activity_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+    <End Role="Activity1" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity1">
+        <PropertyRef Name="DependentActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_ActivityCategory">
+    <End Role="ActivityCategory" Type="Self.ActivityCategory" Multiplicity="0..1" />
+    <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ActivityCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_ActivityStatus">
+    <End Role="ActivityStatus" Type="Self.ActivityStatus" Multiplicity="1" />
+    <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ActivityStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_Project">
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="1" />
+    <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityCategory_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="ActivityCategory" Type="Self.ActivityCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityCategory">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityEntityType_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="ActivityEntityType" Type="Self.ActivityEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityEntityType">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityEntityType_EntityType">
+    <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
+    <End Role="ActivityEntityType" Type="Self.ActivityEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityEntityType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityForm_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="ActivityForm" Type="Self.ActivityForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityForm">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityForm_Forms">
+    <End Role="Form" Type="Self.Form" Multiplicity="1" />
+    <End Role="ActivityForm" Type="Self.ActivityForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityForm">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityFormRole_ActivityForm">
+    <End Role="ActivityScheduling" Type="Self.ActivityScheduling" Multiplicity="1" />
+    <End Role="RoleToCreateActivityRegardlessScheduled" Type="Self.RoleToCreateActivityRegardlessScheduled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityScheduling">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleToCreateActivityRegardlessScheduled">
+        <PropertyRef Name="ActivitySchedulingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityFormRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleToCreateActivityRegardlessScheduled" Type="Self.RoleToCreateActivityRegardlessScheduled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleToCreateActivityRegardlessScheduled">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityRole_Activity">
+    <End Role="ActivityScheduling" Type="Self.ActivityScheduling" Multiplicity="1" />
+    <End Role="RolesToCreateActivityScheduling" Type="Self.RolesToCreateActivityScheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityScheduling">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolesToCreateActivityScheduling">
+        <PropertyRef Name="ActivitySchedulingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RolesToCreateActivityScheduling" Type="Self.RolesToCreateActivityScheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolesToCreateActivityScheduling">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddActivity_AddActivity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="AddActivity" Type="Self.AddActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddActivity">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddActivity_FormDataEntry">
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="1" />
+    <End Role="AddActivity" Type="Self.AddActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddActivity">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddActivity_FormDataEntry1">
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="1" />
+    <End Role="AddActivity" Type="Self.AddActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddActivity">
+        <PropertyRef Name="PersonEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddActivity_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="1" />
+    <End Role="AddActivity" Type="Self.AddActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddActivity">
+        <PropertyRef Name="ActivityCompletedByUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Email_SmtpServer">
+    <End Role="SmtpServer" Type="Self.SmtpServer" Multiplicity="1" />
+    <End Role="Email" Type="Self.Email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SmtpServer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="SmtpServerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmailTemplate_PushEmailEvent">
+    <End Role="PushEmailEvent" Type="Self.PushEmailEvent" Multiplicity="1" />
+    <End Role="EmailTemplate" Type="Self.EmailTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PushEmailEvent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmailTemplate">
+        <PropertyRef Name="PushEmailEventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmailTemplate_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="EmailTemplate" Type="Self.EmailTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmailTemplate">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entity_Entity">
+    <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
+    <End Role="Entity" Type="Self.Entity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entity_EntityType">
+    <End Role="EntitySubType" Type="Self.EntitySubType" Multiplicity="0..1" />
+    <End Role="Entity" Type="Self.Entity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntitySubType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="EntitySubTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entity_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="Entity" Type="Self.Entity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntityDataVariable_Variable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="EntityFormDataVariable" Type="Self.EntityFormDataVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityFormDataVariable">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_EntitySubType_EntityType">
     <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
     <End Role="EntitySubType" Type="Self.EntitySubType" Multiplicity="*" />
@@ -158,6 +1378,306 @@
       </Principal>
       <Dependent Role="EntityType">
         <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntityVariable_Entity">
+    <End Role="Entity" Type="Self.Entity" Multiplicity="1" />
+    <End Role="EntityVariable" Type="Self.EntityVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityVariable">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntityVariable_Variable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="EntityVariable" Type="Self.EntityVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityVariable">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Form_Project">
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="0..1" />
+    <End Role="Form" Type="Self.Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Form_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="Form" Type="Self.Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormCategory_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="FormCategory" Type="Self.FormCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormCategory">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntry_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntry">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntry_Form">
+    <End Role="Form" Type="Self.Form" Multiplicity="0..1" />
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntry">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntry_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntry">
+        <PropertyRef Name="ThisUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntryVariable_FormDataEntry">
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="1" />
+    <End Role="FormDataEntryVariable" Type="Self.FormDataEntryVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntryVariable">
+        <PropertyRef Name="FormDataEntryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDataEntryVariable_MasterVariable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="FormDataEntryVariable" Type="Self.FormDataEntryVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormDataEntryVariable">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormEntityType_EntityType">
+    <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
+    <End Role="FormEntityType" Type="Self.FormEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormEntityType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormEntityType_Form">
+    <End Role="Form" Type="Self.Form" Multiplicity="1" />
+    <End Role="FormEntityType" Type="Self.FormEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormEntityType">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Forms_FormCategory">
+    <End Role="FormCategory" Type="Self.FormCategory" Multiplicity="0..1" />
+    <End Role="Form" Type="Self.Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="FormCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Forms_FormStatus">
+    <End Role="FormStatus" Type="Self.FormStatus" Multiplicity="1" />
+    <End Role="Form" Type="Self.Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="FormStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormVariable_Forms">
+    <End Role="Form" Type="Self.Form" Multiplicity="1" />
+    <End Role="FormVariable" Type="Self.FormVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormVariable">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormVariable_MasterVariable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="FormVariable" Type="Self.FormVariable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormVariable">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormVariableRole_FormVariable">
+    <End Role="FormVariable" Type="Self.FormVariable" Multiplicity="1" />
+    <End Role="FormVariableRole" Type="Self.FormVariableRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormVariable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormVariableRole">
+        <PropertyRef Name="FormVariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormVariableRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="FormVariableRole" Type="Self.FormVariableRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormVariableRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LookupData_VariableType">
+    <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+    <End Role="LookupData" Type="Self.LookupData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VariableType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LookupData">
+        <PropertyRef Name="VariableTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LookupDataGroupOption_LookupDataOptionGroup">
+    <End Role="LookupDataOptionGroup" Type="Self.LookupDataOptionGroup" Multiplicity="1" />
+    <End Role="LookupDataGroupOption" Type="Self.LookupDataGroupOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupDataOptionGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LookupDataGroupOption">
+        <PropertyRef Name="LookupDataOptionGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LookupDataOptionGroup_LookupData">
+    <End Role="LookupData" Type="Self.LookupData" Multiplicity="1" />
+    <End Role="LookupDataOptionGroup" Type="Self.LookupDataOptionGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupData">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LookupDataOptionGroup">
+        <PropertyRef Name="LookupDataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterCity_MasterState">
+    <End Role="State" Type="Self.State" Multiplicity="1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StatedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterState_MasterContry">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableEntityType_EntityType">
+    <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
+    <End Role="VariableEntityType" Type="Self.VariableEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableEntityType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterVariableEntityType_MasterVariable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="VariableEntityType" Type="Self.VariableEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableEntityType">
+        <PropertyRef Name="VariableId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -185,6 +1705,330 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_MasterVariableValue_MasterVariable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="VariableValue" Type="Self.VariableValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableValue">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostCode_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="PostCode" Type="Self.PostCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostCode">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostCode_State">
+    <End Role="State" Type="Self.State" Multiplicity="1" />
+    <End Role="PostCode" Type="Self.PostCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostCode">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostCode_Suburb">
+    <End Role="Suburb" Type="Self.Suburb" Multiplicity="1" />
+    <End Role="PostCode" Type="Self.PostCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suburb">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostCode">
+        <PropertyRef Name="SuburbId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+    <End Role="Project1" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project1">
+        <PropertyRef Name="PreviousProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_ProjectStatus">
+    <End Role="ProjectStatus" Type="Self.ProjectStatus" Multiplicity="1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ProjectStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBuilderJSON_FormDataEntry">
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="1" />
+    <End Role="ProjectBuilderJSON" Type="Self.ProjectBuilderJSON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectBuilderJSON">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBuilderJSONEntityValues_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="ProjectBuilderJSONEntityValues" Type="Self.ProjectBuilderJSONEntityValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectBuilderJSONEntityValues">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBuilderJSONEntityValues_Form">
+    <End Role="Form" Type="Self.Form" Multiplicity="1" />
+    <End Role="ProjectBuilderJSONEntityValues" Type="Self.ProjectBuilderJSONEntityValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectBuilderJSONEntityValues">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBuilderJSONEntityValues_FormDataEntry">
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="1" />
+    <End Role="ProjectBuilderJSONEntityValues" Type="Self.ProjectBuilderJSONEntityValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectBuilderJSONEntityValues">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectCheckList_CheckList">
+    <End Role="CheckList" Type="Self.CheckList" Multiplicity="1" />
+    <End Role="ProjectCheckList" Type="Self.ProjectCheckList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckList">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectCheckList">
+        <PropertyRef Name="CheckListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectCheckList_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectCheckList" Type="Self.ProjectCheckList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectCheckList">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectEntityType_EntityType">
+    <End Role="EntityType" Type="Self.EntityType" Multiplicity="1" />
+    <End Role="ProjectEntityType" Type="Self.ProjectEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectEntityType">
+        <PropertyRef Name="EntityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectEntityType_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectEntityType" Type="Self.ProjectEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectEntityType">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectParticipant_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectParticipant" Type="Self.ProjectParticipant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectParticipant">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectRole_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectRole" Type="Self.ProjectRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectRole">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="ProjectRole" Type="Self.ProjectRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectSite_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectSite" Type="Self.ProjectSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectSite">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectSite_Site">
+    <End Role="Site" Type="Self.Site" Multiplicity="1" />
+    <End Role="ProjectSite" Type="Self.ProjectSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectSite">
+        <PropertyRef Name="SiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMember_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectStaffMember" Type="Self.ProjectStaffMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMember">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMember_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="1" />
+    <End Role="ProjectStaffMember" Type="Self.ProjectStaffMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMember">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMemberRole_Project">
+    <End Role="FormDataEntry" Type="Self.FormDataEntry" Multiplicity="1" />
+    <End Role="ProjectStaffMemberRole" Type="Self.ProjectStaffMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormDataEntry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMemberRole">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMemberRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="ProjectStaffMemberRole" Type="Self.ProjectStaffMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMemberRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMemberRole_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="1" />
+    <End Role="ProjectStaffMemberRole" Type="Self.ProjectStaffMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMemberRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectStaffMemberRole_UserLogin1">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="1" />
+    <End Role="ProjectStaffMemberRole" Type="Self.ProjectStaffMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectStaffMemberRole">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReviewerFeedback_Form">
+    <End Role="Form" Type="Self.Form" Multiplicity="1" />
+    <End Role="ReviewerFeedback" Type="Self.ReviewerFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReviewerFeedback">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Role_Tenant">
     <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
     <End Role="Role" Type="Self.Role" Multiplicity="*" />
@@ -194,6 +2038,138 @@
       </Principal>
       <Dependent Role="Role">
         <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePrivilege_Privilege">
+    <End Role="Privilege" Type="Self.Privilege" Multiplicity="1" />
+    <End Role="RolePrivilege" Type="Self.RolePrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilege">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolePrivilege">
+        <PropertyRef Name="PrivilegeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePrivilege_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RolePrivilege" Type="Self.RolePrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolePrivilege">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Site_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
+    <End Role="Site" Type="Self.Site" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Site">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Suburb_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Suburb" Type="Self.Suburb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Suburb">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Suburb_State">
+    <End Role="State" Type="Self.State" Multiplicity="1" />
+    <End Role="Suburb" Type="Self.Suburb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Suburb">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_AuthTypeMaster">
+    <End Role="LoginAuthTypeMaster" Type="Self.LoginAuthTypeMaster" Multiplicity="1" />
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginAuthTypeMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="AuthTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_SecurityQuestion">
+    <End Role="SecurityQuestion" Type="Self.SecurityQuestion" Multiplicity="0..1" />
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_Tenant">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="1" />
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ValidationRule_RegExRule">
+    <End Role="RegExRule" Type="Self.RegExRule" Multiplicity="0..1" />
+    <End Role="ValidationRule" Type="Self.ValidationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegExRule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ValidationRule">
+        <PropertyRef Name="RegExId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -233,6 +2209,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_VariableApprovalLog_Variable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="VariableApprovalLog" Type="Self.VariableApprovalLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableApprovalLog">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_VariableCategory_Tenant">
     <End Role="Tenant" Type="Self.Tenant" Multiplicity="0..1" />
     <End Role="VariableCategory" Type="Self.VariableCategory" Multiplicity="*" />
@@ -245,16 +2233,226 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Aspree_StaggingModelStoreContainer">
+  <Association Name="FK_VariableEntityType_EntitySubType">
+    <End Role="EntitySubType" Type="Self.EntitySubType" Multiplicity="0..1" />
+    <End Role="VariableEntityType" Type="Self.VariableEntityType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntitySubType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableEntityType">
+        <PropertyRef Name="EntitySubTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VariableValidationRule_ValidationRule">
+    <End Role="ValidationRule" Type="Self.ValidationRule" Multiplicity="0..1" />
+    <End Role="VariableValidationRule" Type="Self.VariableValidationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ValidationRule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableValidationRule">
+        <PropertyRef Name="ValidationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VariableValidationRule_Variable">
+    <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+    <End Role="VariableValidationRule" Type="Self.VariableValidationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VariableValidationRule">
+        <PropertyRef Name="VariableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AspreeModelStoreContainer">
+    <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActivityCategory" EntityType="Self.ActivityCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActivityEntityType" EntityType="Self.ActivityEntityType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActivityForm" EntityType="Self.ActivityForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActivityScheduling" EntityType="Self.ActivityScheduling" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActivityStatus" EntityType="Self.ActivityStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AddActivity" EntityType="Self.AddActivity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuthTypeMaster" EntityType="Self.AuthTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CheckList" EntityType="Self.CheckList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailTemplate" EntityType="Self.EmailTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entity" EntityType="Self.Entity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntityFormDataVariable" EntityType="Self.EntityFormDataVariable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EntitySubType" EntityType="Self.EntitySubType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EntityType" EntityType="Self.EntityType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntityVariable" EntityType="Self.EntityVariable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExternalLink" EntityType="Self.ExternalLink" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Form" EntityType="Self.Form" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormCategory" EntityType="Self.FormCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormDataEntry" EntityType="Self.FormDataEntry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormDataEntryVariable" EntityType="Self.FormDataEntryVariable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormEntityType" EntityType="Self.FormEntityType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormStatus" EntityType="Self.FormStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormVariable" EntityType="Self.FormVariable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormVariableRole" EntityType="Self.FormVariableRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HashPassword" EntityType="Self.HashPassword" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginAuthTypeMaster" EntityType="Self.LoginAuthTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupData" EntityType="Self.LookupData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupDataGroupOption" EntityType="Self.LookupDataGroupOption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupDataOptionGroup" EntityType="Self.LookupDataOptionGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostCode" EntityType="Self.PostCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Privilege" EntityType="Self.Privilege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectBuilderJSON" EntityType="Self.ProjectBuilderJSON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectBuilderJSONEntityValues" EntityType="Self.ProjectBuilderJSONEntityValues" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectCheckList" EntityType="Self.ProjectCheckList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectEntityType" EntityType="Self.ProjectEntityType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectParticipant" EntityType="Self.ProjectParticipant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectRole" EntityType="Self.ProjectRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectSite" EntityType="Self.ProjectSite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectStaffMember" EntityType="Self.ProjectStaffMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectStaffMemberRole" EntityType="Self.ProjectStaffMemberRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectStatus" EntityType="Self.ProjectStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PushEmailEvent" EntityType="Self.PushEmailEvent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegExRule" EntityType="Self.RegExRule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReviewerFeedback" EntityType="Self.ReviewerFeedback" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolePrivilege" EntityType="Self.RolePrivilege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolesToCreateActivityScheduling" EntityType="Self.RolesToCreateActivityScheduling" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleToCreateActivityRegardlessScheduled" EntityType="Self.RoleToCreateActivityRegardlessScheduled" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchedulingTypeMaster" EntityType="Self.SchedulingTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SecurityQuestion" EntityType="Self.SecurityQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SmtpServer" EntityType="Self.SmtpServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suburb" EntityType="Self.Suburb" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ValidationRule" EntityType="Self.ValidationRule" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Variable" EntityType="Self.Variable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VariableApprovalLog" EntityType="Self.VariableApprovalLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VariableCategory" EntityType="Self.VariableCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VariableEntityType" EntityType="Self.VariableEntityType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VariableRole" EntityType="Self.VariableRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VariableType" EntityType="Self.VariableType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VariableValidationRule" EntityType="Self.VariableValidationRule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VariableValue" EntityType="Self.VariableValue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Error_Log" EntityType="Self.Error_Log" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Error_Log].[error_number] AS [error_number], 
+    [Error_Log].[error_state] AS [error_state], 
+    [Error_Log].[error_procedure] AS [error_procedure], 
+    [Error_Log].[error_line] AS [error_line], 
+    [Error_Log].[error_message] AS [error_message], 
+    [Error_Log].[Created] AS [Created]
+    FROM [dbo].[Error_Log] AS [Error_Log]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Activity_Activity" Association="Self.FK_Activity_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="Activity1" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_ActivityCategory" Association="Self.FK_Activity_ActivityCategory">
+      <End Role="ActivityCategory" EntitySet="ActivityCategory" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_ActivityStatus" Association="Self.FK_Activity_ActivityStatus">
+      <End Role="ActivityStatus" EntitySet="ActivityStatus" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_Project" Association="Self.FK_Activity_Project">
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_Tenant" Association="Self.FK_Activity_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityCategory_Tenant" Association="Self.FK_ActivityCategory_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="ActivityCategory" EntitySet="ActivityCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityEntityType_Activity" Association="Self.FK_ActivityEntityType_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="ActivityEntityType" EntitySet="ActivityEntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityEntityType_EntityType" Association="Self.FK_ActivityEntityType_EntityType">
+      <End Role="EntityType" EntitySet="EntityType" />
+      <End Role="ActivityEntityType" EntitySet="ActivityEntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityForm_Activity" Association="Self.FK_ActivityForm_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="ActivityForm" EntitySet="ActivityForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityForm_Forms" Association="Self.FK_ActivityForm_Forms">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="ActivityForm" EntitySet="ActivityForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityFormRole_ActivityForm" Association="Self.FK_ActivityFormRole_ActivityForm">
+      <End Role="ActivityScheduling" EntitySet="ActivityScheduling" />
+      <End Role="RoleToCreateActivityRegardlessScheduled" EntitySet="RoleToCreateActivityRegardlessScheduled" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityFormRole_Role" Association="Self.FK_ActivityFormRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RoleToCreateActivityRegardlessScheduled" EntitySet="RoleToCreateActivityRegardlessScheduled" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityRole_Activity" Association="Self.FK_ActivityRole_Activity">
+      <End Role="ActivityScheduling" EntitySet="ActivityScheduling" />
+      <End Role="RolesToCreateActivityScheduling" EntitySet="RolesToCreateActivityScheduling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityRole_Role" Association="Self.FK_ActivityRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RolesToCreateActivityScheduling" EntitySet="RolesToCreateActivityScheduling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddActivity_AddActivity" Association="Self.FK_AddActivity_AddActivity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="AddActivity" EntitySet="AddActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddActivity_FormDataEntry" Association="Self.FK_AddActivity_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+      <End Role="AddActivity" EntitySet="AddActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddActivity_FormDataEntry1" Association="Self.FK_AddActivity_FormDataEntry1">
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+      <End Role="AddActivity" EntitySet="AddActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddActivity_UserLogin" Association="Self.FK_AddActivity_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="AddActivity" EntitySet="AddActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Email_SmtpServer" Association="Self.FK_Email_SmtpServer">
+      <End Role="SmtpServer" EntitySet="SmtpServer" />
+      <End Role="Email" EntitySet="Email" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmailTemplate_PushEmailEvent" Association="Self.FK_EmailTemplate_PushEmailEvent">
+      <End Role="PushEmailEvent" EntitySet="PushEmailEvent" />
+      <End Role="EmailTemplate" EntitySet="EmailTemplate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmailTemplate_Tenant" Association="Self.FK_EmailTemplate_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="EmailTemplate" EntitySet="EmailTemplate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entity_Entity" Association="Self.FK_Entity_Entity">
+      <End Role="EntityType" EntitySet="EntityType" />
+      <End Role="Entity" EntitySet="Entity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entity_EntityType" Association="Self.FK_Entity_EntityType">
+      <End Role="EntitySubType" EntitySet="EntitySubType" />
+      <End Role="Entity" EntitySet="Entity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entity_Tenant" Association="Self.FK_Entity_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="Entity" EntitySet="Entity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityDataVariable_Variable" Association="Self.FK_EntityDataVariable_Variable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="EntityFormDataVariable" EntitySet="EntityFormDataVariable" />
+    </AssociationSet>
     <AssociationSet Name="FK_EntitySubType_EntityType" Association="Self.FK_EntitySubType_EntityType">
       <End Role="EntityType" EntitySet="EntityType" />
       <End Role="EntitySubType" EntitySet="EntitySubType" />
@@ -262,6 +2460,106 @@
     <AssociationSet Name="FK_EntityType_Tenant" Association="Self.FK_EntityType_Tenant">
       <End Role="Tenant" EntitySet="Tenant" />
       <End Role="EntityType" EntitySet="EntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityVariable_Entity" Association="Self.FK_EntityVariable_Entity">
+      <End Role="Entity" EntitySet="Entity" />
+      <End Role="EntityVariable" EntitySet="EntityVariable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityVariable_Variable" Association="Self.FK_EntityVariable_Variable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="EntityVariable" EntitySet="EntityVariable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Form_Project" Association="Self.FK_Form_Project">
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+      <End Role="Form" EntitySet="Form" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Form_Tenant" Association="Self.FK_Form_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="Form" EntitySet="Form" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormCategory_Tenant" Association="Self.FK_FormCategory_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="FormCategory" EntitySet="FormCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntry_Activity" Association="Self.FK_FormDataEntry_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntry_Form" Association="Self.FK_FormDataEntry_Form">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntry_UserLogin" Association="Self.FK_FormDataEntry_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntryVariable_FormDataEntry" Association="Self.FK_FormDataEntryVariable_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+      <End Role="FormDataEntryVariable" EntitySet="FormDataEntryVariable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDataEntryVariable_MasterVariable" Association="Self.FK_FormDataEntryVariable_MasterVariable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="FormDataEntryVariable" EntitySet="FormDataEntryVariable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormEntityType_EntityType" Association="Self.FK_FormEntityType_EntityType">
+      <End Role="EntityType" EntitySet="EntityType" />
+      <End Role="FormEntityType" EntitySet="FormEntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormEntityType_Form" Association="Self.FK_FormEntityType_Form">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="FormEntityType" EntitySet="FormEntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Forms_FormCategory" Association="Self.FK_Forms_FormCategory">
+      <End Role="FormCategory" EntitySet="FormCategory" />
+      <End Role="Form" EntitySet="Form" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Forms_FormStatus" Association="Self.FK_Forms_FormStatus">
+      <End Role="FormStatus" EntitySet="FormStatus" />
+      <End Role="Form" EntitySet="Form" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormVariable_Forms" Association="Self.FK_FormVariable_Forms">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="FormVariable" EntitySet="FormVariable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormVariable_MasterVariable" Association="Self.FK_FormVariable_MasterVariable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="FormVariable" EntitySet="FormVariable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormVariableRole_FormVariable" Association="Self.FK_FormVariableRole_FormVariable">
+      <End Role="FormVariable" EntitySet="FormVariable" />
+      <End Role="FormVariableRole" EntitySet="FormVariableRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormVariableRole_Role" Association="Self.FK_FormVariableRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="FormVariableRole" EntitySet="FormVariableRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LookupData_VariableType" Association="Self.FK_LookupData_VariableType">
+      <End Role="VariableType" EntitySet="VariableType" />
+      <End Role="LookupData" EntitySet="LookupData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LookupDataGroupOption_LookupDataOptionGroup" Association="Self.FK_LookupDataGroupOption_LookupDataOptionGroup">
+      <End Role="LookupDataOptionGroup" EntitySet="LookupDataOptionGroup" />
+      <End Role="LookupDataGroupOption" EntitySet="LookupDataGroupOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LookupDataOptionGroup_LookupData" Association="Self.FK_LookupDataOptionGroup_LookupData">
+      <End Role="LookupData" EntitySet="LookupData" />
+      <End Role="LookupDataOptionGroup" EntitySet="LookupDataOptionGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterCity_MasterState" Association="Self.FK_MasterCity_MasterState">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterState_MasterContry" Association="Self.FK_MasterState_MasterContry">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableEntityType_EntityType" Association="Self.FK_MasterVariableEntityType_EntityType">
+      <End Role="EntityType" EntitySet="EntityType" />
+      <End Role="VariableEntityType" EntitySet="VariableEntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableEntityType_MasterVariable" Association="Self.FK_MasterVariableEntityType_MasterVariable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="VariableEntityType" EntitySet="VariableEntityType" />
     </AssociationSet>
     <AssociationSet Name="FK_MasterVariableRole_MasterVariable" Association="Self.FK_MasterVariableRole_MasterVariable">
       <End Role="Variable" EntitySet="Variable" />
@@ -271,9 +2569,161 @@
       <End Role="Role" EntitySet="Role" />
       <End Role="VariableRole" EntitySet="VariableRole" />
     </AssociationSet>
+    <AssociationSet Name="FK_MasterVariableValue_MasterVariable" Association="Self.FK_MasterVariableValue_MasterVariable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="VariableValue" EntitySet="VariableValue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCode_City" Association="Self.FK_PostCode_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="PostCode" EntitySet="PostCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCode_State" Association="Self.FK_PostCode_State">
+      <End Role="State" EntitySet="State" />
+      <End Role="PostCode" EntitySet="PostCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCode_Suburb" Association="Self.FK_PostCode_Suburb">
+      <End Role="Suburb" EntitySet="Suburb" />
+      <End Role="PostCode" EntitySet="PostCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Project" Association="Self.FK_Project_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Project1" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_ProjectStatus" Association="Self.FK_Project_ProjectStatus">
+      <End Role="ProjectStatus" EntitySet="ProjectStatus" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Tenant" Association="Self.FK_Project_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBuilderJSON_FormDataEntry" Association="Self.FK_ProjectBuilderJSON_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+      <End Role="ProjectBuilderJSON" EntitySet="ProjectBuilderJSON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBuilderJSONEntityValues_Activity" Association="Self.FK_ProjectBuilderJSONEntityValues_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="ProjectBuilderJSONEntityValues" EntitySet="ProjectBuilderJSONEntityValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBuilderJSONEntityValues_Form" Association="Self.FK_ProjectBuilderJSONEntityValues_Form">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="ProjectBuilderJSONEntityValues" EntitySet="ProjectBuilderJSONEntityValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBuilderJSONEntityValues_FormDataEntry" Association="Self.FK_ProjectBuilderJSONEntityValues_FormDataEntry">
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+      <End Role="ProjectBuilderJSONEntityValues" EntitySet="ProjectBuilderJSONEntityValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectCheckList_CheckList" Association="Self.FK_ProjectCheckList_CheckList">
+      <End Role="CheckList" EntitySet="CheckList" />
+      <End Role="ProjectCheckList" EntitySet="ProjectCheckList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectCheckList_Project" Association="Self.FK_ProjectCheckList_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectCheckList" EntitySet="ProjectCheckList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectEntityType_EntityType" Association="Self.FK_ProjectEntityType_EntityType">
+      <End Role="EntityType" EntitySet="EntityType" />
+      <End Role="ProjectEntityType" EntitySet="ProjectEntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectEntityType_Project" Association="Self.FK_ProjectEntityType_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectEntityType" EntitySet="ProjectEntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectParticipant_Project" Association="Self.FK_ProjectParticipant_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectParticipant" EntitySet="ProjectParticipant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectRole_Project" Association="Self.FK_ProjectRole_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectRole" EntitySet="ProjectRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectRole_Role" Association="Self.FK_ProjectRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="ProjectRole" EntitySet="ProjectRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectSite_Project" Association="Self.FK_ProjectSite_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectSite" EntitySet="ProjectSite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectSite_Site" Association="Self.FK_ProjectSite_Site">
+      <End Role="Site" EntitySet="Site" />
+      <End Role="ProjectSite" EntitySet="ProjectSite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMember_Project" Association="Self.FK_ProjectStaffMember_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectStaffMember" EntitySet="ProjectStaffMember" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMember_UserLogin" Association="Self.FK_ProjectStaffMember_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="ProjectStaffMember" EntitySet="ProjectStaffMember" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMemberRole_Project" Association="Self.FK_ProjectStaffMemberRole_Project">
+      <End Role="FormDataEntry" EntitySet="FormDataEntry" />
+      <End Role="ProjectStaffMemberRole" EntitySet="ProjectStaffMemberRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMemberRole_Role" Association="Self.FK_ProjectStaffMemberRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="ProjectStaffMemberRole" EntitySet="ProjectStaffMemberRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMemberRole_UserLogin" Association="Self.FK_ProjectStaffMemberRole_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="ProjectStaffMemberRole" EntitySet="ProjectStaffMemberRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectStaffMemberRole_UserLogin1" Association="Self.FK_ProjectStaffMemberRole_UserLogin1">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="ProjectStaffMemberRole" EntitySet="ProjectStaffMemberRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReviewerFeedback_Form" Association="Self.FK_ReviewerFeedback_Form">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="ReviewerFeedback" EntitySet="ReviewerFeedback" />
+    </AssociationSet>
     <AssociationSet Name="FK_Role_Tenant" Association="Self.FK_Role_Tenant">
       <End Role="Tenant" EntitySet="Tenant" />
       <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePrivilege_Privilege" Association="Self.FK_RolePrivilege_Privilege">
+      <End Role="Privilege" EntitySet="Privilege" />
+      <End Role="RolePrivilege" EntitySet="RolePrivilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePrivilege_Role" Association="Self.FK_RolePrivilege_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RolePrivilege" EntitySet="RolePrivilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Site_Tenant" Association="Self.FK_Site_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="Site" EntitySet="Site" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Suburb_City" Association="Self.FK_Suburb_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Suburb" EntitySet="Suburb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Suburb_State" Association="Self.FK_Suburb_State">
+      <End Role="State" EntitySet="State" />
+      <End Role="Suburb" EntitySet="Suburb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_AuthTypeMaster" Association="Self.FK_UserLogin_AuthTypeMaster">
+      <End Role="LoginAuthTypeMaster" EntitySet="LoginAuthTypeMaster" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_SecurityQuestion" Association="Self.FK_UserLogin_SecurityQuestion">
+      <End Role="SecurityQuestion" EntitySet="SecurityQuestion" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_Tenant" Association="Self.FK_UserLogin_Tenant">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_UserLogin" Association="Self.FK_UserRole_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ValidationRule_RegExRule" Association="Self.FK_ValidationRule_RegExRule">
+      <End Role="RegExRule" EntitySet="RegExRule" />
+      <End Role="ValidationRule" EntitySet="ValidationRule" />
     </AssociationSet>
     <AssociationSet Name="FK_Variable_Tenant" Association="Self.FK_Variable_Tenant">
       <End Role="Tenant" EntitySet="Tenant" />
@@ -287,9 +2737,25 @@
       <End Role="VariableType" EntitySet="VariableType" />
       <End Role="Variable" EntitySet="Variable" />
     </AssociationSet>
+    <AssociationSet Name="FK_VariableApprovalLog_Variable" Association="Self.FK_VariableApprovalLog_Variable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="VariableApprovalLog" EntitySet="VariableApprovalLog" />
+    </AssociationSet>
     <AssociationSet Name="FK_VariableCategory_Tenant" Association="Self.FK_VariableCategory_Tenant">
       <End Role="Tenant" EntitySet="Tenant" />
       <End Role="VariableCategory" EntitySet="VariableCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableEntityType_EntitySubType" Association="Self.FK_VariableEntityType_EntitySubType">
+      <End Role="EntitySubType" EntitySet="EntitySubType" />
+      <End Role="VariableEntityType" EntitySet="VariableEntityType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableValidationRule_ValidationRule" Association="Self.FK_VariableValidationRule_ValidationRule">
+      <End Role="ValidationRule" EntitySet="ValidationRule" />
+      <End Role="VariableValidationRule" EntitySet="VariableValidationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariableValidationRule_Variable" Association="Self.FK_VariableValidationRule_Variable">
+      <End Role="Variable" EntitySet="Variable" />
+      <End Role="VariableValidationRule" EntitySet="VariableValidationRule" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

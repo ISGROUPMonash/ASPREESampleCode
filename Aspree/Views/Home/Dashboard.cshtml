@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+
+
+@section Styles{
+     
+    <link href="/content/assets/css/chartist-init.css" rel="stylesheet">
+     
+    <link href="/content/assets/css/css-chart.css" rel="stylesheet">
+    <!-- Vector CSS -->
+
+    
+    <!-- You can change the theme colors from here -->
+    <link href="/content/assets/css/colors/blue.css" id="theme" rel="stylesheet">
+
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+
+}
+
+@section NavBarLeft{
+    <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+}
+
+@section NavBarRight{
+<form class="form">
+    <div class="form-group row">
+        <label for="example-date-input" class="col-1 col-form-label">From</label>
+        <div class="col-4 input-group mb-3">
+            <input type="text" class="form-control singledate" value="@DateTime.Now.ToString("MM-01-yyyy")" id="date-from">
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    <span class="ti-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        <label for="example-date-input" class="col-1 col-form-label">To</label>
+        <div class="col-4 input-group mb-3">
+            <input type="text" class="form-control singledate" value="@DateTime.Now.ToString("MM-dd-yyyy")" id="date-to">
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    <span class="ti-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-2">
+            <button id="filterStatus" type="button" class="btn btn-success waves-effect waves-light w-100">Search</button>
+        </div>
+
+    </div>
+</form>    
+    
+}
+
+    <!-- Column -->
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-row">
+                    <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
+                    <div class="m-l-10 align-self-center">
+                        <h3 class="m-b-0 font-light" id="user-count">0</h3>
+                        <h5 class="text-muted m-b-0">User Count</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-row">
+                    <div class="round round-lg align-self-center round-warning"><i class="ti-user"></i></div>
+                    <div class="m-l-10 align-self-center">
+                        <h3 class="m-b-0 font-lgiht" id="active-user">0</h3>
+                        <h5 class="text-muted m-b-0">Active User</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-row">
+                    <div class="round round-lg align-self-center round-primary"><i class="mdi mdi-bullseye"></i></div>
+                    <div class="m-l-10 align-self-center">
+                        <h3 class="m-b-0 font-lgiht" id="role-count">0</h3>
+                        <h5 class="text-muted m-b-0">Role Count</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-row">
+                    <div class="round round-lg align-self-center round-danger"><i class="mdi mdi-bullseye"></i></div>
+                    <div class="m-l-10 align-self-center">
+                        <h3 class="m-b-0 font-lgiht" id="active-roles">0</h3>
+                        <h5 class="text-muted m-b-0">Active Roles</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+
+
+
+@section Scripts {
+<script src="/content/assets/plugins/moment/moment.js"></script>
+<script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+@Scripts.Render("~/apps/dashboard")
+ <script>
+     $(function () {
+         $('.singledate').daterangepicker({
+             singleDatePicker: true,
+             showDropdowns: true,
+             maxDate: "@DateTime.Now.ToString("MM-dd-yyyy")"
+         });
+     });
+ </script>
+}

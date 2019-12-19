@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swashbuckle.Examples;
+using System;
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,6 +19,7 @@ namespace Aspree.Core.ViewModels
         /// <summary>
         /// Id of Variable
         /// </summary>
+        [IgnoreDataMember]
         public int Id { get; set; }
         /// <summary>
         /// Type of variable
@@ -46,6 +48,61 @@ namespace Aspree.Core.ViewModels
 
         [Required]
         public string Type { get; set; }
+    }
+
+    public class GetAllVariableTypeViewModelExample : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new List<VariableTypeViewModel>()
+            {
+                new VariableTypeViewModel
+                {
+                    Id = 1,
+                   Type = "Text Box",
+                  Status = 1,
+                  Guid = Guid.NewGuid(),
+                }
+            };
+        }
+ }
+    public class VariableTypeViewModelExample : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new VariableTypeViewModel()
+            {
+                Id = 1,
+                Type = "Text Box",
+                Status = 1,
+                Guid = Guid.NewGuid(),
+            };
+        }    
+    }
+    public class NewVariableTypeExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new NewVariableType()
+            {
+                Type = "Text Box",                
+            };
+
+        }
+    }
+
+    public class EditVariableTypeExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new EditVariableType()
+            {
+
+                Type = "Text Box",
+
+            };
+
+        }
     }
 }
 

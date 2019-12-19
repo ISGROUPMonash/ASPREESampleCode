@@ -6,9 +6,6 @@ using System.Web;
 
 namespace Aspree.Utility
 {
-    /// <summary>
-    /// Response common data model
-    /// </summary>
     public class ResponseMessage
     {
         public string MessageType { get; set; }

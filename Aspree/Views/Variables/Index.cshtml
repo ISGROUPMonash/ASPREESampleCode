@@ -33,7 +33,6 @@
 }
 
 @section NavBarRight{
-  
 }
 
 <div class="col-sm-4 col-md-4 col-lg-3">
@@ -83,7 +82,7 @@
                                                         @subMenu.Name
                                                         @if (subMenu.IsDefaultVariable == (int)Aspree.Core.Enum.DefaultVariableType.Default || subMenu.IsDefaultVariable == (int)Aspree.Core.Enum.DefaultVariableType.Heading)
                                                         {
-                                                            @*<i> (Default)</i>*@
+                                                            
                                                             <i>(@menu.CategoryName)</i>
                                                         }
                                                         else if (!subMenu.IsApproved)
@@ -114,7 +113,7 @@
                             </li>
                         }
                     </ul>
-                </div>
+                </div><!-- /.list-menu-wrap -->
             </div>
         </div><!-- /.card-body -->
     </div>
@@ -122,7 +121,10 @@
 <div class="col-sm-8 col-md-8 col-lg-9">
     <div class="card">
         <div class="card-body">
+            @*@if (IsProjectAdmin)
+                {*@
             @Html.Partial("~/Views/Shared/ProjectBuilder.cshtml")
+            @*}*@
         </div>
         <div class="row p-10">
             <div class="col-sm-6 col-md-6 col-lg-7 pull-left">
@@ -136,7 +138,7 @@
                                 <input type="hidden" id="ProjectId" name="ProjectId" value="@ViewBag.ProjectId" />
                                 <input type="hidden" name="Guid" id="Guid" value="" />
                                 <label for="Name">Variable Category<span class="text-danger">*</span></label>
-                                @if (ViewBag.LoggedInUser.Roles.Contains("System Admin"))
+                                @if (ViewBag.LoggedInUser.Roles.Contains("System Admin") || ViewBag.LoggedInUser.Roles.Contains("Project Admin"))
                                 {
                                 <div class="col-sm-11 col-sm-offset-3 p-l-0" style="display:inline-block">
                                     <select class="form-control" id="VariableCategoryId" name="VariableCategoryId">
@@ -256,6 +258,21 @@
                                 <label for="DateFormat" style="display:block">Date Format<span class="text-danger">*</span></label>
                                 @Html.DropDownList("DateFormat", ViewBag.DateFormat as SelectList, new { @class = "form-control", @onchange= "Variable.setDatepicker($(this).val())" })
                             </div>
+
+                            <div class="form-group datetype-container hide">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="StartYear" style="display:block">Start Year<span class="text-danger">*</span></label>
+                                        <select id="StartYear" class="form-control" onchange="Variable.setDatepicker($(this).val())"></select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="StopYear" style="display:block">Stop Year<span class="text-danger">*</span></label>
+                                        <select id="StopYear" class="form-control" onabort="Variable.setDatepicker($(this).val())"></select>
+                                    </div>
+                                </div>
+                                @Html.ValidationMessage("YearRange", new { @class = "form-control-feedback" })
+                          </div>
+
                             <div class="form-group datetype-container hide">
                                 <label for="CanFutureDate" style="display:block">Can this date be a future date?<span class="text-danger">*</span></label>
                                 <select class="form-control" id="CanFutureDate" name="CanFutureDate">
@@ -445,7 +462,6 @@
                                 <button id="btnDeleteVariable" type="button" class="btn btn-danger waves-effect waves-light btn-info pull-right m-r-10 hide" data-toggle="modal" data-target="#manage-confirm">Delete</button>
                             }
 
-                            @*<button id="btnResetVariable" type="button" onclick="Variable.resetVariable()" class="btn btn-inverse waves-effect waves-light btn-info pull-right m-r-10">Clear</button>*@
                             <a href="/projectbuilder" class="btn btn-inverse waves-effect waves-light pull-right m-r-10">Cancel</a>
                             <button id="btnSaveVariable" type="button" onclick="Variable.save()" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
                         </form>
@@ -487,14 +503,14 @@
                                                     data-entity-sub-type="@lkup.EntitySubtypeId"
                                                     data-entity-name="@lkup.EntityName"
                                                     data-entity-type="@lkup.EntityTypeId"
-                                                    
+                                                    data-entity-group-guid="@lkup.EntityGroupId"
+                                                    data-entity-group-name="@lkup.EntityGroupName"
+
                                                     >@lkup.EntityName</option>
                                         }
                                         
                                     </select>
                                 </div>
-
-
                                 <div class="form-group hide" id="selectcheckboxvalue">
                                 </div>
                                 <div class="form-group hide" id="selectradiobuttonvalue"></div>
@@ -505,9 +521,6 @@
                                 <div class="form-group hide" id="previewFileType">
                                     <input type="file" id="previewFileTypeElement" name="previewFileTypeElement" class="form-control" />
                                 </div>
-
-
-
                                 <input class="form-control hide preview-variable" name="numericvalue" id="numericvalue" value="" />
                                 <input class="form-control hide preview-variable" name="formulavalue" id="formulavalue" value="" />
                                 <p class="text-danger mb-0" id="PreviewPane_IsRequiredMessage"></p>
@@ -517,7 +530,6 @@
                                 <input type="hidden" id="PreviewPane_ValidationMin" />
                                 <input type="hidden" id="PreviewPane_ValidationMax" />
                                 <input type="hidden" id="PreviewPane_ValidationErrorMessage" />
-
                                 <span class="help-block"><small id="previewHelpText"></small></span><br>
                             </div>
                             <button type="button" onclick="Variable.refresh()" class="btn waves-effect waves-light btn-info pull-right m-r-10">Refresh</button>
@@ -533,11 +545,11 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Existing Variable or Use as Template?</h5>
+                <h5 class="modal-title">Edit existing variable or use as template?</h5>
             </div>
             <div class="modal-body">
                 <div class="sf-submit-info">
-                    Would you like to edit existing variable you have selected or use it as a template for a new variable?
+                    Would you like to edit the existing variable you have selected or use it as a template for a new variable?                    
                 </div>
                 @if (IsProjectAdmin)
                             {
@@ -564,7 +576,6 @@
                 <h5 class="modal-title">Add New Category</h5>
             </div>
             <div class="modal-body">
-                @*<div class="role-model-error"></div>*@
                 <div class="sf-submit-info">
                     <form id="frm-add-category" class="form-horizontal" autocomplete="off">
                         <div class="form-group">
@@ -633,7 +644,7 @@
 <div class="hide">
     <div id="datepickerTemplate">        
         <div class="input-group mb-2 date-input">
-            <a href="#"
+                        <a href="#"
                            id="previewDatePickerElement"
                            title="previewDatePickerElement"
                            class="singledate form-control form-control-line customdatepicker"
@@ -664,24 +675,21 @@
 
         @section Scripts {
 
-            <script src="@Url.Content("/content/assets/plugins/moment/moment.js")"></script>
-            <script src="@Url.Content("/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
-            <script src="@Url.Content("/content/assets/plugins/ion-rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js")"></script>
-            <script src="@Url.Content("/content/assets/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
-            <script src="@Url.Content("/content/assets/plugins/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js")"></script>
+            <script src="/content/assets/plugins/moment/moment.js"></script>
+            <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+            <script src="/content/assets/plugins/ion-rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+            <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+            <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="/content/assets/plugins/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
             @Scripts.Render("~/bundles/jqueryval")
             <script>
                 $(function () {
-                   
                     $('.selectpicker').selectpicker();
-
                     listActiveload();
-
                     $('.wizard-content ul li:eq(0)').removeClass('disabled').addClass('current');
-
                     $('#sidebarnav > li').removeClass('active');
                     $('#sidebarnav > li:nth-child(5)').addClass('active');
-
+                    Variable.FillYearDropdown();
                     Variable.AllEntityTypeType();
                     Variable.AllEntityTypeSubtype();
                 });

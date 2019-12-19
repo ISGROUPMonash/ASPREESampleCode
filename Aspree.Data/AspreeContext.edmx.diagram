@@ -4,25 +4,185 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a0cefc33b6dd4ee7b77d4ae421c86c21" Name="Diagram1">
-        <EntityTypeShape EntityType="Aspree_StaggingModel.EntitySubType" Width="1.5" PointX="8" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Aspree_StaggingModel.EntityType" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Aspree_StaggingModel.Role" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="Aspree_StaggingModel.Variable" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Aspree_StaggingModel.VariableCategory" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Aspree_StaggingModel.VariableRole" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Aspree_StaggingModel.VariableType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_EntitySubType_EntityType" ManuallyRouted="false" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_MasterVariableRole_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_MasterVariableRole_MasterVariable" ManuallyRouted="false" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_Variable_VariableCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_Variable_VariableType" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Aspree_StaggingModel.ValidationRule" Width="1.5" PointX="7.375" PointY="4.75" />
-        <EntityTypeShape EntityType="Aspree_StaggingModel.Tenant" Width="1.5" PointX="0.75" PointY="6" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_EntityType_Tenant" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_Role_Tenant" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_Variable_Tenant" />
-        <AssociationConnector Association="Aspree_StaggingModel.FK_VariableCategory_Tenant" />
+      <Diagram DiagramId="21903b5ae33c4f928d820c2e77365e5d" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="AspreeModel.Activity" Width="1.5" PointX="5.25" PointY="94.875" />
+        <EntityTypeShape EntityType="AspreeModel.ActivityCategory" Width="1.5" PointX="3" PointY="124.75" />
+        <EntityTypeShape EntityType="AspreeModel.ActivityEntityType" Width="1.5" PointX="13.5" PointY="100.375" />
+        <EntityTypeShape EntityType="AspreeModel.ActivityForm" Width="1.5" PointX="13.5" PointY="96.75" />
+        <EntityTypeShape EntityType="AspreeModel.ActivityScheduling" Width="1.5" PointX="16.5" PointY="90.125" />
+        <EntityTypeShape EntityType="AspreeModel.ActivityStatu" Width="1.5" PointX="3" PointY="96.5" />
+        <EntityTypeShape EntityType="AspreeModel.AddActivity" Width="1.5" PointX="8.25" PointY="81.625" />
+        <EntityTypeShape EntityType="AspreeModel.AuthTypeMaster" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="AspreeModel.CheckList" Width="1.5" PointX="12" PointY="62.25" />
+        <EntityTypeShape EntityType="AspreeModel.City" Width="1.5" PointX="5.25" PointY="3" />
+        <EntityTypeShape EntityType="AspreeModel.ContactType" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="AspreeModel.Country" Width="1.5" PointX="0.75" PointY="3.25" />
+        <EntityTypeShape EntityType="AspreeModel.Email" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="AspreeModel.EmailTemplate" Width="1.5" PointX="3" PointY="70.625" />
+        <EntityTypeShape EntityType="AspreeModel.Entity" Width="1.5" PointX="7.5" PointY="87.75" />
+        <EntityTypeShape EntityType="AspreeModel.EntityFormDataVariable" Width="1.5" PointX="10.5" PointY="102.125" />
+        <EntityTypeShape EntityType="AspreeModel.EntitySubType" Width="1.5" PointX="5.25" PointY="108.25" />
+        <EntityTypeShape EntityType="AspreeModel.EntityType" Width="1.5" PointX="3" PointY="105" />
+        <EntityTypeShape EntityType="AspreeModel.EntityVariable" Width="1.5" PointX="10.5" PointY="98.25" />
+        <EntityTypeShape EntityType="AspreeModel.ExternalLink" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="AspreeModel.Form" Width="1.5" PointX="19.5" PointY="91.25" />
+        <EntityTypeShape EntityType="AspreeModel.FormCategory" Width="1.5" PointX="3" PointY="120.5" />
+        <EntityTypeShape EntityType="AspreeModel.FormDataEntry" Width="1.5" PointX="14.25" PointY="82.625" />
+        <EntityTypeShape EntityType="AspreeModel.FormDataEntryVariable" Width="1.5" PointX="19.5" PointY="85.75" />
+        <EntityTypeShape EntityType="AspreeModel.FormEntityType" Width="1.5" PointX="21.75" PointY="98.625" />
+        <EntityTypeShape EntityType="AspreeModel.FormStatu" Width="1.5" PointX="17.25" PointY="96.875" />
+        <EntityTypeShape EntityType="AspreeModel.FormVariable" Width="1.5" PointX="24.75" PointY="95.5" />
+        <EntityTypeShape EntityType="AspreeModel.FormVariableRole" Width="1.5" PointX="27" PointY="87.625" />
+        <EntityTypeShape EntityType="AspreeModel.LoginAuthTypeMaster" Width="1.5" PointX="3.75" PointY="85.75" />
+        <EntityTypeShape EntityType="AspreeModel.LookupData" Width="1.5" PointX="8.25" PointY="115.125" />
+        <EntityTypeShape EntityType="AspreeModel.LookupDataGroupOption" Width="1.5" PointX="12.75" PointY="115.875" />
+        <EntityTypeShape EntityType="AspreeModel.LookupDataOptionGroup" Width="1.5" PointX="10.5" PointY="115.875" />
+        <EntityTypeShape EntityType="AspreeModel.PostCode" Width="1.5" PointX="7.5" PointY="2.875" />
+        <EntityTypeShape EntityType="AspreeModel.Privilege" Width="1.5" PointX="3" PointY="91.625" />
+        <EntityTypeShape EntityType="AspreeModel.Project" Width="1.5" PointX="9" PointY="67.375" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectBuilderJSON" Width="1.5" PointX="16.5" PointY="100.75" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectBuilderJSONEntityValue" Width="1.5" PointX="21.75" PointY="90.5" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectCheckList" Width="1.5" PointX="14.25" PointY="68.875" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectEntityType" Width="1.5" PointX="11.25" PointY="86.625" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectParticipant" Width="1.5" PointX="11.25" PointY="83.125" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectRole" Width="1.5" PointX="11.25" PointY="74" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectSite" Width="1.5" PointX="11.25" PointY="66.875" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectStaffMember" Width="1.5" PointX="11.25" PointY="70.75" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectStaffMemberRole" Width="1.5" PointX="16.5" PointY="77.5" />
+        <EntityTypeShape EntityType="AspreeModel.ProjectStatu" Width="1.5" PointX="6.75" PointY="65.75" />
+        <EntityTypeShape EntityType="AspreeModel.PushEmailEvent" Width="1.5" PointX="0.75" PointY="66.625" />
+        <EntityTypeShape EntityType="AspreeModel.RegExRule" Width="1.5" PointX="9" PointY="110.375" />
+        <EntityTypeShape EntityType="AspreeModel.ReviewerFeedback" Width="1.5" PointX="21.75" PointY="107.25" />
+        <EntityTypeShape EntityType="AspreeModel.Role" Width="1.5" PointX="3" PointY="77.625" />
+        <EntityTypeShape EntityType="AspreeModel.RolePrivilege" Width="1.5" PointX="5.25" PointY="79.125" />
+        <EntityTypeShape EntityType="AspreeModel.RolesToCreateActivityScheduling" Width="1.5" PointX="21.75" PointY="85.375" />
+        <EntityTypeShape EntityType="AspreeModel.RoleToCreateActivityRegardlessScheduled" Width="1.5" PointX="18.75" PointY="82.375" />
+        <EntityTypeShape EntityType="AspreeModel.SchedulingTypeMaster" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AspreeModel.SecurityQuestion" Width="1.5" PointX="3.75" PointY="61.25" />
+        <EntityTypeShape EntityType="AspreeModel.Site" Width="1.5" PointX="3" PointY="64" />
+        <EntityTypeShape EntityType="AspreeModel.SmtpServer" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="AspreeModel.State" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="AspreeModel.Status" Width="1.5" PointX="7.75" PointY="9.75" />
+        <EntityTypeShape EntityType="AspreeModel.Suburb" Width="1.5" PointX="10.5" PointY="2.875" />
+        <EntityTypeShape EntityType="AspreeModel.Tenant" Width="1.5" PointX="0.75" PointY="69.625" />
+        <EntityTypeShape EntityType="AspreeModel.User" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="AspreeModel.UserLogin" Width="1.5" PointX="6" PointY="69" />
+        <EntityTypeShape EntityType="AspreeModel.UserRole" Width="1.5" PointX="8.25" PointY="74.75" />
+        <EntityTypeShape EntityType="AspreeModel.ValidationRule" Width="1.5" PointX="11.25" PointY="110.625" />
+        <EntityTypeShape EntityType="AspreeModel.Variable" Width="1.5" PointX="8.25" PointY="95.125" />
+        <EntityTypeShape EntityType="AspreeModel.VariableApprovalLog" Width="1.5" PointX="10.5" PointY="94.5" />
+        <EntityTypeShape EntityType="AspreeModel.VariableCategory" Width="1.5" PointX="3" PointY="128.875" />
+        <EntityTypeShape EntityType="AspreeModel.VariableEntityType" Width="1.5" PointX="7.5" PointY="106.5" />
+        <EntityTypeShape EntityType="AspreeModel.VariableRole" Width="1.5" PointX="5.25" PointY="82.125" />
+        <EntityTypeShape EntityType="AspreeModel.VariableType" Width="1.5" PointX="6" PointY="111.875" />
+        <EntityTypeShape EntityType="AspreeModel.VariableValidationRule" Width="1.5" PointX="13.5" PointY="103.5" />
+        <EntityTypeShape EntityType="AspreeModel.VariableValue" Width="1.5" PointX="10.5" PointY="107" />
+        <EntityTypeShape EntityType="AspreeModel.Error_Log" Width="1.5" PointX="0.75" PointY="11.75" />
+        <AssociationConnector Association="AspreeModel.FK_Activity_Activity" />
+        <AssociationConnector Association="AspreeModel.FK_Activity_ActivityCategory" />
+        <AssociationConnector Association="AspreeModel.FK_Activity_ActivityStatus" />
+        <AssociationConnector Association="AspreeModel.FK_Activity_Project" />
+        <AssociationConnector Association="AspreeModel.FK_Activity_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityEntityType_Activity" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityForm_Activity" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityScheduling_Activity" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityScheduling_Activity1" />
+        <AssociationConnector Association="AspreeModel.FK_AddActivity_AddActivity" />
+        <AssociationConnector Association="AspreeModel.FK_FormDataEntry_Activity" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectBuilderJSONEntityValues_Activity" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityCategory_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityEntityType_EntityType" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityForm_Forms" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityFormRole_ActivityForm" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityRole_Activity" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityScheduling_FormDataEntry" />
+        <AssociationConnector Association="AspreeModel.FK_AddActivity_FormDataEntry" />
+        <AssociationConnector Association="AspreeModel.FK_AddActivity_FormDataEntry1" />
+        <AssociationConnector Association="AspreeModel.FK_AddActivity_UserLogin" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectCheckList_CheckList" />
+        <AssociationConnector Association="AspreeModel.FK_MasterCity_MasterState" />
+        <AssociationConnector Association="AspreeModel.FK_PostCode_City" />
+        <AssociationConnector Association="AspreeModel.FK_Suburb_City" />
+        <AssociationConnector Association="AspreeModel.FK_MasterState_MasterContry" />
+        <AssociationConnector Association="AspreeModel.FK_Email_SmtpServer" />
+        <AssociationConnector Association="AspreeModel.FK_EmailTemplate_PushEmailEvent" />
+        <AssociationConnector Association="AspreeModel.FK_EmailTemplate_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_Entity_Entity" />
+        <AssociationConnector Association="AspreeModel.FK_Entity_EntityType" />
+        <AssociationConnector Association="AspreeModel.FK_Entity_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_EntityVariable_Entity" />
+        <AssociationConnector Association="AspreeModel.FK_EntityDataVariable_Variable" />
+        <AssociationConnector Association="AspreeModel.FK_EntitySubType_EntityType" />
+        <AssociationConnector Association="AspreeModel.FK_VariableEntityType_EntitySubType" />
+        <AssociationConnector Association="AspreeModel.FK_EntityType_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_FormEntityType_EntityType" />
+        <AssociationConnector Association="AspreeModel.FK_MasterVariableEntityType_EntityType" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectEntityType_EntityType" />
+        <AssociationConnector Association="AspreeModel.FK_EntityVariable_Variable" />
+        <AssociationConnector Association="AspreeModel.FK_Form_Project" />
+        <AssociationConnector Association="AspreeModel.FK_Form_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_FormDataEntry_Form" />
+        <AssociationConnector Association="AspreeModel.FK_FormEntityType_Form" />
+        <AssociationConnector Association="AspreeModel.FK_Forms_FormCategory" />
+        <AssociationConnector Association="AspreeModel.FK_Forms_FormStatus" />
+        <AssociationConnector Association="AspreeModel.FK_FormVariable_Forms" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectBuilderJSONEntityValues_Form" />
+        <AssociationConnector Association="AspreeModel.FK_ReviewerFeedback_Form" />
+        <AssociationConnector Association="AspreeModel.FK_FormCategory_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_FormDataEntry_UserLogin" />
+        <AssociationConnector Association="AspreeModel.FK_FormDataEntryVariable_FormDataEntry" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectBuilderJSON_FormDataEntry" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectBuilderJSONEntityValues_FormDataEntry" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectStaffMemberRole_Project" />
+        <AssociationConnector Association="AspreeModel.FK_FormDataEntryVariable_MasterVariable" />
+        <AssociationConnector Association="AspreeModel.FK_FormVariable_MasterVariable" />
+        <AssociationConnector Association="AspreeModel.FK_FormVariableRole_FormVariable" />
+        <AssociationConnector Association="AspreeModel.FK_FormVariableRole_Role" />
+        <AssociationConnector Association="AspreeModel.FK_UserLogin_AuthTypeMaster" />
+        <AssociationConnector Association="AspreeModel.FK_LookupData_VariableType" />
+        <AssociationConnector Association="AspreeModel.FK_LookupDataOptionGroup_LookupData" />
+        <AssociationConnector Association="AspreeModel.FK_LookupDataGroupOption_LookupDataOptionGroup" />
+        <AssociationConnector Association="AspreeModel.FK_PostCode_State" />
+        <AssociationConnector Association="AspreeModel.FK_PostCode_Suburb" />
+        <AssociationConnector Association="AspreeModel.FK_RolePrivilege_Privilege" />
+        <AssociationConnector Association="AspreeModel.FK_Project_Project" />
+        <AssociationConnector Association="AspreeModel.FK_Project_ProjectStatus" />
+        <AssociationConnector Association="AspreeModel.FK_Project_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectCheckList_Project" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectEntityType_Project" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectParticipant_Project" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectRole_Project" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectSite_Project" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectStaffMember_Project" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectRole_Role" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectSite_Site" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectStaffMember_UserLogin" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectStaffMemberRole_Role" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectStaffMemberRole_UserLogin" />
+        <AssociationConnector Association="AspreeModel.FK_ProjectStaffMemberRole_UserLogin1" />
+        <AssociationConnector Association="AspreeModel.FK_ValidationRule_RegExRule" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityFormRole_Role" />
+        <AssociationConnector Association="AspreeModel.FK_ActivityRole_Role" />
+        <AssociationConnector Association="AspreeModel.FK_MasterVariableRole_Role" />
+        <AssociationConnector Association="AspreeModel.FK_Role_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_RolePrivilege_Role" />
+        <AssociationConnector Association="AspreeModel.FK_UserRole_Role" />
+        <AssociationConnector Association="AspreeModel.FK_UserLogin_SecurityQuestion" />
+        <AssociationConnector Association="AspreeModel.FK_Site_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_Suburb_State" />
+        <AssociationConnector Association="AspreeModel.FK_UserLogin_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_Variable_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_VariableCategory_Tenant" />
+        <AssociationConnector Association="AspreeModel.FK_UserRole_UserLogin" />
+        <AssociationConnector Association="AspreeModel.FK_VariableValidationRule_ValidationRule" />
+        <AssociationConnector Association="AspreeModel.FK_MasterVariableEntityType_MasterVariable" />
+        <AssociationConnector Association="AspreeModel.FK_MasterVariableRole_MasterVariable" />
+        <AssociationConnector Association="AspreeModel.FK_MasterVariableValue_MasterVariable" />
+        <AssociationConnector Association="AspreeModel.FK_Variable_VariableCategory" />
+        <AssociationConnector Association="AspreeModel.FK_Variable_VariableType" />
+        <AssociationConnector Association="AspreeModel.FK_VariableApprovalLog_Variable" />
+        <AssociationConnector Association="AspreeModel.FK_VariableValidationRule_Variable" />
+        <EntityTypeShape EntityType="AspreeModel.HashPassword" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

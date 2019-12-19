@@ -7,11 +7,19 @@ using System.Threading.Tasks;
 
 namespace Aspree.Provider.Interface
 {
-    /// <summary>
-    /// To get the all the details about Role
-    /// </summary>
     public interface IRoleProvider
     {
+
+        RoleModel Create(RoleModel model);
+        RoleModel Update(RoleModel model);
+        RoleModel ToModel(Aspree.Data.Role entity);
+        IEnumerable<RoleModel> GetAll();
+        RoleModel GetById(int id);
+        RoleModel GetByGuid(Guid guid);
+        RoleModel DeleteById(int id, Guid DeletedBy);
+        RoleModel DeleteByGuid(Guid guid, Guid DeletedBy);
+        bool ChangeStatus(Guid roleGuid, int newStatus);
         IEnumerable<RoleModel> GetAll(Guid tenantId);
+        void SaveChanges();
     }
 }

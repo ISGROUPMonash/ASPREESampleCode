@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "Configuration";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+ 
+@section NavBarLeft{
+        <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+}
+
+@section NavBarRight{
+
+}
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="main-content TabCard">
+        <div class="justify-content-lg-center">
+            <div class="col-md-11">
+                <div class="card">
+                    <div class="card-body">
+                        @Html.Partial("~/Views/Shared/ManageSystemAdminTools.cshtml")
+                        <div class="tab-content tabcontent-border">
+                            <div class="tab-pane active" id="manageentities" role="tabpanel">
+                                <div class="p-20">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-md-4 col-lg-3">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Library</h3>
+                                                    <h4 class="card-subtitle">Existing Variables</h4>
+                                                </div>
+                                                <div class="card-body">
+
+                                                    <div class="pb-library-list-wrap">
+                                                        <div class="list-menu-wrap">
+                                                            <ul class="list-menu">
+                                                                @foreach (var menu in Model.categories)
+                                                                {
+                                                                    <li class="list-dropdown">
+                                                                        <a href="javascript:void(0);" onmousedown="Entity.setCurrentVariable('@menu.Guid', true)" data-id="@menu.Guid" ondblclick="Entity.addVariableCategory('@menu.Guid')">@menu.CategoryName</a>
+                                                                        <div class="list-submenu">
+                                                                            <ul>
+                                                                                @foreach (var subMenu in menu.Variables)
+                                                                                {
+                                                                                    <li>
+                                                                                        <a onmousedown="Entity.setCurrentVariable('@subMenu.Guid', false)" href="javascript:void(0);" data-id="@subMenu.Guid" data-repeatation-count="@subMenu.RepeatationCount" ondblclick="Entity.addVariableContainer('@subMenu.Guid')">
+                                                                                            @subMenu.Name
+                                                                                            @if (!subMenu.IsApproved)
+                                                                                            { <i> (draft)</i> }
+                                                                                        </a>
+                                                                                    </li>
+                                                                                }
+                                                                            </ul>
+                                                                        </div>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        </div><!-- /.list-menu-wrap -->
+                                                    </div>
+                                                </div><!-- /.card-body -->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-8 col-md-8 col-lg-9">
+                                            <div class="card LibraryCard">
+                                                <div class="card-header">
+                                                    Create a New Entity or Edit an Existing Entity
+                                                </div>
+                                                <div class="card-body">
+
+                                                    <form id="roleForm" class="form-horizontal" method="post" action="/Entities/Configuration">
+                                                        <input id="TenantId" name="TenantId" value="@Model.TenantId" type="hidden" />
+
+                                                        <div class="form-group" style="display:none;">
+                                                            <label for="EntityName" class="">Entity Name<span class="text-danger">*</span></label>
+                                                            <input type="text" id="EntityName" name="EntityName" required class="form-control" maxlength="30" />
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="Guid" id="Guid" value="@Model.entityData.Guid" />
+                                                            <label for="EntityType" class="">Entity Type<span class="text-danger">*</span></label>
+                                                            <select class="form-control" id="EntityType">
+                                                                <option value="0">Entity Type</option>
+                                                                @foreach (var item in Model.entities)
+                                                                {
+                                                                    <option value="@item.Guid">@item.Name</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group" id="divEntitySubtype" style="display:none;">
+                                                            <label for="EntitySubtype" class="">Entity Subtype<span class="text-danger">*</span></label>
+                                                            <select id="EntitySubtype" class="form-control">
+                                                                <option value="value">Entity Subtype</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="card">
+                                                                <div id="variableContainer" class="card-body" style="min-height:300px;">
+                                                                    <h2 id="drag-message" class="text-center">Drag and Drop your variables here</h2>
+                                                                </div>
+                                                                <div class="card-header text-center hide">
+                                                                    drag and drop pane
+                                                                </div>
+                                                                <div class="card-body hide" id="droppableDiv">
+                                                                    <div id="droppedVariable" style="min-height:300px" class="row droppable">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <a href="/Entities/Configuration" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                                                        
+                                                        <button type="button" onclick="Entity.save()" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+                                                       
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="hide">
+    <div id="variableTemplate">
+        <div class="row">
+            <div class="col-lg-2  p-l-0">
+                <i class="mdi mdi-menu" style="font-size:22px;cursor: ns-resize" title="Move Up/Down"></i>
+            </div>
+            <div class="col-lg-9  p-l-0 var-label">
+                <div class="col-md-12 col-sm-12">
+                    <div class="form-group mb-2 draw-variable">
+                        <label class="control-label question-text"> <span class="text-danger question-required"></span></label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1  p-l-0 p-r-0">
+                <button type="button" title="Remove" onclick="$(this).parent().parent().remove()" class="btn btn-sm waves-effect waves-light btn-danger pull-right">
+                    <i class="far fa-times-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Styles{
+<link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+<link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <style>
+        .variable-card {
+            padding: 6px;
+        }
+
+        .variable-card-remove {
+            margin-right: -5px;
+            margin-top: -5px;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-left: 4px;
+            padding-right: 3px;
+        }
+    </style>
+}
+
+@section Scripts {
+
+<script src="/content/assets/plugins/moment/moment.js"></script>
+<script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            $(".list-dropdown > a").click(function () {
+                $(".list-submenu").slideUp(200);
+                if ($(this).parent().hasClass("active")) {
+                    $(".list-dropdown").removeClass("active");
+                    $(this).parent().removeClass("active");
+                } else {
+                    $(".list-dropdown").removeClass("active");
+                    $(this).next(".list-submenu").slideDown(200);
+                    $(this).parent().addClass("active");
+                }
+            });
+
+            $('#EntityName').val('default');
+
+            Entity.DateFormat = '@Aspree.Utility.ConfigSettings.DateFormat.ToUpper()'; // 'DD-MM-YYYY'
+            
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(6)').addClass('active');
+        });
+    </script>
+    <script>
+        $(function () {
+            $('.system-admin-tools li a').removeClass('active show');
+            $('.system-admin-tools li a:eq(3)').addClass('active show');
+        })
+    </script>
+
+    @Scripts.Render("~/apps/entities")
+}

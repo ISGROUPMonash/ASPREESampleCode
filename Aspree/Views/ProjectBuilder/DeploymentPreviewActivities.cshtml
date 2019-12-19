@@ -1,0 +1,150 @@
+﻿@model  List<Aspree.Core.ViewModels.ActivityCategoryViewModel>
+@{
+    ViewBag.Title = "All Activities";
+    Layout = "~/Views/Shared/_LayoutTestingDeployment.cshtml";
+
+    var IsProjectAdmin = ViewBag.LoggedInUser.Roles.Contains("Project Admin");
+    var AllActivity = ViewBag.AllActivity;
+    var listData = new List<Guid>();
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+
+@section NavBarLeft{
+<h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+}
+
+<div class="col-sm-12 col-md-12">
+    <div class="card">
+        <div class="card-body hide">
+            @Html.Partial("~/Views/Shared/ProjectBuilder.cshtml")
+        </div>
+        <div class="row p-10">
+            <div class="col-sm-10 col-md-10 col-lg-12">
+                <div class="card draft-watermark">
+                    <div class="card-header">
+                        Scheduled Activity
+                    </div>
+                    <div class="card-body">
+                        <div style="min-height:250px">
+                            <input type="hidden" id="ProjectId" name="ProjectId" value="@ViewBag.ProjectId" />
+
+                            <form class="form-horizontal" id="frm-schedule">
+
+                                @if (AllActivity.Count != 0)
+                                {
+                                    foreach (var item in AllActivity)
+                                    {
+                                        if (item.ProjectId.ToString() == ViewBag.ProjectId && item.ScheduleType != 0)
+                                        {
+                                            listData.Add(item.Guid);
+
+                                            <div class="form-group">
+                                                <input type="hidden" class="guid-list" id="Guid" name="Guid" value="@item.Guid" />
+                                                <div class="row" style="border-bottom: solid; border-color: #94ddea; border-bottom-width: thin;">
+                                                    <div class="col-md-4">
+                                                        
+                                                        <a class="text-success" href="/Test/ProjectBuilder/DeploymentPreviewForms/@item.Guid">
+                                                            <b>
+                                                                <span>  @item.ActivityName </span>
+
+                                                                @if (item.RepeatationType == 1)
+                                                                {
+                                                                    <span>, Repete</span>
+                                                                }
+                                                                @if (item.ScheduleType == 1)
+                                                                {
+                                                                    <span>(Fixed Date)</span>
+                                                                }
+                                                                else if (item.ScheduleType == 2)
+                                                                {
+                                                                    <span>(From Participants Joined The Project)</span>
+                                                                }
+                                                                else if (item.ScheduleType == 3)
+                                                                {
+                                                                    <span>(From Start Of The Project)</span>
+                                                                }
+                                                            </b>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @string.Join(", ", item.ActivityRoleNames)
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @if (item.ScheduleType == 1)
+                                                    {
+                                                        var sDate = item.StartDate != null ? item.StartDate.ToString("dd/MM/yyyy") : "";
+                                                        var eDate = item.EndDate != null ? item.EndDate.ToString("dd/MM/yyyy") : "";
+                                                    <span>( @sDate - @eDate )</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        var sDate = item.StartDate != null ? item.StartDate.ToString("dd/MM/yyyy") : "";
+                                                    <span>@sDate </span>
+                                                    }
+                                                    </div>
+                                                </div>
+                                                @foreach (var forms in item.Forms)
+                                            {
+                                                if (forms.Status == "Published")
+                                                {
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    @forms.FormTitle
+                                                </div>
+                                            </div>
+                                                }
+                                            }
+                                            </div>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <div class="row" style="border-bottom: solid; border-color: #94ddea; border-bottom-width: thin;">
+                                            <div class="col-md-4">
+                                                <h3>No activity scheduled</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/Test/projectbuilder/DeploymentPreview/@ViewBag.ProjectId" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/content/assets/plugins/moment/moment.js"></script>
+    <script src="/content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/content/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $('.wizard-content ul li:eq(4)').removeClass('disabled').addClass('current');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(5)').addClass('active');
+        });
+    </script>
+    @*<script src="~/Content/app/Schedule.js"></script>*@
+    @Scripts.Render("~/apps/schedules")
+}
+
+@section Styles{
+    <link href="/content/assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="/content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+}

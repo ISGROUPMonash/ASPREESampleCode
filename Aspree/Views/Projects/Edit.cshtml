@@ -1,0 +1,128 @@
+﻿@model Aspree.Core.ViewModels.ProjectViewModel
+@{
+    ViewBag.Title = "Edit Project";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+    var ProjectRoles = ViewBag.ProjectRoles;
+
+    Aspree.Core.ViewModels.LoggedInUser LoggedInUser = new Aspree.Core.ViewModels.LoggedInUser();
+    try { LoggedInUser = ViewBag.LoggedInUser as Aspree.Core.ViewModels.LoggedInUser; } catch (Exception exc) { }
+
+}
+
+@section NavBarLeft{
+    
+        <h3 class="text-themecolor m-b-0 m-t-0">@LoggedInUser.ProjectDisplayName</h3>
+     
+}
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="main-content TabCard">
+        <div class="justify-content-lg-center">
+            <div class="col-md-11">
+                <div class="card card-body">
+                    @Html.Partial("~/Views/Shared/ManageSystemAdminTools.cshtml")
+                    <div class="tab-content tabcontent-border">
+                        <div class="tab-pane active" id="manageproject" role="tabpanel">
+                            <div class="p-20">
+                                <h4 class="card-title">Edit Project</h4>
+                                <form id="frmUser" class="form-horizontal m-t-40" method="post" action="/Projects/create" autocomplete="off">
+                                    <input id="Guid" name="Guid" type="hidden" value="@Model.Guid" />
+                                    <input id="TenantId" name="TenantId" value="@Model.TenantId" type="hidden" />
+                                    @Html.HiddenFor(m => m.RoleGuid)
+
+                                    <input id="Guid" name="Guid" value="" type="hidden" />
+                                    <div class="form-group">
+                                        <label for="ProjectName" class="">Project Name<span class="text-danger">*</span></label>
+                                        @Html.TextBoxFor(m => m.ProjectName, new { @class = "form-control", @required = "required", @maxlength = "30", @placeholder = "" })
+                                        @Html.ValidationMessageFor(m => m.ProjectName, "", new { @class = "form-control-feedback" })
+
+                                    </div>
+                                    <div class="form-group hide">
+                                        <label for="LastName" class="">Project Version<span class="text-danger">*</span></label>
+                                        @Html.TextBoxFor(m => m.Version, new { @class = "form-control", @required = "required", @maxlength = "30", @placeholder = "Last Name" })
+                                        @Html.ValidationMessageFor(m => m.Version, "", new { @class = "form-control-feedback" })
+
+                                    </div>
+
+                                    <div class="form-group hide">
+                                        <label for="Name" class="">Roles<span class="text-danger">*</span></label>
+                                        <select disabled class="form-control">
+                                            <option value="Project Admin" selected>Project Admin</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group" id="value-container">
+                                        <div class="col-sm-11 col-sm-offset-3 p-l-0" style="display:inline-block">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label for="Value" style="display:block">Project User</label>
+                                                    <select id="ProjectUserId" name="ProjectUserId" class="form-control" required>
+                                                        <option value="0">Select User</option>
+                                                        @foreach (var user in Model.UserList)
+                                                        {
+                                                            <option value="@user.Value">@user.Text</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="Description" style="display:block">Project User Role</label>
+                                                    <select id="ProjectUserRoleId" name="ProjectUserRoleId" class="form-control" required>
+                                                        <option value="0">Select User Role</option>
+                                                        @foreach (var pRoles in ProjectRoles)
+                                                        {
+                                                            <option value="@pRoles.Guid">@pRoles.Name</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" title="Add New Value" onclick="Project.addValue()" class="btn btn-sm waves-effect waves-light btn-info" style="margin-bottom:-60px;">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </button>
+                                        <ul class="list-group m-t-10" id="Values">
+                                            @foreach (var projectUser in Model.ProjectStaffMembersRoles)
+                                            {
+                                                <li class="list-group-item" data-project-user="@projectUser.UserGuid" data-project-user-role="@projectUser.RoleGuid" data-project-user-join-date="@projectUser.StaffCreatedDateString">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">@projectUser.ProjectUserName</div><div class="col-sm-6">@projectUser.ProjectUserRoleName</div>  <div class="col-sm-3">
+                                                            <button type="button" title="Remove" onclick="$(this).parent().parent().parent().remove()" class="btn btn-sm waves-effect waves-light btn-danger pull-right">
+                                                                <i class="far fa-times-circle"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                        @Html.ValidationMessage("Value", new { @class = "form-control-feedback" })
+                                    </div>
+
+                                    <div class="">
+                                        <a href="/SystemAdminTools/ManagesProjects" class="btn btn-inverse waves-effect waves-light pull-right">Cancel</a>
+                                        <button type="button" onclick="Project.saveProject();" class="btn waves-effect waves-light btn-info pull-right m-r-10">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script src="/content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/apps/projects")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $('.system-admin-tools li a').removeClass('active show');
+            $('.system-admin-tools li a:eq(0)').addClass('active show');
+
+            $('#sidebarnav > li').removeClass('active');
+            $('#sidebarnav > li:nth-child(6)').addClass('active');
+        })
+    </script>
+}

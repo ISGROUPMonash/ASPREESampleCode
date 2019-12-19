@@ -1,10 +1,7 @@
 ﻿using System;
 
 namespace Aspree.Core
-{ 
-    /// <summary>
-    /// Extentions methods to catch and handle the exception globally
-    /// </summary>
+{
     public class BadRequestException : Exception
     {
         public BadRequestException(string message, string property = "")

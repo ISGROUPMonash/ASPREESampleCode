@@ -1,5 +1,9 @@
-﻿var App = {};
+﻿
+var App = {};
 App.alertHideTimeout = 20000;
+
+App.IsTestSite = false;
+
 App.masterCallback = function (result) {
 
 };
@@ -7,7 +11,6 @@ App.masterCallback = function (result) {
 App.postData = function (url, data, callback, methodType, doNotClearError, isAsync) {
     if (typeof isAsync === 'undefined')
         isAsync = true;
-
     methodType = methodType || "POST";
     App.clearValidationErrors();
     $.support.cors = true;
@@ -30,9 +33,7 @@ App.postData = function (url, data, callback, methodType, doNotClearError, isAsy
             callback(result);
         },
         error: function (xhr, status, error) {
-
-            App.hideLoader();
-            console.log(xhr, status, error);
+            App.hideLoader();        
             if (xhr.status == 400) {
                 if (xhr.responseText.indexOf('"key"') > -1)
                     App.showValidationErrors('body', xhr.responseJSON);
@@ -83,6 +84,19 @@ App.showError = function (message, selector, timeout) {
         scrollTop: $(selector).offset().top
     }, 500);
 }
+App.showError1 = function (message, selector, timeout) {
+    timeout = timeout || App.alertHideTimeout;
+    selector = selector || '.alerts';
+    $(selector).empty();
+    var message = $('<div class="alert alert-danger alert-dismissible m-t-10 m-l-10 m-r-10 m-b-10"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong></strong> ' + message + '</div>');
+    $(selector).append(message)
+    setTimeout(function () { message.remove(); }, timeout)
+
+    $('html, body').animate({
+        scrollTop: $(selector).offset().top
+    }, 500);
+}
+
 App.clearValidationErrors = function () {
     $('div.input-validation-error').removeClass("input-validation-error");
     $('.form-control-feedback').removeClass('field-validation-error').html("");
@@ -168,7 +182,6 @@ App.setupSimpleTable = function (id, url, columns, serverSide) {
         "columnDefs": [{
             "targets": 'no-sort',
             "orderable": false
-
         }],
         "fnDrawCallback": function (oSettings) {
             $('.dataTables_paginate').hide();
@@ -255,6 +268,272 @@ App.resetForm = function (selector) {
     $(selector)[0].reset();
 };
 
+
+App.checkValidationOld = function (inputField, ValidationType, fixedLength, minLength, maxLength, RegExPattern) {
+    let result = false;
+    switch (ValidationType) {
+        case "Email": {
+            var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (filter.test(inputField)) {
+                result = true;
+            }
+            break;
+        }
+
+        case "Mobile": {
+            var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (filter.test(inputField)) {
+                result = true;
+            }
+            break;
+        }
+
+        case "Url": {
+            var pattern = /^(http|https)?:\/\/[a-zA-Z0-9-\.]+\.[a-z]{2,4}/;
+            result = pattern.test(inputField);
+            break;
+        }
+
+        case "NumberOnly": {
+            if (/^\d+$/.test(inputField)) {
+                result = true;
+            }
+            break;
+        }
+
+        case "NumberOnlyWithFixedLength": {
+            if (/^\d+$/.test(inputField))
+                if (inputField.length == fixedLength)
+                    result = true;
+            break;
+        }
+
+        case "NumberOnlyWithMaxLength": {
+            let result1 = false;
+            let result2 = false;
+
+            if (inputField.length <= maxLength) {
+                result1 = true;
+            }
+            if (/^\d+$/.test(inputField)) {
+                result2 = true;
+            }
+
+            if (result1 && result2)
+                result = true;
+            break;
+        }
+
+        case "NumberOnlyWithMinLength": {
+            let result1 = false;
+            let result2 = false;
+
+            if (inputField.length >= minLength) {
+                result1 = true;
+            }
+            if (/^\d+$/.test(inputField)) {
+                result2 = true;
+            }
+
+            if (result1 && result2)
+                result = true;
+            break;
+        }
+
+        case "NumberOnlyMinMaxLength": {
+            let result1 = false;
+            let result2 = false;
+
+            if (inputField.length < minLength)
+                result1 = false;
+            else if (inputField.length > maxLength)
+                result1 = false;
+            else
+                result1 = true;
+
+            if (/^\d+$/.test(inputField))
+                result2 = true;
+
+
+            if (result1 && result2)
+                result = true;
+            break;
+        }
+
+        case "NumberOnlyMinMaxRange": {
+            if (/^\d+$/.test(inputField)) {
+                if (parseInt(inputField) < minLength)
+                    result = false;
+                else if (parseInt(inputField) > maxLength)
+                    result = false;
+                else
+                    result = true;
+            }
+            break;
+        }
+
+        case "CharacterWithFixedLength": {
+            if (inputField.length == fixedLength) {
+                result = true;
+            }
+            break;
+        }
+
+        case "CharacterWithMaxLength": {
+            if (inputField.length <= maxLength) {
+                result = true;
+            }
+            break;
+        }
+
+        case "CharacterWithMinLength": {
+            if (inputField.length >= minLength) {
+                result = true;
+            }
+            break;
+        }
+
+        case "CharacterMinMaxLength": {
+            if (inputField.length < minLength)
+                result = false;
+            else if (inputField.length > maxLength)
+                result = false;
+            else
+                result = true;
+            break;
+        }
+
+        case "Required": {
+            if (inputField.trim() != "")
+                result = true;
+            break;
+        }
+
+        case "Date": {
+            if (/([0-9][1-2])\/([0-2][0-9]|[3][0-1])\/((19|20)[0-9]{2})/.test(inputField)) {
+                var tokens = text.split('/');  //  text.split('\/');
+                var day = parseInt(tokens[0], 10);
+                var month = parseInt(tokens[1], 10);
+                var year = parseInt(tokens[2], 10);
+                result = true;
+            }
+            break;
+        }
+        case "RegExPattern": {
+            if (RegExPattern.test(inputField)) {
+                result = true;
+            }
+            break;
+        }
+        default: {
+            result = true;
+            break;
+        }
+    }
+    return result;
+}
+
+
+App.checkValidation1 = function (inputField, ValidationType, RegExPattern, minLength, maxLength, errorMessage) {
+
+    let result = false;
+    for (var i = 0; i < ValidationType.length; i++) {
+        switch (ValidationType) {
+            case "Email": {
+                if (RegExPattern.test(inputField))
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Mobile": {
+                if (RegExPattern.test(inputField))
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Url": {
+                if (RegExPattern.test(inputField))
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Numeric": {
+                if (RegExPattern.test(inputField))
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Letter Only": {
+                if (RegExPattern.test(inputField))
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Decimal": {
+                if (RegExPattern.test(inputField))
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Date": {
+                if (RegExPattern.test(inputField))
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Length": {
+                if (inputField.length >= minLength && inputField.length <= maxLength)
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Range": {
+                if (parseInt(inputField) >= minLength && parseInt(inputField) <= maxLength)
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Required": {
+                if (inputField.trim() != "")
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            case "Date": {
+                if (RegExPattern.test(inputField))
+                    result = true;
+                else
+                    result = errorMessage;
+                break;
+            }
+
+            default: {
+                result = true;
+                break;
+            }
+        }
+    }
+}
 
 App.checkValidation = function (inputField, ValidationType, RegExPattern, minLength, maxLength, errorMessage) {
     let result = false;
@@ -401,8 +680,7 @@ App.checkValidation = function (inputField, ValidationType, RegExPattern, minLen
                 break;
             }
 
-            default: {
-                console.log("default");
+            default: {               
                 result = true;
                 break;
             }
@@ -411,8 +689,7 @@ App.checkValidation = function (inputField, ValidationType, RegExPattern, minLen
             break;
         }
     }
-    if (ValidationType.length == 0 && result == false) {
-        console.log("ValidationType.length result == false");
+    if (ValidationType.length == 0 && result == false) {        
         result = true;
     }
     return { 'result1': result1, 'result': result };
@@ -425,8 +702,6 @@ App.checkEmailValidation = function (emailid) {
     else
         return false;
 };
-
-
 
 //====================================================================
 //    compare date(start date < end date)
@@ -461,6 +736,49 @@ App.convertStringToDate = function (dateString) {
 }
 
 
+// ============================================================== 
+// get Date Based On Format //09-Oct-2019
+// ==============================================================
+App.getDateBasedOnFormat = function (inputDate, format) {
+    var returnDate;
+    switch (format) {
+        case "DD-MM-YYYY":
+            var splitArray = inputDate.split("-")
+            returnDate = new Date(splitArray[2], splitArray[1] - 1, splitArray[0]);
+            break;
+
+        case "MM-DD-YYYY":
+            var splitArray = inputDate.split("-")
+            returnDate = new Date(splitArray[2], splitArray[0] - 1, splitArray[1]);
+            break;
+
+        case "MM-YYYY":
+            var splitArray = inputDate.split("-")
+            returnDate = new Date(splitArray[1], splitArray[0] - 1, new Date().getDate());
+            break;
+
+        case "YYYY":
+            var splitArray = inputDate.split("-")
+            returnDate = new Date(splitArray[0], new Date().getMonth(), new Date().getDate());
+            break;
+
+        case "DD-MMM-YYYY":
+            returnDate = new Date(inputDate);
+            break;
+
+        case "MMM-YYYY":
+            returnDate = new Date(inputDate);
+            break;
+
+        default:
+            break;
+    }
+    return returnDate;
+
+
+}
+
+
 //====================================================================
 //    convert string in sentence case   //02-Jan-2019
 //====================================================================
@@ -481,7 +799,7 @@ App.setImage = function (file, update) {
 
         var selectedFile = file.files[0];
         var fileType = selectedFile["type"];
-        var validImageTypes = ["image/gif", "image/jpeg", "image/png", "image/jpg", ];
+        var validImageTypes = ["image/gif", "image/jpeg", "image/png", "image/jpg",];
         if ($.inArray(fileType, validImageTypes) < 0) {
             App.showValidationErrors('body', [{ "key": "fileProfile", "message": "Allowed file type extensions are jpeg jpg png gif." }])
             $(file).val("");
@@ -494,11 +812,7 @@ App.setImage = function (file, update) {
 
         var img = new Image;
 
-        img.onload = function () {
-            console.log(img.width, img.height, file.files[0].size);
-
-
-
+        img.onload = function () {            
             if (file.files[0].size > 2000000) {
 
                 App.showValidationErrors('body', [{ "key": "fileProfile", "message": "Image size can not be more than 2MB." }])
@@ -517,8 +831,181 @@ App.setImage = function (file, update) {
     try {
         reader.readAsDataURL(file.files[0]);
     } catch (e) {
-        $(update).attr('data-file-base', "");
-        console.log(e);
+        $(update).attr('data-file-base', "");       
+    }
+}
+
+App.setFormVariableFile = function (evt, update) {
+    App.clearValidationErrors();
+
+    var f = evt.files[0]; // FileList object
+
+    if (evt.files[0].size > 2000000) {
+        App.showValidationErrors('body', [{ "key": "fileProfile", "message": "File size can not be more than 2MB." }])
+        $(update).val("");
+
+        $(update).attr('data-file-base', '');
+        $('span[data-valmsg-for="' + $(update).prop('id') + '"]').addClass("field-validation-error").text('File size can not be more than 2MB.');
+        return;
     }
 
+
+    let MIMEType = "data:" + f.name.split('.').pop() + ",";
+    var reader = new FileReader();
+
+    // Closure to capture the file information.
+    reader.onload = (function (theFile) {
+        return function (e) {
+
+            var binaryData = e.target.result;
+            //Converting Binary Data to base 64
+            var base64String = window.btoa(binaryData);
+            //showing file converted to base64
+            $(update).attr('data-file-base', MIMEType + base64String);           
+        };
+    })(f);
+    // Read in the image file as a data URL.
+    reader.readAsBinaryString(f);
+}
+
+
+//====================================================================
+//    return the filename from the given path
+//====================================================================
+App.getFileName = function (filePath) {
+    try {
+        return filePath.replace(/^.*[\\\/]/, '')
+    } catch (eFileError) {       
+        return "";
+    }
+
+}
+
+App.remove_first_occurrence = function (str, searchstr) {
+    var index = str.indexOf(searchstr);
+    if (index === -1) {
+        return str;
+    }
+    return str.slice(0, index) + str.slice(index + searchstr.length);
+}
+
+$(document).ready(function () {
+    $('select').css("color", "grey");
+    $("select").change(function () {
+        if ($(this)[0].selectedIndex == 0) $(this).removeClass("grey");
+        else $(this).addClass("grey");
+    });
+});
+
+
+
+
+//====================================================================
+//    Enum for Activity Status
+//====================================================================
+App.ActivityStatusEnum = {
+    Active: 1,
+    InActive: 2,
+    Draft: 3,
+}
+
+
+
+App.DefaultVariablesStringEnum = {
+    EntID: "EntID",
+    EntGrp: "EntGrp",
+    EntType: "EntType",
+    PerSType: "PerSType",
+
+    HospSType: "HospSType",
+    PracSType: "PracSType",
+    LabSType: "LabSType",
+    ProSType: "ProSType",
+    GovSType: "GovSType",
+    IndSType: "IndSType",
+    ConSType: "ConSType",
+
+    Title: "Title",
+    Name: "Name",
+    FirstName: "FirstName",
+    MiddleName: "MiddleName",
+    NoMidNm: "NoMidNm",
+
+    PrefName: "PrefName",
+    Unit: "Unit",
+    NoUnit: "NoUnit",
+
+
+    Email: "Email",
+    Username: "Username",
+    DOB: "DOB",
+    Gender: "Gender",
+    AuthenticationMethod: "AuthenticationMethod",
+    LnkPro: "LnkPro",
+    Join: "Join",
+    Actv: "Actv",
+    End: "End",
+    ProRole: "ProRole",
+    SysAppr: "SysAppr",
+    Active: "Active",
+    ProjectDisplayName: "ProjectDisplayName",
+    SysRole: "SysRole",
+    RecruitStart: "RecruitStart",
+    RecruitEnd: "RecruitEnd",
+
+    ProDt: "ProDt",
+    Phone: "Phone",
+
+
+    ProjectDisplayNameTextColour: "ProjectDisplayNameTextColour",
+
+    PlaceProfilePicture: "PlaceProfilePicture",
+
+
+    StrtNum: "StrtNum",
+    StrtNme: "StrtNme",
+    StrtType: "StrtType",
+    Suburb: "Suburb",
+    Country: "Country",
+    State: "State",
+    Postcode: "Postcode",
+    DifAddress: "DifAddress",
+
+    StrtNum2: "StrtNum2",
+    StrtNme2: "StrtNme2",
+    Suburb2: "Suburb2",
+    State2: "State2",
+    Postcode2: "Postcode2",
+    Fax: "Fax",
+}
+
+App.DefaultFormNamesStringEnum = {
+    Person_Registration: "Person Registration",
+    Participant_Registration: "Participant Registration",
+    Place__Group_Registration: "Place/Group Registration",
+    Project_Registration: "Project Registration",
+    Project_Linkage: "Project Linkage",
+}
+
+App.DefaultRoleNameStringEnum = {
+    System_Admin: 'System Admin',
+    Project_Admin: 'Project Admin',
+    Data_Entry_Supervisor: 'Data Entry Supervisor',
+    Data_Entry_Operator: 'Data Entry Operator',
+    Data_Entry: 'Data Entry',
+}
+
+
+App.CommonEntityType = {
+    Participant: "Participant",
+    Person: "Person",
+    Place_Group: "Place/Group",
+    Project: "Project",
+
+}
+App.ConvertInto7Digit = function (entid) {
+    var str = "" + entid;
+    var pad = "0000000";
+    var ans = pad.substring(0, pad.length - str.length) + str;
+    return ans;
 }

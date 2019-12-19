@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swashbuckle.Examples;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Aspree.Core.ViewModels
 {
     public class VariableCategoryViewModel
     {
+        [IgnoreDataMember]
         public int Id { get; set; }
         /// <summary>
         /// Name of Category
@@ -58,4 +60,50 @@ namespace Aspree.Core.ViewModels
         public int IsDefaultVariableCategory { get; set; }
     }
 
+    public class GetAllVariableCategoryViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+
+            return new List<VariableCategoryViewModel>()
+       {
+            new VariableCategoryViewModel
+            {
+                CategoryName = "Example Category Name",
+                CreatedBy = Guid.NewGuid(),
+                CreatedDate = DateTime.Now,
+                DeactivatedBy = Guid.NewGuid(),
+                DeactivatedDate = DateTime.Now,
+                Guid = Guid.NewGuid(),
+                Id = 1,
+                IsDefaultVariableCategory = 1,
+                ModifiedBy = Guid.NewGuid(),
+                ModifiedDate = DateTime.Now,
+                TenantId = Guid.NewGuid(),
+            }
+        };
+
+        
+        }
+    }
+    public class VariableCategoryViewModelExamples : IExamplesProvider
+    {
+        public object GetExamples()
+        {
+            return new VariableCategoryViewModel
+            {
+                CategoryName = "Example Category Name",
+                CreatedBy = Guid.NewGuid(),
+                CreatedDate = DateTime.Now,
+                DeactivatedBy = Guid.NewGuid(),
+                DeactivatedDate = DateTime.Now,
+                Guid = Guid.NewGuid(),
+                Id = 1,
+                IsDefaultVariableCategory = 1,
+                ModifiedBy = Guid.NewGuid(),
+                ModifiedDate = DateTime.Now,
+                TenantId = Guid.NewGuid(),                
+            };
+        }
+    }
 }

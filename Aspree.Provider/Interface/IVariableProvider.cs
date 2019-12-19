@@ -1,4 +1,5 @@
 ﻿using Aspree.Core.ViewModels;
+using Aspree.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Aspree.Provider.Interface
 {
-    /// <summary>
-    /// Handles form variables & related operations
-    /// </summary>
-    public interface IVariableProvider 
+    public interface IVariableProvider : IProviderCommon<VariableViewModel, Variable>
     {
-        ProjectBuilderVariablesViewModel GetProjectBuilderVariables(Guid tenantId);
+        IEnumerable<VariableViewModel> GetAll(Guid tenantId);
+        ProjectBuilderVariablesViewModel GetProjectBuilderVariables(Guid tenantId, Guid LoggedInUserId, Guid projectId);
+        IEnumerable<ProjectBuilderFormViewModelViewModel> GetFormVariableByProjectId(Guid projectId);
+        IEnumerable<VariableViewModel> GetAllVariables(Guid tenantId, Guid projectId);
+        VariableViewModel GetVariablesByGuid(Guid guid, Guid logginuserId, Guid projectid);
     }
 }

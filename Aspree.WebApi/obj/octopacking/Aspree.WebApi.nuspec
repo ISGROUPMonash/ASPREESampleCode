@@ -1,0 +1,164 @@
+<package>
+  <metadata>
+    <id>Aspree.WebApi</id>
+    <version>1.0.0.0</version>
+    <authors>PankajChandrawanshi</authors>
+    <owners>PankajChandrawanshi</owners>
+    <tags>OctopusDeploy</tags>
+    <licenseUrl>http://example.com</licenseUrl>
+    <projectUrl>http://example.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Aspree.WebApi deployment package, built on 19-12-2019</description>
+    <releaseNotes></releaseNotes>
+  </metadata>
+  <files>
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\Global.asax" target="Global.asax" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\Resources\email-template.html" target="Resources\email-template.html" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\Resources\WebApiDescription.xml" target="Resources\WebApiDescription.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\ApplicationInsights.config" target="ApplicationInsights.config" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\log4net.config" target="log4net.config" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\Web.config" target="Web.config" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\Web.Debug.config" target="Web.Debug.config" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\Web.Release.config" target="Web.Release.config" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\ApplicationInsights.config" target="bin\ApplicationInsights.config" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\csc.exe" target="bin\roslyn\csc.exe" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" target="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" target="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\Microsoft.CodeAnalysis.dll" target="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" target="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\Microsoft.CSharp.Core.targets" target="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets" target="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\System.Collections.Immutable.dll" target="bin\roslyn\System.Collections.Immutable.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\System.Reflection.Metadata.dll" target="bin\roslyn\System.Reflection.Metadata.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\vbc.exe" target="bin\roslyn\vbc.exe" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\VBCSCompiler.exe" target="bin\roslyn\VBCSCompiler.exe" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\roslyn\VBCSCompiler.exe.config" target="bin\roslyn\VBCSCompiler.exe.config" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\resources\ViewModelDescription.XML" target="bin\resources\ViewModelDescription.XML" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Exceptions\ExceptionResource.resx" target="bin\Exceptions\ExceptionResource.resx" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Exceptions\MessageResource.resx" target="bin\Exceptions\MessageResource.resx" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Exceptions\ExceptionResource.Designer.cs" target="bin\Exceptions\ExceptionResource.Designer.cs" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Exceptions\MessageResource.Designer.cs" target="bin\Exceptions\MessageResource.Designer.cs" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Resources\email-template.html" target="bin\Resources\email-template.html" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Resources\WebApiDescription.xml" target="bin\Resources\WebApiDescription.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.WebApi.dll.config" target="bin\Aspree.WebApi.dll.config" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.WebApi.dll" target="bin\Aspree.WebApi.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.WebApi.pdb" target="bin\Aspree.WebApi.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\WebApiDescription.XML" target="bin\WebApiDescription.XML" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Antlr3.Runtime.dll" target="bin\Antlr3.Runtime.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.Core.dll" target="bin\Aspree.Core.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.Data.dll" target="bin\Aspree.Data.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.Provider.dll" target="bin\Aspree.Provider.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\CommonServiceLocator.dll" target="bin\CommonServiceLocator.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\EntityFramework.dll" target="bin\EntityFramework.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\EntityFramework.SqlServer.dll" target="bin\EntityFramework.SqlServer.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\FromHeaderAttribute.dll" target="bin\FromHeaderAttribute.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\log4net.dll" target="bin\log4net.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.Agent.Intercept.dll" target="bin\Microsoft.AI.Agent.Intercept.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.DependencyCollector.dll" target="bin\Microsoft.AI.DependencyCollector.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.PerfCounterCollector.dll" target="bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.ServerTelemetryChannel.dll" target="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.Web.dll" target="bin\Microsoft.AI.Web.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.WindowsServer.dll" target="bin\Microsoft.AI.WindowsServer.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.ApplicationInsights.dll" target="bin\Microsoft.ApplicationInsights.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AspNet.Identity.Core.dll" target="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AspNet.Identity.EntityFramework.dll" target="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AspNet.Identity.Owin.dll" target="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" target="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Cors.dll" target="bin\Microsoft.Owin.Cors.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.dll" target="bin\Microsoft.Owin.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Host.SystemWeb.dll" target="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.Cookies.dll" target="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.dll" target="bin\Microsoft.Owin.Security.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.Facebook.dll" target="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.Google.dll" target="bin\Microsoft.Owin.Security.Google.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.MicrosoftAccount.dll" target="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.OAuth.dll" target="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.Twitter.dll" target="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Web.Infrastructure.dll" target="bin\Microsoft.Web.Infrastructure.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\MongoDB.Bson.dll" target="bin\MongoDB.Bson.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Newtonsoft.Json.dll" target="bin\Newtonsoft.Json.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Owin.dll" target="bin\Owin.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Swagger.Net.dll" target="bin\Swagger.Net.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Swashbuckle.Core.dll" target="bin\Swashbuckle.Core.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Swashbuckle.Examples.dll" target="bin\Swashbuckle.Examples.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Net.Http.Formatting.dll" target="bin\System.Net.Http.Formatting.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Cors.dll" target="bin\System.Web.Cors.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Helpers.dll" target="bin\System.Web.Helpers.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Http.Cors.dll" target="bin\System.Web.Http.Cors.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Http.dll" target="bin\System.Web.Http.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Http.Owin.dll" target="bin\System.Web.Http.Owin.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Http.WebHost.dll" target="bin\System.Web.Http.WebHost.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Mvc.dll" target="bin\System.Web.Mvc.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Optimization.dll" target="bin\System.Web.Optimization.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Razor.dll" target="bin\System.Web.Razor.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.WebPages.Deployment.dll" target="bin\System.Web.WebPages.Deployment.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.WebPages.dll" target="bin\System.Web.WebPages.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.WebPages.Razor.dll" target="bin\System.Web.WebPages.Razor.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Abstractions.dll" target="bin\Unity.Abstractions.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Configuration.dll" target="bin\Unity.Configuration.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Container.dll" target="bin\Unity.Container.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Interception.Configuration.dll" target="bin\Unity.Interception.Configuration.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Interception.dll" target="bin\Unity.Interception.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Mvc5.dll" target="bin\Unity.Mvc5.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.RegistrationByConvention.dll" target="bin\Unity.RegistrationByConvention.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.ServiceLocation.dll" target="bin\Unity.ServiceLocation.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.WebApi.dll" target="bin\Unity.WebApi.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\WebActivatorEx.dll" target="bin\WebActivatorEx.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\WebGrease.dll" target="bin\WebGrease.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\MongoDB.Driver.dll" target="bin\MongoDB.Driver.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\MongoDB.Driver.Legacy.dll" target="bin\MongoDB.Driver.Legacy.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\MongoDB.Driver.Core.dll" target="bin\MongoDB.Driver.Core.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Runtime.InteropServices.RuntimeInformation.dll" target="bin\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.Core.pdb" target="bin\Aspree.Core.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.Data.pdb" target="bin\Aspree.Data.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Aspree.Provider.pdb" target="bin\Aspree.Provider.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\CommonServiceLocator.pdb" target="bin\CommonServiceLocator.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\log4net.xml" target="bin\log4net.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.DependencyCollector.xml" target="bin\Microsoft.AI.DependencyCollector.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.ServerTelemetryChannel.xml" target="bin\Microsoft.AI.ServerTelemetryChannel.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.Web.xml" target="bin\Microsoft.AI.Web.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AI.WindowsServer.xml" target="bin\Microsoft.AI.WindowsServer.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.ApplicationInsights.xml" target="bin\Microsoft.ApplicationInsights.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" target="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.xml" target="bin\Microsoft.Owin.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Cors.xml" target="bin\Microsoft.Owin.Cors.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\MongoDB.Bson.xml" target="bin\MongoDB.Bson.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Newtonsoft.Json.xml" target="bin\Newtonsoft.Json.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Net.Http.Formatting.xml" target="bin\System.Net.Http.Formatting.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Http.xml" target="bin\System.Web.Http.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Http.Cors.xml" target="bin\System.Web.Http.Cors.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Helpers.xml" target="bin\System.Web.Helpers.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Http.WebHost.xml" target="bin\System.Web.Http.WebHost.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Mvc.xml" target="bin\System.Web.Mvc.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Optimization.xml" target="bin\System.Web.Optimization.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Razor.xml" target="bin\System.Web.Razor.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.WebPages.xml" target="bin\System.Web.WebPages.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.WebPages.Deployment.xml" target="bin\System.Web.WebPages.Deployment.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.WebPages.Razor.xml" target="bin\System.Web.WebPages.Razor.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Abstractions.pdb" target="bin\Unity.Abstractions.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Configuration.pdb" target="bin\Unity.Configuration.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Container.pdb" target="bin\Unity.Container.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Interception.pdb" target="bin\Unity.Interception.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.Interception.Configuration.pdb" target="bin\Unity.Interception.Configuration.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.RegistrationByConvention.pdb" target="bin\Unity.RegistrationByConvention.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Unity.ServiceLocation.pdb" target="bin\Unity.ServiceLocation.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Antlr3.Runtime.pdb" target="bin\Antlr3.Runtime.pdb" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\EntityFramework.xml" target="bin\EntityFramework.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\EntityFramework.SqlServer.xml" target="bin\EntityFramework.SqlServer.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AspNet.Identity.Core.xml" target="bin\Microsoft.AspNet.Identity.Core.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AspNet.Identity.Owin.xml" target="bin\Microsoft.AspNet.Identity.Owin.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.AspNet.Identity.EntityFramework.xml" target="bin\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Host.SystemWeb.xml" target="bin\Microsoft.Owin.Host.SystemWeb.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.xml" target="bin\Microsoft.Owin.Security.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.Facebook.xml" target="bin\Microsoft.Owin.Security.Facebook.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.Cookies.xml" target="bin\Microsoft.Owin.Security.Cookies.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.OAuth.xml" target="bin\Microsoft.Owin.Security.OAuth.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.Google.xml" target="bin\Microsoft.Owin.Security.Google.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.Twitter.xml" target="bin\Microsoft.Owin.Security.Twitter.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\Microsoft.Owin.Security.MicrosoftAccount.xml" target="bin\Microsoft.Owin.Security.MicrosoftAccount.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\System.Web.Http.Owin.xml" target="bin\System.Web.Http.Owin.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\MongoDB.Driver.xml" target="bin\MongoDB.Driver.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\MongoDB.Driver.Legacy.xml" target="bin\MongoDB.Driver.Legacy.xml" />
+    <file src="C:\Users\PankajChandrawanshi\Desktop\AspreeFinal\Aspree\Aspree.WebApi\bin\MongoDB.Driver.Core.xml" target="bin\MongoDB.Driver.Core.xml" />
+  </files>
+</package>
